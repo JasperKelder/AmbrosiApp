@@ -59,7 +59,7 @@ input[type=submit]:hover, .editbutton:hover, .viewlink:hover {
     background-color: #8dd5ff;
 
 }
-input[type=text], textarea {
+input[type=text], input[type=number], textarea {
     width: 100%;
     padding: 6px 10px;
     display: inline-block;
@@ -73,7 +73,7 @@ textarea {
 table {
     background-color: #51afe6;
     border-collapse: collapse;
-    width: 75%;
+    width: 35%;
     text-align: center;
     color: black;
 }
@@ -85,9 +85,6 @@ td, th {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-/*th {*/
-/*    font-size: 115%;*/
-/*}*/
 .edittable {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -119,6 +116,3 @@ select {
     font-size: 30px;
     text-align: center;
 }
-/** {*/
-/*    box-sizing: border-box;*/
-/*}*/

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Recipes - Add</title>
+        <title>Recipes - Category</title>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheet.css"/>
         <link rel="icon" type="image/png" href="/images/smileySmall.png">
@@ -22,7 +22,7 @@
             <div id="padding">
                 <form action="#" th:action="@{/category}" th:object="${category}" method="post">
                     <p hidden><input type="text" th:field="*{categoryId}"/></p>
-                    <p><h2>Category Name</h2><input type="text" th:field="*{categoryName}" required/></p>
+                    <p><h2>Category</h2><input type="text" th:field="*{categoryName}" required/></p>
                     <p><input type="submit" value="Submit"/></p>
                 </form>
             </div>
