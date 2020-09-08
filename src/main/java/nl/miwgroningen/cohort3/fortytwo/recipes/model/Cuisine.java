@@ -1,0 +1,32 @@
+package nl.miwgroningen.cohort3.fortytwo.recipes.model;
+
+import javax.persistence.*;
+
+// Cuisines are for example Italian Kitchen, French, Asian etc..
+
+@Entity
+public class Cuisine {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer cuisineId;
+
+    @Column
+    private String cuisineName;
+
+    public Integer getCuisineId() {
+        return cuisineId;
+    }
+
+    public void setCuisineId(Integer cuisineId) {
+        this.cuisineId = cuisineId;
+    }
+
+    public String getCuisineName() {
+        return cuisineName;
+    }
+
+    public void setCuisineName(String cuisineName) {
+        this.cuisineName = cuisineName;
+    }
+}
