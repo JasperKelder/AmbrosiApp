@@ -1,5 +1,8 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 /**
@@ -12,14 +15,35 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer recipeId;
 
-    @Column(columnDefinition = "text")
+    @Column
     private String recipeTitle;
 
-    @Column(columnDefinition = "text")
-    private String recipeType;
+    @Column
+    private String recipePreperation;
 
-    @Column(columnDefinition = "text")
-    private String recipeInfo;
+    @Column
+    // preptime will be set in minutes
+    private Integer preperationTime;
+
+    @Column
+    private Integer servings;
+
+    @Column
+    private String ingredients;
+
+    @Column
+    // Cooktime will be set in minutes
+    private Integer cooktime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cuisineId", referencedColumnName = "cuisineId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Cuisine cuisineName;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "categoryId", referencedColumnName = "categoryId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Category categoryName;
 
     public Integer getRecipeId() {
         return recipeId;
@@ -37,19 +61,59 @@ public class Recipe {
         this.recipeTitle = recipeTitle;
     }
 
-    public String getRecipeType() {
-        return recipeType;
+    public String getRecipePreperation() {
+        return recipePreperation;
     }
 
-    public void setRecipeType(String recipeType) {
-        this.recipeType = recipeType;
+    public void setRecipePreperation(String recipePreperation) {
+        this.recipePreperation = recipePreperation;
     }
 
-    public String getRecipeInfo() {
-        return recipeInfo;
+    public Integer getPreperationTime() {
+        return preperationTime;
     }
 
-    public void setRecipeInfo(String recipeInfo) {
-        this.recipeInfo = recipeInfo;
+    public void setPreperationTime(Integer preperationTime) {
+        this.preperationTime = preperationTime;
+    }
+
+    public Integer getServings() {
+        return servings;
+    }
+
+    public void setServings(Integer servings) {
+        this.servings = servings;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Integer getCooktime() {
+        return cooktime;
+    }
+
+    public void setCooktime(Integer cooktime) {
+        this.cooktime = cooktime;
+    }
+
+    public Cuisine getCuisineName() {
+        return cuisineName;
+    }
+
+    public void setCuisineName(Cuisine cuisineName) {
+        this.cuisineName = cuisineName;
+    }
+
+    public Category getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(Category categoryName) {
+        this.categoryName = categoryName;
     }
 }
