@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Recipes - Add</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheet.css"/>
+        <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    </head>
+    <body>
+        <div class="flex-container">
+            <nav>
+                <a th:href="@{/index}">Overview</a>
+                <a class="active" th:href="@{/add}">Add</a>
+                <a th:href="@{/edit}">Edit</a>
+            </nav>
+        </div>
+        <div id="space"></div>
+        <div class="flex-container" id="flexblack">
+            <div id="padding">
+                <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
+                    <p hidden><input type="text" th:field="*{recipeId}"/></p>
+                    <p><h2>Title</h2><input type="text" th:field="*{recipeTitle}" required/></p>
+                    <p><h2>Type</h2><select th:field="*{recipeType}">
+                        <option value="Tasty">Tasty</option>
+                        <option value="Yummy">Yummy</option>
+                        <option value="Delicious">Delicious</option></select></p>
+                    <p><h2>Info</h2><textarea th:field="*{recipeInfo}" required/></p>
+                    <p><input type="submit" value="Submit"/></p>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

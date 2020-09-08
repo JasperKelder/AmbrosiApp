@@ -1,0 +1,120 @@
+body {
+    background-color: #007c7c;
+}
+h2 {
+    text-align: center;
+    font-size: 125%;
+    background-color: black;
+    color: #51afe6;
+    border: 3px solid #8dd5ff;
+}
+p {
+    text-align: center;
+    font-size: 125%;
+}
+.flex-container {
+    background-color: #51afe6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#flexblack {
+    background-color: black;
+}
+nav {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+nav a {
+    color: #51afe6;
+    border: 3px solid #8dd5ff;
+    text-align: center;
+    padding: 14px 100px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    width: 50px;
+}
+nav a:hover, nav a.active {
+    color: #8dd5ff;
+}
+input[type=submit], .editbutton {
+    background-color: black;
+    color: #8dd5ff;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+input[type=submit], .editbutton {
+    color: #51afe6;
+    border: 3px solid #8dd5ff;
+}
+input[type=submit]:hover, .editbutton:hover {
+    color: black;
+    border: 3px solid black;
+    background-color: #8dd5ff;
+
+}
+input[type=text], textarea {
+    width: 100%;
+    padding: 6px 10px;
+    display: inline-block;
+    border: 3px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+    height: 120px;
+}
+table {
+    background-color: #51afe6;
+    border-collapse: collapse;
+    width: 75%;
+    text-align: center;
+    color: black;
+}
+td, th {
+    border: 3px solid #8dd5ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+th {
+    font-size: 115%;
+}
+.edittable {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100px;
+}
+select {
+    width: 200px;
+}
+#padding {
+    padding: 26px;
+    background-color: #51afe6;
+    border: 3px solid #8dd5ff;
+}
+#space {
+    padding: 26px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 250px 250px auto auto;
+    background-color: black;
+    padding: 50px;
+    grid-gap: 75px;
+}
+.grid-item {
+    background-color: #51afe6;
+    border: 3px solid #8dd5ff;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/

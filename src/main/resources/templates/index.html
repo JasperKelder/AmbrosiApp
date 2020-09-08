@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Recipes - Overview</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheet.css"/>
+        <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    </head>
+    <body>
+        <div class="flex-container">
+            <nav>
+                <a class="active" th:href="@{/index}">Overview</a>
+                <a th:href="@{/add}">Add</a>
+                <a th:href="@{/edit}">Edit</a>
+            </nav>
+        </div>
+        <div class="grid-container" th:each="recipe: ${allRecipes}">
+            <div class="grid-item" th:text="${recipe.recipeTitle}">1</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">2</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">3</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">4</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">5</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">6</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">7</div>
+            <div class="grid-item" th:text="${recipe.recipeTitle}">8</div>
+        </div>
+    </body>
+</html>
