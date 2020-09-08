@@ -11,7 +11,10 @@
             <nav>
                 <a th:href="@{/index}">Overview</a>
                 <a class="active" th:href="@{/add}">Add</a>
-                <a th:href="@{/edit}">Edit</a>
+                <a th:href="@{/category}">Category</a>
+                <a th:href="@{/cuisine}">Cuisine</a>
+                <a th:href="@{/register}">Register</a>
+                <a th:href="@{/login}">Login</a>
             </nav>
         </div>
         <div id="space"></div>
@@ -20,11 +23,21 @@
                 <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
                     <p hidden><input type="text" th:field="*{recipeId}"/></p>
                     <p><h2>Title</h2><input type="text" th:field="*{recipeTitle}" required/></p>
-                    <p><h2>Type</h2><select th:field="*{recipeType}">
-                        <option value="Tasty">Tasty</option>
-                        <option value="Yummy">Yummy</option>
-                        <option value="Delicious">Delicious</option></select></p>
-                    <p><h2>Info</h2><textarea th:field="*{recipeInfo}" required/></p>
+                    <p><h2>Preparation</h2><textarea th:field="*{recipePreperation}" required/></p>
+                    <p><h2>Preparation Time</h2><input type="text" th:field="*{preperationTime}" required/></p>
+                    <p><h2>Servings</h2><input type="text" th:field="*{servings}" required/></p>
+                    <p><h2>Ingredients</h2><textarea th:field="*{ingredients}" required/></p>
+                    <p><h2>Cooktime</h2><input type="text" th:field="*{cooktime}" required/></p>
+                    <p>Cuisine: <select th:field="*{cuisineName}" required>
+                        <option th:each="cuisine : ${allCuisines}"
+                                th:value="${cuisine.cuisineId}"
+                                th:text="${cuisine.cuisineName}">
+                        </option></select></p>
+                    <p>Category: <select th:field="*{categoryName}" required>
+                        <option th:each="category : ${allCategories}"
+                                th:value="${category.categoryId}"
+                                th:text="${category.categoryName}">
+                        </option></select></p>
                     <p><input type="submit" value="Submit"/></p>
                 </form>
             </div>

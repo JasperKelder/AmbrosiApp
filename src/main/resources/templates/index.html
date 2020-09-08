@@ -11,18 +11,29 @@
             <nav>
                 <a class="active" th:href="@{/index}">Overview</a>
                 <a th:href="@{/add}">Add</a>
-                <a th:href="@{/edit}">Edit</a>
+                <a th:href="@{/category}">Category</a>
+                <a th:href="@{/cuisine}">Cuisine</a>
+                <a th:href="@{/register}">Register</a>
+                <a th:href="@{/login}">Login</a>
             </nav>
         </div>
-        <div class="grid-container" th:each="recipe: ${allRecipes}">
-            <div class="grid-item" th:text="${recipe.recipeTitle}">1</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">2</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">3</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">4</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">5</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">6</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">7</div>
-            <div class="grid-item" th:text="${recipe.recipeTitle}">8</div>
+        <div id="space"></div>
+        <div class="flex-container" id="flexblack">
+            <table>
+                <tr>
+                    <th>Recipe Title</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="recipe: ${allRecipes}">
+                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
+                        <span th:text="${recipe.recipeTitle}"></span></a></td>
+                    <td class="edittable"><a th:href="@{/index/delete/{recipeId}(recipeId=${recipe.recipeId})}"
+                                             class="editbutton">Delete</a></td>
+                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
+                                             class="editbutton">Update</a></td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>

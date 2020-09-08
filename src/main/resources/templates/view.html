@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Recipes - Overview</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheet.css"/>
+        <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    </head>
+    <body>
+        <div class="flex-container">
+            <nav>
+                <a class="active" th:href="@{/index}">Overview</a>
+                <a th:href="@{/add}">Add</a>
+                <a th:href="@{/category}">Category</a>
+                <a th:href="@{/cuisine}">Cuisine</a>
+                <a th:href="@{/register}">Register</a>
+                <a th:href="@{/login}">Login</a>
+            </nav>
+        </div>
+        <div id="space"></div>
+        <div class="flex-container" id="flexblack">
+            <table id="viewtable">
+                <tr>
+                    <th>Title</th><td th:text="${recipe.recipeTitle}"></td>
+                </tr>
+                <tr>
+                    <th>Preperation</th><td th:text="${recipe.recipePreperation}"></td>
+                </tr>
+                <tr>
+                    <th>Preperation Time</th><td th:text="${recipe.preperationTime}"></td>
+                </tr>
+                <tr>
+                    <th>Servings</th><td th:text="${recipe.servings}"></td>
+                </tr>
+                <tr>
+                    <th>Ingredients</th><td th:text="${recipe.ingredients}"></td>
+                </tr>
+                <tr>
+                    <th>Cooktime</th><td th:text="${recipe.cooktime}"></td>
+                </tr>
+                <tr>
+                    <th>Cuisine</th><td th:text="${recipe.cuisineName}"></td>
+                </tr>
+                <tr>
+                    <th>Category</th><td th:text="${recipe.categoryName}"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

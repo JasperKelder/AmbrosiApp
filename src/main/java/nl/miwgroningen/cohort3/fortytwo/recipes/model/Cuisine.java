@@ -4,6 +4,9 @@ import javax.persistence.*;
 
 // Cuisines are for example Italian Kitchen, French, Asian etc..
 
+/**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ */
 @Entity
 public class Cuisine {
 
@@ -13,6 +16,11 @@ public class Cuisine {
 
     @Column
     private String cuisineName;
+
+    @Override
+    public String toString() {
+        return cuisineName;
+    }
 
     public Integer getCuisineId() {
         return cuisineId;
