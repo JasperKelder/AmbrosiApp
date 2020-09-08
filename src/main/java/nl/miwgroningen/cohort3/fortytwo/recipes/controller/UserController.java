@@ -33,11 +33,9 @@ public class UserController {
             return "register";
         } else {
             userRepository.save(user);
-            return "redirect:/landingPage";
+            return "redirect:/mykitchen";
         }
     }
-
-
 
 }
 
