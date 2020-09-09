@@ -93,7 +93,7 @@ td, th {
 select {
     width: 200px;
 }
-#padding {
+#padding, .container {
     padding: 26px;
     background-color: #51afe6;
     border: 3px solid #8dd5ff;
@@ -115,4 +115,32 @@ select {
     padding: 20px;
     font-size: 30px;
     text-align: center;
+}
+.container {
+    width: 50%;
+}
+
+#floatrightbutton {
+    float: right;
+}
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 800px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
 }
