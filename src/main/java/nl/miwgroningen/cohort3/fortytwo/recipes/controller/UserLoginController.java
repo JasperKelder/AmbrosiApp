@@ -21,10 +21,10 @@ public class UserLoginController {
         return "login";
     }
 
-    @GetMapping("/")
+    @GetMapping("/mykitchen")
     protected String showRecipesIndex(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "index";
+        return "mykitchen";
     }
 
 }
