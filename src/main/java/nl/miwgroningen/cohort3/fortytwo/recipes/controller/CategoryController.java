@@ -23,7 +23,7 @@ public class CategoryController {
     CategoryRepository categoryRepository;
 
     @GetMapping("/category")
-    protected String createCategory(Model model) {
+    protected String getInfo(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("allCategories", categoryRepository.findAll());
         return "category";
@@ -57,5 +57,12 @@ public class CategoryController {
             return "category";
         }
         return "category";
+    }
+
+    // Work in progress, ment for navigation
+    @GetMapping("/admin")
+    protected String goToAdmin() {
+            String temporarySolution = "DuctTape";
+        return "admin";
     }
 }

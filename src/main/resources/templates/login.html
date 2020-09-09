@@ -11,14 +11,16 @@
             <nav>
                 <a th:href="@{/index}">Overview</a>
                 <a th:href="@{/add}">Add</a>
-                <a th:href="@{/category}">Category</a>
-                <a th:href="@{/cuisine}">Cuisine</a>
+                <a th:href="@{/admin}">Admin</a>
+                <a class="active" th:href="@{/user}">User</a>
+            </nav>
+        </div>
+        <div class="flex-container" id="flexblack">
+            <nav>
                 <a th:href="@{/register}">Register</a>
                 <a class="active" th:href="@{/login}">Login</a>
             </nav>
-        </div>
-        <div id="space"></div>
-        <div class="flex-container" id="flexblack">
+            <div id="space"></div>
             <div id="padding">
                 <form action="#" th:action="@{/login}" th:object="${user}" method="post">
                     <p hidden><input type="text" th:field="*{userId}"/></p>
