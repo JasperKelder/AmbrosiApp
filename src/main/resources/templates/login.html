@@ -1,115 +1,37 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Registration and Login App</title>
-
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-
+    <title>Recipes - Login</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-
-<!-- create navigation bar ( header) -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#" th:href="@{/}">Registration and
-                Login Module</a>
-        </div>
+    <div class="flex-container">
+        <nav>
+            <a th:href="@{/index}">Overview</a>
+            <a th:href="@{/add}">Add</a>
+            <a class="active" th:href="@{/login}">MyKitchen</a>
+            <a th:href="@{/admin}">Admin</a>
+        </nav>
     </div>
-</nav>
-
-<br>
-<br>
-<div class = "container">
-    <div class = "row">
-        <div class = "col-md-6 col-md-offset-3">
-
-            <h1> User Login Page </h1>
+    <div id="space"></div>
+    <div class="flex-container" id="flexblack">
+        <div id="padding">
             <form th:action="@{/login}" method="post">
-
-                <!-- error message -->
                 <div th:if="${param.error}">
-                    <div class="alert alert-danger">Invalid username or
-                        password.</div>
+                    <div class="alert alert-danger">Invalid username or password.</div>
                 </div>
-
-                <!-- logout message -->
                 <div th:if="${param.logout}">
                     <div class="alert alert-info">You have been logged out.</div>
                 </div>
-
-                <div class = "form-group">
-                    <label for ="username"> Username </label> :
-                    <input type="text" class = "form-control" id ="username" name = "username"
-                           placeholder="Enter Email ID" autofocus="autofocus">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>: <input type="password"
-                                                                   id="password" name="password" class="form-control"
-                                                                   placeholder="Enter Password" />
-                </div>
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="login-submit" id="login-submit"
-                                   class="form-control btn btn-primary" value="Log In" />
-                        </div>
-                    </div>
-                </div>
+                <label for ="username"><h2>Username</h2></label>
+                <input type="text" id ="username" name = "username" placeholder="Enter Email" autofocus="autofocus">
+                <label for="password"><h2>Password</h2></label><input type="password" id="password" name="password"
+                                                                          placeholder="Enter Password" />
+                <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
             </form>
-            <div class="form-group">
-      <span>New user? <a href="/" th:href="@{/registration}">Register
-        here</a></span>
-            </div>
+            <p><a class="flashybutton" th:href="@{/registration}">Click to register</a></p>
         </div>
     </div>
-</div>
 </body>
-
-<!-- <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Recipes - Login</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/stylesheet.css"/>
-        <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    </head>
-    <body>
-        <div class="flex-container">
-            <nav>
-                <a th:href="@{/index}">Overview</a>
-                <a th:href="@{/add}">Add</a>
-                <a th:href="@{/admin}">Admin</a>
-                <a class="active" th:href="@{/user}">User</a>
-            </nav>
-        </div>
-        <div class="flex-container" id="flexblack">
-            <nav>
-                <a th:href="@{/register}">Register</a>
-                <a class="active" th:href="@{/login}">Login</a>
-            </nav>
-            <div id="space"></div>
-            <div id="padding">
-                <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-                    <p hidden><input type="text" th:field="*{userId}"/></p>
-                    <p><h2>Username</h2><input type="text" th:field="*{userName}" required/></p>
-                    <p><h2>Password</h2><textarea th:field="*{userPassword}" required/></p>
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
-            </div>
-        </div>
-    </body>
-</html> -->

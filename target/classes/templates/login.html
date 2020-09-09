@@ -1,34 +1,37 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Recipes - Login</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/stylesheet.css"/>
-        <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    </head>
-    <body>
-        <div class="flex-container">
-            <nav>
-                <a th:href="@{/index}">Overview</a>
-                <a th:href="@{/add}">Add</a>
-                <a th:href="@{/admin}">Admin</a>
-                <a class="active" th:href="@{/user}">User</a>
-            </nav>
+<head>
+    <title>Recipes - Login</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+</head>
+<body>
+    <div class="flex-container">
+        <nav>
+            <a th:href="@{/index}">Overview</a>
+            <a th:href="@{/add}">Add</a>
+            <a class="active" th:href="@{/login}">MyKitchen</a>
+            <a th:href="@{/admin}">Admin</a>
+        </nav>
+    </div>
+    <div id="space"></div>
+    <div class="flex-container" id="flexblack">
+        <div id="padding">
+            <form th:action="@{/login}" method="post">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Invalid username or password.</div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">You have been logged out.</div>
+                </div>
+                <label for ="username"><h2>Username</h2></label>
+                <input type="text" id ="username" name = "username" placeholder="Enter Email" autofocus="autofocus">
+                <label for="password"><h2>Password</h2></label><input type="password" id="password" name="password"
+                                                                          placeholder="Enter Password" />
+                <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
+            </form>
+            <p><a class="flashybutton" th:href="@{/registration}">Click to register</a></p>
         </div>
-        <div class="flex-container" id="flexblack">
-            <nav>
-                <a th:href="@{/register}">Register</a>
-                <a class="active" th:href="@{/login}">Login</a>
-            </nav>
-            <div id="space"></div>
-            <div id="padding">
-                <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-                    <p hidden><input type="text" th:field="*{userId}"/></p>
-                    <p><h2>Username</h2><input type="text" th:field="*{userName}" required/></p>
-                    <p><h2>Password</h2><textarea th:field="*{userPassword}" required/></p>
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+    </div>
+</body>
