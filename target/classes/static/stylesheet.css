@@ -1,26 +1,25 @@
 body {
-    background-color: black;
-    /*#007c7c*/
+    background-color: #007c7c;
 }
-h2 {
+h2, label, th {
     text-align: center;
     font-size: 125%;
     background-color: black;
-    color: #51afe6;
-    border: 3px solid #8dd5ff;
+    color: #1e9696;
+    border: 3px solid #7c003e;
 }
 p {
     text-align: center;
 }
 .flex-container {
-    background-color: #51afe6;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 #flexblack {
-    background-color: black;
+    background-color: #007c7c;
 }
 nav {
     background-color: black;
@@ -29,16 +28,16 @@ nav {
     color: black;
 }
 nav a {
-    color: #51afe6;
-    border: 3px solid #8dd5ff;
+    color: #1e9696;
+    border: 3px solid #7c003e;
     text-align: center;
     padding: 14px 100px;
     text-decoration: none;
     transition-duration: 0.5s;
     width: 50px;
 }
-nav a:hover, nav a.active {
-    color: #8dd5ff;
+nav a:hover, nav a.active, input[type=submit]:hover, .editbutton:hover, .viewlink:hover, button[type=submit]:hover, .flashybutton:hover {
+    color: #FFC72C;
 }
 input[type=submit], .editbutton, .viewlink, button[type=submit], .flashybutton {
     text-align: center;
@@ -50,14 +49,8 @@ input[type=submit], .editbutton, .viewlink, button[type=submit], .flashybutton {
     transition-duration: 0.5s;
 }
 input[type=submit], .editbutton, .viewlink, button[type=submit], .flashybutton {
-    color: #51afe6;
-    border: 3px solid #8dd5ff;
-}
-input[type=submit]:hover, .editbutton:hover, .viewlink:hover, button[type=submit]:hover, .flashybutton:hover {
-    color: black;
-    border: 3px solid black;
-    background-color: #8dd5ff;
-
+    color: #1e9696;
+    border: 3px solid #7c003e;
 }
 input[type=text], input[type=number], input[type=password], textarea, #firstName, #lastName, #email {
     width: 100%;
@@ -71,19 +64,17 @@ textarea {
     height: 120px;
 }
 table {
-    background-color: #51afe6;
     border-collapse: collapse;
     width: 35%;
     text-align: center;
     color: black;
 }
-#viewtable {
-    width: 50%;
-}
-td, th {
-    border: 3px solid #8dd5ff;
+td {
+    border: 3px solid #1e9696;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: #7c003e;
+    font-size: 125%;
 }
 .edittable {
     padding-top: 20px;
@@ -95,8 +86,7 @@ select {
 }
 #padding, .container {
     padding: 26px;
-    background-color: #51afe6;
-    border: 3px solid #8dd5ff;
+    border: 3px solid #1e9696;
 }
 #space {
     padding: 26px;
@@ -105,13 +95,11 @@ select {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-template-rows: 250px 250px auto auto;
-    background-color: black;
     padding: 50px;
     grid-gap: 75px;
 }
 .grid-item {
-    background-color: #51afe6;
-    border: 3px solid #8dd5ff;
+    border: 3px solid #1e9696;
     padding: 20px;
     font-size: 30px;
     text-align: center;
@@ -143,4 +131,7 @@ select {
         width: 100%;
         margin-top: 0;
     }
+}
+label {
+    padding: 2px;
 }

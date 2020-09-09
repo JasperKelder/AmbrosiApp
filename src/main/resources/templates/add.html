@@ -24,7 +24,8 @@
                         <label for="title">Title</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="title" name="title" th:field="*{recipeTitle}" required/>
+                        <input type="text" id="title" name="title" th:field="*{recipeTitle}"
+                               required placeholder="Title"/>
                     </div>
                 </div>
                 <div class="row">
@@ -32,7 +33,8 @@
                         <label for="preparation">Preparation</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="preparation" name="preparation" th:field="*{recipePreperation}" required/>
+                        <textarea id="preparation" name="preparation" th:field="*{recipePreperation}" required
+                                  placeholder="Preparation"/>
                     </div>
                 </div>
                 <div class="row">
@@ -41,7 +43,7 @@
                     </div>
                     <div class="col-75">
                         <input type="number" id="preparationTime" name="preparationTime" th:field="*{preperationTime}"
-                               required/>
+                               required placeholder="Preparation Time"/>
                     </div>
                 </div>
                 <div class="row">
@@ -49,7 +51,8 @@
                         <label for="servings">Servings</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" id="servings" name="servings" th:field="*{servings}" required/>
+                        <input type="number" id="servings" name="servings" th:field="*{servings}" required
+                               placeholder="Servings"/>
                     </div>
                 </div>
                 <div class="row">
@@ -57,7 +60,8 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                     <div class="col-75">
-                        <textarea id="ingredients" name="ingredients" th:field="*{ingredients}" required/>
+                        <textarea id="ingredients" name="ingredients" th:field="*{ingredients}" required
+                                  placeholder="Ingredients"/>
                     </div>
                 </div>
                 <div class="row">
@@ -65,7 +69,8 @@
                         <label for="cooktime">Cooktime</label>
                     </div>
                     <div class="col-75">
-                        <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}" required/>
+                        <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}" required
+                               placeholder="Cooktime"/>
                     </div>
                 </div>
                 <div class="row">

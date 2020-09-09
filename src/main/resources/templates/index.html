@@ -16,13 +16,18 @@
             </nav>
         </div>
         <div id="space"></div>
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>
         <div class="flex-container" id="flexblack">
             <table>
-                <tr>
-                    <th>Recipe Title</th>
-                    <th></th>
-                    <th></th>
-                </tr>
                 <tr th:each="recipe: ${allRecipes}">
                     <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
                         <span th:text="${recipe.recipeTitle}"></span></a></td>
@@ -33,5 +38,6 @@
                 </tr>
             </table>
         </div>
+        <div id="space"></div><div id="space"></div><div id="space"></div><div id="space"></div>
     </body>
 </html>

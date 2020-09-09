@@ -18,17 +18,12 @@
     <div id="space"></div>
     <div class="flex-container" id="flexblack">
         <div id="padding">
+            <div th:if="${param.error}">
+                <div class="alert alert-danger"><h2>Invalid email or password</h2></div>
+            </div>
             <form th:action="@{/login}" method="post">
-                <div th:if="${param.error}">
-                    <div class="alert alert-danger">Invalid username or password.</div>
-                </div>
-                <div th:if="${param.logout}">
-                    <div class="alert alert-info">You have been logged out.</div>
-                </div>
-                <label for ="username"><h2>Username</h2></label>
-                <input type="text" id ="username" name = "username" placeholder="Enter Email" autofocus="autofocus">
-                <label for="password"><h2>Password</h2></label><input type="password" id="password" name="password"
-                                                                          placeholder="Enter Password" />
+                 <input type="text" id ="username" name = "username" placeholder="Email" autofocus="autofocus">
+                <input type="password" id="password" name="password" placeholder="Password" />
                 <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
             </form>
             <p><a class="flashybutton" th:href="@{/registration}">Click to register</a></p>
