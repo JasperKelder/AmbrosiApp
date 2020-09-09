@@ -16,6 +16,16 @@ public class UserInfoController {
 
     //TODO make my kitchen page and create userInfo html based on registration html (name new html userinfo)
 
+    @GetMapping("/userinfo/{userId}")
+    protected String showUserInfo(@PathVariable("userId") final Integer userId, Model model){
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            model.addAttribute("user", user);
+            return "userinfo";
+        }
+        return "redirect:/index";
+    }
+
     // method to update userinfo using the userId
     @GetMapping("/userinfo/update/{userId}")
     protected String updateUserInfo(@PathVariable("userId") final Integer userId, Model model) {
