@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Recipes - Cuisine</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheet.css"/>
+        <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    </head>
+    <body>
+        <div class="flex-container">
+            <nav>
+                <a th:href="@{/index}">Overview</a>
+                <a th:href="@{/add}">Add</a>
+                <a class="active" th:href="@{/admin}">Admin</a>
+                <a th:href="@{/user}">User</a>
+            </nav>
+        </div>
+        <div class="flex-container" id="flexblack">
+            <nav>
+                <a th:href="@{/category}">Category</a>
+                <a  class="active" th:href="@{/cuisine}">Cuisine</a>
+            </nav>
+            <div id="space"></div>
+            <div id="padding">
+                <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
+                    <p hidden><input type="text" th:field="*{cuisineId}"/></p>
+                    <p><h2>Cuisine</h2><input type="text" th:field="*{cuisineName}" required/></p>
+                    <p><input type="submit" value="Submit"/></p>
+                </form>
+            </div>
+            <div id="space"></div>
+            <table>
+                <tr>
+                    <th>Cuisine</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="cuisine: ${allCuisines}">
+                    <td th:text="${cuisine.cuisineName}"></td>
+                    <td class="edittable"><a th:href="@{/cuisine/delete/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
+                                             class="editbutton">Delete</a></td>
+                    <td class="edittable"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
+                                             class="editbutton">Update</a></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

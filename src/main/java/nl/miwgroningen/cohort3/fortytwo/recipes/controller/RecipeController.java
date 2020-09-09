@@ -1,6 +1,8 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CuisineRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +24,17 @@ public class RecipeController {
     @Autowired
     RecipeRepository recipeRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    CuisineRepository cuisineRepository;
+
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allCuisines", cuisineRepository.findAll());
         return "add";
     }
 
@@ -34,23 +44,23 @@ public class RecipeController {
             return "add";
         } else {
             recipeRepository.save(recipe);
-            return "redirect:/edit";
+            return "redirect:/index";
         }
     }
-    @GetMapping("/edit")
+    @GetMapping("/index")
     protected String showRecipes(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "edit";
+        return "index";
     }
 
-    @GetMapping("/edit/delete/{recipeId}")
+    @GetMapping("/index/delete/{recipeId}")
     protected String deleteRecipe(@PathVariable("recipeId") final Integer recipeId) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             recipeRepository.delete(recipe.get());
-            return "forward:/edit/";
+            return "forward:/index/";
         }
-        return "forward:/edit";
+        return "forward:/index";
     }
 
     @GetMapping("/add/update/{recipeId}")
@@ -60,12 +70,15 @@ public class RecipeController {
             model.addAttribute("recipe", recipe);
             return "add";
         }
-        return "edit";
-    }
-
-    @GetMapping("/index")
-    protected String showRecipesIndex(Model model) {
-        model.addAttribute("allRecipes", recipeRepository.findAll());
         return "index";
+    }
+    @GetMapping("/view/{id}")
+    protected String showRecipe(@PathVariable("id") final Integer recipeId, Model model) {
+        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        if (recipe.isPresent()) {
+            model.addAttribute("recipe", recipe.get());
+            return "view";
+        }
+        return "redirect:/index";
     }
 }

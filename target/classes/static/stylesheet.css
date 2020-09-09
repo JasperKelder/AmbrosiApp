@@ -1,5 +1,6 @@
 body {
-    background-color: #007c7c;
+    background-color: black;
+    /*#007c7c*/
 }
 h2 {
     text-align: center;
@@ -40,7 +41,7 @@ nav a {
 nav a:hover, nav a.active {
     color: #8dd5ff;
 }
-input[type=submit], .editbutton {
+input[type=submit], .editbutton, .viewlink {
     background-color: black;
     color: #8dd5ff;
     padding: 8px 16px;
@@ -48,17 +49,17 @@ input[type=submit], .editbutton {
     text-decoration: none;
     transition-duration: 0.5s;
 }
-input[type=submit], .editbutton {
+input[type=submit], .editbutton, .viewlink {
     color: #51afe6;
     border: 3px solid #8dd5ff;
 }
-input[type=submit]:hover, .editbutton:hover {
+input[type=submit]:hover, .editbutton:hover, .viewlink:hover {
     color: black;
     border: 3px solid black;
     background-color: #8dd5ff;
 
 }
-input[type=text], textarea {
+input[type=text], input[type=number], textarea {
     width: 100%;
     padding: 6px 10px;
     display: inline-block;
@@ -72,17 +73,17 @@ textarea {
 table {
     background-color: #51afe6;
     border-collapse: collapse;
-    width: 75%;
+    width: 35%;
     text-align: center;
     color: black;
+}
+#viewtable {
+    width: 50%;
 }
 td, th {
     border: 3px solid #8dd5ff;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-th {
-    font-size: 115%;
 }
 .edittable {
     padding-top: 20px;
@@ -115,6 +116,3 @@ select {
     font-size: 30px;
     text-align: center;
 }
-/** {*/
-/*    box-sizing: border-box;*/
-/*}*/
