@@ -2,6 +2,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,25 +17,20 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 
 @Controller
-public class UserController {
+public class UserLoginController {
 
     @Autowired
-    UserRepository userRepository;
+    RecipeRepository recipeRepository;
 
-    @GetMapping("/register")
-    protected String createUser(Model model) {
-        model.addAttribute("user", new User());
-        return "register";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
-    @PostMapping({"/register"})
-    protected String saveUser(@ModelAttribute("user") User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "register";
-        } else {
-            userRepository.save(user);
-            return "redirect:/mykitchen";
-        }
+    @GetMapping("/")
+    protected String showRecipesIndex(Model model) {
+        model.addAttribute("allRecipes", recipeRepository.findAll());
+        return "index";
     }
 
 }
