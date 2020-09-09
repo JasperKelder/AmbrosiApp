@@ -11,10 +11,10 @@ import javax.persistence.*;
 public class Cuisine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cuisineId;
 
-    @Column
+    @Column(unique = true)
     private String cuisineName;
 
     @Override

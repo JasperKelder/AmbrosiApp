@@ -17,6 +17,11 @@
             </nav>
         </div>
         <div id="space"></div>
+        <div>
+            <form>
+                <input type="button" value="Print!" onClick="printPageArea('flexblack')">
+            </form>
+        </div>
         <div class="flex-container" id="flexblack">
             <table id="viewtable">
                 <tr>
@@ -45,5 +50,15 @@
                 </tr>
             </table>
         </div>
+    <script>
+        function printPageArea(divIDToPrint){
+            var printContent = document.getElementById(divIDToPrint);
+            var WinPrint = window.open('', '', 'width=900,height=650');
+            WinPrint.document.write(printContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+        }
+    </script>
     </body>
 </html>
