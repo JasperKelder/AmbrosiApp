@@ -26,6 +26,21 @@
                     <p><input type="submit" value="Submit"/></p>
                 </form>
             </div>
+            <div id="space"></div>
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="category: ${allCategories}">
+                    <td th:text="${category.categoryName}"></td>
+                    <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"
+                                             class="editbutton">Delete</a></td>
+                    <td class="edittable"><a th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
+                                             class="editbutton">Update</a></td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
