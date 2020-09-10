@@ -18,6 +18,20 @@
 <div class="container">
     Welcome <span sec:authentication="principal.username"> User</span>
 </div>
+<div>
+    <table>
+        <tr>
+            <th>First name</th>
+            <td class="edittable"><a th:text="${user.getFirstName()}"></a></td>
+            <th>Last name</th>
+            <td th:text="${user.getLastName()}"></td>
+            <th>E-mail</th>
+            <td th:text="${user.getEmail()}"></td>
+            <td class="edittable"><a th:href="@{/userinfo/update/${user.getFirstName()}}"
+                                     class="editbutton"> Update </a></td>
 
+        </tr>
+    </table>
+</div>
 </body>
 </html>

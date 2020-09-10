@@ -1,7 +1,8 @@
 body {
     background-color: #007c7c;
 }
-h2, label, th, h1 {
+
+h2, label, th {
     text-align: center;
     font-size: 125%;
     background-color: black;

@@ -1,14 +1,15 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.Optional;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -26,11 +27,20 @@ public class UserInfoController {
 //    }
 
     @GetMapping("/userinfo")
-    protected String showUser(Model model) {
-        model.addAttribute("allUsers", userRepository.findAll());
+    protected String showUser(Model model, Principal principal) {
+        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         return "userinfo";
     }
 
+    @PostMapping({"/userinfo/update"})
+    protected String updateUserInfo(@ModelAttribute("user") User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "userinfo";
+        } else {
+            userRepository.save(user);
+            return "redirect:/mykitchen";
+        }
+    }
 
 //    @GetMapping("/userinfo/{userId}")
 //    protected String showUserInfo(@PathVariable("userId") final Integer userId, Model model){
@@ -41,6 +51,7 @@ public class UserInfoController {
 //        }
 //        return "redirect:/index";
 //    }
+//
 //
 //    // method to update userinfo using the userId
 //    @GetMapping("/userinfo/update/{userId}")
