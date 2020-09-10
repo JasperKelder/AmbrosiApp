@@ -52,6 +52,7 @@ public class CuisineController {
     @GetMapping("/cuisine/update/{cuisineId}")
     protected String updateCuisine(@PathVariable("cuisineId") final Integer cuisineId, Model model) {
         Optional<Cuisine> cuisine = cuisineRepository.findById(cuisineId);
+        model.addAttribute("allCuisines", cuisineRepository.findAll());
         if (cuisine.isPresent()) {
             model.addAttribute("cuisine", cuisine);
             return "cuisine";
