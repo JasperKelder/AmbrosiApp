@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -21,10 +22,10 @@ public class UserLoginController {
         return "login";
     }
 
-    @GetMapping("/")
+    @GetMapping("/mykitchen")
     protected String showRecipesIndex(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "index";
+        return "mykitchen";
     }
 
 }

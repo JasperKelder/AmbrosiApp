@@ -17,13 +17,8 @@
             </nav>
         </div>
         <div id="space"></div>
-        <div>
-            <form>
-                <input type="button" value="Print!" onClick="printPageArea('flexblack')">
-            </form>
-        </div>
         <div class="flex-container" id="flexblack">
-            <table id="viewtable">
+            <table>
                 <tr>
                     <th>Title</th><td th:text="${recipe.recipeTitle}"></td>
                 </tr>
@@ -49,6 +44,8 @@
                     <th>Category</th><td th:text="${recipe.categoryName}"></td>
                 </tr>
             </table>
+            <div id="space"></div>
+            <input type="submit" value="Print" onClick="printPageArea('flexblack')">
         </div>
     <script>
         function printPageArea(divIDToPrint){

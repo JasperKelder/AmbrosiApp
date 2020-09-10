@@ -17,28 +17,93 @@
         </div>
         <div id="space"></div>
         <div class="flex-container" id="flexblack">
-            <div id="padding">
-                <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
-                    <p hidden><input type="text" th:field="*{recipeId}"/></p>
-                    <p><h2>Title</h2><input type="text" th:field="*{recipeTitle}" required/></p>
-                    <p><h2>Preparation</h2><textarea th:field="*{recipePreperation}" required/></p>
-                    <p><h2>Preparation Time</h2><input type="number" th:field="*{preperationTime}" required/></p>
-                    <p><h2>Servings</h2><input type="number" th:field="*{servings}" required/></p>
-                    <p><h2>Ingredients</h2><textarea th:field="*{ingredients}" required/></p>
-                    <p><h2>Cooktime</h2><input type="number" th:field="*{cooktime}" required/></p>
-                    <p><h2>Cuisine</h2><select th:field="*{cuisineName}" required>
-                        <option th:each="cuisine : ${allCuisines}"
-                                th:value="${cuisine.cuisineId}"
-                                th:text="${cuisine.cuisineName}">
-                        </option></select></p>
-                    <p><h2>Category</h2><select th:field="*{categoryName}" required>
-                        <option th:each="category : ${allCategories}"
-                                th:value="${category.categoryId}"
-                                th:text="${category.categoryName}">
-                        </option></select></p>
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
-            </div>
+        <div class="container">
+            <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="title" name="title" th:field="*{recipeTitle}"
+                               required placeholder="Title"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="preparation">Preparation</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="preparation" name="preparation" th:field="*{recipePreperation}" required
+                                  placeholder="Preparation"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="preparationTime">Preparation Time</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="number" id="preparationTime" name="preparationTime" th:field="*{preperationTime}"
+                               required placeholder="Preparation Time"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="servings">Servings</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="number" id="servings" name="servings" th:field="*{servings}" required
+                               placeholder="Servings"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="ingredients">Ingredients</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="ingredients" name="ingredients" th:field="*{ingredients}" required
+                                  placeholder="Ingredients"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="cooktime">Cooktime</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}" required
+                               placeholder="Cooktime"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="cuisine">Cuisine</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
+                            <option th:each="cuisine : ${allCuisines}"
+                                    th:value="${cuisine.cuisineId}"
+                                    th:text="${cuisine.cuisineName}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="category">Category</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="category" name="category" th:field="*{categoryName}" required>
+                            <option th:each="category : ${allCategories}"
+                                    th:value="${category.categoryId}"
+                                    th:text="${category.categoryName}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <input id="floatrightbutton" type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
         </div>
     </body>
 </html>
