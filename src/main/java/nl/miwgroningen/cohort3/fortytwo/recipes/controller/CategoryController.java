@@ -58,11 +58,11 @@ public class CategoryController {
         }
         return "category";
     }
-
-    // Temporary solution to make navigation possible
-    @GetMapping("/admin")
-    protected String goToAdmin() {
-        String temporarySolution = "DuctTape";
-        return "admin";
-    }
+//
+//    // Temporary solution to make navigation possible
+//    @GetMapping("/admin")
+//    protected String goToAdmin() {
+//        String temporarySolution = "DuctTape";
+//        return "admin";
+//    }
 }

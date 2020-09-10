@@ -54,14 +54,20 @@ public class RecipeController {
         return "index";
     }
 
-    @GetMapping("/index/delete/{recipeId}")
+    @GetMapping("/admin")
+    protected String showRecipesAdmin(Model model) {
+        model.addAttribute("allRecipes", recipeRepository.findAll());
+        return "admin";
+    }
+
+    @GetMapping({"/index/delete/{recipeId}", "/admin/delete/{recipeId}"})
     protected String deleteRecipe(@PathVariable("recipeId") final Integer recipeId) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             recipeRepository.delete(recipe.get());
-            return "forward:/index/";
+            return "forward:/admin/";
         }
-        return "forward:/index";
+        return "forward:/admin";
     }
 
     @GetMapping("/add/update/{recipeId}")

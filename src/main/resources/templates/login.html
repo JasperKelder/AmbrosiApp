@@ -15,7 +15,7 @@
             <a th:href="@{/admin}">Admin</a>
         </nav>
     </div>
-    <div id="space"></div>
+    <div class="space"></div>
     <div class="flex-container" id="flexblack">
         <div id="padding">
             <div th:if="${param.error}">
@@ -26,7 +26,7 @@
                 <input type="password" id="password" name="password" placeholder="Password" />
                 <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
             </form>
-            <p><a class="flashybutton" th:href="@{/registration}">Click to register</a></p>
+            <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
         </div>
     </div>
 </body>
