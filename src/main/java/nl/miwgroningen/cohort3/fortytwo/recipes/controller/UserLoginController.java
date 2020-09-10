@@ -1,11 +1,14 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.security.Principal;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -17,16 +20,26 @@ public class UserLoginController {
     @Autowired
     RecipeRepository recipeRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
+    //method for showing recipes on mykitchen page
+//    @GetMapping("/mykitchen")
+//    protected String showRecipesIndex(Model model) {
+//        model.addAttribute("allRecipes", recipeRepository.findAll());
+//        return "mykitchen";
+//    }
+
+    //Method for showing user name in mykitchen.html
     @GetMapping("/mykitchen")
-    protected String showRecipesIndex(Model model) {
-        model.addAttribute("allRecipes", recipeRepository.findAll());
+    protected String showUser(Model model, Principal principal) {
+        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         return "mykitchen";
     }
-
 }
 

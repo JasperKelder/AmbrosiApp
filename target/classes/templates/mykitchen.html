@@ -16,8 +16,9 @@
         <a class="active" th:href="@{/logout}">Logout</a>
     </nav>
 </div>
-<div class="container">
-    Welcome <span sec:authentication="principal.username"> User</span>
+    <div class="container">
+        Welcome  <span> <a th:text="${user.getFirstName()}"> </a> </span>
+    </div>
 </div>
 </body>
 </html>

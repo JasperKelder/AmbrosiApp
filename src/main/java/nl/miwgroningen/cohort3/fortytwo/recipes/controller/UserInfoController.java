@@ -26,6 +26,8 @@ public class UserInfoController {
 //        return principal.getName();
 //    }
 
+    //method for showing userinfo. Principal is used to get the current user info.
+    //principal.getname() gets email from db
     @GetMapping("/userinfo")
     protected String showUser(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmail(principal.getName()));
