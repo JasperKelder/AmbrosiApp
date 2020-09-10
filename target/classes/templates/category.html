@@ -20,7 +20,7 @@
                 <a  class="active" th:href="@{/category}">Category</a>
                 <a th:href="@{/cuisine}">Cuisine</a>
             </nav>
-            <div id="space"></div>
+            <div class="space"></div>
             <div id="padding">
                 <form action="#" th:action="@{/category}" th:object="${category}" method="post">
                     <p hidden><input type="text" th:field="*{categoryId}"/></p>
