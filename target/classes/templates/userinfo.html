@@ -15,7 +15,9 @@
         <a class="active" th:href="@{/logout}">Logout</a>
     </nav>
 </div>
-
+<div class="container">
+    Welcome <span sec:authentication="principal.username"> User</span>
+</div>
 
 </body>
 </html>

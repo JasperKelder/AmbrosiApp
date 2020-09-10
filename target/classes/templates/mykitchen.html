@@ -16,7 +16,9 @@
         <a class="active" th:href="@{/logout}">Logout</a>
     </nav>
 </div>
-
+<div class="container">
+    Welcome <span sec:authentication="principal.username"> User</span>
+</div>
 
 
 <!--&lt;!&ndash; create navigation bar ( header) &ndash;&gt;-->
@@ -44,10 +46,6 @@
 <!--<br>-->
 <!--<br>-->
 
-<div class="container">
-    <h1>Registration and Login with Spring Boot, Spring Security,
-        Thymeleaf, Hibernate and MySQL</h1>
-    Welcome <span sec:authentication="principal.username"> User</span>
-</div>
+
 </body>
 </html>
