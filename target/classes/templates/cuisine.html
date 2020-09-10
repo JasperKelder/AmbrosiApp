@@ -20,7 +20,7 @@
                 <a th:href="@{/category}">Category</a>
                 <a  class="active" th:href="@{/cuisine}">Cuisine</a>
             </nav>
-            <div id="space"></div>
+            <div class="space"></div>
             <div id="padding">
                 <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
                     <p hidden><input type="text" th:field="*{cuisineId}"/></p>
@@ -28,7 +28,7 @@
                     <p><input type="submit" value="Submit"/></p>
                 </form>
             </div>
-            <div id="space"></div>
+            <div class="space"></div>
             <table>
                 <tr th:each="cuisine: ${allCuisines}">
                     <td th:text="${cuisine.cuisineName}"></td>

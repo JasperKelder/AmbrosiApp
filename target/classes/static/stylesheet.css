@@ -96,7 +96,7 @@ select {
     padding: 26px;
     border: 3px solid #1e9696;
 }
-#space {
+.space {
     padding: 26px;
 }
 .grid-container {
