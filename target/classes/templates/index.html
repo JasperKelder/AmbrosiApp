@@ -1,27 +1,32 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Recipes - Overview</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/stylesheet.css"/>
-        <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    </head>
-    <body>
-        <div class="flex-container">
-            <nav>
-                <a class="active" th:href="@{/index}">Overview</a>
-                <a th:href="@{/add}">Add</a>
-                <a th:href="@{/login}">MyKitchen</a>
-                <a th:href="@{/admin}">Admin</a>
-            </nav>
+<head>
+    <title>Recipes - Overview</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+</head>
+<body>
+<div class="flex-container">
+    <nav>
+        <a class="active" th:href="@{/index}">Overview</a>
+        <a th:href="@{/add}">Add</a>
+        <a th:href="@{/login}">MyKitchen</a>
+        <a th:href="@{/admin}">Admin</a>
+    </nav>
+</div>
+
+<div class="grid-container">
+    <span th:each="recipe, rStat : ${allRecipes}">
+        <div class=grid-item th:value="${recipe.recipeId}" th:unless="${rStat.index > 7}">
+             <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
+             <span th:text="${recipe.recipeTitle}"></span></a>
         </div>
-            <div class="grid-container">
-                <div class=grid-item th:each="recipe : ${allRecipes}">
-                    <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
-                    <span th:text="${recipe.recipeTitle}"></span></a>
-                        </div>
-            </div>
-                <!--        </div>-->
+    </span>
+</div>
+
+
+<!--        </div>-->
 <!--        <div id="space"></div>-->
 <!--        <div class="flex-container" id="flexblack">-->
 <!--            <table>-->
@@ -40,5 +45,5 @@
 <!--                </tr>-->
 <!--            </table>-->
 <!--        </div>-->
-    </body>
+</body>
 </html>
