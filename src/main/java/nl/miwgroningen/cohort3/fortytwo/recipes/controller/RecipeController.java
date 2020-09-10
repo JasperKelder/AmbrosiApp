@@ -47,6 +47,7 @@ public class RecipeController {
             return "redirect:/index";
         }
     }
+
     @GetMapping("/index")
     protected String showRecipes(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
@@ -66,12 +67,15 @@ public class RecipeController {
     @GetMapping("/add/update/{recipeId}")
     protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allCuisines", cuisineRepository.findAll());
         if (recipe.isPresent()) {
             model.addAttribute("recipe", recipe);
             return "add";
         }
         return "index";
     }
+
     @GetMapping("/view/{id}")
     protected String showRecipe(@PathVariable("id") final Integer recipeId, Model model) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);

@@ -19,6 +19,7 @@
         <div class="flex-container" id="flexblack">
         <div class="container">
             <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
+                <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
                     <div class="col-25">
                         <label for="title">Title</label>
