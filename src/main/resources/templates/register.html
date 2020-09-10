@@ -19,17 +19,14 @@
     <div class="flex-container" id="flexblack">
         <div id="padding">
             <div th:if="${param.success}">
-                <div class="alert alert-info">You've successfully registered</div>
+                <div class="alert alert-info"><h2>You've successfully registered</h2></div>
             </div>
             <form th:action="@{/registration}" method="post" th:object="${user}">
-                <label for="firstName"><h2>First Name</h2></label>
-                <input id="firstName" th:field="*{firstName}" required autofocus="autofocus"/>
-                <label for="lastName"><h2>Last Name</h2></label>
-                <input id="lastName" th:field="*{lastName}" required autofocus="autofocus"/>
-                <label for="email"><h2>Email</h2></label>
-                <input id="email" th:field="*{email}" required autofocus="autofocus" />
-                <label for="password"><h2>Password</h2></label>
-                <input id="password" type="password" th:field="*{password}" required autofocus="autofocus" />
+                <input id="firstName" th:field="*{firstName}" required autofocus="autofocus" placeholder="First Name"/>
+                <input id="lastName" th:field="*{lastName}" required autofocus="autofocus" placeholder="Last Name"/>
+                <input id="email" th:field="*{email}" required autofocus="autofocus" placeholder="Email"/>
+                <input id="password" type="password" th:field="*{password}" required autofocus="autofocus"
+                       placeholder="Password"/>
                 <p><button type="submit">Register</button></p>
             </form>
             <p><a class="flashybutton" th:href="@{/login}">Click to login</a></p>

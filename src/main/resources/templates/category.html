@@ -16,7 +16,6 @@
             </nav>
         </div>
         <div class="flex-container" id="flexblack">
-            <div id="space"></div>
             <nav>
                 <a  class="active" th:href="@{/category}">Category</a>
                 <a th:href="@{/cuisine}">Cuisine</a>
@@ -25,17 +24,12 @@
             <div id="padding">
                 <form action="#" th:action="@{/category}" th:object="${category}" method="post">
                     <p hidden><input type="text" th:field="*{categoryId}"/></p>
-                    <p><h2>Category</h2><input type="text" th:field="*{categoryName}" required/></p>
+                    <p><input type="text" th:field="*{categoryName}" required placeholder="Category"/></p>
                     <p><input type="submit" value="Submit"/></p>
                 </form>
             </div>
             <div id="space"></div>
             <table>
-                <tr>
-                    <th>Category</th>
-                    <th></th>
-                    <th></th>
-                </tr>
                 <tr th:each="category: ${allCategories}">
                     <td th:text="${category.categoryName}"></td>
                     <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"
