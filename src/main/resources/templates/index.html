@@ -15,23 +15,30 @@
                 <a th:href="@{/admin}">Admin</a>
             </nav>
         </div>
-        <div id="space"></div>
-        <div class="flex-container" id="flexblack">
-            <table>
-                <tr>
-                    <th>Recipe Title</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr th:each="recipe: ${allRecipes}">
-                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
-                        <span th:text="${recipe.recipeTitle}"></span></a></td>
-                    <td class="edittable"><a th:href="@{/index/delete/{recipeId}(recipeId=${recipe.recipeId})}"
-                                             class="editbutton">Delete</a></td>
-                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
-                                             class="editbutton">Update</a></td>
-                </tr>
-            </table>
-        </div>
+            <div class="grid-container">
+                <div class=grid-item th:each="recipe : ${allRecipes}">
+                    <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
+                    <span th:text="${recipe.recipeTitle}"></span></a>
+                        </div>
+            </div>
+                <!--        </div>-->
+<!--        <div id="space"></div>-->
+<!--        <div class="flex-container" id="flexblack">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <th>Recipe Title</th>-->
+<!--                    <th></th>-->
+<!--                    <th></th>-->
+<!--                </tr>-->
+<!--                <tr th:each="recipe: ${allRecipes}">-->
+<!--                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">-->
+<!--                        <span th:text="${recipe.recipeTitle}"></span></a></td>-->
+<!--                    <td class="edittable"><a th:href="@{/index/delete/{recipeId}(recipeId=${recipe.recipeId})}"-->
+<!--                                             class="editbutton">Delete</a></td>-->
+<!--                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"-->
+<!--                                             class="editbutton">Update</a></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </div>-->
     </body>
 </html>
