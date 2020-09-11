@@ -122,13 +122,15 @@ select {
 }
 .col-25 {
     float: left;
-    width: 25%;
-    margin-top: 6px;
+    width: 20%;
+    /*margin-top: 6px;*/
+    margin: 10px;
 }
 .col-75 {
     float: left;
-    width: 75%;
-    margin-top: 6px;
+    width: 60%;
+    /*margin-top: 6px;*/
+    margin: 10px;
 }
 .row:after {
     content: "";
@@ -147,7 +149,29 @@ label {
 .gridImage {
     width: 175px;
 }
-span {
-    text-align: center;
-    color: #FFC72C;
+#smiley {
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.smileyBounce {
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes bounce{
+    0% {
+        top: 0px;
+    }
+    50% {
+        top: 280px;
+        width: 260px;
+        height: 140px;
+    }
+    100% {
+        top: 0px;
+    }
 }

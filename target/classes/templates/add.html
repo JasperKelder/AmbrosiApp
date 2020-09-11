@@ -10,14 +10,18 @@
         <div class="flex-container">
             <nav>
                 <a th:href="@{/index}">Overview</a>
-                <a class="active" th:href="@{/add}">Add</a>
                 <a th:href="@{/login}">MyKitchen</a>
-                <a th:href="@{/admin}">Admin</a>
+                <a th:href="@{/logout}">Logout</a>
             </nav>
         </div>
-        <div class="space"></div>
         <div class="flex-container" id="flexblack">
-        <div class="addContainer">
+            <nav>
+                <a class="active" th:href="@{/add}">Add</a>
+                <a th:href="@{/userinfo}">MyInfo</a>
+                <a th:href="@{/admin}">Admin</a>
+            </nav>
+            <div class="space"></div>
+            <div class="addContainer">
             <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">

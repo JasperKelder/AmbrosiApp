@@ -24,11 +24,13 @@
         <nav>
             <a th:href="@{/add}">Add</a>
             <a th:href="@{/userinfo}">MyInfo</a>
-            <a th:href="@{/admin}">Admin</a>
+            <a class="active"  th:href="@{/admin}">Admin</a>
+        </nav>
+        <nav>
+            <a th:href="@{/category}">Category</a>
+            <a th:href="@{/cuisine}">Cuisine</a>
         </nav>
         <div class="space"></div>
-        <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
-        <label>Welcome<br><a th:text="${user.getFirstName()}"></a></label>
         <img id="smiley" onclick="bounce()" src="/images/broccoli.png" alt="Smiley" >
     </div>
 </body>

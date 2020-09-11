@@ -10,12 +10,16 @@
         <div class="flex-container">
             <nav>
                 <a th:href="@{/index}">Overview</a>
-                <a th:href="@{/add}">Add</a>
                 <a th:href="@{/login}">MyKitchen</a>
-                <a class="active" th:href="@{/admin}">Admin</a>
+                <a th:href="@{/logout}">Logout</a>
             </nav>
         </div>
         <div class="flex-container" id="flexblack">
+            <nav>
+                <a th:href="@{/add}">Add</a>
+                <a th:href="@{/userinfo}">MyInfo</a>
+                <a th:href="@{/admin}">Admin</a>
+            </nav>
             <nav>
                 <a  class="active" th:href="@{/category}">Category</a>
                 <a th:href="@{/cuisine}">Cuisine</a>

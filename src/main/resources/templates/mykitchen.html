@@ -6,20 +6,30 @@
 
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    <script type="text/javascript">
+        function bounce(){
+            document.getElementById('smiley').className ='smileyBounce';
+        }
+    </script>
 </head>
 <body>
-<div class="flex-container">
-    <nav>
-        <a th:href="@{/index}">Overview</a>
-        <a th:href="@{/add}">Add</a>
-        <a th:href="@{/userinfo}">My info</a>
-        <a class="active" th:href="@{/logout}">Logout</a>
-    </nav>
-</div>
-<! -- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
-    <div class="container">
-        Welcome  <span> <a th:text="${user.getFirstName()}"> </a> </span>
+    <div class="flex-container">
+        <nav>
+            <a th:href="@{/index}">Overview</a>
+            <a class="active" th:href="@{/login}">MyKitchen</a>
+            <a th:href="@{/logout}">Logout</a>
+        </nav>
     </div>
-</div>
+    <div class="flex-container" id="flexblack">
+        <nav>
+            <a th:href="@{/add}">Add</a>
+            <a th:href="@{/userinfo}">MyInfo</a>
+            <a th:href="@{/admin}">Admin</a>
+        </nav>
+        <div class="space"></div>
+        <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
+        <label>Welcome<br><a th:text="${user.getFirstName()}"></a></label>
+        <img id="smiley" onclick="bounce()" src="/images/broccoli.png" alt="Smiley" >
+    </div>
 </body>
 </html>
