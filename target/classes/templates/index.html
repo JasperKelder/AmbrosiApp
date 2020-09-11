@@ -42,29 +42,21 @@
                  <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                  <span th:text="${allRecipes.get(i).recipeTitle}"></span></a>
             </div>
+        <div class="space"></div>
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
         </div>
         </div>
     </span>
 </div>
-
-<!--        </div>-->
-<!--        <div id="space"></div>-->
-<!--        <div class="flex-container" id="flexblack">-->
-<!--            <table>-->
-<!--                <tr>-->
-<!--                    <th>Recipe Title</th>-->
-<!--                    <th></th>-->
-<!--                    <th></th>-->
-<!--                </tr>-->
-<!--                <tr th:each="recipe: ${allRecipes}">-->
-<!--                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">-->
-<!--                        <span th:text="${recipe.recipeTitle}"></span></a></td>-->
-<!--                    <td class="edittable"><a th:href="@{/index/delete/{recipeId}(recipeId=${recipe.recipeId})}"-->
-<!--                                             class="editbutton">Delete</a></td>-->
-<!--                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"-->
-<!--                                             class="editbutton">Update</a></td>-->
-<!--                </tr>-->
-<!--            </table>-->
-<!--        </div>-->
 </body>
+        <div class="space"></div><div class="space"></div><div class="space"></div><div class="space"></div>
+    </body>
 </html>

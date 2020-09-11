@@ -25,6 +25,7 @@
              <span th:text="${allRecipes.get(i).recipeTitle}"></span>
              <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
         </div>
+
         <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
         <div th:if="${i} % 8 == 0">
             <div th:if="${i} % 8 != 0">
@@ -38,4 +39,7 @@
     </span>
 </div>
 </body>
+
+        <div class="space"></div><div class="space"></div><div class="space"></div><div class="space"></div>
+    </body>
 </html>

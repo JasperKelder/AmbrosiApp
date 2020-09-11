@@ -1,6 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.configuration;
 
-
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

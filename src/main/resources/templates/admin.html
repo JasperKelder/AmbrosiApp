@@ -21,5 +21,18 @@
                 <a th:href="@{/cuisine}">Cuisine</a>
             </nav>
         </div>
+        <div class="space"></div>
+        <div class="flex-container" id="flexblack">
+            <table>
+                <tr th:each="recipe: ${allRecipes}">
+                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
+                        <span th:text="${recipe.recipeTitle}"></span></a></td>
+                    <td class="edittable"><a th:href="@{/admin/delete/{recipeId}(recipeId=${recipe.recipeId})}"
+                                             class="editbutton">Delete</a></td>
+                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
+                                             class="editbutton">Update</a></td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>

@@ -3,51 +3,23 @@
 <head>
     <title>My Kitchen</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
-
 <body>
 <div class="flex-container">
     <nav>
         <a th:href="@{/index}">Overview</a>
         <a th:href="@{/add}">Add</a>
+        <a th:href="@{/userinfo}">My info</a>
         <a class="active" th:href="@{/logout}">Logout</a>
     </nav>
 </div>
-
-
-
-
-<!--&lt;!&ndash; create navigation bar ( header) &ndash;&gt;-->
-<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
-<!--    <div class="container">-->
-<!--        <div class="navbar-header">-->
-<!--            <button type="button" class="navbar-toggle collapsed"-->
-<!--                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"-->
-<!--                    aria-controls="navbar">-->
-<!--                <span class="sr-only">Toggle navigation</span> <span-->
-<!--                    class="icon-bar"></span> <span class="icon-bar"></span> <span-->
-<!--                    class="icon-bar"></span>-->
-<!--            </button>-->
-<!--            <a class="navbar-brand" href="#" th:href="@{/}">Registration and-->
-<!--                Login Module</a>-->
-<!--        </div>-->
-<!--        <div id="navbar" class="collapse navbar-collapse">-->
-<!--            <ul class="nav navbar-nav">-->
-<!--                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
-
-<!--<br>-->
-<!--<br>-->
-
-<!--<div class="container">-->
-<!--    <h1>Registration and Login with Spring Boot, Spring Security,-->
-<!--        Thymeleaf, Hibernate and MySQL</h1>-->
-<!--    Welcome <span sec:authentication="principal.username"> User</span>-->
-<!--</div>-->
+<! -- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
+    <div class="container">
+        Welcome  <span> <a th:text="${user.getFirstName()}"> </a> </span>
+    </div>
+</div>
 </body>
 </html>
