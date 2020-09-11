@@ -5,6 +5,11 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    <script type="text/javascript">
+        function bounce(){
+            document.getElementById('broccoli').className ='broccoliBounce';
+        }
+    </script>
 </head>
 <body>
     <div class="flex-container">
@@ -20,12 +25,12 @@
             <a th:href="@{/userinfo}">MyInfo</a>
         </nav>
         <nav>
-            <a th:href="@{/admin}">Admin</a>
+            <a th:href="@{/recipes}">Admin</a>
         </nav>
         <div class="space"></div>
         <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
         <div id="welcome">Welcome<br><a th:text="${user.getFirstName()}"></a></div>
-<!--        <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >-->
+        <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
     </div>
 </body>
 </html>
