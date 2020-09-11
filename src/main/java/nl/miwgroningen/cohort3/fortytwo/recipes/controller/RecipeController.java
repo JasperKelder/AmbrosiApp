@@ -57,7 +57,7 @@ public class RecipeController {
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "recipes";
+        return "recipe";
     }
 
     @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
