@@ -16,6 +16,7 @@
         <a class="active" th:href="@{/logout}">Logout</a>
     </nav>
 </div>
+<! -- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
     <div class="container">
         Welcome  <span> <a th:text="${user.getFirstName()}"> </a> </span>
     </div>

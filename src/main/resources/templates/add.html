@@ -17,7 +17,7 @@
         </div>
         <div class="space"></div>
         <div class="flex-container" id="flexblack">
-        <div class="container">
+        <div class="addContainer">
             <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
@@ -29,15 +29,17 @@
                                required placeholder="Title"/>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="preparation">Preparation</label>
-                    </div>
-                    <div class="col-75">
-                        <textarea id="preparation" name="preparation" th:field="*{recipePreperation}" required
-                                  placeholder="Preparation"></textarea>
-                    </div>
-                </div>
+                <div hidden><input type="text" th:field="*{recipePreperation}"/></div>
+
+                <!--                <div class="row">-->
+<!--                    <div class="col-25">-->
+<!--                        <label for="preparation">Preparation</label>-->
+<!--                    </div>-->
+<!--                    <div class="col-75">-->
+<!--                        <textarea id="preparation" name="preparation" th:field="*{recipePreperation}" required-->
+<!--                                  placeholder="Preparation"></textarea>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="row">
                     <div class="col-25">
                         <label for="preparationTime">Preparation Time</label>
