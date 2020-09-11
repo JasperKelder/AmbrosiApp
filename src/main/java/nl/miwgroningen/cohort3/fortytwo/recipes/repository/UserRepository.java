@@ -2,6 +2,10 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.repository;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+
+import javax.transaction.Transactional;
 
 
 /**
@@ -10,6 +14,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE user SET first_name = ? WHERE email = ?", nativeQuery = true)
+    void updateFirstName(String firstName, String email);
 }
 
 

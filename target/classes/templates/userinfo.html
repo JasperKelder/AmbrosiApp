@@ -19,6 +19,7 @@
 <div>
     <table>
         <tr>
+
             <th>First name</th>
             <td class="edittable"><a th:text="${user.getFirstName()}"></a></td>
             <th>Last name</th>
@@ -30,6 +31,12 @@
 
         </tr>
     </table>
+
+    <form action="#" th:action="@{/userinfo}" th:object="${user}" method="post">
+        <p hidden><input type="text" th:field="*${user.getFirstName()}"/></p>
+        <p><input type="text" th:field="*{firstName}" required placeholder="Category"/></p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>
 </div>
 </body>
 </html>

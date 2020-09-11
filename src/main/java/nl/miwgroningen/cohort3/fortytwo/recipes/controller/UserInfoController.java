@@ -28,11 +28,21 @@ public class UserInfoController {
 
     //method for showing userinfo. Principal is used to get the current user info.
     //principal.getname() gets email from db
-    @GetMapping("/userinfo")
+ /*   @GetMapping("/userinfo")
     protected String showUser(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         return "userinfo";
+    }*/
+
+    @RequestMapping("/userinfo")
+    protected String updateUserInfo(
+            @RequestParam(value = "firstName") String firstName,
+            Model model, Principal principal) {
+        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
+        userRepository.updateFirstName(firstName, principal.getName());
+        return "userinfo";
     }
+
 
     @PostMapping({"/userinfo/update"})
     protected String updateUserInfo(@ModelAttribute("user") User user, BindingResult result) {
