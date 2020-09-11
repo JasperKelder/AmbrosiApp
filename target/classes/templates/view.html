@@ -5,6 +5,16 @@
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheet.css"/>
         <link rel="icon" type="image/png" href="/images/smileySmall.png">
+        <script>
+            function printPageArea(divIDToPrint){
+                var printContent = document.getElementById(divIDToPrint);
+                var WinPrint = window.open('', '', 'width=900,height=650');
+                WinPrint.document.write(printContent.innerHTML);
+                WinPrint.document.close();
+                WinPrint.focus();
+                WinPrint.print();
+            }
+        </script>
     </head>
     <body>
         <div class="flex-container">
@@ -45,15 +55,5 @@
             <div class="space"></div>
             <input type="submit" value="Print" onClick="printPageArea('flexblack')">
         </div>
-    <script>
-        function printPageArea(divIDToPrint){
-            var printContent = document.getElementById(divIDToPrint);
-            var WinPrint = window.open('', '', 'width=900,height=650');
-            WinPrint.document.write(printContent.innerHTML);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-        }
-    </script>
     </body>
 </html>
