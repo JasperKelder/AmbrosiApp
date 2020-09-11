@@ -100,6 +100,9 @@ select {
 .space {
     padding: 26px;
 }
+.spaceSmall {
+    padding: 0.1px;
+}
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -174,4 +177,7 @@ label {
     100% {
         top: 0px;
     }
+}
+.margin {
+    margin: 10px;
 }

@@ -21,10 +21,11 @@
                 <div class="alert alert-danger"><h2>Invalid email or password</h2></div>
             </div>
             <form th:action="@{/login}" method="post">
-                 <input type="text" id ="username" name = "username" placeholder="Email" autofocus="autofocus">
-                <input type="password" id="password" name="password" placeholder="Password" />
+                 <input class="margin" type="text" id ="username" name = "username" placeholder="Email" autofocus="autofocus">
+                <input class="margin" type="password" id="password" name="password" placeholder="Password" />
                 <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
             </form>
+            <div class="spaceSmall"></div>
             <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
         </div>
     </div>
