@@ -20,10 +20,13 @@
                 <a th:href="@{/userinfo}">MyInfo</a>
             </nav>
             <nav>
-                <a th:href="@{/cuisine}">Cuisine</a>
-                <a th:href="@{/recipes}">Recipe</a>
-                <a th:href="@{/category}">Category</a>
+                <a th:href="@{/admin}">Admin</a>
             </nav>
+<!--            <nav>-->
+<!--                <a th:href="@{/cuisine}">Cuisine</a>-->
+<!--                <a th:href="@{/recipes}">Recipe</a>-->
+<!--                <a th:href="@{/category}">Category</a>-->
+<!--            </nav>-->
             <div class="space"></div>
             <div class="addContainer">
             <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">

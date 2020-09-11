@@ -70,7 +70,7 @@ input[type=text], input[type=number], input[type=password], textarea, #firstName
     box-sizing: border-box;
 }
 textarea {
-    height: 120px;
+    height: 60px;
 }
 table {
     border-collapse: collapse;
@@ -189,6 +189,12 @@ label {
     font-size: 400%;
     color: #1e9696;
 }
-.width {
-    width: 80px;
+.float, #float {
+    position: absolute;
+    bottom: 10px;
+    background-color: black;
+}
+td {
+    padding-left: 20px;
+    padding-right: 20px;
 }

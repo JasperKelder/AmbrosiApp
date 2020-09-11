@@ -15,16 +15,18 @@
         </nav>
     </div>
     <div class="flex-container" id="flexblack">
-    <div>
         <nav>
             <a th:href="@{/add}">Add</a>
             <a class="active" th:href="@{/userinfo}">MyInfo</a>
+        </nav>
+        <nav>
+            <a th:href="@{/admin}">Admin</a>
         </nav>
         <div class="space"></div>
         <div class="flex-container" id="flexblack">
         <table>
             <tr>
-                <th>First Name</th><td class="width" th:text="${user.getFirstName()}"></td>
+                <th>First Name</th><td th:text="${user.getFirstName()}"></td>
             </tr>
             <tr>
                 <th>Last Name</th><td th:text="${user.getLastName()}"></td>
