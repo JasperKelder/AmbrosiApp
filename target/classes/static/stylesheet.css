@@ -100,6 +100,9 @@ select {
 .space {
     padding: 26px;
 }
+.spaceMedium {
+    padding: 20px;
+}
 .spaceSmall {
     padding: 0.1px;
 }
@@ -180,4 +183,9 @@ label {
 }
 .margin {
     margin: 10px;
+}
+#welcome {
+    text-align: center;
+    font-size: 400%;
+    color: #1e9696;
 }
