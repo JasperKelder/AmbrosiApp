@@ -25,23 +25,27 @@
 <!--    </span>-->
 <!--</div>-->
 
+<!-- grid-container creates a new container where max 8 grid items can be stored-->
 <div class="grid-container">
-    <div th:each="i : ${#numbers.sequence(0, 7)}">
+    <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+    <span th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+        <!-- this will add all the info into the grid items-->
         <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
              <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
              <span th:text="${allRecipes.get(i).recipeTitle}"></span>
              <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
         </div>
-    </div>
-    <div th:each="i : ${#numbers.sequence(8, allRecipes.size() - 1)}">
-        <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-             <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-             <span th:text="${allRecipes.get(i).recipeTitle}"></span>
-            <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
+        <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
+        <div th:if="${i} % 8 == 0">
+            <div th:if="${i} % 8 != 0">
+            <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
+                 <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                 <span th:text="${allRecipes.get(i).recipeTitle}"></span></a>
+            </div>
         </div>
-    </div>
+        </div>
+    </span>
 </div>
-
 
 <!--        </div>-->
 <!--        <div id="space"></div>-->
