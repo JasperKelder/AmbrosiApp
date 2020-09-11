@@ -135,3 +135,10 @@ select {
 label {
     padding: 2px;
 }
+.gridImage {
+    width: 175px;
+}
+span {
+    text-align: center;
+    color: #FFC72C;
+}

@@ -26,18 +26,20 @@
 <!--</div>-->
 
 <div class="grid-container">
-    <span th:each="i : ${#numbers.sequence(0, 7)}">
+    <div th:each="i : ${#numbers.sequence(0, 7)}">
         <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-             <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-             <span th:text="${allRecipes.get(i).recipeTitle}"></span></a>
+             <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+             <span th:text="${allRecipes.get(i).recipeTitle}"></span>
+             <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
         </div>
-    </span>
-    <span th:each="i : ${#numbers.sequence(8, allRecipes.size() - 1)}">
+    </div>
+    <div th:each="i : ${#numbers.sequence(8, allRecipes.size() - 1)}">
         <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-             <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-             <span th:text="${allRecipes.get(i).recipeTitle}"></span></a>
+             <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+             <span th:text="${allRecipes.get(i).recipeTitle}"></span>
+            <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
         </div>
-    </span>
+    </div>
 </div>
 
 
