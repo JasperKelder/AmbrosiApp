@@ -152,7 +152,7 @@ label {
 .gridImage {
     width: 175px;
 }
-#smiley {
+#broccoli {
     width: 200px;
     height: 200px;
     margin: 50px auto;
@@ -160,7 +160,7 @@ label {
     border-radius: 50%;
     cursor: pointer;
 }
-.smileyBounce {
+.broccoliBounce {
     animation-name: bounce;
     animation-duration: 2s;
     animation-iteration-count: infinite;

@@ -16,83 +16,56 @@
     </div>
     <div class="space"></div>
     <div class="flex-container" id="flexblack">
-<!--        <div id="padding">-->
-<!--            <div th:if="${param.success}">-->
-<!--                <div class="alert alert-info"><h2>You've successfully registered</h2></div>-->
-<!--            </div>-->
-<!--            <div class="addContainer">-->
-<!--                <form action="#" th:action="@{/registration}" th:object="${user}" method="post">-->
-<!--                    &lt;!&ndash;        <div hidden><input type="text" th:field="*{recipeId}"/></div>&ndash;&gt;-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-25">-->
-<!--                            <label for="firstName">First Name</label>-->
-<!--                        </div>-->
-<!--                        <div class="col-75">-->
-<!--                            <input type="text" id="firstName" name="firstName" th:field="*{firstName}"-->
-<!--                                   required placeholder="First Name"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-25">-->
-<!--                            <label for="lastName">Last Name</label>-->
-<!--                        </div>-->
-<!--                        <div class="col-75">-->
-<!--                        <textarea id="lastName" name="lastName" th:field="*{lastName}" required-->
-<!--                                  placeholder="Last Name"></textarea>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--            <p><button type="submit">Register</button></p>-->
-<!--            <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>-->
-<!--        </div>-->
-<!--    </div>-->
-<div class="addContainer">
-    <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
-<!--        <div hidden><input type="text" th:field="*{recipeId}"/></div>-->
-        <div class="row">
-            <div class="col-25">
-                <label for="firstName">First Name</label>
+    <div class="addContainer">
+        <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+            <div class="row">
+                <div class="col-25">
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
+                           required placeholder="First Name"/>
+                </div>
             </div>
-            <div class="col-75">
-                <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
-                       required placeholder="First Name"/>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="col-75">
+                            <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
+                                      placeholder="Last Name"/>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="emailAddress">Email Address</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="emailAddress" name="emailAddress" th:field="*{email}" required
+                           placeholder="Email Address"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="password">Password</label>
+                </div>
+                <div class="col-75">
+                    <input type="password" id="password" name="password" th:field="*{password}" required
+                           placeholder="Password"/>
+                </div>
+            </div>
+        </form>
+        <p><button type="submit">Register</button></p>
+        <div class="spaceSmall"></div>
+        <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
+        <div th:if="${param.success}">
+            <div class="alert alert-info"><h2>You've successfully registered</h2></div>
         </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="lastName">Last Name</label>
-            </div>
-            <div class="col-75">
-                        <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
-                                  placeholder="Last Name"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="emailAddress">Email Address</label>
-            </div>
-            <div class="col-75">
-                <input type="text" id="emailAddress" name="emailAddress" th:field="*{email}" required
-                       placeholder="Email Address"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="password">Password</label>
-            </div>
-            <div class="col-75">
-                <input type="password" id="password" name="password" th:field="*{password}" required
-                       placeholder="Password"/>
-            </div>
-        </div>
-    </form>
-    <p><button type="submit">Register</button></p>
-    <div class="spaceSmall"></div>
-    <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
-</div>
+    </div>
 </body>
 </html>
+
+<!--        <div hidden><input type="text" th:field="*{userId}"/></div>-->
 
 <!--        <form th:action="@{/registration}" method="post" th:object="${user}">-->
 <!--            <input id="firstName" th:field="*{firstName}" required autofocus="autofocus" placeholder="First Name"/>-->

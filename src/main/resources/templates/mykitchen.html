@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
     <script type="text/javascript">
         function bounce(){
-            document.getElementById('smiley').className ='smileyBounce';
+            document.getElementById('broccoli').className ='broccoliBounce';
         }
     </script>
 </head>
@@ -28,7 +28,7 @@
         <div class="space"></div>
         <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
         <label>Welcome<br><a th:text="${user.getFirstName()}"></a></label>
-        <img id="smiley" onclick="bounce()" src="/images/broccoli.png" alt="Smiley" >
+        <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
     </div>
 </body>
 </html>
