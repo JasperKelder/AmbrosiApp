@@ -15,16 +15,6 @@
         <a th:href="@{/admin}">Admin</a>
     </nav>
 </div>
-
-<!--<div class="grid-container">-->
-<!--    <span th:each="recipe, rStat : ${allRecipes}">-->
-<!--        <div class=grid-item th:value="${recipe.recipeId}" th:unless="${rStat.index > 7}">-->
-<!--             <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">-->
-<!--             <span th:text="${recipe.recipeTitle}"></span></a>-->
-<!--        </div>-->
-<!--    </span>-->
-<!--</div>-->
-
 <!-- grid-container creates a new container where max 8 grid items can be stored-->
 <div class="grid-container">
     <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
@@ -40,31 +30,12 @@
             <div th:if="${i} % 8 != 0">
             <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
                  <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                 <span th:text="${allRecipes.get(i).recipeTitle}"></span></a>
+                 <span th:text="${allRecipes.get(i).recipeTitle}"></span>
+                     <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
             </div>
         </div>
         </div>
     </span>
 </div>
-
-<!--        </div>-->
-<!--        <div id="space"></div>-->
-<!--        <div class="flex-container" id="flexblack">-->
-<!--            <table>-->
-<!--                <tr>-->
-<!--                    <th>Recipe Title</th>-->
-<!--                    <th></th>-->
-<!--                    <th></th>-->
-<!--                </tr>-->
-<!--                <tr th:each="recipe: ${allRecipes}">-->
-<!--                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">-->
-<!--                        <span th:text="${recipe.recipeTitle}"></span></a></td>-->
-<!--                    <td class="edittable"><a th:href="@{/index/delete/{recipeId}(recipeId=${recipe.recipeId})}"-->
-<!--                                             class="editbutton">Delete</a></td>-->
-<!--                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"-->
-<!--                                             class="editbutton">Update</a></td>-->
-<!--                </tr>-->
-<!--            </table>-->
-<!--        </div>-->
 </body>
 </html>
