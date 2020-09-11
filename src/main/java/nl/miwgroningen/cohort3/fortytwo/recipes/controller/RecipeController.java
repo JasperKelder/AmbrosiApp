@@ -44,7 +44,7 @@ public class RecipeController {
             return "add";
         } else {
             recipeRepository.save(recipe);
-            return "redirect:/index";
+            return "redirect:/recipes";
         }
     }
 
@@ -54,20 +54,20 @@ public class RecipeController {
         return "index";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "admin";
+        return "recipes";
     }
 
-    @GetMapping({"/index/delete/{recipeId}", "/admin/delete/{recipeId}"})
+    @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
     protected String deleteRecipe(@PathVariable("recipeId") final Integer recipeId) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             recipeRepository.delete(recipe.get());
-            return "forward:/admin/";
+            return "forward:/recipes/";
         }
-        return "forward:/admin";
+        return "forward:/recipes";
     }
 
     @GetMapping("/add/update/{recipeId}")
@@ -90,5 +90,11 @@ public class RecipeController {
             return "view";
         }
         return "redirect:/index";
+    }
+
+    @GetMapping("/admin")
+    protected String goToAdmin(Model model) {
+        model.addAttribute("ductTape", recipeRepository.findAll());
+        return "admin";
     }
 }
