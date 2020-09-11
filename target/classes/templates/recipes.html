@@ -21,17 +21,25 @@
                 <a th:href="@{/admin}">Admin</a>
             </nav>
             <nav>
+                <a th:href="@{/cuisine}">Cuisine</a>
                 <a class="active" th:href="@{/recipes}">Recipes</a>
                 <a th:href="@{/category}">Category</a>
-                <a th:href="@{/cuisine}">Cuisine</a>
             </nav>
         </div>
         <div class="space"></div>
         <div class="flex-container" id="flexblack">
+            <div id="padding">
+                <form th:action="@{/add}">
+                    <p><input type="submit" value="Submit"/></p>
+                </form>
+            </div>
+            <div class="space"></div>
             <table>
                 <tr th:each="recipe: ${allRecipes}">
-                    <td><a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">
-                        <span th:text="${recipe.recipeTitle}"></span></a></td>
+                    <td>
+<!--                        <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}">-->
+                        <span th:text="${recipe.recipeTitle}"></span></a>
+                    </td>
                     <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
                                              class="editbutton">Delete</a></td>
                     <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
