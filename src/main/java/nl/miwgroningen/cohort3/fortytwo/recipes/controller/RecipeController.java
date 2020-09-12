@@ -91,10 +91,4 @@ public class RecipeController {
         }
         return "redirect:/index";
     }
-
-    @GetMapping("/admin")
-    protected String goToAdmin(Model model) {
-        model.addAttribute("ductTape", recipeRepository.findAll());
-        return "admin";
-    }
 }

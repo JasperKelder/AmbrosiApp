@@ -189,6 +189,11 @@ label {
     font-size: 400%;
     color: #1e9696;
 }
+.food {
+    color: #1e9696;
+    text-decoration: none;
+    font-size: 150%;
+}
 .float, #float {
     position: absolute;
     bottom: 10px;
