@@ -7,14 +7,14 @@
         <link rel="icon" type="image/png" href="/images/smileySmall.png">
     </head>
     <body>
-        <div class="flex-container">
+        <div class="flex-container-nav">
             <nav>
-                <a th:href="@{/index}">Overview</a>
-                <a th:href="@{/login}">MyKitchen</a>
+                <a th:href="@{/indexloggedin}">AmbrosiApp</a>
+                <a th:href="@{/mykitchen}">MyKitchen</a>
                 <a th:href="@{/logout}">Logout</a>
             </nav>
         </div>
-        <div class="flex-container" id="flexblack">
+        <div class="flex-container">
             <nav>
                 <a class="active" th:href="@{/add}">Add</a>
                 <a th:href="@{/userinfo}">MyInfo</a>
@@ -22,11 +22,6 @@
             <nav>
                 <a th:href="@{/recipes}">Admin</a>
             </nav>
-<!--            <nav>-->
-<!--                <a th:href="@{/cuisine}">Cuisine</a>-->
-<!--                <a th:href="@{/recipes}">Recipe</a>-->
-<!--                <a th:href="@{/category}">Category</a>-->
-<!--            </nav>-->
             <div class="space"></div>
             <div class="addContainer">
             <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">

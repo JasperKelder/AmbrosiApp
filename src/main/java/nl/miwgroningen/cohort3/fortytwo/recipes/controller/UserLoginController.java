@@ -40,5 +40,10 @@ public class UserLoginController {
         model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         return "mykitchen";
     }
+
+    @GetMapping("/loggedout")
+    public String logout() {
+        return "loggedout";
+    }
 }
 

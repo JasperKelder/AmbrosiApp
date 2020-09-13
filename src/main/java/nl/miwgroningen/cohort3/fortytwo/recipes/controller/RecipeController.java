@@ -54,6 +54,12 @@ public class RecipeController {
         return "index";
     }
 
+    @GetMapping("/indexloggedin")
+    protected String showRecipesLoggedIn(Model model) {
+        model.addAttribute("allRecipes", recipeRepository.findAll());
+        return "indexloggedin";
+    }
+
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());

@@ -19,16 +19,15 @@ p {
     align-items: center;
     flex-direction: column;
 }
-
-.flex-container {
-    background-color: black;
+.flex-container, .flex-container-nav {
+    background-color: #007c7c;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-#flexblack {
-    background-color: #007c7c;
+.flex-container-nav {
+    background-color: black;
 }
 nav {
     background-color: black;
@@ -184,7 +183,7 @@ label {
 .margin {
     margin: 10px;
 }
-#welcome {
+#message {
     text-align: center;
     font-size: 400%;
     color: #1e9696;
@@ -202,4 +201,11 @@ label {
 td {
     padding-left: 20px;
     padding-right: 20px;
+}
+.elmo {
+    /*width: 300px;*/
+    height: 300px;
+    margin: 20px;
+    border-radius: 35%;
+    border: 3px solid #7c003e;
 }

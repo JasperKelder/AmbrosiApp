@@ -17,15 +17,15 @@
         </script>
     </head>
     <body>
-        <div class="flex-container">
+        <div class="flex-container-nav">
             <nav>
-                <a th:href="@{/index}">Overview</a>
+                <a th:href="@{/index}">AmbrosiApp</a>
                 <a th:href="@{/login}">MyKitchen</a>
                 <a th:href="@{/logout}">Logout</a>
             </nav>
         </div>
         <div class="space"></div>
-        <div class="flex-container" id="flexblack">
+        <div class="flex-container">
             <table>
                 <tr>
                     <th>Title</th><td th:text="${recipe.recipeTitle}"></td>

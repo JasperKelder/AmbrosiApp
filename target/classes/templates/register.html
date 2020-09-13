@@ -7,17 +7,17 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-    <div class="flex-container">
+    <div class="flex-container-nav">
         <nav>
-            <a th:href="@{/index}">Overview</a>
+            <a th:href="@{/index}">AmbrosiApp</a>
             <a class="active" th:href="@{/login}">MyKitchen</a>
-            <a th:href="@{/logout}">Logout</a>
+            <a th:href="@{/loggedout}">Logout</a>
         </nav>
     </div>
     <div class="spaceMedium"></div>
-    <div id="welcome">AmbrosiApp</div>
+    <div id="message">AmbrosiApp</div>
     <div class="space"></div>
-    <div class="flex-container" id="flexblack">
+    <div class="flex-container">
     <div class="addContainer">
         <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
             <div class="row">
