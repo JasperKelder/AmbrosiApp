@@ -118,6 +118,15 @@ select {
     font-size: 30px;
     text-align: center;
 }
+.gridImage {
+    width: 200px;
+    padding-bottom: 30px;
+}
+.viewImage {
+    width: 300px;
+    border-radius: 35%;
+    border: 3px solid #7c003e;
+}
 .addContainer {
     width: 50%;
 }
@@ -148,9 +157,6 @@ select {
 }
 label {
     padding: 2px;
-}
-.gridImage {
-    width: 175px;
 }
 #broccoli {
     width: 200px;
@@ -204,8 +210,8 @@ td {
     padding-right: 20px;
 }
 .elmo {
-    height: 300px;
-    margin: 30px;
+    height: 200px;
+    margin: 40px;
     border-radius: 35%;
     border: 3px solid #7c003e;
 }
