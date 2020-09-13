@@ -34,7 +34,7 @@
             </nav>
         </div>
         <div class="space"></div>
-        <div class="flex-container">
+        <div class="flex-container" id="printpage">
             <table>
                 <tr>
                     <th>Title</th><td th:text="${recipe.recipeTitle}"></td>
@@ -62,7 +62,7 @@
                 </tr>
             </table>
             <div class="space"></div>
-            <input type="submit" value="Print" onClick="printPageArea('flexblack')">
+            <input type="submit" value="Print" onClick="printPageArea('printpage')">
         </div>
     </body>
 </html>
