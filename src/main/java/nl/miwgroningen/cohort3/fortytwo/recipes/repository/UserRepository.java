@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 
 /**
@@ -17,8 +18,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE user SET first_name = ? WHERE email = ?", nativeQuery = true)
-    void updateFirstName(String firstName, String email);
+    @Query(value = "UPDATE user SET first_name = ?, last_name = ? WHERE user_id = ?", nativeQuery = true)
+    void updateName(String firstName, String lastName, Integer userId);
 }
 
 

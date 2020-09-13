@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>My info</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,35 +8,22 @@
 </head>
 
 <body>
-<div class="flex-container">
-    <nav>
-        <a th:href="@{/index}">Overview</a>
-        <a th:href="@{/add}">Add</a>
-        <a class="active" th:href="@{/logout}">Logout</a>
-    </nav>
-</div>
+    <div class="flex-container">
+        <nav>
+            <a th:href="@{/index}">Overview</a>
+            <a th:href="@{/add}">Add</a>
+            <a class="active" th:href="@{/logout}">Logout</a>
+        </nav>
+    </div>
 
-<div>
-    <table>
-        <tr>
-
-            <th>First name</th>
-            <td class="edittable"><a th:text="${user.getFirstName()}"></a></td>
-            <th>Last name</th>
-            <td th:text="${user.getLastName()}"></td>
-            <th>E-mail</th>
-            <td th:text="${user.getEmail()}"></td>
-            <td class="edittable"><a th:href="@{/userinfo/update/${user.getFirstName()}}"
-                                     class="editbutton"> Update </a></td>
-
-        </tr>
-    </table>
-
-    <form action="#" th:action="@{/userinfo}" th:object="${user}" method="post">
-        <p hidden><input type="text" th:field="*${user.getFirstName()}"/></p>
-        <p><input type="text" th:field="*{firstName}" required placeholder="Category"/></p>
-        <p><input type="submit" value="Submit"/></p>
-    </form>
-</div>
+    <div>
+        <form action="/update">
+            <label>First name: </label>
+            <input type="text" name="firstName" th:value="${user.getFirstName()}"/>
+            <label>Last name: </label>
+            <input type="text" name="lastName" th:value="${user.getLastName()}"/>
+            <button type="submit"> Update</button>
+        </form>
+    </div>
 </body>
 </html>
