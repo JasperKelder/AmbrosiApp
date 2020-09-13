@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>My Kitchen</title>
+    <title>AmbrosiApp - MyKitchen</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
@@ -27,7 +27,7 @@
         <nav>
             <a th:href="@{/recipes}">Admin</a>
         </nav>
-        <div class="space"></div>
+        <div class="spaceMedium"></div>
         <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
         <div class="message">Welcome<br><span th:text="${user.getFirstName()}"></span></div>
         <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
