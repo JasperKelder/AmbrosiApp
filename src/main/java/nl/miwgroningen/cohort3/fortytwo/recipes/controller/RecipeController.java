@@ -97,4 +97,14 @@ public class RecipeController {
         }
         return "redirect:/index";
     }
+
+    @GetMapping("/viewloggedin/{id}")
+    protected String showRecipeLoggedIn(@PathVariable("id") final Integer recipeId, Model model) {
+        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        if (recipe.isPresent()) {
+            model.addAttribute("recipe", recipe.get());
+            return "viewloggedin";
+        }
+        return "redirect:/indexloggedin";
+    }
 }
