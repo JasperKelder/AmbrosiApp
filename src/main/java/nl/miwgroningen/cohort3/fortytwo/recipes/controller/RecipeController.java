@@ -51,7 +51,7 @@ public class RecipeController {
     @GetMapping("/index")
     protected String showRecipes(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "index";
+        return "indexloaded";
     }
 
     @GetMapping("/indexloggedin")
@@ -85,7 +85,7 @@ public class RecipeController {
             model.addAttribute("recipe", recipe);
             return "add";
         }
-        return "index";
+        return "indexloaded";
     }
 
     @GetMapping("/view/{id}")

@@ -16,7 +16,7 @@
     </div>
     <div class="spaceMedium"></div>
     <div class="message">AmbrosiApp</div>
-    <div class="space"></div>
+    <div class="spaceMedium"></div>
     <div class="flex-container">
         <div id="padding">
             <form th:action="@{/login}" method="post">
@@ -27,8 +27,7 @@
             <div class="spaceSmall"></div>
             <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
         </div>
-        <div th:if="${param.error}">
-            <div class="alert alert-danger"><h2>Invalid email or password</h2></div>
-        </div>
+        <div class="spaceMedium"></div>
+        <div class="messagesmall" th:if="${param.error}">Invalid email or password</div>
     </div>
 </body>

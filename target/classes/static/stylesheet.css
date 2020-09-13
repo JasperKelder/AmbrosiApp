@@ -69,7 +69,7 @@ input[type=text], input[type=number], input[type=password], textarea, #firstName
     box-sizing: border-box;
 }
 textarea {
-    height: 60px;
+    height: 80px;
 }
 table {
     border-collapse: collapse;
@@ -108,7 +108,7 @@ select {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-template-rows: 250px 250px auto auto;
+    grid-template-rows: 250px 250px 250px 250px;
     padding: 50px;
     grid-gap: 75px;
 }
@@ -128,13 +128,11 @@ select {
 .col-25 {
     float: left;
     width: 20%;
-    /*margin-top: 6px;*/
     margin: 10px;
 }
 .col-75 {
     float: left;
     width: 60%;
-    /*margin-top: 6px;*/
     margin: 10px;
 }
 .row:after {
@@ -183,13 +181,16 @@ label {
 .margin {
     margin: 10px;
 }
-.message {
+.message, .messagesmall {
     text-align: center;
     font-size: 400%;
-    color: #1e9696;
+    color: #7c003e;
+}
+.messagesmall {
+    font-size: 200%;
 }
 .food {
-    color: #1e9696;
+    color: #7c003e;
     text-decoration: none;
     font-size: 150%;
 }
@@ -203,9 +204,14 @@ td {
     padding-right: 20px;
 }
 .elmo {
-    /*width: 300px;*/
     height: 300px;
-    margin: 20px;
+    margin: 30px;
     border-radius: 35%;
     border: 3px solid #7c003e;
+}
+select {
+    width: 100%;
+    height: 33px;
+    border: 3px solid black;
+    border-radius: 4px;
 }

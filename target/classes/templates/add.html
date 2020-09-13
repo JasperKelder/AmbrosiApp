@@ -22,9 +22,9 @@
             <nav>
                 <a th:href="@{/recipes}">Admin</a>
             </nav>
-            <div class="space"></div>
+            <div class="spaceMedium"></div>
             <div class="addContainer">
-            <form action="#" th:action="@{/add}" th:object="${recipe}" method="post">
+            <form th:action="@{/add}" th:object="${recipe}" method="post">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
                     <div class="col-25">

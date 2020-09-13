@@ -16,10 +16,10 @@
     </div>
     <div class="spaceMedium"></div>
     <div class="message">AmbrosiApp</div>
-    <div class="space"></div>
+    <div class="spaceMedium"></div>
     <div class="flex-container">
     <div class="addContainer">
-        <form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+        <form th:action="@{/registration}" th:object="${user}" method="post">
             <div class="row">
                 <div class="col-25">
                     <label for="firstName">First Name</label>
@@ -56,13 +56,13 @@
                            placeholder="Password"/>
                 </div>
             </div>
+            <p><button type="submit">Register</button></p>
         </form>
-        <p><button type="submit">Register</button></p>
         <div class="spaceSmall"></div>
         <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
-        <div th:if="${param.success}">
-            <div class="alert alert-info"><h2>You've successfully registered</h2></div>
-        </div>
+    </div>
+        <div class="spaceMedium"></div>
+        <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
     </div>
 </body>
 </html>
