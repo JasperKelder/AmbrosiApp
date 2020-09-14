@@ -36,8 +36,8 @@
             <table>
                 <tr th:each="cuisine: ${allCuisines}">
                     <td th:text="${cuisine.cuisineName}"></td>
-                    <td class="edittable"><a th:href="@{/cuisine/delete/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
-                                             class="editbutton">Delete</a></td>
+<!--                    <td class="edittable"><a th:href="@{/cuisine/delete/{cuisineId}(cuisineId=${cuisine.cuisineId})}"-->
+<!--                                             class="editbutton">Delete</a></td>-->
                     <td class="edittable"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
                                              class="editbutton">Update</a></td>
                 </tr>
