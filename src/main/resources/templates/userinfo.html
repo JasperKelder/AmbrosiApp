@@ -24,14 +24,29 @@
             <a th:href="@{/recipes}">Admin</a>
         </nav>
         <div class="spaceMedium"></div>
-        <form action="/update">
-            <label>First name: </label>
-            <input type="text" name="firstName" th:value="${user.getFirstName()}"/>
-            <label>Last name: </label>
-            <input type="text" name="lastName" th:value="${user.getLastName()}"/>
-            <div class="spaceMedium"></div>
-            <button type="submit"> Update</button>
-        </form>
+            <div class="addContainer">
+                <form action="/update">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="firstName">First Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}"
+                                   required placeholder="First Name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="lastName">Last Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
+                                   placeholder="Last Name"/>
+                        </div>
+                    </div>
+                    <p><button type="submit">Update</button></p>
+                </form>
+            </div>
     </div>
 </body>
 </html>
