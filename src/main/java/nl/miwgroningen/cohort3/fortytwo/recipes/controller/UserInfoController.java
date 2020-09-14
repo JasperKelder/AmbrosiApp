@@ -33,7 +33,6 @@ public class UserInfoController {
                                   @RequestParam String lastName,
                                   Principal principal) {
         User user = userRepository.findByEmail(principal.getName());
-        System.out.println(firstName);
         userRepository.updateName(firstName, lastName, user.getUserId());
         return "redirect:/mykitchen";
     }

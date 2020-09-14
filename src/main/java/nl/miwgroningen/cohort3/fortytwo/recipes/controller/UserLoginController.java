@@ -27,13 +27,6 @@ public class UserLoginController {
         return "login";
     }
 
-    //method for showing recipes on mykitchen page
-//    @GetMapping("/mykitchen")
-//    protected String showRecipesIndex(Model model) {
-//        model.addAttribute("allRecipes", recipeRepository.findAll());
-//        return "mykitchen";
-//    }
-
     //Method for showing user name in mykitchen.html
     @GetMapping("/mykitchen")
     protected String showUser(Model model, Principal principal) {
