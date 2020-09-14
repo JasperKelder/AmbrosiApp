@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
+
 <body>
     <div class="flex-container-nav">
         <nav>
@@ -23,22 +24,14 @@
             <a th:href="@{/recipes}">Admin</a>
         </nav>
         <div class="spaceMedium"></div>
-        <div class="flex-container">
-        <table>
-            <tr>
-                <th>First Name</th><td th:text="${user.getFirstName()}"></td>
-            </tr>
-            <tr>
-                <th>Last Name</th><td th:text="${user.getLastName()}"></td>
-            </tr>
-            <tr>
-                <th>Email Address</th><td th:text="${user.getEmail()}"></td>
-            </tr>
-        </table>
-        <div class="spaceMedium"></div>
-<!--        <a class="editbutton" th:href="@{/userupdate/update/{userId}(userId=${user.userId})}">Update</a>-->
-        </div>
-    </div>
+        <form action="/update">
+            <label>First name: </label>
+            <input type="text" name="firstName" th:value="${user.getFirstName()}"/>
+            <label>Last name: </label>
+            <input type="text" name="lastName" th:value="${user.getLastName()}"/>
+            <div class="spaceMedium"></div>
+            <button type="submit"> Update</button>
+        </form>
     </div>
 </body>
 </html>

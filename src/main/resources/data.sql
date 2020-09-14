@@ -33,13 +33,18 @@ INSERT INTO recipes.recipe VALUES
 (17, 40, 'Broodje kip', 50, 'Asian style', 'Broodje gehakt', 4, 2, 3),
 (18, 40, 'Maaltijdsalade a la Appie', 50, 'Asian style', 'Maaltijdsalade a la Jumbo', 4, 2, 3);
 
-
 /* user_id, email, first_name, last_name, password (test)  */
-/* Entering user_id 1 and 2 resulted in registration errors which resolves after getting the error twice after running
-   the program. For now this has been temporarily fixed with a workaround by using bigger numbers for the dummy data*/
 INSERT INTO recipes.user VALUES
-(4242, 'a@', 'a', 'a', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
-(4243, 'b@', 'b', 'b', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6');
+(1, '42@gmail.com', 'Make IT Work', 'Elmo', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
+(2, 'b@', 'b', 'b', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6');
 
 INSERT INTO recipes.role VALUES
-(1, 'ROLE_USER');
+(1, 'ROLE_USER'),
+(2, 'ROLE_USER');
+
+INSERT INTO recipes.users_roles VALUES
+(1, 1),
+(2, 2);
+
+/* The table next_val has to be updated (nr of users + 1) in order to make it possible to register new users */
+UPDATE hibernate_sequence SET next_val = 3 WHERE next_val = 1;
