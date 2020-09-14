@@ -35,9 +35,11 @@ INSERT INTO recipes.recipe VALUES
 
 
 /* user_id, email, first_name, last_name, password (test)  */
+/* Entering user_id 1 and 2 resulted in registration errors which resolves after getting the error twice after running
+   the program. For now this has been temporarily fixed with a workaround by using bigger numbers for the dummy data*/
 INSERT INTO recipes.user VALUES
-(1, 'a@', 'a', 'a', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
-(2, 'b@', 'b', 'b', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6');
+(4242, 'a@', 'a', 'a', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
+(4243, 'b@', 'b', 'b', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6');
 
 INSERT INTO recipes.role VALUES
 (1, 'ROLE_USER');

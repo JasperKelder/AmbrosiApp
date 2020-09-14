@@ -1,6 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

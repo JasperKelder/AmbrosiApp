@@ -44,30 +44,36 @@ public class RecipeController {
             return "add";
         } else {
             recipeRepository.save(recipe);
-            return "redirect:/index";
+            return "redirect:/recipes";
         }
     }
 
     @GetMapping("/index")
     protected String showRecipes(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "index";
+        return "indexloaded";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/indexloggedin")
+    protected String showRecipesLoggedIn(Model model) {
+        model.addAttribute("allRecipes", recipeRepository.findAll());
+        return "indexloggedin";
+    }
+
+    @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "admin";
+        return "recipe";
     }
 
-    @GetMapping({"/index/delete/{recipeId}", "/admin/delete/{recipeId}"})
+    @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
     protected String deleteRecipe(@PathVariable("recipeId") final Integer recipeId) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             recipeRepository.delete(recipe.get());
-            return "forward:/admin/";
+            return "forward:/recipes/";
         }
-        return "forward:/admin";
+        return "forward:/recipes";
     }
 
     @GetMapping("/add/update/{recipeId}")
@@ -79,7 +85,7 @@ public class RecipeController {
             model.addAttribute("recipe", recipe);
             return "add";
         }
-        return "index";
+        return "indexloaded";
     }
 
     @GetMapping("/view/{id}")
@@ -90,5 +96,15 @@ public class RecipeController {
             return "view";
         }
         return "redirect:/index";
+    }
+
+    @GetMapping("/viewloggedin/{id}")
+    protected String showRecipeLoggedIn(@PathVariable("id") final Integer recipeId, Model model) {
+        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        if (recipe.isPresent()) {
+            model.addAttribute("recipe", recipe.get());
+            return "viewloggedin";
+        }
+        return "redirect:/indexloggedin";
     }
 }

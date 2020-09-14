@@ -1,23 +1,35 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Recipes - View</title>
+        <title>AmbrosiApp - View Recipe</title>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheet.css"/>
         <link rel="icon" type="image/png" href="/images/smileySmall.png">
+        <script>
+            function printPageArea(divIDToPrint){
+                var printContent = document.getElementById(divIDToPrint);
+                var WinPrint = window.open('', '', 'width=900,height=650');
+                WinPrint.document.write(printContent.innerHTML);
+                WinPrint.document.close();
+                WinPrint.focus();
+                WinPrint.print();
+            }
+        </script>
     </head>
     <body>
-        <div class="flex-container">
+        <div class="flex-container-nav">
             <nav>
-                <a class="active" th:href="@{/index}">Overview</a>
-                <a th:href="@{/add}">Add</a>
+                <a th:href="@{/index}">AmbrosiApp</a>
                 <a th:href="@{/login}">MyKitchen</a>
-                <a th:href="@{/admin}">Admin</a>
-
+                <a th:href="@{/logout}">Logout</a>
             </nav>
         </div>
-        <div class="space"></div>
-        <div class="flex-container" id="flexblack">
+        <div class="flex-container">
+        <div class="spaceMedium"></div>
+        <img src="/images/food.jpg" alt="Food" class="viewImage">
+        <div class="spaceMedium"></div>
+        </div>
+        <div class="flex-container" id="printpage">
             <table>
                 <tr>
                     <th>Title</th><td th:text="${recipe.recipeTitle}"></td>
@@ -44,18 +56,8 @@
                     <th>Category</th><td th:text="${recipe.categoryName}"></td>
                 </tr>
             </table>
-            <div class="space"></div>
-            <input type="submit" value="Print" onClick="printPageArea('flexblack')">
+            <div class="spaceMedium"></div>
+            <input type="submit" value="Print" onClick="printPageArea('printpage')">
         </div>
-    <script>
-        function printPageArea(divIDToPrint){
-            var printContent = document.getElementById(divIDToPrint);
-            var WinPrint = window.open('', '', 'width=900,height=650');
-            WinPrint.document.write(printContent.innerHTML);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-        }
-    </script>
     </body>
 </html>
