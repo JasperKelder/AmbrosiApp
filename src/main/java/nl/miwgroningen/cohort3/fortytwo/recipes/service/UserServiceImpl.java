@@ -3,6 +3,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.UserRegistrationDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Role;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RoleRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 
 
@@ -22,13 +23,15 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
         super();
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -36,7 +39,7 @@ public class UserServiceImpl implements UserService {
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmailAddress(),
-                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(roleRepository.findRoleByName("ROLE_USER")));
 
         return userRepository.save(user);
     }

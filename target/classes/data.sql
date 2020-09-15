@@ -46,5 +46,6 @@ INSERT INTO recipes.user_roles VALUES
 (1, 1),
 (2, 2),
 (2, 1);
+
 /* The table next_val has to be updated (nr of users + 1) in order to make it possible to register new users */
 UPDATE hibernate_sequence SET next_val = 3 WHERE next_val = 1;
