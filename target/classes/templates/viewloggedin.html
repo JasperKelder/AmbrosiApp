@@ -33,43 +33,56 @@
 <!--                <a th:href="@{/recipes}">Admin</a>-->
 <!--            </nav>-->
         </div>
-        <div class="flex-container">
+        <div id="printpage">
             <div class="spaceMedium"></div>
-            <img src="/images/food.jpg" alt="Food" class="viewImage">
+            <div class="message" th:text="${recipe.recipeTitle}"></div>
+            <div class="spaceSmall"></div>
+            <div class="flex-container">
+                <div class="grid-container-view">
+                    <div class="grid-item-view" >
+                        <div class="flex-container">
+                            <table>
+                                <tr><th>Ingredients</th></tr>
+                                <tr><td th:text="${recipe.ingredients}"></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="grid-item-view"><img src="/images/food.jpg" alt="Food" class="viewImage">
+                    </div>
+                    <div class="grid-item-view">
+                        <div class="flex-container">
+                            <table>
+                                <tr><th>Preparation</th></tr>
+                                <tr><td th:text="${recipe.recipePreperation}"></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="messagesmall">Contributed by</div>
+            <div class="messagesmall" th:text="${recipe.userName}"></div>
             <div class="spaceMedium"></div>
-        </div>
-            <div class="flex-container" id="printpage">
-            <table>
-                <tr>
-                    <th>Title</th><td th:text="${recipe.recipeTitle}"></td>
-                </tr>
-                <tr>
-                    <th>Preperation</th><td th:text="${recipe.recipePreperation}"></td>
-                </tr>
-                <tr>
-                    <th>Preperation Time</th><td th:text="${recipe.preperationTime}"></td>
-                </tr>
-                <tr>
-                    <th>Servings</th><td th:text="${recipe.servings}"></td>
-                </tr>
-                <tr>
-                    <th>Ingredients</th><td th:text="${recipe.ingredients}"></td>
-                </tr>
-                <tr>
-                    <th>Cooktime</th><td th:text="${recipe.cooktime}"></td>
-                </tr>
-                <tr>
-                    <th>Cuisine</th><td th:text="${recipe.cuisineName}"></td>
-                </tr>
-                <tr>
-                    <th>Category</th><td th:text="${recipe.categoryName}"></td>
-                </tr>
-                <tr>
-                    <th>User</th><td th:text="${recipe.userName}"></td>
-                </tr>
-            </table>
-            <div class="spaceMedium"></div>
-            <input type="submit" value="Print" onClick="printPageArea('printpage')">
+            <div class="flex-container">
+                <table>
+                    <tr>
+                        <th>Servings</th><td th:text="${recipe.servings}"></td>
+                    </tr>
+                    <tr>
+                        <th>PreperationTime</th><td th:text="${recipe.preperationTime}"></td>
+                    </tr>
+                    <tr>
+                        <th>CookTime</th><td th:text="${recipe.cooktime}"></td>
+                    <tr>
+                        <th>Cuisine</th><td th:text="${recipe.cuisineName}"></td>
+                    </tr>
+                    <tr>
+                        <th>Category</th><td th:text="${recipe.categoryName}"></td>
+                    </tr>
+                    </tr>
+                </table>
+                <div class="spaceMedium"></div>
+                <input type="submit" value="Print" onClick="printPageArea('printpage')">
+            </div>
         </div>
     </body>
 </html>
