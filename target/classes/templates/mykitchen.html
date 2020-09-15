@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>AmbrosiApp - MyKitchen</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,7 @@
     </script>
 </head>
 <body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <div class="flex-container-nav">
         <nav>
             <a th:href="@{/indexloggedin}">AmbrosiApp</a>
@@ -30,7 +31,14 @@
         <div class="spaceMedium"></div>
         <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
         <div class="message">Welcome<br><span th:text="${user.getFirstName()}"></span></div>
+
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <h3>You will see this only if you are ADMIN!!!!! </h3>
+        </div>
+
         <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
     </div>
+
+</sec:authorize>
 </body>
 </html>

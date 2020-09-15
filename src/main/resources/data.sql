@@ -36,7 +36,8 @@ INSERT INTO recipes.recipe VALUES
 /* user_id, email, first_name, last_name, password = test  */
 INSERT INTO recipes.user VALUES
 (1, '42@gmail.com', 'Make IT Work', 'Elmo', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
-(2, 'admin', 'Admin', 'Admin', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6');
+(2, 'admin', 'Admin', 'Admin', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6'),
+(3, 'a', 'voornaam', 'achternaam', '$2a$10$aPj.8aZIFIlfHThl5mxTKug4egApzZfgVzmNLRpQTTsG6fi8A579O');
 
 INSERT INTO recipes.role VALUES
 (1, 'ROLE_USER'),
@@ -45,7 +46,8 @@ INSERT INTO recipes.role VALUES
 INSERT INTO recipes.user_roles VALUES
 (1, 1),
 (2, 2),
-(2, 1);
+(2, 1),
+(3, 1);
 
 /* The table next_val has to be updated (nr of users + 1) in order to make it possible to register new users */
-UPDATE hibernate_sequence SET next_val = 3 WHERE next_val = 1;
+UPDATE hibernate_sequence SET next_val = 4 WHERE next_val = 1;
