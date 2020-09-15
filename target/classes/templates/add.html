@@ -106,6 +106,10 @@
                         </select>
                     </div>
                 </div>
+<!--                Hidden userId is added so the recipe is connected to the user who added it -->
+                <div hidden>
+                <input type="number" id="userName" name="userName" th:value="${user.getUserId()}" required/>
+                </div>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">
                 </div>

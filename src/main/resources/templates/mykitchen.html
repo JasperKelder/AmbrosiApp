@@ -12,25 +12,25 @@
     </script>
 </head>
 <body>
-    <div class="flex-container-nav">
-        <nav>
-            <a th:href="@{/indexloggedin}">AmbrosiApp</a>
-            <a class="active" th:href="@{/mykitchen}">MyKitchen</a>
-            <a th:href="@{/logout}">Logout</a>
-        </nav>
-    </div>
-    <div class="flex-container">
-        <nav>
-            <a th:href="@{/add}">Add</a>
-            <a th:href="@{/userinfo}">MyInfo</a>
-        </nav>
-<!--        <nav>-->
-<!--            <a th:href="@{/recipes}">Admin</a>-->
-<!--        </nav>-->
-        <div class="spaceMedium"></div>
-        <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
-        <div class="message">Welcome<br><span th:text="${user.getFirstName()}"></span></div>
-        <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
-    </div>
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/indexloggedin}">AmbrosiApp</a>
+        <a class="active" th:href="@{/mykitchen}">MyKitchen</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<!-- Extended logged in navigation -->
+<div class="flex-container">
+    <nav>
+        <a th:href="@{/add}">Add</a>
+        <a th:href="@{/userinfo}">MyInfo</a>
+    </nav>
+    <div class="spaceMedium"></div>
+    <!-- Displays the users firstname -->
+    <div class="message">Welcome<br><div th:text="${user.getFirstName()}"></div></div>
+    <!-- Displays a broccoli which starts bouncing after the user clicks on it -->
+    <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
+</div>
 </body>
 </html>

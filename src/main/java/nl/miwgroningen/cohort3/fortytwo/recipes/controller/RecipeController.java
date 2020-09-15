@@ -4,6 +4,7 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CuisineRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 /**
@@ -30,11 +32,15 @@ public class RecipeController {
     @Autowired
     CuisineRepository cuisineRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("/add")
-    protected String createRecipe(Model model) {
+    protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         return "add";
     }
 
@@ -44,7 +50,7 @@ public class RecipeController {
             return "add";
         } else {
             recipeRepository.save(recipe);
-            return "redirect:/recipes";
+            return "redirect:/indexloggedin";
         }
     }
 
