@@ -45,11 +45,6 @@ public class Recipe {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category categoryName;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
-
     public Integer getRecipeId() {
         return recipeId;
     }
@@ -120,13 +115,5 @@ public class Recipe {
 
     public void setCategoryName(Category categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User userName) {
-        this.user = userName;
     }
 }

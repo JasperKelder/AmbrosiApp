@@ -7,67 +7,62 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-<!-- Navigation -->
-<div class="flex-container-nav">
-    <nav>
-        <a th:href="@{/index}">AmbrosiApp</a>
-        <a class="active" th:href="@{/login}">MyKitchen</a>
-        <a th:href="@{/loggedout}">Logout</a>
-    </nav>
-</div>
-<div class="spaceMedium"></div>
-<!-- Displays app title -->
-<div class="message">AmbrosiApp</div>
-<div class="spaceMedium"></div>
-<div class="flex-container">
+    <div class="flex-container-nav">
+        <nav>
+            <a th:href="@{/index}">AmbrosiApp</a>
+            <a class="active" th:href="@{/login}">MyKitchen</a>
+            <a th:href="@{/loggedout}">Logout</a>
+        </nav>
+    </div>
+    <div class="spaceMedium"></div>
+    <div class="message">AmbrosiApp</div>
+    <div class="spaceMedium"></div>
+    <div class="flex-container">
     <div class="addContainer">
-        <!-- Registration form -->
         <form th:action="@{/registration}" th:object="${user}" method="post">
             <div class="row">
-                <div class="column-left">
+                <div class="col-25">
                     <label for="firstName">First Name</label>
                 </div>
-                <div class="column-right">
+                <div class="col-75">
                     <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
                            required placeholder="First Name"/>
                 </div>
             </div>
             <div class="row">
-                <div class="column-left">
+                <div class="col-25">
                     <label for="lastName">Last Name</label>
                 </div>
-                <div class="column-right">
-                    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
-                           placeholder="Last Name"/>
+                <div class="col-75">
+                            <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
+                                      placeholder="Last Name"/>
                 </div>
             </div>
             <div class="row">
-                <div class="column-left">
+                <div class="col-25">
                     <label for="emailAddress">Email Address</label>
                 </div>
-                <div class="column-right">
-                    <input type="text" id="emailAddress" name="emailAddress" th:field="*{email}" required
+                <div class="col-75">
+                    <input type="text" id="emailAddress" name="emailAddress" th:field="*{emailAddress}" required
                            placeholder="Email Address"/>
                 </div>
             </div>
             <div class="row">
-                <div class="column-left">
+                <div class="col-25">
                     <label for="password">Password</label>
                 </div>
-                <div class="column-right">
+                <div class="col-75">
                     <input type="password" id="password" name="password" th:field="*{password}" required
                            placeholder="Password"/>
                 </div>
             </div>
             <p><button type="submit">Register</button></p>
         </form>
-        <div class="spaceTiny"></div>
-        <!-- Navigation for login -->
+        <div class="spaceSmall"></div>
         <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
     </div>
-    <div class="spaceMedium"></div>
-    <!-- Displays a message after a successful registration -->
-    <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
-</div>
+        <div class="spaceMedium"></div>
+        <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
+    </div>
 </body>
 </html>

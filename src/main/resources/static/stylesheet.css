@@ -96,16 +96,13 @@ select {
     padding: 26px;
     border: 3px solid #1e9696;
 }
-.spaceLarge {
-    padding: 30px;
+.space {
+    padding: 26px;
 }
 .spaceMedium {
     padding: 20px;
 }
 .spaceSmall {
-    padding: 10px;
-}
-.spaceTiny {
     padding: 0.1px;
 }
 .grid-container {
@@ -115,29 +112,16 @@ select {
     padding: 50px;
     grid-gap: 75px;
 }
-.grid-container-view {
-    display: grid;
-    grid-template-columns: 300px 350px 300px;
-    grid-template-rows: 260px;
-    padding: 50px;
-    grid-gap: 75px;
-}
 .grid-item {
     border: 3px solid #1e9696;
     padding: 20px;
     font-size: 30px;
     text-align: center;
 }
-.grid-item-view {
-    padding: 10px;
-    text-align: center;
-    font-size: 17px;
-}
 .gridImage {
     width: 200px;
     padding-bottom: 30px;
 }
-
 .viewImage {
     width: 300px;
     border-radius: 35%;
@@ -150,12 +134,12 @@ select {
 #floatrightbutton {
     float: right;
 }
-.column-left {
+.col-25 {
     float: left;
     width: 20%;
     margin: 10px;
 }
-.column-right {
+.col-75 {
     float: left;
     width: 60%;
     margin: 10px;
@@ -166,7 +150,7 @@ select {
     clear: both;
 }
 @media screen and (max-width: 800px) {
-    .column-left, .column-right{
+    .col-25, .col-75{
         width: 100%;
         margin-top: 0;
     }
@@ -236,7 +220,4 @@ select {
     height: 33px;
     border: 3px solid black;
     border-radius: 4px;
-}
-.center {
-    text-align: center;
 }

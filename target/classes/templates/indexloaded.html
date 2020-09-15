@@ -25,7 +25,7 @@
                  <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                  <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
             </div>
-                <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
+                <span class="food" th:text="${allRecipes.get(i).recipeTitle}"></span>
             <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
             <div th:if="${i} % 8 == 0">
                 <div th:if="${i} % 8 != 0">
@@ -33,7 +33,7 @@
                      <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                      <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
                 </div>
-                    <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
+                    <span class="food" th:text="${allRecipes.get(i).recipeTitle}"></span>
                 </div>
             </div>
         </span>
