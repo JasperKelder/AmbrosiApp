@@ -39,6 +39,11 @@ public class User {
 
     }
 
+    @Override
+    public String toString() {
+        return firstName;
+    }
+
     public User(String firstName, String lastName, String email, String password, Collection < Role > roles) {
         super();
         this.firstName = firstName;
