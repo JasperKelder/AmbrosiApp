@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
     }
 
-
+    //Method to register new user on register page. User only gets role Role_User
     @Override
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
