@@ -29,7 +29,7 @@
 <!--        </nav>-->
         <div class="spaceMedium"></div>
         <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
-        <div class="message">Welcome<br><span th:text="${user.getFirstName()}"></span></div>
+        <div class="message">Welcome<br><div th:text="${user.getFirstName()}"></div></div>
         <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
     </div>
 </body>

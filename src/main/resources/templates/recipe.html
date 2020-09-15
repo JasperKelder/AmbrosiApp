@@ -36,7 +36,7 @@
             <table>
                 <tr th:each="recipe: ${allRecipes}">
                     <td>
-                        <span th:text="${recipe.recipeTitle}"></span></a>
+                        <div th:text="${recipe.recipeTitle}"></div></a>
                     </td>
                     <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
                                              class="editbutton">Delete</a></td>
