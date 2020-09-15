@@ -13,7 +13,7 @@ INSERT INTO recipes.category VALUES
 (5,'Cheating');
 
 /* user_id, email, first_name, last_name */
-/* User 1 for easy access (email = a, password = a) */
+/* Added user 1 for easy access (email = a, password = a) */
 /* Kept the other 2 for now in case of miscommunication (password = test) */
 INSERT INTO recipes.user VALUES
 (1, 'a', '42', '42', '$2a$10$y3.07ZumAg6K7sF4hCExoupHMye4lQI9NcoctYFUoGoVz3h6CMNm2'),

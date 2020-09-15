@@ -1,79 +1,88 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>AmbrosiApp - View Recipe</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/stylesheet.css"/>
-        <link rel="icon" type="image/png" href="/images/smileySmall.png">
-        <script>
-            function printPageArea(divIDToPrint){
-                var printContent = document.getElementById(divIDToPrint);
-                var WinPrint = window.open('', '', 'width=900,height=650');
-                WinPrint.document.write(printContent.innerHTML);
-                WinPrint.document.close();
-                WinPrint.focus();
-                WinPrint.print();
-            }
-        </script>
-    </head>
-    <body>
-        <div class="flex-container-nav">
-            <nav>
-                <a th:href="@{/index}">AmbrosiApp</a>
-                <a th:href="@{/login}">MyKitchen</a>
-                <a th:href="@{/logout}">Logout</a>
-            </nav>
-        </div>
-        <div id="printpage">
-        <div class="spaceMedium"></div>
-        <div class="message" th:text="${recipe.recipeTitle}"></div>
-        <div class="spaceSmall"></div>
-        <div class="flex-container">
+<head>
+    <title>AmbrosiApp - View Recipe</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    <script>
+        function printPageArea(divIDToPrint){
+            var printContent = document.getElementById(divIDToPrint);
+            var WinPrint = window.open('', '', 'width=900,height=650');
+            WinPrint.document.write(printContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+        }
+    </script>
+</head>
+<body>
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/index}">AmbrosiApp</a>
+        <a th:href="@{/login}">MyKitchen</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<!-- Id to indicate what can be printed -->
+<div id="printpage">
+    <div class="spaceMedium"></div>
+    <!-- Displays the recipe title -->
+    <div class="message" th:text="${recipe.recipeTitle}"></div>
+    <div class="spaceSmall"></div>
+    <div class="flex-container">
         <div class="grid-container-view">
             <div class="grid-item-view" >
                 <div class="flex-container">
-                <table>
-                    <tr><th>Ingredients</th></tr>
-                    <tr><td th:text="${recipe.ingredients}"></td></tr>
-                </table>
+                    <!-- Displays ingredients in a grid to the left -->
+                    <table>
+                        <tr><th>Ingredients</th></tr>
+                        <tr><td th:text="${recipe.ingredients}"></td></tr>
+                    </table>
                 </div>
             </div>
+            <!-- Displays an image in a grid in the center -->
             <div class="grid-item-view"><img src="/images/food.jpg" alt="Food" class="viewImage">
             </div>
             <div class="grid-item-view">
                 <div class="flex-container">
-                <table>
-                    <tr><th>Preparation</th></tr>
-                    <tr><td th:text="${recipe.recipePreperation}"></td></tr>
-                </table>
+                    <!-- Displays preparation in a grid to the right -->
+                    <table>
+                        <tr><th>Preparation</th></tr>
+                        <tr><td th:text="${recipe.recipePreperation}"></td></tr>
+                    </table>
                 </div>
             </div>
         </div>
-        </div>
-        <div class="messagesmall">Contributed by</div>
-        <div class="messagesmall" th:text="${recipe.userName}"></div>
+    </div>
+    <!-- Shows who added the recipe -->
+    <div class="messagesmall">Contributed by</div>
+    <div class="messagesmall" th:text="${recipe.user}"></div>
+    <div class="spaceMedium"></div>
+    <div class="flex-container">
+        <!-- Show servings, preparationTime, cookTime, cuisine and category -->
+        <table>
+            <tr>
+                <th>Servings</th><td th:text="${recipe.servings}"></td>
+            </tr>
+            <tr>
+                <th>PreperationTime</th><td th:text="${recipe.preperationTime}"></td>
+            </tr>
+            <tr>
+                <th>CookTime</th><td th:text="${recipe.cooktime}"></td>
+            <tr>
+                <th>Cuisine</th><td th:text="${recipe.cuisineName}"></td>
+            </tr>
+            <tr>
+                <th>Category</th><td th:text="${recipe.categoryName}"></td>
+            </tr>
+            </tr>
+        </table>
         <div class="spaceMedium"></div>
-        <div class="flex-container">
-            <table>
-                <tr>
-                    <th>Servings</th><td th:text="${recipe.servings}"></td>
-                </tr>
-                <tr>
-                    <th>PreperationTime</th><td th:text="${recipe.preperationTime}"></td>
-                </tr>
-                <tr>
-                    <th>CookTime</th><td th:text="${recipe.cooktime}"></td>
-                <tr>
-                    <th>Cuisine</th><td th:text="${recipe.cuisineName}"></td>
-                </tr>
-                <tr>
-                    <th>Category</th><td th:text="${recipe.categoryName}"></td>
-                </tr>
-                </tr>
-            </table>
-            <div class="spaceMedium"></div>
-            <input type="submit" value="Print" onClick="printPageArea('printpage')">
-        </div>
-        </div>
-    </body>
+        <!-- Button for printing -->
+        <input type="submit" value="Print" onClick="printPageArea('printpage')">
+    </div>
+</div>
+</body>
 </html>

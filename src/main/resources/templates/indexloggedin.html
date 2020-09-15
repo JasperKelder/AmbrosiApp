@@ -6,44 +6,44 @@
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
+<!-- Extra version of index.html because of extended logged in navigation -->
 <body>
-    <div class="flex-container-nav">
+<!-- Navigation -->
+<div class="flex-container-nav">
     <nav>
         <a class="active" th:href="@{/indexloggedin}">AmbrosiApp</a>
         <a th:href="@{/mykitchen}">MyKitchen</a>
         <a th:href="@{/logout}">Logout</a>
     </nav>
-    </div>
-    <div class="flex-container">
-        <nav>
-            <a th:href="@{/add}">Add</a>
-            <a th:href="@{/userinfo}">MyInfo</a>
-        </nav>
-<!--        <nav>-->
-<!--            <a th:href="@{/recipes}">Admin</a>-->
-<!--        </nav>-->
-    </div>
-<!--     grid-container creates a new container where max 8 grid items can be stored-->
-    <div class="grid-container">
-        <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
-            <!-- this will add all the info into the grid items-->
-            <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-                 <a th:href="@{/viewloggedin/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                 <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
-            </div>
-                <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
-            <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
-            <div th:if="${i} % 8 == 0">
-                <div th:if="${i} % 8 != 0">
+</div>
+<!-- Extended logged in navigation -->
+<div class="flex-container">
+    <nav>
+        <a th:href="@{/add}">Add</a>
+        <a th:href="@{/userinfo}">MyInfo</a>
+    </nav>
+</div>
+<!-- Grid-container creates a new container where max 8 grid items can be stored -->
+<div class="grid-container">
+    <!-- Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error) -->
+    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+        <!-- This will add all the info into the grid items -->
+        <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
+            <a th:href="@{/viewloggedin/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
+        </div>
+        <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
+        <!-- Everytime that the size of the items modulo 8 equals 0 create new grid -->
+        <div th:if="${i} % 8 == 0">
+            <div th:if="${i} % 8 != 0">
                 <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-                     <a class="viewlink" th:href="@{/viewloggedin/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                     <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
+                    <a class="viewlink" th:href="@{/viewloggedin/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                        <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
                 </div>
-                    <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
-                </div>
+                <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

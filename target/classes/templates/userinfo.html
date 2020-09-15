@@ -8,45 +8,45 @@
 </head>
 
 <body>
-    <div class="flex-container-nav">
-        <nav>
-            <a th:href="@{/indexloggedin}">AmbrosiApp</a>
-            <a th:href="@{/mykitchen}">MyKitchen</a>
-            <a th:href="@{/logout}">Logout</a>
-        </nav>
-    </div>
-    <div class="flex-container">
-        <nav>
-            <a th:href="@{/add}">Add</a>
-            <a class="active" th:href="@{/userinfo}">MyInfo</a>
-        </nav>
-<!--        <nav>-->
-<!--            <a th:href="@{/recipes}">Admin</a>-->
-<!--        </nav>-->
-        <div class="spaceMedium"></div>
-            <div class="addContainer">
-                <form action="/update">
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="firstName">First Name</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}"
-                                   required placeholder="First Name"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="lastName">Last Name</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
-                                   placeholder="Last Name"/>
-                        </div>
-                    </div>
-                    <p><button type="submit">Update</button></p>
-                </form>
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/indexloggedin}">AmbrosiApp</a>
+        <a th:href="@{/mykitchen}">MyKitchen</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<!-- Extended navigation -->
+<div class="flex-container">
+    <nav>
+        <a th:href="@{/add}">Add</a>
+        <a class="active" th:href="@{/userinfo}">MyInfo</a>
+    </nav>
+    <div class="spaceMedium"></div>
+    <div class="addContainer">
+        <!-- Userinfo update form -->
+        <form action="/update">
+            <div class="row">
+                <div class="col-25">
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}"
+                           required placeholder="First Name"/>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
+                           placeholder="Last Name"/>
+                </div>
+            </div>
+            <p><button type="submit">Update</button></p>
+        </form>
     </div>
+</div>
 </body>
 </html>

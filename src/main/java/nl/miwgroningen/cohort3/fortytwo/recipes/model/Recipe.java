@@ -48,7 +48,7 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User userName;
+    private User user;
 
     public Integer getRecipeId() {
         return recipeId;
@@ -122,11 +122,11 @@ public class Recipe {
         this.categoryName = categoryName;
     }
 
-    public User getUserName() {
-        return userName;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(User userName) {
-        this.userName = userName;
+    public void setUser(User userName) {
+        this.user = userName;
     }
 }

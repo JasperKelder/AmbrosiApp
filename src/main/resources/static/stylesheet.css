@@ -129,7 +129,6 @@ select {
     text-align: center;
 }
 .grid-item-view {
-    /*border: 3px solid #1e9696;*/
     padding: 10px;
     text-align: center;
     font-size: 17px;
@@ -151,12 +150,12 @@ select {
 #floatrightbutton {
     float: right;
 }
-.col-25 {
+.column-left {
     float: left;
     width: 20%;
     margin: 10px;
 }
-.col-75 {
+.column-right {
     float: left;
     width: 60%;
     margin: 10px;
@@ -167,7 +166,7 @@ select {
     clear: both;
 }
 @media screen and (max-width: 800px) {
-    .col-25, .col-75{
+    .column-left, .column-right{
         width: 100%;
         margin-top: 0;
     }
