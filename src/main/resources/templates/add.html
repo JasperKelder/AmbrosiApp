@@ -24,7 +24,7 @@
 <!--            </nav>-->
             <div class="spaceMedium"></div>
             <div class="addContainer">
-            <form th:action="@{/add}" th:object="${recipe}" method="post">
+            <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
                     <div class="col-25">
@@ -105,6 +105,11 @@
                             </option>
                         </select>
                     </div>
+                </div>
+                <div>
+                        <table>
+                            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                        </table>
                 </div>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">
