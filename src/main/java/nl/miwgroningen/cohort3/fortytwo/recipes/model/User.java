@@ -2,6 +2,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -28,19 +29,17 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "users_roles",
+            name = "user_roles",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "roleId"))
+    private List<Role> roles;
 
-    private Collection< Role > roles;
+    //Constructors
+    public User() { }
 
-    public User() {
-
-    }
-
-    public User(String firstName, String lastName, String emailAddress, String password, Collection < Role > roles) {
+    public User(String firstName, String lastName, String emailAddress, String password, List < Role > roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,14 +48,13 @@ public class User {
         this.roles = roles;
     }
 
+    //Getters and Setters
     public Integer getUserId() {
         return userId;
     }
-
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -81,10 +79,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Collection < Role > getRoles() {
+    public List < Role > getRoles() {
         return roles;
     }
-    public void setRoles(Collection < Role > roles) {
+    public void setRoles(List < Role > roles) {
         this.roles = roles;
     }
 
