@@ -2,6 +2,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
@@ -44,6 +45,9 @@ public class Recipe {
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category categoryName;
+
+    @Lob
+    private byte[] image;
 
     public Integer getRecipeId() {
         return recipeId;
@@ -115,5 +119,13 @@ public class Recipe {
 
     public void setCategoryName(Category categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
