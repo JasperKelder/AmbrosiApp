@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User findByEmail(String email);
+    User findByEmailAddress(String emailAddress);
 
     @Transactional
     @Modifying

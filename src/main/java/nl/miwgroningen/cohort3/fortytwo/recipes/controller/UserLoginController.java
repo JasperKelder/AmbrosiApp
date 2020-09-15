@@ -30,7 +30,7 @@ public class UserLoginController {
     //Method for showing user name in mykitchen.html
     @GetMapping("/mykitchen")
     protected String showUser(Model model, Principal principal) {
-        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
+        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
         return "mykitchen";
     }
 

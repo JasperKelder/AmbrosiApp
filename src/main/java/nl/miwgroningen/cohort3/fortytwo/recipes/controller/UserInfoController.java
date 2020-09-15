@@ -23,7 +23,7 @@ public class UserInfoController {
     //principal.getname() gets email from db
     @GetMapping("/userinfo")
     protected String showUser(Model model, Principal principal) {
-        model.addAttribute("user", userRepository.findByEmail(principal.getName()));
+        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
         return "userinfo";
     }
 
@@ -32,7 +32,7 @@ public class UserInfoController {
     protected String updateFirstName(@RequestParam String firstName,
                                   @RequestParam String lastName,
                                   Principal principal) {
-        User user = userRepository.findByEmail(principal.getName());
+        User user = userRepository.findByEmailAddress(principal.getName());
         userRepository.updateName(firstName, lastName, user.getUserId());
         return "redirect:/mykitchen";
     }
