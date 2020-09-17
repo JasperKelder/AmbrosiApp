@@ -16,11 +16,16 @@
             <a th:href="@{/logout}">Logout</a>
         </nav>
     </div>
-    <!-- Extended logged in navigation -->
     <div class="flex-container">
+        <!-- Extended logged in navigation -->
         <nav>
             <a th:href="@{/add}">Add</a>
             <a th:href="@{/userinfo}">MyInfo</a>
+        </nav>
+        <nav sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a th:href="@{/cuisine}">Cuisine</a>
+            <a th:href="@{/recipes}">Admin</a>
+            <a th:href="@{/category}">Category</a>
         </nav>
         <div class="spaceMedium"></div>
         <!-- Displays the users firstname -->
