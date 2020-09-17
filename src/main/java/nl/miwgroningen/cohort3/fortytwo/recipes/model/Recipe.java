@@ -2,13 +2,12 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -55,25 +54,6 @@ public class Recipe {
 
     @Lob
     private byte[] image;
-
-    public String convertToBase64(Recipe recipe) {
-        String imageInBase64 = "";
-        try {
-            if (recipe.getImage() == null){
-                File image = new File("src/main/resources/static/images/food.jpg");
-                FileInputStream imageInFile = new FileInputStream(image);
-                byte[] imageInBytes = imageInFile.readAllBytes();
-                imageInBase64 += Base64.getEncoder().encodeToString(imageInBytes);
-            }
-            else {
-                imageInBase64 += Base64.getEncoder().encodeToString(recipe.getImage());
-            }
-        }
-        catch (IOException ioe) {
-            System.out.println("Exception while reading the Image " + ioe);
-        }
-        return imageInBase64;
-    }
 
     public Integer getRecipeId() {
         return recipeId;
