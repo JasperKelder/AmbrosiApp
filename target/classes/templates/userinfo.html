@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>AmbrosiApp - MyInfo</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
-
 <body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
 <!-- Navigation -->
 <div class="flex-container-nav">
     <nav>
-        <a th:href="@{/indexloggedin}">AmbrosiApp</a>
+        <a th:href="@{/index}">AmbrosiApp</a>
         <a th:href="@{/mykitchen}">MyKitchen</a>
         <a th:href="@{/logout}">Logout</a>
     </nav>
@@ -50,5 +50,6 @@
         </form>
     </div>
 </div>
+</sec:authorize>
 </body>
 </html>

@@ -63,12 +63,6 @@ public class RecipeController {
         return "indexloaded";
     }
 
-    @GetMapping("/indexloggedin")
-    protected String showRecipesLoggedIn(Model model) {
-        model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "indexloggedin";
-    }
-
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
@@ -105,15 +99,5 @@ public class RecipeController {
             return "view";
         }
         return "redirect:/index";
-    }
-
-    @GetMapping("/viewloggedin/{id}")
-    protected String showRecipeLoggedIn(@PathVariable("id") final Integer recipeId, Model model) {
-        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
-        if (recipe.isPresent()) {
-            model.addAttribute("recipe", recipe.get());
-            return "viewloggedin";
-        }
-        return "redirect:/indexloggedin";
     }
 }

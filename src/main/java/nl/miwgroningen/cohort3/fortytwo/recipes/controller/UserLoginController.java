@@ -36,7 +36,7 @@ public class UserLoginController {
 
     @GetMapping("/loggedout")
     public String logout() {
-        return "loggedout";
+        return "logout";
     }
 }
 
