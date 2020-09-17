@@ -1,49 +1,56 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>AmbrosiApp - Admin</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/stylesheet.css"/>
-        <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    </head>
-    <body>
-        <div class="flex-container-nav">
-            <nav>
-                <a th:href="@{/indexloggedin}">AmbrosiApp</a>
-                <a th:href="@{/mykitchen}">MyKitchen</a>
-                <a th:href="@{/logout}">Logout</a>
-            </nav>
-        </div>
-        <div class="flex-container">
-            <nav>
-                <a th:href="@{/add}">Add</a>
-                <a th:href="@{/userinfo}">MyInfo</a>
-            </nav>
-            <nav>
-                <a th:href="@{/cuisine}">Cuisine</a>
-                <a class="active" th:href="@{/recipes}">Admin</a>
-                <a th:href="@{/category}">Category</a>
-            </nav>
-        </div>
-        <div class="space"></div>
-        <div class="flex-container">
-            <div id="padding">
-                <form th:action="@{/add}">
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
-            </div>
-            <div class="space"></div>
-            <table>
-                <tr th:each="recipe: ${allRecipes}">
-                    <td>
-                        <span th:text="${recipe.recipeTitle}"></span></a>
-                    </td>
-                    <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
-                                             class="editbutton">Delete</a></td>
-                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
-                                             class="editbutton">Update</a></td>
-                </tr>
-            </table>
-        </div>
-    </body>
+<head>
+    <title>AmbrosiApp - Admin</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+</head>
+<body>
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/indexloggedin}">AmbrosiApp</a>
+        <a th:href="@{/mykitchen}">MyKitchen</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<!-- Extended logged in navigation -->
+<div class="flex-container">
+    <nav>
+        <a th:href="@{/add}">Add</a>
+        <a th:href="@{/userinfo}">MyInfo</a>
+    </nav>
+    <nav>
+        <a th:href="@{/cuisine}">Cuisine</a>
+        <a class="active" th:href="@{/recipes}">Admin</a>
+        <a th:href="@{/category}">Category</a>
+    </nav>
+</div>
+<div class="space"></div>
+<div class="flex-container">
+    <div id="padding">
+        <!-- Takes the user to the add recipe form -->
+        <form th:action="@{/add}">
+            <p><input type="submit" value="Submit"/></p>
+        </form>
+    </div>
+    <div class="space"></div>
+    <!-- Displays all recipes -->
+    <table>
+        <tr th:each="recipe: ${allRecipes}">
+            <td>
+                <div th:text="${recipe.recipeTitle}"></div>
+                </a>
+            </td>
+            <!-- Deletes the recipe -->
+            <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
+                                     class="editbutton">Delete</a></td>
+            <!-- Takes the user to the update recipe form -->
+            <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
+                                     class="editbutton">Update</a></td>
+        </tr>
+    </table>
+</div>
+</body>
 </html>

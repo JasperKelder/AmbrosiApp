@@ -7,21 +7,24 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-    <div class="flex-container-nav">
-        <nav>
-            <a th:href="@{/index}">AmbrosiApp</a>
-            <a th:href="@{/login}">MyKitchen</a>
-            <a class="active" th:href="@{/logout}">Logout</a>
-        </nav>
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/index}">AmbrosiApp</a>
+        <a th:href="@{/login}">MyKitchen</a>
+        <a class="active" th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<div class="spaceMedium"></div>
+<!-- Displays app title -->
+<div class="message">AmbrosiApp</div>
+<div class="spaceMedium"></div>
+<div class="flex-container">
+    <!-- Displays Elmo's -->
+    <div>
+        <img src="/images/elmoDance.gif" alt="Elmo Dancing" class="elmo">
+        <img src="/images/elmoWave.gif" alt="Elmo Waving" class="elmo">
+        <img src="/images/elmoDance.gif" alt="Elmo Dancing" class="elmo">
     </div>
-    <div class="spaceMedium"></div>
-    <div class="message">AmbrosiApp</div>
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
-        <div>
-            <img src="/images/elmoDance.gif" alt="Elmo Dancing" class="elmo">
-            <img src="/images/elmoWave.gif" alt="Elmo Waving" class="elmo">
-            <img src="/images/elmoDance.gif" alt="Elmo Dancing" class="elmo">
-        </div>
-    </div>
+</div>
 </body>

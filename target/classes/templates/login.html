@@ -7,27 +7,33 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-    <div class="flex-container-nav">
-        <nav>
-            <a th:href="@{/index}">AmbrosiApp</a>
-            <a class="active" th:href="@{/login}">MyKitchen</a>
-            <a th:href="@{/loggedout}">Logout</a>
-        </nav>
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/index}">AmbrosiApp</a>
+        <a class="active" th:href="@{/login}">MyKitchen</a>
+        <a th:href="@{/loggedout}">Logout</a>
+    </nav>
+</div>
+<div class="spaceMedium"></div>
+<!-- Displays app title -->
+<div class="message">AmbrosiApp</div>
+<div class="spaceMedium"></div>
+<div class="flex-container">
+    <div id="padding">
+        <!-- Login form -->
+        <form th:action="@{/login}" method="post">
+            <input class="margin" type="text" id="username" name="username" placeholder="Email address"
+                   autofocus="autofocus">
+            <input class="margin" type="password" id="password" name="password" placeholder="Password"/>
+            <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
+        </form>
+        <div class="spaceTiny"></div>
+        <!-- Navigation for register -->
+        <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
     </div>
     <div class="spaceMedium"></div>
-    <div class="message">AmbrosiApp</div>
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
-        <div id="padding">
-            <form th:action="@{/login}" method="post">
-                 <input class="margin" type="text" id ="username" name = "username" placeholder="Email address" autofocus="autofocus">
-                <input class="margin" type="password" id="password" name="password" placeholder="Password" />
-                <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
-            </form>
-            <div class="spaceSmall"></div>
-            <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
-        </div>
-        <div class="spaceMedium"></div>
-        <div class="messagesmall" th:if="${param.error}">Invalid email address or password</div>
-    </div>
+    <!-- Displays a message after an unsuccessful login -->
+    <div class="messagesmall" th:if="${param.error}">Invalid email address or password</div>
+</div>
 </body>

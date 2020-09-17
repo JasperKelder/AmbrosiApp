@@ -5,14 +5,10 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    <script type="text/javascript">
-        function bounce(){
-            document.getElementById('broccoli').className ='broccoliBounce';
-        }
-    </script>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!-- Navigation -->
     <div class="flex-container-nav">
         <nav>
             <a th:href="@{/indexloggedin}">AmbrosiApp</a>
@@ -20,45 +16,30 @@
             <a th:href="@{/logout}">Logout</a>
         </nav>
     </div>
+    <!-- Extended logged in navigation -->
     <div class="flex-container">
         <nav>
             <a th:href="@{/add}">Add</a>
             <a th:href="@{/userinfo}">MyInfo</a>
         </nav>
-<!--        <nav>-->
-<!--            <a th:href="@{/recipes}">Admin</a>-->
-<!--        </nav>-->
         <div class="spaceMedium"></div>
-        <!-- welcome + firstname current user, methode for getting firstname in UserLoginController  -->
-        <div class="message">Welcome<br><span th:text="${user.getFirstName()}"></span></div>
+        <!-- Displays the users firstname -->
+        <div class="message">Welcome<br>
+            <div th:text="${user.getFirstName()}"></div>
+        </div>
 
         <div sec:authorize="hasAuthority('ROLE_ADMIN')">
             <h3>You will see this only if you are ADMIN!!!!! </h3>
         </div>
 
-        <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
+        <!-- Displays a broccoli which starts bouncing after the user clicks on it -->
+        <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli">
     </div>
-
 </sec:authorize>
-<!-- Navigation -->
-<div class="flex-container-nav">
-    <nav>
-        <a th:href="@{/indexloggedin}">AmbrosiApp</a>
-        <a class="active" th:href="@{/mykitchen}">MyKitchen</a>
-        <a th:href="@{/logout}">Logout</a>
-    </nav>
-</div>
-<!-- Extended logged in navigation -->
-<div class="flex-container">
-    <nav>
-        <a th:href="@{/add}">Add</a>
-        <a th:href="@{/userinfo}">MyInfo</a>
-    </nav>
-    <div class="spaceMedium"></div>
-    <!-- Displays the users firstname -->
-    <div class="message">Welcome<br><div th:text="${user.getFirstName()}"></div></div>
-    <!-- Displays a broccoli which starts bouncing after the user clicks on it -->
-    <img id="broccoli" onclick="bounce()" src="/images/broccoli.png" alt="Broccoli" >
-</div>
+<script type="text/javascript">
+    function bounce() {
+        document.getElementById('broccoli').className = 'broccoliBounce';
+    }
+</script>
 </body>
 </html>
