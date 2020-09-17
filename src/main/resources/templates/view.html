@@ -16,7 +16,7 @@
     </nav>
 </div>
 <!-- Extended logged in navigation -->
-<div class="flex-container" sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+<div class="flex-container" sec:authorize="hasRole('ROLE_USER')">
     <nav>
         <a th:href="@{/add}">Add</a>
         <a th:href="@{/userinfo}">MyInfo</a>

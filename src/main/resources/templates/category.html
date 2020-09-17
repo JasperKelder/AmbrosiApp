@@ -27,7 +27,7 @@
         <a th:href="@{/recipes}">Admin</a>
         <a class="active" th:href="@{/category}">Category</a>
     </nav>
-    <div class="space"></div>
+    <div class="spaceMedium"></div>
     <div id="padding">
         <!-- Add category form -->
         <form action="#" th:action="@{/category}" th:object="${category}" method="post">
@@ -36,7 +36,7 @@
             <p><input type="submit" value="Submit"/></p>
         </form>
     </div>
-    <div class="space"></div>
+    <div class="spaceMedium"></div>
     <table>
         <!-- Displays all categories -->
         <tr th:each="category: ${allCategories}">

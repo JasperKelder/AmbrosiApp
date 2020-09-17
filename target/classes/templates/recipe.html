@@ -28,7 +28,7 @@
         <a th:href="@{/category}">Category</a>
     </nav>
 </div>
-<div class="space"></div>
+<div class="spaceMedium"></div>
 <div class="flex-container">
     <div id="padding">
         <!-- Takes the user to the add recipe form -->
@@ -36,7 +36,7 @@
             <p><input type="submit" value="Submit"/></p>
         </form>
     </div>
-    <div class="space"></div>
+    <div class="spaceMedium"></div>
     <!-- Displays all recipes -->
     <table>
         <tr th:each="recipe: ${allRecipes}">

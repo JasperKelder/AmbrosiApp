@@ -35,7 +35,7 @@
     <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
         <!-- This will add all the info into the grid items -->
         <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-            <a th:href="@{/viewloggedin/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+            <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                 <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
         </div>
         <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
@@ -43,7 +43,7 @@
         <div th:if="${i} % 8 == 0">
             <div th:if="${i} % 8 != 0">
                 <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-                    <a class="viewlink" th:href="@{/viewloggedin/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                    <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                         <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
                 </div>
                 <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>

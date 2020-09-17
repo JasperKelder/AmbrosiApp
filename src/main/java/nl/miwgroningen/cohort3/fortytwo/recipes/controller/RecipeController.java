@@ -1,8 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cuisine;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CuisineRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
