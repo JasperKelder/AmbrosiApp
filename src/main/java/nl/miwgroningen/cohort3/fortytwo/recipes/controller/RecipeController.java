@@ -38,20 +38,19 @@ public class RecipeController {
     UserRepository userRepository;
 
     @GetMapping("/add")
-    protected String createRecipe(Model model, Principal principal) {
+    protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
-        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
-//        Optional<User> user = userRepository.findById(userRepository.findByEmailAddress(principal.getName()).getUserId());
         return "add";
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, BindingResult result) {
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
             return "add";
         } else {
+            recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             recipeRepository.save(recipe);
             return "redirect:/indexloggedin";
         }

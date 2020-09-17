@@ -108,18 +108,6 @@
                     </select>
                 </div>
             </div>
-            <!-- Hidden userId so we can automatically register who has added the recipe -->
-            <div class="row" hidden>
-                <div class="column-left">
-                    <label for="user">user</label>
-                </div>
-                <div class="column-right">
-                    <select id="user" name="user" th:field="*{user}" required>
-                        <option th:value="${user.getUserId()}">
-                        </option>
-                    </select>
-                </div>
-            </div>
             <div class="row">
                 <input id="floatrightbutton" type="submit" value="Submit">
             </div>
