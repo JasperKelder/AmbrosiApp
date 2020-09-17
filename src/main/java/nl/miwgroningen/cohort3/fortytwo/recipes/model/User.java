@@ -1,7 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column(name = "first_name")
@@ -47,6 +46,12 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
+
+    //Used in view.html to display the user who added the recipe
+//    @Override
+//    public String toString() {
+//        return firstName;
+//    }
 
     //Getters and Setters
     public Integer getUserId() {
