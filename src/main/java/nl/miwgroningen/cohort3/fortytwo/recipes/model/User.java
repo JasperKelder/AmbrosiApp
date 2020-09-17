@@ -48,10 +48,10 @@ public class User {
     }
 
     //Used in view.html to display the user who added the recipe
-//    @Override
-//    public String toString() {
-//        return firstName;
-//    }
+    @Override
+    public String toString() {
+        return firstName;
+    }
 
     //Getters and Setters
     public Integer getUserId() {

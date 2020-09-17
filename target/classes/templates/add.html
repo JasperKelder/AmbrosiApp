@@ -108,22 +108,18 @@
                     </select>
                 </div>
             </div>
-            <div class="row" th:object="${user}">
+            <!-- Hidden userId so we can automatically register who has added the recipe -->
+            <div class="row" hidden>
                 <div class="column-left">
                     <label for="user">user</label>
                 </div>
                 <div class="column-right">
                     <select id="user" name="user" th:field="*{user}" required>
-                        <!-- Dropdown box displaying all categories -->
-                        <option th:each="user : ${user}"
-                                th:value="${user}"
-                                th:text="${user}">
+                        <option th:value="${user.getUserId()}">
                         </option>
                     </select>
                 </div>
             </div>
-<!--                <input type="user" id="userId" name="userId" th:value="${user.getUserId()}" required/>-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
             <div class="row">
                 <input id="floatrightbutton" type="submit" value="Submit">
             </div>
