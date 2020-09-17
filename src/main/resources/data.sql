@@ -13,6 +13,7 @@ INSERT INTO recipes.category VALUES
 (5,'Cheating');
 
 /* user_id, email, first_name, last_name, password (test)  */
+/* user 3 has username a and password a */
 INSERT INTO recipes.user VALUES
 (1, '42@gmail.com', 'Make IT Work', 'Elmo', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
 (2, 'admin', 'Admin', 'Admin', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6'),
