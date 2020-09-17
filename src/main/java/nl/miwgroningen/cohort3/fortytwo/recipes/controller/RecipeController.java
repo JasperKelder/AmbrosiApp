@@ -52,7 +52,7 @@ public class RecipeController {
         } else {
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             recipeRepository.save(recipe);
-            return "redirect:/indexloggedin";
+            return "redirect:/index";
         }
     }
 
