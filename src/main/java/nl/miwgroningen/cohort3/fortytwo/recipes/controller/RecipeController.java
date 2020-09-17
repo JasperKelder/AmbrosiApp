@@ -19,11 +19,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,8 @@ import java.util.Optional;
  */
 @Controller
 public class RecipeController {
+
+    Recipe recipeModel = new Recipe();
 
     @Autowired
     RecipeRepository recipeRepository;
@@ -62,13 +63,26 @@ public class RecipeController {
 
     @GetMapping("/index")
     protected String showRecipes(Model model) {
+        List<Recipe> recipes = recipeRepository.findAll();
+        List<String> imagesList = new ArrayList<>();
+        for (Recipe recipe : recipes) {
+            imagesList.add(recipe.convertToBase64(recipe));
+        }
         model.addAttribute("allRecipes", recipeRepository.findAll());
+        model.addAttribute("allImages", imagesList);
+
         return "indexloaded";
     }
 
     @GetMapping("/indexloggedin")
     protected String showRecipesLoggedIn(Model model) {
+        List<Recipe> recipes = recipeRepository.findAll();
+        List<String> imagesList = new ArrayList<>();
+        for (Recipe recipe : recipes) {
+            imagesList.add(recipe.convertToBase64(recipe));
+        }
         model.addAttribute("allRecipes", recipeRepository.findAll());
+        model.addAttribute("allImages", imagesList);
         return "indexloggedin";
     }
 
@@ -105,7 +119,7 @@ public class RecipeController {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             model.addAttribute("recipe", recipe.get());
-            model.addAttribute("image", Base64.getEncoder().encodeToString(recipe.get().getImage()));
+            model.addAttribute("image", recipeModel.convertToBase64(recipe.get()));
             return "view";
         }
         return "redirect:/index";
