@@ -19,8 +19,6 @@ import java.util.List;
 
 public class FileUploadService {
 
-    private boolean errorsPassed = true;
-
     public String convertToBase64(Recipe recipe) {
         String imageInBase64 = "";
         try {

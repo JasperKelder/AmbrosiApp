@@ -63,18 +63,18 @@ public class RecipeController {
     @PostMapping({"/add"})
     protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image, Principal principal,
                                 BindingResult result) throws IOException {
-        recipe.setImage(image.getBytes());
         if (result.hasErrors()) {
             return "add";
         }
         else{
+            recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
+            // If there is no image uploaded, save default image.
             if (image.isEmpty()){
                 recipe.setImage(null);
             }
             else {
                 recipe.setImage(image.getBytes());
             }
-            recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             recipeRepository.save(recipe);
         }
             return "redirect:/index";
