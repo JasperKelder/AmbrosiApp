@@ -8,28 +8,30 @@
 </head>
 <!-- Temporary extra version of index.html to make sure loading the grid doesn't cause problems -->
 <body>
-<!-- Navigation -->
-<div class="flex-container-nav">
-    <nav>
-        <a class="active" th:href="@{/index}">AmbrosiApp</a>
-        <a th:href="@{/login}">MyKitchen</a>
-        <a th:href="@{/logout}">Logout</a>
-    </nav>
-</div>
-<div class="flex-container" sec:authorize="hasAuthority('ROLE_USER')">
-    <nav>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a th:href="@{/index}">AmbrosiApp</a>
+    <a th:href="@{/login}">Login</a>
+    <div sec:authorize="hasAuthority('ROLE_USER')">
         <a th:href="@{/add}">Add</a>
         <a th:href="@{/userinfo}">MyInfo</a>
-    </nav>
-    <nav sec:authorize="hasAuthority('ROLE_ADMIN')">
+    </div>
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')">
         <a th:href="@{/cuisine}">Cuisine</a>
-        <a th:href="@{/recipes}">Admin</a>
+        <a th:href="@{/recipes}">Recipe</a>
         <a th:href="@{/category}">Category</a>
-    </nav>
+    </div>
+    <div sec:authorize="hasAuthority('ROLE_USER')">
+    <a th:href="@{/logout}">Logout</a>
+    </div>
 </div>
 </div>
-<div class="spaceMedium"></div>
-<div class="message">AmbrosiApp</div>
+<!-- Use any element to open the sidenav -->
+<div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
+</div>
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+</div>
 <!--    grid-container creates a new container where max 8 grid items can be stored-->
 <div class="grid-container">
     <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
@@ -47,5 +49,17 @@
         </div>
     </div>
 </div>
+<script>
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
 </body>
 </html>
