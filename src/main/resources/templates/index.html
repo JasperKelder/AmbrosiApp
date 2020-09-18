@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>AmbrosiApp - Overview</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +7,26 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-    <div class="flex-container-nav">
+<!-- Navigation -->
+<div class="flex-container-nav">
     <nav>
         <a th:href="@{/index}">AmbrosiApp</a>
         <a th:href="@{/login}">MyKitchen</a>
-        <a th:href="@{/loggedout}">Logout</a>
+        <a th:href="@{/logout}">Logout</a>
     </nav>
-    </div>
-    <div class="spaceMedium"></div>
-    <div class="message">AmbrosiApp</div>
-    <div class="grid-container">
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-    </div>
+</div>
+<div class="spaceMedium"></div>
+<div class="message">AmbrosiApp</div>
+<!-- Displays an empty grid -->
+<div class="grid-container">
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+    <div class="grid-item"></div>
+</div>
 </body>
 </html>

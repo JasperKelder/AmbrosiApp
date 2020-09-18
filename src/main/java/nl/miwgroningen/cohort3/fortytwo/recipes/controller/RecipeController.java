@@ -8,6 +8,7 @@ import org.apache.catalina.connector.Response;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.aspectj.util.FileUtil;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.security.Principal;
 import java.util.Optional;
 
 /**
@@ -41,6 +43,9 @@ public class RecipeController {
     @Autowired
     CuisineRepository cuisineRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
@@ -50,26 +55,21 @@ public class RecipeController {
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image, BindingResult result) throws IOException {
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, BindingResult result, Principal principal, @RequestParam("file") MultipartFile image) throws IOException {
         recipe.setImage(image.getBytes());
         if (result.hasErrors()) {
             return "add";
         } else {
+            recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             recipeRepository.save(recipe);
-            return "redirect:/recipes";
-       }
+            return "redirect:/index";
+        }
     }
 
     @GetMapping("/index")
     protected String showRecipes(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
         return "indexloaded";
-    }
-
-    @GetMapping("/indexloggedin")
-    protected String showRecipesLoggedIn(Model model) {
-        model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "indexloggedin";
     }
 
     @GetMapping("/recipes")

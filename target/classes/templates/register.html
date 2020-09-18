@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>AmbrosiApp - Register</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,62 +7,69 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-    <div class="flex-container-nav">
-        <nav>
-            <a th:href="@{/index}">AmbrosiApp</a>
-            <a class="active" th:href="@{/login}">MyKitchen</a>
-            <a th:href="@{/loggedout}">Logout</a>
-        </nav>
-    </div>
-    <div class="spaceMedium"></div>
-    <div class="message">AmbrosiApp</div>
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/index}">AmbrosiApp</a>
+        <a class="active" th:href="@{/login}">MyKitchen</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<div class="spaceMedium"></div>
+<!-- Displays app title -->
+<div class="message">AmbrosiApp</div>
+<div class="spaceMedium"></div>
+<div class="flex-container">
     <div class="addContainer">
+        <!-- Registration form -->
         <form th:action="@{/registration}" th:object="${user}" method="post">
             <div class="row">
-                <div class="col-25">
+                <div class="column-left">
                     <label for="firstName">First Name</label>
                 </div>
-                <div class="col-75">
+                <div class="column-right">
                     <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
                            required placeholder="First Name"/>
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="column-left">
                     <label for="lastName">Last Name</label>
                 </div>
-                <div class="col-75">
-                            <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
-                                      placeholder="Last Name"/>
+                <div class="column-right">
+                    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
+                           placeholder="Last Name"/>
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="column-left">
                     <label for="emailAddress">Email Address</label>
                 </div>
-                <div class="col-75">
+                <div class="column-right">
                     <input type="text" id="emailAddress" name="emailAddress" th:field="*{emailAddress}" required
                            placeholder="Email Address"/>
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="column-left">
                     <label for="password">Password</label>
                 </div>
-                <div class="col-75">
+                <div class="column-right">
                     <input type="password" id="password" name="password" th:field="*{password}" required
                            placeholder="Password"/>
                 </div>
             </div>
-            <p><button type="submit">Register</button></p>
+            <p>
+                <button type="submit">Register</button>
+            </p>
         </form>
-        <div class="spaceSmall"></div>
+        <div class="spaceTiny"></div>
+        <!-- Navigation for login -->
         <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
     </div>
-        <div class="spaceMedium"></div>
-        <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
-    </div>
+    <div class="spaceMedium"></div>
+    <!-- Displays a message after a successful registration -->
+    <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
+</div>
 </body>
 </html>
