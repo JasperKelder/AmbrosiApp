@@ -8,53 +8,53 @@
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
-<!-- Navigation -->
-<div class="flex-container-nav">
-    <nav>
-        <a th:href="@{/index}">AmbrosiApp</a>
-        <a th:href="@{/mykitchen}">MyKitchen</a>
-        <a th:href="@{/logout}">Logout</a>
-    </nav>
-</div>
-<!-- Extended logged in navigation -->
-<div class="flex-container">
-    <nav>
-        <a th:href="@{/add}">Add</a>
-        <a class="active" th:href="@{/userinfo}">MyInfo</a>
-    </nav>
-    <nav sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a th:href="@{/cuisine}">Cuisine</a>
-        <a th:href="@{/recipes}">Admin</a>
-        <a th:href="@{/category}">Category</a>
-    </nav>
-    <div class="spaceMedium"></div>
-    <div class="addContainer">
-        <!-- Userinfo update form -->
-        <form action="/update">
-            <div class="row">
-                <div class="column-left">
-                    <label for="firstName">First Name</label>
-                </div>
-                <div class="column-right">
-                    <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}"
-                           required placeholder="First Name"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column-left">
-                    <label for="lastName">Last Name</label>
-                </div>
-                <div class="column-right">
-                    <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
-                           placeholder="Last Name"/>
-                </div>
-            </div>
-            <p>
-                <button type="submit">Update</button>
-            </p>
-        </form>
+    <!-- Navigation -->
+    <div class="flex-container-nav">
+        <nav>
+            <a th:href="@{/index}">AmbrosiApp</a>
+            <a th:href="@{/mykitchen}">MyKitchen</a>
+            <a th:href="@{/logout}">Logout</a>
+        </nav>
     </div>
-</div>
+    <!-- Extended logged in navigation -->
+    <div class="flex-container">
+        <nav>
+            <a th:href="@{/add}">Add</a>
+            <a class="active" th:href="@{/userinfo}">MyInfo</a>
+        </nav>
+        <nav sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a th:href="@{/cuisine}">Cuisine</a>
+            <a th:href="@{/recipes}">Admin</a>
+            <a th:href="@{/category}">Category</a>
+        </nav>
+        <div class="spaceMedium"></div>
+        <div class="addContainer">
+            <!-- Userinfo update form -->
+            <form action="/update">
+                <div class="row">
+                    <div class="column-left">
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}"
+                               required placeholder="First Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-left">
+                        <label for="lastName">Last Name</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
+                               placeholder="Last Name"/>
+                    </div>
+                </div>
+                <p>
+                    <button type="submit">Update</button>
+                </p>
+            </form>
+        </div>
+    </div>
 </sec:authorize>
 </body>
 </html>

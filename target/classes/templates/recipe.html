@@ -8,51 +8,51 @@
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
-<!-- Navigation -->
-<div class="flex-container-nav">
-    <nav>
-        <a th:href="@{/index}">AmbrosiApp</a>
-        <a th:href="@{/mykitchen}">MyKitchen</a>
-        <a th:href="@{/logout}">Logout</a>
-    </nav>
-</div>
-<!-- Extended logged in navigation -->
-<div class="flex-container">
-    <nav>
-        <a th:href="@{/add}">Add</a>
-        <a th:href="@{/userinfo}">MyInfo</a>
-    </nav>
-    <nav>
-        <a th:href="@{/cuisine}">Cuisine</a>
-        <a class="active" th:href="@{/recipes}">Admin</a>
-        <a th:href="@{/category}">Category</a>
-    </nav>
-</div>
-<div class="spaceMedium"></div>
-<div class="flex-container">
-    <div id="padding">
-        <!-- Takes the user to the add recipe form -->
-        <form th:action="@{/add}">
-            <p><input type="submit" value="Submit"/></p>
-        </form>
+    <!-- Navigation -->
+    <div class="flex-container-nav">
+        <nav>
+            <a th:href="@{/index}">AmbrosiApp</a>
+            <a th:href="@{/mykitchen}">MyKitchen</a>
+            <a th:href="@{/logout}">Logout</a>
+        </nav>
+    </div>
+    <!-- Extended logged in navigation -->
+    <div class="flex-container">
+        <nav>
+            <a th:href="@{/add}">Add</a>
+            <a th:href="@{/userinfo}">MyInfo</a>
+        </nav>
+        <nav>
+            <a th:href="@{/cuisine}">Cuisine</a>
+            <a class="active" th:href="@{/recipes}">Admin</a>
+            <a th:href="@{/category}">Category</a>
+        </nav>
     </div>
     <div class="spaceMedium"></div>
-    <!-- Displays all recipes -->
-    <table>
-        <tr th:each="recipe: ${allRecipes}">
-            <td>
-                <div th:text="${recipe.recipeTitle}"></div>
-                </a>
-            </td>
-            <!-- Deletes the recipe -->
-            <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
-                                     class="editbutton">Delete</a></td>
-            <!-- Takes the user to the update recipe form -->
-            <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
-                                     class="editbutton">Update</a></td>
-        </tr>
-    </table>
-</div>
+    <div class="flex-container">
+        <div id="padding">
+            <!-- Takes the user to the add recipe form -->
+            <form th:action="@{/add}">
+                <p><input type="submit" value="Submit"/></p>
+            </form>
+        </div>
+        <div class="spaceMedium"></div>
+        <!-- Displays all recipes -->
+        <table>
+            <tr th:each="recipe: ${allRecipes}">
+                <td>
+                    <div th:text="${recipe.recipeTitle}"></div>
+                    </a>
+                </td>
+                <!-- Deletes the recipe -->
+                <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
+                                         class="editbutton">Delete</a></td>
+                <!-- Takes the user to the update recipe form -->
+                <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
+                                         class="editbutton">Update</a></td>
+            </tr>
+        </table>
+    </div>
 </sec:authorize>
 </body>
 </html>

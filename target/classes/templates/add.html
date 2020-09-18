@@ -114,19 +114,21 @@
                         </select>
                     </div>
                 </div>
-                <div>
-                        <table>
-                            <tr><td>File to upload:</td><td><input type="file" name="file" id="file" onchange="Filevalidation()" /></td></tr>
-                        </table>
+                <div class="row">
+                    <div class="column-left">
+                        <label for="file">File</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="file" name="file" id="file" onchange="Filevalidation()"/>
+                    </div>
                 </div>
-                <script type="text/javascript" src="script/fileUploadCheck.js">
-                </script>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">
                 </div>
             </form>
         </div>
     </div>
+    <script type="text/javascript" src="script/fileUploadCheck.js"></script>
 </sec:authorize>
 </body>
 </html>
