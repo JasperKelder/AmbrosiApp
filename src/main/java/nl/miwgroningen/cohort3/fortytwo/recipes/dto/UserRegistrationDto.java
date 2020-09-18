@@ -1,23 +1,24 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.dto;
 
 public class UserRegistrationDto {
+
     private String firstName;
     private String lastName;
-    private String email;
+    private String emailAddress;
     private String password;
 
-    public UserRegistrationDto() {
-
-    }
-
-    public UserRegistrationDto(String firstName, String lastName, String email, String password) {
+    //Constructors
+    public UserRegistrationDto(String firstName, String lastName, String emailAddress, String password) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.emailAddress = emailAddress;
         this.password = password;
     }
 
+    public UserRegistrationDto() {}
+
+    //Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -30,11 +31,11 @@ public class UserRegistrationDto {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
     public String getPassword() {
         return password;

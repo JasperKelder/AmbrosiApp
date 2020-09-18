@@ -5,16 +5,32 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CuisineRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
+import org.apache.catalina.connector.Response;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.aspectj.util.FileUtil;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.*;
 import java.util.*;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.security.Principal;
+import java.util.Optional;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -33,6 +49,9 @@ public class RecipeController {
     @Autowired
     CuisineRepository cuisineRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
@@ -42,8 +61,9 @@ public class RecipeController {
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image,
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image, Principal principal,
                                 BindingResult result) throws IOException {
+        recipe.setImage(image.getBytes());
         if (result.hasErrors()) {
             return "add";
         }
@@ -54,9 +74,12 @@ public class RecipeController {
             else {
                 recipe.setImage(image.getBytes());
             }
+        } else {
+            recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             recipeRepository.save(recipe);
         }
-        return "redirect:/recipes";
+            return "redirect:/index";
+        }
     }
 
     @GetMapping("/index")

@@ -134,4 +134,12 @@ public class Recipe {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

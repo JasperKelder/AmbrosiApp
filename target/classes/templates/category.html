@@ -1,47 +1,55 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>AmbrosiApp - Category</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/stylesheet.css"/>
-        <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    </head>
-    <body>
-        <div class="flex-container-nav">
-            <nav>
-                <a th:href="@{/indexloggedin}">AmbrosiApp</a>
-                <a th:href="@{/mykitchen}">MyKitchen</a>
-                <a th:href="@{/logout}">Logout</a>
-            </nav>
-        </div>
-        <div class="flex-container">
-            <nav>
-                <a th:href="@{/add}">Add</a>
-                <a th:href="@{/userinfo}">MyInfo</a>
-            </nav>
-            <nav>
-                <a th:href="@{/cuisine}">Cuisine</a>
-                <a th:href="@{/recipes}">Admin</a>
-                <a class="active" th:href="@{/category}">Category</a>
-            </nav>
-            <div class="space"></div>
-            <div id="padding">
-                <form action="#" th:action="@{/category}" th:object="${category}" method="post">
-                    <p hidden><input type="text" th:field="*{categoryId}"/></p>
-                    <p><input type="text" th:field="*{categoryName}" required placeholder="Category"/></p>
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
-            </div>
-            <div class="space"></div>
-            <table>
-                <tr th:each="category: ${allCategories}">
-                    <td th:text="${category.categoryName}"></td>
-<!--                    <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"-->
-<!--                                             class="editbutton">Delete</a></td>-->
-                    <td class="edittable"><a th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
-                                             class="editbutton">Update</a></td>
-                </tr>
-            </table>
-        </div>
-    </body>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AmbrosiApp - Category</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+<!-- Navigation -->
+<div class="flex-container-nav">
+    <nav>
+        <a th:href="@{/index}">AmbrosiApp</a>
+        <a th:href="@{/mykitchen}">MyKitchen</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+</div>
+<!-- Extended logged in navigation -->
+<div class="flex-container">
+    <nav>
+        <a th:href="@{/add}">Add</a>
+        <a th:href="@{/userinfo}">MyInfo</a>
+    </nav>
+    <nav>
+        <a th:href="@{/cuisine}">Cuisine</a>
+        <a th:href="@{/recipes}">Admin</a>
+        <a class="active" th:href="@{/category}">Category</a>
+    </nav>
+    <div class="spaceMedium"></div>
+    <div id="padding">
+        <!-- Add category form -->
+        <form action="#" th:action="@{/category}" th:object="${category}" method="post">
+            <p hidden><input type="text" th:field="*{categoryId}"/></p>
+            <p><input type="text" th:field="*{categoryName}" required placeholder="Category"/></p>
+            <p><input type="submit" value="Submit"/></p>
+        </form>
+    </div>
+    <div class="spaceMedium"></div>
+    <table>
+        <!-- Displays all categories -->
+        <tr th:each="category: ${allCategories}">
+            <td th:text="${category.categoryName}"></td>
+            <!-- Deletes the category, hidden because it can cause an error -->
+            <!--                    <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"-->
+            <!--                                             class="editbutton">Delete</a></td>-->
+            <!-- Loads the category in the add category form so it can be update -->
+            <td class="edittable"><a th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
+                                     class="editbutton">Update</a></td>
+        </tr>
+    </table>
+</div>
+</sec:authorize>
+</body>
 </html>

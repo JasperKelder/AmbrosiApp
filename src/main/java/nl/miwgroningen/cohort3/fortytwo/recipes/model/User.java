@@ -1,18 +1,18 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
  */
 
 @Entity
-@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email_address"))
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column(name = "first_name")
@@ -21,41 +21,45 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    private String email;
+    @Column(name = "email_address")
+    private String emailAddress;
 
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "users_roles",
+            name = "user_roles",
             joinColumns = @JoinColumn(
                     name = "user_id", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "roleId"))
+    private List<Role> roles;
 
-    private Collection< Role > roles;
+    //Constructors
+    public User() { }
 
-    public User() {
-
-    }
-
-    public User(String firstName, String lastName, String email, String password, Collection < Role > roles) {
+    public User(String firstName, String lastName, String emailAddress, String password, List < Role > roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.emailAddress = emailAddress;
         this.password = password;
         this.roles = roles;
     }
 
+    //Used in view.html to display the user who added the recipe
+    @Override
+    public String toString() {
+        return firstName;
+    }
+
+    //Getters and Setters
     public Integer getUserId() {
         return userId;
     }
-
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -68,11 +72,11 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String email) {
+        this.emailAddress = email;
     }
     public String getPassword() {
         return password;
@@ -80,10 +84,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Collection < Role > getRoles() {
+    public List < Role > getRoles() {
         return roles;
     }
-    public void setRoles(Collection < Role > roles) {
+    public void setRoles(List < Role > roles) {
         this.roles = roles;
     }
 
