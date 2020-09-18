@@ -15,6 +15,22 @@
         <a th:href="@{/login}">MyKitchen</a>
         <a th:href="@{/logout}">Logout</a>
     </nav>
+    </div>
+    <div class="spaceMedium"></div>
+    <div class="message">AmbrosiApp</div>
+<!--    grid-container creates a new container where max 8 grid items can be stored-->
+    <div class="grid-container">
+        <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+            <!-- this will add all the info into the grid items-->
+            <span class=grid-item th:value="${allRecipes.get(i).recipeId}">
+                 <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                 <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
+            </span>
+                <span class="food" th:text="${allRecipes.get(i).recipeTitle}"></span>
+            <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
+            <div th:if="${i} % 8 == 0">
+                <div th:if="${i} % 8 != 0">
 </div>
 <div class="flex-container" sec:authorize="hasAuthority('ROLE_USER')">
     <nav>
@@ -44,12 +60,14 @@
             <div th:if="${i} % 8 != 0">
                 <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
                     <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                     <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
+                    <a class="viewlink" th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                         <br><img src="/images/food.jpg" alt="Food" class="gridImage"></a>
                 </div>
-                <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
+                    <span class="food" th:text="${allRecipes.get(i).recipeTitle}"></span>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+     </div>
 </body>
 </html>

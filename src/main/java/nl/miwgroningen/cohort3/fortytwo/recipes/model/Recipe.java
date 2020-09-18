@@ -2,8 +2,15 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -49,6 +56,9 @@ public class Recipe {
     @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
+
+    @Lob
+    private byte[] image;
 
     public Integer getRecipeId() {
         return recipeId;
@@ -120,6 +130,14 @@ public class Recipe {
 
     public void setCategoryName(Category categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public User getUser() {
