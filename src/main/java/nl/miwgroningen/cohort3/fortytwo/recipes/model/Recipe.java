@@ -52,6 +52,11 @@ public class Recipe {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category categoryName;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
+
     @Lob
     private byte[] image;
 

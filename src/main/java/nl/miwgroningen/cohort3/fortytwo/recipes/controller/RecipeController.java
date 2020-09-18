@@ -74,12 +74,10 @@ public class RecipeController {
             else {
                 recipe.setImage(image.getBytes());
             }
-        } else {
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             recipeRepository.save(recipe);
         }
             return "redirect:/index";
-        }
     }
 
     @GetMapping("/index")

@@ -119,35 +119,14 @@
                             <tr><td>File to upload:</td><td><input type="file" name="file" id="file" onchange="Filevalidation()" /></td></tr>
                         </table>
                 </div>
-                <script>
-                    Filevalidation = () => {
-                        var allowedExtensions =
-                            /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-                        const fi = document.getElementById('file');
-                        // Check if any file is selected.
-                        if (fi.files.length > 0) {
-                            for (let i = 0; i <= fi.files.length - 1; i++) {
-                                const fsize = fi.files.item(i).size;
-                                const file = Math.round((fsize / 1024));
-                                // The size of the file.
-                                if (file >= 300) {
-                                    alert(
-                                        "File too Big, please select a file less than 500kb");
-                                        fi.value = '';
-                                }
-                                else if (!allowedExtensions.exec(fi.files.item(i).name)) {
-                                    alert('Invalid file type');
-                                    fi.value = '';
-                                }
-                            }
-                        }
-                    }
+                <script type="text/javascript" src="src/main/resources/static/script/fileUploadCheck.js">
                 </script>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">
                 </div>
             </form>
         </div>
-        </div>
-    </body>
+    </div>
+</sec:authorize>
+</body>
 </html>

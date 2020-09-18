@@ -41,17 +41,4 @@ public class FileUploadService {
         }
         return imageInBase64;
     }
-
-    public boolean checkImageType(MultipartFile image) {
-        List<String> contentTypes = Arrays.asList("image/png", "image/jpeg", "image/gif");
-        String imageContentType = image.getContentType();
-        errorsPassed = contentTypes.contains(imageContentType);
-        return errorsPassed;
-    }
-
-    public boolean checkImageSize(MultipartFile image) {
-        double imageSize = image.getSize() * 0.0009765625;
-        errorsPassed = imageSize < 300;
-        return errorsPassed;
-    }
 }
