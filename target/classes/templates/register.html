@@ -24,75 +24,64 @@
         <a th:href="@{/logout}">Logout</a>
     </div>
 </div>
-<!-- Use any element to open the sidenav -->
-<div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
-</div>
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
-</div>
-<div class="flex-container">
-    <div class="addContainer">
-        <!-- Registration form -->
-        <form th:action="@{/registration}" th:object="${user}" method="post">
-            <div class="row">
-                <div class="column-left">
-                    <label for="firstName">First Name</label>
-                </div>
-                <div class="column-right">
-                    <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
-                           required placeholder="First Name"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column-left">
-                    <label for="lastName">Last Name</label>
-                </div>
-                <div class="column-right">
-                    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
-                           placeholder="Last Name"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column-left">
-                    <label for="emailAddress">Email Address</label>
-                </div>
-                <div class="column-right">
-                    <input type="text" id="emailAddress" name="emailAddress" th:field="*{emailAddress}" required
-                           placeholder="Email Address"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column-left">
-                    <label for="password">Password</label>
-                </div>
-                <div class="column-right">
-                    <input type="password" id="password" name="password" th:field="*{password}" required
-                           placeholder="Password"/>
-                </div>
-            </div>
-            <p>
-                <button type="submit">Register</button>
-            </p>
-        </form>
-        <div class="spaceTiny"></div>
-        <!-- Navigation for login -->
-        <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
+    <!-- Use any element to open the sidenav -->
+    <div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
     </div>
-    <div class="spaceMedium"></div>
-    <!-- Displays a message after a successful registration -->
-    <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
+    <div class="flex-container">
+        <div class="addContainer">
+            <!-- Registration form -->
+            <form th:action="@{/registration}" th:object="${user}" method="post">
+                <div class="row">
+                    <div class="column-left">
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
+                               required placeholder="First Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-left">
+                        <label for="lastName">Last Name</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
+                               placeholder="Last Name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-left">
+                        <label for="emailAddress">Email Address</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="text" id="emailAddress" name="emailAddress" th:field="*{emailAddress}" required
+                               placeholder="Email Address"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-left">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="password" id="password" name="password" th:field="*{password}" required
+                               placeholder="Password"/>
+                    </div>
+                </div>
+                <p>
+                    <button type="submit">Register</button>
+                </p>
+            </form>
+            <div class="spaceTiny"></div>
+            <!-- Navigation for login -->
+            <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
+        </div>
+        <div class="spaceMedium"></div>
+        <!-- Displays a message after a successful registration -->
+        <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
+    </div>
 </div>
-<script>
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>
+<script type="text/javascript" src="script/navigation.js"></script>
 </body>
 </html>

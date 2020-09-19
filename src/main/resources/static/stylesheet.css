@@ -6,7 +6,7 @@ body {
     background-color: black;
     width: 200px;
     border: 3px solid #7c003e;
-    margin-left: 100px;
+    margin-left: 50px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -33,7 +33,7 @@ body {
     font-size: 25px;
     color: #1e9696;
     display: block;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 /* When you mouse over the navigation links, change their color */

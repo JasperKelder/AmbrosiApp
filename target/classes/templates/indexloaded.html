@@ -26,40 +26,29 @@
     </div>
 </div>
 </div>
-<!-- Use any element to open the sidenav -->
-<div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
-</div>
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
-</div>
-<!--    grid-container creates a new container where max 8 grid items can be stored-->
-<div class="grid-container">
-    <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
-        <!-- this will add all the info into the grid items-->
-        <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-            <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
-        </div>
-        <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
-        <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
-        <div th:if="${i} % 8 == 0">
-            <div th:if="${i} % 8 != 0">
+    <!-- Use any element to open the sidenav -->
+    <div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
+    </div>
+    <!--    grid-container creates a new container where max 8 grid items can be stored-->
+    <div class="grid-container">
+        <!-- creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+            <!-- this will add all the info into the grid items-->
+            <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
+                <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
+            </div>
+            <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
+            <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
+            <div th:if="${i} % 8 == 0">
+                <div th:if="${i} % 8 != 0">
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>
+<script type="text/javascript" src="script/navigation.js"></script>
 </body>
 </html>

@@ -25,49 +25,37 @@
             <a th:href="@{/logout}">Logout</a>
         </div>
     </div>
-    <!-- Use any element to open the sidenav -->
-    <div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
-    </div>
     <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <div id="main">
-    </div>
-    <div class="flex-container">
-        <div id="padding">
-            <!-- Takes the user to the add recipe form -->
-            <form th:action="@{/add}">
-                <p><input type="submit" value="Submit"/></p>
-            </form>
+        <!-- Use any element to open the sidenav -->
+        <div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
         </div>
-        <div class="spaceMedium"></div>
-        <!-- Displays all recipes -->
-        <table>
-            <tr th:each="recipe: ${allRecipes}">
-                <td>
-                    <div th:text="${recipe.recipeTitle}"></div>
-                    </a>
-                </td>
-                <!-- Deletes the recipe -->
-                <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
-                                         class="editbutton">Delete</a></td>
-                <!-- Takes the user to the update recipe form -->
-                <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
-                                         class="editbutton">Update</a></td>
-            </tr>
-        </table>
+        <div class="flex-container">
+            <div id="padding">
+                <!-- Takes the user to the add recipe form -->
+                <form th:action="@{/add}">
+                    <p><input type="submit" value="Submit"/></p>
+                </form>
+            </div>
+            <div class="spaceMedium"></div>
+            <!-- Displays all recipes -->
+            <table>
+                <tr th:each="recipe: ${allRecipes}">
+                    <td>
+                        <div th:text="${recipe.recipeTitle}"></div>
+                        </a>
+                    </td>
+                    <!-- Deletes the recipe -->
+                    <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
+                                             class="editbutton">Delete</a></td>
+                    <!-- Takes the user to the update recipe form -->
+                    <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
+                                             class="editbutton">Update</a></td>
+                </tr>
+            </table>
+        </div>
     </div>
-
 </sec:authorize>
-<script>
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>
+<script type="text/javascript" src="script/navigation.js"></script>
 </body>
 </html>

@@ -25,40 +25,29 @@
     </div>
 </div>
 </div>
-<!-- Use any element to open the sidenav -->
-<div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
-</div>
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
-</div>
-<div class="flex-container">
-    <div id="padding">
-        <!-- Login form -->
-        <form th:action="@{/login}" method="post">
-            <input class="margin" type="text" id="username" name="username" placeholder="Email address"
-                   autofocus="autofocus">
-            <input class="margin" type="password" id="password" name="password" placeholder="Password"/>
-            <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
-        </form>
-        <div class="spaceTiny"></div>
-        <!-- Navigation for register -->
-        <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
+    <!-- Use any element to open the sidenav -->
+    <div onclick="openNav()"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli">
     </div>
-    <div class="spaceMedium"></div>
-    <!-- Displays a message after an unsuccessful login -->
-    <div class="messagesmall" th:if="${param.error}">Invalid email address or password</div>
+    <div class="flex-container">
+        <div id="padding">
+            <!-- Login form -->
+            <form th:action="@{/login}" method="post">
+                <input class="margin" type="text" id="username" name="username" placeholder="Email address"
+                       autofocus="autofocus">
+                <input class="margin" type="password" id="password" name="password" placeholder="Password"/>
+                <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
+            </form>
+            <div class="spaceTiny"></div>
+            <!-- Navigation for register -->
+            <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
+        </div>
+        <div class="spaceMedium"></div>
+        <!-- Displays a message after an unsuccessful login -->
+        <div class="messagesmall" th:if="${param.error}">Invalid email address or password</div>
+    </div>
 </div>
 </div>
-<script>
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-</script>
+<script type="text/javascript" src="script/navigation.js"></script>
 </body>
