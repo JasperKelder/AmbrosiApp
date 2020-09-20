@@ -5,26 +5,26 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-- Temporary extra version of index.html to make sure loading the grid doesn't cause problems -->
 <body>
 <div id="myTopnav" class="topnav">
     <nav>
         <div onclick="openNav()" class="broccolinopad"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli"></div>
-        <div><a th:href="@{/index}">AmbrosiApp</a></div>
+        <div><a th:href="@{/index}" class="active">AmbrosiApp</a></div>
     </nav>
 </div>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a th:href="@{/login}">Login</a>
     <div sec:authorize="hasAuthority('ROLE_USER')">
+        <a th:href="@{/mykitchen}">MyKitchen</a>
         <a th:href="@{/add}">AddRecipe</a>
         <a th:href="@{/userinfo}">MyInfo</a>
     </div>
     <div sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a th:href="@{/cuisine}">Cuisine</a>
         <a th:href="@{/recipes}">Recipe</a>
+        <a th:href="@{/cuisine}">Cuisine</a>
         <a th:href="@{/category}">Category</a>
     </div>
     <div sec:authorize="hasAuthority('ROLE_USER')">
@@ -42,7 +42,7 @@
                 <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                     <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
             </div>
-            <div class="food" th:text="${allRecipes.get(i).recipeTitle}"></div>
+            <div class="foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
             <!-- everytime that the size of the items modulo 8 equals 0 create new grid-->
             <div th:if="${i} % 8 == 0">
                 <div th:if="${i} % 8 != 0">
