@@ -60,6 +60,14 @@ public class Recipe {
     @Lob
     private byte[] image;
 
+    public Recipe(byte[] image) {
+        this.image = image;
+    }
+
+    public Recipe() {
+
+    }
+
     public Integer getRecipeId() {
         return recipeId;
     }

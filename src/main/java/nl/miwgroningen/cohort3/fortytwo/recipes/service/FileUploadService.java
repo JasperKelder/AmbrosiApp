@@ -1,15 +1,10 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Base64;
-import java.util.List;
 
 /**
  * For the sake of overview, we have made this service which contains:
