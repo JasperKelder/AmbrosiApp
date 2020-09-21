@@ -217,7 +217,8 @@ td {
     grid-template-columns: auto auto auto auto;
     grid-template-rows: 250px 250px 250px 250px;
     padding: 50px;
-    grid-gap: 75px;
+    grid-column-gap: 75px;
+    grid-row-gap: 140px;
 }
 
 .grid-container-view {

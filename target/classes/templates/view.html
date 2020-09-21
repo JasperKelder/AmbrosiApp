@@ -36,7 +36,6 @@
     <div id="printpage">
         <!-- Displays the recipe title -->
         <div class="message" th:text="${recipe.recipeTitle}"></div>
-        <div class="spaceSmall"></div>
         <div class="flex-container">
             <div class="grid-container-view">
                 <div class="grid-item-view">
@@ -71,6 +70,7 @@
                 </div>
             </div>
         </div>
+        <div class="spaceMedium"></div>
         <!-- Shows who added the recipe -->
         <div class="messagesmall">Contributed by</div>
         <div class="messagesmall" th:text="${recipe.user}"></div>
