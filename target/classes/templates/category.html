@@ -8,57 +8,51 @@
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
-    <div id="myTopnav" class="topnav">
-        <nav>
-            <div onclick="openNav()" class="broccolinopad"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli"></div>
-            <div><a th:href="@{/index}">EatAndTreat</a></div>
-        </nav>
-    </div>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a th:href="@{/login}">Login</a>
-        <div sec:authorize="hasAuthority('ROLE_USER')">
-            <a th:href="@{/mykitchen}">MyKitchen</a>
-            <a th:href="@{/add}">AddRecipe</a>
-            <a th:href="@{/userinfo}">MyInfo</a>
+    <!--Top navigation-->
+    <ul>
+        <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+        <li><a th:href="@{/index}">EatAndTreat</a></li>
+        <li class="totheright"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+        <li class="totheright"><a th:href="@{/mykitchen}">MyKitchen</a></li>
+    </ul>
+    <!--Lower navigation-->
+    <ul class="navborder">
+        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                              th:href="@{/recipes}">Recipe</a></li>
+        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                              th:href="@{/cuisine}">Cuisine</a></li>
+        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a id="active" class="lowernav"
+                                                                              th:href="@{/category}">Category</a></li>
+        <li class="loginoutbutton"><a class="lowernav"
+                                      th:href="@{/logout}">Logout</a></li>
+        <li class="loginoutbutton"><a class="lowernav"
+                                      th:href="@{/login}">Login</a></li>
+    </ul>
+    <div class="flex-container">
+        <div class="spaceMedium"></div>
+        <div id="padding">
+            <!-- Add category form -->
+            <form action="#" th:action="@{/category}" th:object="${category}" method="post">
+                <p hidden><input type="text" th:field="*{categoryId}"/></p>
+                <p><input type="text" th:field="*{categoryName}" required placeholder="Category"/></p>
+                <p><input type="submit" value="Submit"/></p>
+            </form>
         </div>
-        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a th:href="@{/recipes}">Recipe</a>
-            <a th:href="@{/cuisine}">Cuisine</a>
-            <a th:href="@{/category}" class="active">Category</a>
-        </div>
-        <div sec:authorize="hasAuthority('ROLE_USER')">
-            <a th:href="@{/logout}">Logout</a>
-        </div>
-    </div>
-    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-    <div id="main">
-        <div class="flex-container">
-            <div class="spaceSmall"></div>
-            <div id="padding">
-                <!-- Add category form -->
-                <form action="#" th:action="@{/category}" th:object="${category}" method="post">
-                    <p hidden><input type="text" th:field="*{categoryId}"/></p>
-                    <p><input type="text" th:field="*{categoryName}" required placeholder="Category"/></p>
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
-            </div>
-            <div class="spaceMedium"></div>
-            <table>
-                <!-- Displays all categories -->
-                <tr th:each="category: ${allCategories}">
-                    <td th:text="${category.categoryName}"></td>
-                    <!-- Deletes the category, hidden because it can cause an error -->
-                    <!--                    <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"-->
-                    <!--                                             class="editbutton">Delete</a></td>-->
-                    <!-- Loads the category in the add category form so it can be update -->
-                    <td class="edittable"><a th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
-                                             class="editbutton">Update</a></td>
-                </tr>
-            </table>
-        </div>
+        <div class="spaceMedium"></div>
+        <table>
+            <!-- Displays all categories -->
+            <tr th:each="category: ${allCategories}">
+                <td th:text="${category.categoryName}"></td>
+                <!-- Deletes the category, hidden because it can cause an error -->
+                <!--                    <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"-->
+                <!--                                             class="editbutton">Delete</a></td>-->
+                <!-- Loads the category in the add category form so it can be update -->
+                <td class="edittable"><a
+                        th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
+                        class="editbutton">Update</a></td>
+            </tr>
+        </table>
     </div>
 </sec:authorize>
-<script type="text/javascript" src="script/navigation.js"></script>
 </body>
 </html>

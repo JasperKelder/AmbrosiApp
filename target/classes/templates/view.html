@@ -7,102 +7,96 @@
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
-<div id="myTopnav" class="topnav">
-    <nav>
-        <div onclick="openNav()" class="broccolinopad"><img class="broccoli" src="/images/broccoli.png" alt="Broccoli"></div>
-        <div><a th:href="@{/index}">EatAndTreat</a></div>
-    </nav>
-</div>
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a th:href="@{/login}">Login</a>
-    <div sec:authorize="hasAuthority('ROLE_USER')">
-        <a th:href="@{/mykitchen}">MyKitchen</a>
-        <a th:href="@{/add}">AddRecipe</a>
-        <a th:href="@{/userinfo}">MyInfo</a>
-    </div>
-    <div sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a th:href="@{/recipes}">Recipe</a>
-        <a th:href="@{/cuisine}">Cuisine</a>
-        <a th:href="@{/category}">Category</a>
-    </div>
-    <div sec:authorize="hasAuthority('ROLE_USER')">
-        <a th:href="@{/logout}">Logout</a>
-    </div>
-</div>
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-<div id="main">
-    <!-- Id to indicate what can be printed -->
-    <div id="printpage">
-        <!-- Displays the recipe title -->
-        <div class="message" th:text="${recipe.recipeTitle}"></div>
-        <div class="flex-container">
-            <div class="grid-container-view">
-                <div class="grid-item-view">
-                    <div class="flex-container">
-                        <!-- Displays ingredients in a grid to the left -->
-                        <table>
-                            <tr>
-                                <th>Ingredients</th>
-                            </tr>
-                            <tr>
-                                <td th:text="${recipe.ingredients}"></td>
-                            </tr>
-                        </table>
-                    </div>
+<!--Top navigation-->
+<ul>
+    <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+    <li><a th:href="@{/index}">EatAndTreat</a></li>
+    <li class="totheright"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+    <li class="totheright" sec:authorize="hasAuthority('ROLE_USER')"><a th:href="@{/mykitchen}">MyKitchen</a></li>
+</ul>
+<!--Lower navigation-->
+<ul class="navborder">
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                          th:href="@{/recipes}">Recipe</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                          th:href="@{/cuisine}">Cuisine</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                          th:href="@{/category}">Category</a></li>
+    <li class="loginoutbutton"><a class="lowernav"
+                                  th:href="@{/logout}">Logout</a></li>
+    <li class="loginoutbutton"><a class="lowernav"
+                                  th:href="@{/login}">Login</a></li>
+</ul>
+<!-- Id to indicate what can be printed -->
+<div id="printpage">
+    <!-- Displays the recipe title -->
+    <div class="message" th:text="${recipe.recipeTitle}"></div>
+    <div class="flex-container">
+        <div class="grid-container-view">
+            <div class="grid-item-view">
+                <div class="flex-container">
+                    <!-- Displays ingredients in a grid to the left -->
+                    <table>
+                        <tr>
+                            <th>Ingredients</th>
+                        </tr>
+                        <tr>
+                            <td th:text="${recipe.ingredients}"></td>
+                        </tr>
+                    </table>
                 </div>
-                <!-- Displays an image in a grid in the center -->
-                <div class="grid-item-view">
-                    <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" class="viewImage">
-                </div>
-                <div class="grid-item-view">
-                    <div class="flex-container">
-                        <!-- Displays preparation in a grid to the right -->
-                        <table>
-                            <tr>
-                                <th>Preparation</th>
-                            </tr>
-                            <tr>
-                                <td th:text="${recipe.recipePreperation}"></td>
-                            </tr>
-                        </table>
-                    </div>
+            </div>
+            <!-- Displays an image in a grid in the center -->
+            <div class="grid-item-view">
+                <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" class="viewImage">
+            </div>
+            <div class="grid-item-view">
+                <div class="flex-container">
+                    <!-- Displays preparation in a grid to the right -->
+                    <table>
+                        <tr>
+                            <th>Preparation</th>
+                        </tr>
+                        <tr>
+                            <td th:text="${recipe.recipePreperation}"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="spaceMedium"></div>
+    <!-- Shows who added the recipe -->
+    <div class="messagesmall">Contributed by</div>
+    <div class="messagesmall" th:text="${recipe.user}"></div>
+    <div class="spaceMedium"></div>
+    <div class="flex-container">
+        <!-- Show servings, preparationTime, cookTime, cuisine and category -->
+        <table>
+            <tr>
+                <th>Servings</th>
+                <td th:text="${recipe.servings}"></td>
+            </tr>
+            <tr>
+                <th>PreperationTime</th>
+                <td th:text="${recipe.preperationTime}"></td>
+            </tr>
+            <tr>
+                <th>CookTime</th>
+                <td th:text="${recipe.cooktime}"></td>
+            <tr>
+                <th>Cuisine</th>
+                <td th:text="${recipe.cuisineName}"></td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td th:text="${recipe.categoryName}"></td>
+            </tr>
+            </tr>
+        </table>
         <div class="spaceMedium"></div>
-        <!-- Shows who added the recipe -->
-        <div class="messagesmall">Contributed by</div>
-        <div class="messagesmall" th:text="${recipe.user}"></div>
-        <div class="spaceMedium"></div>
-        <div class="flex-container">
-            <!-- Show servings, preparationTime, cookTime, cuisine and category -->
-            <table>
-                <tr>
-                    <th>Servings</th>
-                    <td th:text="${recipe.servings}"></td>
-                </tr>
-                <tr>
-                    <th>PreperationTime</th>
-                    <td th:text="${recipe.preperationTime}"></td>
-                </tr>
-                <tr>
-                    <th>CookTime</th>
-                    <td th:text="${recipe.cooktime}"></td>
-                <tr>
-                    <th>Cuisine</th>
-                    <td th:text="${recipe.cuisineName}"></td>
-                </tr>
-                <tr>
-                    <th>Category</th>
-                    <td th:text="${recipe.categoryName}"></td>
-                </tr>
-                </tr>
-            </table>
-            <div class="spaceMedium"></div>
-            <!-- Button for printing -->
-            <input type="submit" value="Print" onClick="printPageArea('printpage')">
-        </div>
+        <!-- Button for printing -->
+        <input type="submit" value="Print" onClick="printPageArea('printpage')">
     </div>
 </div>
 <script>
@@ -113,16 +107,6 @@
         WinPrint.document.close();
         WinPrint.focus();
         WinPrint.print();
-    }
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-    /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
     }
 </script>
 </body>
