@@ -9,14 +9,21 @@
 <body>
 <!--Top navigation-->
 <ul>
-    <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
-    <li><a th:href="@{/index}">EatAndTreat</a></li>
-    <li class="totheright">
-        <img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+    <li>
+        <a th:href="@{/index}" class="nopadding"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
+    <li class="topnav">
+        <a th:href="@{/index}">EatAndTreat</a></li>
     <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
+        <a th:href="@{/mykitchen}" class="nopadding">
+            <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
+    <li class="topnav totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
         <a th:href="@{/mykitchen}">MyKitchen</a></li>
     <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
+        <a th:href="@{/login}" class="nopadding">
+            <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
+    <li class="topnav totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
         <a th:href="@{/login}">MyKitchen</a></li>
+    <li class="searchbarli"><input id="searchbar" type="text" placeholder="Search"></li>
 </ul>
 <!--Lower navigation-->
 <ul class="navborder">

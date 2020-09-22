@@ -7,7 +7,6 @@ body {
 }
 
 /* Navigation */
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -36,6 +35,10 @@ li a {
     transition-duration: 0.5s;
 }
 
+.nopadding {
+    padding: 0px 0px;
+}
+
 li a:hover, #active {
     color: #FFC72C;
 }
@@ -45,12 +48,34 @@ li a:hover, #active {
     padding: 0px 0px;
     float: right;
 }
+
 .loginoutbutton {
     float: right;
     margin-right: 21px;
 }
+
 .adminbutton {
     margin-left: 21px;
+}
+
+.searchbarli {
+    float: none;
+    margin: auto;
+    width: 300px;
+    padding-top: 30px;
+}
+#searchbar {
+    border: 3px solid #1e9696;
+    border-radius: 25px;
+    background-color: #007c7c;
+    color: black;
+    text-align: center;
+    font-size: 120%;
+}
+
+::placeholder {
+    color: black;
+    opacity: 1;
 }
 
 .broccoli {
@@ -62,6 +87,30 @@ li a:hover, #active {
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 3px;
+}
+
+/* Hides topnav links when the screen is smaller than the specified width */
+@media screen and (max-width: 1100px) {
+    .topnav a {
+        display: none;
+    }
+}
+
+/* Changes the searchbar width when the screen is smaller than the specified width */
+@media screen and (max-width: 750px) {
+    .searchbarli {
+        width: 200px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .searchbarli {
+        width: 150px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .searchbarli {
+        width: 80px;
+    }
 }
 
 h2, label, th {
