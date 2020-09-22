@@ -1,8 +1,9 @@
-Filevalidation = () => {
+FileValidation = (event) => {
     var allowedExtensions =
         /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-    const image = document.getElementById('file');
-    // Check if any file is uploaded
+    var image = document.getElementById('file');
+    image.src = URL.createObjectURL(event.target.files[0]);
+        // Check if any file is uploaded
     if (image.files.length > 0) {
         for (let i = 0; i <= image.files.length - 1; i++) {
             const fsize = image.files.item(i).size;
