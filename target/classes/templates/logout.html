@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - Logout</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+</head>
+<body>
+<!--Top navigation-->
+<ul>
+    <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+    <li><a th:href="@{/index}">EatAndTreat</a></li>
+    <li class="totheright"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+    <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/mykitchen}">MyKitchen</a></li>
+    <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/login}">MyKitchen</a></li>
+</ul>
+<!--Lower navigation-->
+<ul class="navborder">
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                          th:href="@{/recipes}">Recipe</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                          th:href="@{/cuisine}">Cuisine</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                          th:href="@{/category}">Category</a></li>
+    <li class="loginoutbutton"><a class="lowernav"
+                                  th:href="@{/logout}">Logout</a></li>
+    <li class="loginoutbutton"><a class="lowernav"
+                                  th:href="@{/login}">Login</a></li>
+</ul>
+<div class="flex-container">
+    <div class="spaceLarge"></div>
+    <div class="spaceLarge"></div>
+    <!-- Displays Elmo's -->
+    <div>
+        <img src="/images/elmoDance.gif" alt="Elmo Dancing" class="elmo">
+        <img src="/images/elmoWave.gif" alt="Elmo Waving" class="elmo">
+        <img src="/images/elmoDance.gif" alt="Elmo Dancing" class="elmo">
+    </div>
+</div>
+</body>
