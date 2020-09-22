@@ -3,3 +3,4 @@ Our code has to be:
 - Conform the coding standards
 - Peer reviewed
 - Pushed to github
+- Create Junit tests when necessary

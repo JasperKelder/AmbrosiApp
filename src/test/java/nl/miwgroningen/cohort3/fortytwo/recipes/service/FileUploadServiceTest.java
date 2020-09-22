@@ -13,5 +13,4 @@ public class FileUploadServiceTest {
         Recipe recipe = new Recipe(null);
         Assert.assertTrue(fileUploadServiceTest.convertToBase64(recipe) instanceof String);
     }
-
 }
