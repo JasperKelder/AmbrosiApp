@@ -27,19 +27,23 @@
     <li class="loginoutbutton"><a class="lowernav"
                                   th:href="@{/login}">Login</a></li>
 </ul>
-<!--Grid-container creates a new container where max 8 grid items can be stored-->
-<div class="grid-container">
-    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
-        <!--This will add all the info into the grid items-->
-        <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
-            <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
-        </div>
-        <div class="foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
-        <!--Everytime that the size of the items modulo 8 equals 0 create new grid-->
-        <div th:if="${i} % 8 == 0">
-            <div th:if="${i} % 8 != 0">
+<div class="spaceMedium"></div>
+<div th:if="${allRecipes.size() < 1}"><div class="message">Nothing to see here, <a href="/add">Add your recipe!</a></div></div>
+<div th:if="${allRecipes.size() >= 1}">
+    <!--Grid-container creates a new container where max 8 grid items can be stored-->
+    <div class="grid-container">
+        <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+            <!--This will add all the info into the grid items-->
+            <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
+                <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
+            </div>
+            <div class="foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
+            <!--Everytime that the size of the items modulo 8 equals 0 create new grid-->
+            <div th:if="${i} % 8 == 0">
+                <div th:if="${i} % 8 != 0">
+                </div>
             </div>
         </div>
     </div>
