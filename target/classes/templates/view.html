@@ -11,22 +11,25 @@
 <ul>
     <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
     <li><a th:href="@{/index}">EatAndTreat</a></li>
-    <li class="totheright"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
-    <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/mykitchen}">MyKitchen</a></li>
-    <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/login}">MyKitchen</a></li>
+    <li class="totheright">
+        <img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+    <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
+        <a th:href="@{/mykitchen}">MyKitchen</a></li>
+    <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
+        <a th:href="@{/login}">MyKitchen</a></li>
 </ul>
 <!--Lower navigation-->
 <ul class="navborder">
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
-                                                                          th:href="@{/recipes}">Recipe</a></li>
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
-                                                                          th:href="@{/cuisine}">Cuisine</a></li>
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
-                                                                          th:href="@{/category}">Category</a></li>
-    <li class="loginoutbutton"><a class="lowernav"
-                                  th:href="@{/logout}">Logout</a></li>
-    <li class="loginoutbutton"><a class="lowernav"
-                                  th:href="@{/login}">Login</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <a class="lowernav" th:href="@{/recipes}">Recipe</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <a class="lowernav" th:href="@{/cuisine}">Cuisine</a></li>
+    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <a class="lowernav" th:href="@{/category}">Category</a></li>
+    <li class="loginoutbutton">
+        <a class="lowernav" th:href="@{/logout}">Logout</a></li>
+    <li class="loginoutbutton">
+        <a class="lowernav" th:href="@{/login}">Login</a></li>
 </ul>
 <!-- Id to indicate what can be printed -->
 <div id="printpage">
