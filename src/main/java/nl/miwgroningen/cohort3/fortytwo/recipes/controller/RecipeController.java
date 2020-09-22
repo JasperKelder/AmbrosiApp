@@ -67,7 +67,7 @@ public class RecipeController {
             return "redirect:/index";
     }
 
-    @GetMapping("/index")
+    @GetMapping({"/index", "/"})
     protected String showRecipes(Model model) {
         List<Recipe> recipes = recipeRepository.findAll();
         List<String> imagesList = new ArrayList<>();
@@ -77,7 +77,7 @@ public class RecipeController {
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
 
-        return "indexloaded";
+        return "index";
     }
 
     @GetMapping("/indexloggedin")
@@ -117,7 +117,7 @@ public class RecipeController {
             model.addAttribute("recipe", recipe);
             return "add";
         }
-        return "indexloaded";
+        return "index";
     }
 
     @GetMapping("/view/{id}")

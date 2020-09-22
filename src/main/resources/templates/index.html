@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EatAndTreat - Index</title>
+    <title>EatAndTreat - Overview</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
@@ -27,5 +27,22 @@
     <li class="loginoutbutton"><a class="lowernav"
                                   th:href="@{/login}">Login</a></li>
 </ul>
+<!--Grid-container creates a new container where max 8 grid items can be stored-->
+<div class="grid-container">
+    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+        <!--This will add all the info into the grid items-->
+        <div class=grid-item th:value="${allRecipes.get(i).recipeId}">
+            <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
+        </div>
+        <div class="foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
+        <!--Everytime that the size of the items modulo 8 equals 0 create new grid-->
+        <div th:if="${i} % 8 == 0">
+            <div th:if="${i} % 8 != 0">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
