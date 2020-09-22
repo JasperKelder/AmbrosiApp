@@ -35,8 +35,14 @@ public class Recipe {
     @Column
     private Integer servings;
 
-    @Column
-    private String ingredients;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "recipe_ingredients",
+            joinColumns = @JoinColumn(
+                    name = "recipe_id", referencedColumnName = "recipeId"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "ingredient_id", referencedColumnName = "ingredientId"))
+    private List<Ingredient> ingredients;
 
     @Column
     // Cooktime will be set in minutes
@@ -108,11 +114,11 @@ public class Recipe {
         this.servings = servings;
     }
 
-    public String getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
