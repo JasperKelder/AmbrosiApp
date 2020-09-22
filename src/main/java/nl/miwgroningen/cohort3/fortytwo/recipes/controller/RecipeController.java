@@ -114,6 +114,9 @@ public class RecipeController {
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         if (recipe.isPresent()) {
+            // If current image is present then convert it to base64 string so it can be displayed as a place holder
+            String currentImage = fileUploadService.convertToBase64(recipe.get());
+            model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe);
             return "add";
         }

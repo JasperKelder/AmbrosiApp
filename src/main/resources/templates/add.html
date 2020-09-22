@@ -123,9 +123,11 @@
                         <label for="file">Image</label>
                     </div>
                     <div class="column-right">
-                        <input type="file" name="file" id="file" onchange="Filevalidation()"/>
+                        <input type="file" name="file" id="file" onchange="FileValidation()" th:placeholder="|data:image/jpeg;base64,${currentImage}|">
                     </div>
                 </div>
+                <div class="row">Current image:</div>
+                <img th:src="|data:image/jpeg;base64,${currentImage}|"/>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">
                 </div>
