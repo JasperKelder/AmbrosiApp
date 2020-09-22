@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -45,11 +46,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    //Method to save new password
-    //TODO user current user instead of new user, figure out how.
+    //Method to save new password. get current user using findbyemail method and save only new password
     @Override
-    public User save(PasswordChangeDto passwordChangeDto) {
-        User user = new User(passwordEncoder.encode(passwordChangeDto.getPassword()));
+    public User save(PasswordChangeDto passwordChangeDto, Principal principal) {
+        User user = userRepository.findByEmailAddress(principal.getName());
+        user.setPassword(passwordEncoder.encode(passwordChangeDto.getPassword()));
 
         return userRepository.save(user);
     }

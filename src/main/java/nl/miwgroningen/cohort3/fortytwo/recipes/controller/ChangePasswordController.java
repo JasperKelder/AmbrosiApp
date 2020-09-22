@@ -1,6 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,11 +49,11 @@ public class ChangePasswordController {
         return "changepassword";
     }
 
+    //method to save new password with current user
     @PostMapping
-    public String saveNewPassword(@ModelAttribute("user") PasswordChangeDto passwordChangeDto) {
-        userService.save(passwordChangeDto);
+    public String saveNewPassword(@ModelAttribute("user") PasswordChangeDto passwordChangeDto, Principal principal) {
+        userService.save(passwordChangeDto, principal);
         return "redirect:/changepassword?success";
     }
 
 }
-
