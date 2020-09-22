@@ -38,11 +38,10 @@
                 <div class="flex-container">
                     <!-- Displays ingredients in a grid to the left -->
                     <table>
-                        <tr>
-                            <th>Ingredients</th>
-                        </tr>
-                        <tr>
-                            <td th:text="${recipe.ingredients}"></td>
+                        <tr th:each="ingredient: ${recipe.ingredients}">
+                            <td>
+                                <div th:text="${ingredient.getIngredientName()}"></div>
+                            </td>
                         </tr>
                     </table>
                 </div>
