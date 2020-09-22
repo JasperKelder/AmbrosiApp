@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.UserRegistrationDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Role;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -40,6 +42,15 @@ public class UserServiceImpl implements UserService {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmailAddress(),
                 passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(roleRepository.findRoleByName("ROLE_USER")));
+
+        return userRepository.save(user);
+    }
+
+    //Method to save new password. get current user using findbyemail method and save only new password
+    @Override
+    public User save(PasswordChangeDto passwordChangeDto, Principal principal) {
+        User user = userRepository.findByEmailAddress(principal.getName());
+        user.setPassword(passwordEncoder.encode(passwordChangeDto.getPassword()));
 
         return userRepository.save(user);
     }
