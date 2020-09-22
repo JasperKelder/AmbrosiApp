@@ -381,7 +381,7 @@ select {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    /*border: 1px solid #1e9696;*/
+    border: 1px solid #1e9696;
     text-align: center;
     padding: 130px;
 }
