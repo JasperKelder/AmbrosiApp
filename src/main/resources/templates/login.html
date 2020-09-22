@@ -12,7 +12,8 @@
     <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
     <li><a th:href="@{/index}">EatAndTreat</a></li>
     <li class="totheright"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
-    <li class="totheright" sec:authorize="hasAuthority('ROLE_USER')"><a th:href="@{/mykitchen}">MyKitchen</a></li>
+    <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/mykitchen}">MyKitchen</a></li>
+    <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/login}">MyKitchen</a></li>
 </ul>
 <!--Lower navigation-->
 <ul class="navborder">
