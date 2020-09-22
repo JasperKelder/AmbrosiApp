@@ -16,6 +16,10 @@ public class Ingredient {
     @ManyToMany(mappedBy="ingredients")
     private List<Recipe> recipes;
 
+    @Override
+    public String toString() {
+        return ingredientName;
+    }
 
     // Getters and setters:
     public Integer getIngredientId() {

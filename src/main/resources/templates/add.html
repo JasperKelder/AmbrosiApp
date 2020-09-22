@@ -77,8 +77,12 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                     <div class="column-right">
-                        <textarea id="ingredients" name="ingredients" th:field="*{ingredients}" required
-                                  placeholder="Ingredients"></textarea>
+                        <select id="ingredients" name="ingredient" th:field="*{ingredients}" required>
+                                <option th:each="ingredient : ${allIngredients}"
+                                        th:value="${ingredient.getIngredientId()}"
+                                        th:text="${ingredient.getIngredientName()}">
+                                </option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

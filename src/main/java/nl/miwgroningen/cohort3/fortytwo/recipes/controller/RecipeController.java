@@ -1,11 +1,8 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CuisineRepository;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +34,9 @@ public class RecipeController {
     CuisineRepository cuisineRepository;
 
     @Autowired
+    IngredientRepository ingredientRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @GetMapping("/add")
@@ -44,6 +44,7 @@ public class RecipeController {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+        model.addAttribute("allIngredients", ingredientRepository.findAll());
         return "add";
     }
 
@@ -113,6 +114,7 @@ public class RecipeController {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+        model.addAttribute("allIngredients", ingredientRepository.findAll());
         if (recipe.isPresent()) {
             model.addAttribute("recipe", recipe);
             return "add";
