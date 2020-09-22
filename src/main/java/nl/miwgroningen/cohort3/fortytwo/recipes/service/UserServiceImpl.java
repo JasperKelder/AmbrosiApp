@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.UserRegistrationDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Role;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
@@ -40,6 +41,14 @@ public class UserServiceImpl implements UserService {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmailAddress(),
                 passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(roleRepository.findRoleByName("ROLE_USER")));
+
+        return userRepository.save(user);
+    }
+
+    //Method to save new password
+    @Override
+    public User save(PasswordChangeDto passwordChangeDto) {
+        User user = new User(passwordEncoder.encode(passwordChangeDto.getPassword()));
 
         return userRepository.save(user);
     }
