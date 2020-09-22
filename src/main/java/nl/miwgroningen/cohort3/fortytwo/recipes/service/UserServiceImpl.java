@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     //Method to save new password
+    //TODO user current user instead of new user, figure out how.
     @Override
     public User save(PasswordChangeDto passwordChangeDto) {
         User user = new User(passwordEncoder.encode(passwordChangeDto.getPassword()));

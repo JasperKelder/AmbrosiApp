@@ -47,8 +47,9 @@ public class User {
         this.roles = roles;
     }
 
-    public User(String encode) {
-
+    public User(String password) {
+        super();
+        this.password = password;
     }
 
 

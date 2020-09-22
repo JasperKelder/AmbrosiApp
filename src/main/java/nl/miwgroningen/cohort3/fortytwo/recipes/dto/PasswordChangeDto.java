@@ -5,7 +5,11 @@ public class PasswordChangeDto {
     private String password;
 
     //Constructors
-    public PasswordChangeDto(String password) { this.password = password; }
+    public PasswordChangeDto(String password) {
+        super();
+        this.password = password;
+    }
+
     public PasswordChangeDto() {};
 
     //Getters and Setters
