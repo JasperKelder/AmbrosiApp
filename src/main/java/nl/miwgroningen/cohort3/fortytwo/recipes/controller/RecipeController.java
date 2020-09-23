@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;

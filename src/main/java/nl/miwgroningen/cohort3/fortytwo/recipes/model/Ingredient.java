@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Ingredient {
+public class Ingredient implements Comparable<Ingredient> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,11 @@ public class Ingredient {
     @Override
     public String toString() {
         return ingredientName;
+    }
+
+    @Override
+    public int compareTo(Ingredient ingredient) {
+        return ingredientName.compareTo(ingredient.getIngredientName());
     }
 
     // Getters and setters:

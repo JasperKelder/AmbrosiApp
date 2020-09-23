@@ -77,26 +77,42 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                     <div class="column-right">
-                        <textarea id="ingredients" name="ingredients" th:field="*{ingredients}" required
-                                  placeholder="Ingredients"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column-left">
-                        <label for="cooktime">Cook-time</label>
-                    </div>
-                    <div class="column-right">
-                        <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}" required
-                               placeholder="Cook-time"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column-left">
-                        <label for="cuisine">Cuisine</label>
-                    </div>
-                    <div class="column-right">
-                        <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
-                            <!-- Dropdown box displaying all cuisines -->
+                        <input list="ingredients" name="ingredients" />
+                        <datalist id="ingredients">
+                            <select>
+                                <option th:each="ingredient: ${#lists.sort(allIngredients)}"
+                                        th:value="${ingredient.getIngredientId()}"
+                                        th:label="${ingredient.getIngredientName()}">
+                                </option>
+                            </select>
+                        </datalist>
+
+                        <!--
+
+                                                <select id="ingredients" name="ingredient" th:field="*{ingredients}" required>
+                                                        <option th:each="ingredient : ${allIngredients}"
+                                                                th:value="${ingredient.getIngredientId()}"
+                                                                th:text="${ingredient.getIngredientName()}">
+                                                        </option>
+                                                </select> -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column-left">
+                                                <label for="cooktime">Cook-time</label>
+                                            </div>
+                                            <div class="column-right">
+                                                <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}" required
+                                                       placeholder="Cook-time"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="column-left">
+                                                <label for="cuisine">Cuisine</label>
+                                            </div>
+                                            <div class="column-right">
+                                                <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
+                                                    <!-- Dropdown box displaying all cuisines -->
                             <option th:each="cuisine : ${allCuisines}"
                                     th:value="${cuisine.cuisineId}"
                                     th:text="${cuisine.cuisineName}">
