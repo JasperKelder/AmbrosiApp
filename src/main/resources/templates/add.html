@@ -87,6 +87,7 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                     <div class="column-right">
+                        <!--
                         <input list="ingredients" name="ingredients" />
                         <datalist id="ingredients">
                             <select>
@@ -95,15 +96,14 @@
                                         th:label="${ingredient.getIngredientName()}">
                                 </option>
                             </select>
-                        </datalist>
-                        <!--
+                        </datalist> -->
 
                                                 <select id="ingredients" name="ingredient" th:field="*{ingredients}" required>
                                                         <option th:each="ingredient : ${allIngredients}"
                                                                 th:value="${ingredient.getIngredientId()}"
                                                                 th:text="${ingredient.getIngredientName()}">
                                                         </option>
-                                                </select> -->
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
