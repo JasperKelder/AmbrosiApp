@@ -111,12 +111,15 @@
 
 
                             <div id="rowIngredients">
-                                    <input list="ingredients" name="ingredient" />
-                                        <datalist id="ingredients" th:field="*{ingredients}">
-                                            <option th:each="ingredient: ${#lists.sort(allIngredients)}"
-                                                    th:value="${ingredient.ingredientName}">
-                                            </option>
-                                        </datalist>
+                                <input list="ingredients" name="ingredients" />
+                                <datalist id="ingredients">
+                                    <select>
+                                        <option th:each="ingredient: ${#lists.sort(allIngredients)}"
+                                                th:value="${ingredient.getIngredientId()}"
+                                                th:label="${ingredient.getIngredientName()}">
+                                        </option>
+                                    </select>
+                                </datalist>
                             </div>
                         </div>
                         <button id="removeRow" type="button">Remove row</button>
