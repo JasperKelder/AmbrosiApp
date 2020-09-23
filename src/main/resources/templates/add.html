@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
     <!--    Insert jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
@@ -91,24 +92,34 @@
                     <div class="column-right">
                         <div id="element-wrapper">
                             <!--
-                            <input list="ingredients" name="ingredients" />
-                            <datalist id="ingredients">
-                                <select>
-                                    <option th:each="ingredient: ${#lists.sort(allIngredients)}"
-                                            th:value="${ingredient.getIngredientId()}"
-                                            th:label="${ingredient.getIngredientName()}">
-                                    </option>
-                                </select>
-                            </datalist> -->
 
-
-                            <div id="rowIngredients">
-                                <select id="ingredients" name="ingredient" th:field="*{ingredients}" required>
+<select id="ingredients" name="ingredient" th:field="*{ingredients}" required>
                                     <option th:each="ingredient : ${allIngredients}"
                                             th:value="${ingredient.getIngredientId()}"
                                             th:text="${ingredient.getIngredientName()}">
                                     </option>
                                 </select>
+                            <script>
+                                $( function() {
+                                    $( "#tags" ).autocomplete({
+                                        source: "autocomplete",
+                                        minLength: 3
+                                    });
+                                } );
+                            </script>-->
+
+
+
+                            <div id="rowIngredients">
+                                <input list="ingredients" name="ingredient" />
+                                <datalist id="ingredients">
+                                    <select>
+                                        <option th:each="ingredient: ${#lists.sort(allIngredients)}"
+                                                th:value="${ingredient.getIngredientId()}"
+                                                th:label="${ingredient.getIngredientName()}">
+                                        </option>
+                                    </select>
+                                </datalist>
                             </div>
                         </div>
                         <button id="removeRow" type="button">Remove row</button>
