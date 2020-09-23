@@ -1,5 +1,6 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -7,7 +8,6 @@ body {
 }
 
 /* Navigation */
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -36,6 +36,10 @@ li a {
     transition-duration: 0.5s;
 }
 
+.nopadding {
+    padding: 0px 0px;
+}
+
 li a:hover, #active {
     color: #FFC72C;
 }
@@ -45,12 +49,34 @@ li a:hover, #active {
     padding: 0px 0px;
     float: right;
 }
+
 .loginoutbutton {
     float: right;
     margin-right: 21px;
 }
+
 .adminbutton {
     margin-left: 21px;
+}
+
+.searchbarli {
+    float: none;
+    margin: auto;
+    width: 300px;
+    padding-top: 30px;
+}
+#searchbar {
+    border: 3px solid #1e9696;
+    border-radius: 25px;
+    background-color: #007c7c;
+    color: black;
+    text-align: center;
+    font-size: 120%;
+}
+
+::placeholder {
+    color: black;
+    opacity: 1;
 }
 
 .broccoli {
@@ -62,6 +88,30 @@ li a:hover, #active {
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 3px;
+}
+
+/* Hides topnav links when the screen is smaller than the specified width */
+@media screen and (max-width: 1100px) {
+    .topnav a {
+        display: none;
+    }
+}
+
+/* Changes the searchbar width when the screen is smaller than the specified width */
+@media screen and (max-width: 750px) {
+    .searchbarli {
+        width: 200px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .searchbarli {
+        width: 150px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .searchbarli {
+        width: 80px;
+    }
 }
 
 h2, label, th {
@@ -312,4 +362,33 @@ select {
 
 .totheright {
     float:right
+}
+
+/* Responsive grid > each row should have a total width of 100%, adding up the col-nrs should therefore result in 12 */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    border: 1px solid #1e9696;
+    text-align: center;
+    padding: 130px;
+}
+
+/* Resizes the gird columns for smaller screens */
+@media only screen and (max-width: 1000px) {
+    [class*="col-"] {
+        width: 50%;
+    }
 }

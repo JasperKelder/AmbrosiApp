@@ -47,6 +47,12 @@ public class User {
         this.roles = roles;
     }
 
+    public User(String password) {
+        super();
+        this.password = password;
+    }
+
+
     //Used in view.html to display the user who added the recipe
     @Override
     public String toString() {
