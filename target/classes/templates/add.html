@@ -111,15 +111,13 @@
 
 
                             <div id="rowIngredients">
-                                <input list="ingredients" name="ingredient" />
-                                <datalist id="ingredients">
-                                    <select>
-                                        <option th:each="ingredient: ${#lists.sort(allIngredients)}"
-                                                th:value="${ingredient.getIngredientId()}"
-                                                th:label="${ingredient.getIngredientName()}">
-                                        </option>
-                                    </select>
-                                </datalist>
+                                    <input list="ingredients" name="ingredient" />
+                                        <datalist id="ingredients">
+                                            <option th:each="ingredient: ${#lists.sort(allIngredients)}"
+                                                    th:value="${ingredient.getIngredientId()}"
+                                                    th:label="${ingredient.getIngredientName()}">
+                                            </option>
+                                        </datalist>
                             </div>
                         </div>
                         <button id="removeRow" type="button">Remove row</button>
@@ -127,12 +125,12 @@
 
                         <script type="text/javascript">
                             document.getElementById('addRow').onclick = function() {
-                                var container = document.getElementById("ingredients");
-                                document.getElementById("rowIngredients").appendChild(container.cloneNode(true));
+                                var container = document.getElementById("rowIngredients");
+                                document.getElementById("element-wrapper").appendChild(container.cloneNode(true));
                             }
 
                             document.getElementById('removeRow').onclick = function () {
-                                var container = document.getElementById('rowIngredients');
+                                var container = document.getElementById('element-wrapper');
                                 container.removeChild(container.lastChild);
                             }
                         </script>
