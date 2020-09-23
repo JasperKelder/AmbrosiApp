@@ -1,7 +1,10 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.EmailChangeDto;
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,13 @@ public class UserInfoController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserService userService;
+
+    public UserInfoController(UserService userService) {
+        this.userService = userService;
+    }
+
     //method for showing userinfo. Principal is used to get the current user info.
     //principal.getname() gets email from db
     @GetMapping("/userinfo")
@@ -35,6 +45,19 @@ public class UserInfoController {
         User user = userRepository.findByEmailAddress(principal.getName());
         userRepository.updateName(firstName, lastName, user.getUserId());
         return "redirect:/mykitchen";
+    }
+
+    @ModelAttribute("user")
+    public EmailChangeDto emailChangeDto() {
+        return new EmailChangeDto();
+    }
+
+
+    //method to save new emailadress with current user
+    @PostMapping
+    public String saveNewEmailadress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
+        userService.changeEmailadress(emailChangeDto, principal);
+        return "redirect:/changeeailadress?success";
     }
 
 }
