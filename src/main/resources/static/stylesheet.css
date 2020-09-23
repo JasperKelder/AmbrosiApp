@@ -1,5 +1,5 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Finger Paint';
     box-sizing: border-box;
 }
 
@@ -7,7 +7,9 @@ body {
     /*background-color: #FFFADD;*/
     /*background-color: #FFEFA9;*/
     /*background-color: #92C24C;*/
-    background-color: #FBD848;
+    background-color: floralwhite;
+    padding: 0;
+    margin: 0;
 }
 
 /* Navigation */
@@ -16,13 +18,16 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #92C24C;
-    border: 6px solid #44813E;
+    background-color: #f93f23;
+    /*border: 6px solid #44813E;*/
     border-bottom-style: none;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
 }
 
 .navborder {
-    border-bottom-style: solid;
+    background-color: black;
+    /*border-bottom-style: solid;*/
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
 }
 
 li {
@@ -33,26 +38,25 @@ li a {
     display: block;
     text-align: center;
     text-decoration: none;
-    color: #F8B735;
+    color: floralwhite;
     font-size: 30px;
     padding: 30px 0px;
     transition-duration: 1s;
-    text-shadow: -1px 1px 0 black,
-    1px 1px 0 black,
-    1px -1px 0 black,
-    -1px -1px 0 black;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }
 
 .nopadding {
     padding: 0px 0px;
 }
 
-li a:hover, #active {
-    color: orange;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
+li a:hover, .kitchenlogotextplace:hover {
+    text-shadow: -2px 2px 0 #f9ab23,
+    2px 2px 0 #f9ab23,
+    2px -2px 0 #f9ab23,
+    -2px -2px 0 #f9ab23;
 }
 
 .lowernav {
@@ -74,39 +78,76 @@ li a:hover, #active {
     float: none;
     margin: auto;
     width: 300px;
-    padding-top: 25px;
+    padding-top: 45px;
 }
 
 #searchbar {
-    border: 6px solid #44813E;
+    border: none;
     border-radius: 25px;
-    background-color: #c2bc4c;
+    background-color: floralwhite;
     color: black;
     text-align: center;
     font-size: 120%;
     transition-duration: 0.5s;
+    box-shadow: 0 0 5px black;
 }
 
-#searchbar:hover, .broccoli:hover {
-    background-color: #FBD848;
+#searchbar:hover {
+    box-shadow: 0 0 20px black;
 }
 
 ::placeholder {
-    color: #44813E;
+    color: floralwhite;
     opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 .broccoli {
-    background-color: #c2bc4c;
-    width: 85px;
-    border: 6px solid #44813E;
-    border-radius: 50%;
+    width: 120px;
     cursor: pointer;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 3px;
+    transition-duration: 0.5s;
+    margin-top: 7px;
+}
+
+.eatandtreattext {
+    margin-top: 12px;
+}
+
+.logout {
+    width: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 25px;
     transition-duration: 0.5s;
 }
+
+.kitchenlogocontainer {
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+.kitchenlogo {
+    width: 100px;
+}
+
+.kitchenlogotextplace {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    transition-duration: 0.5s;
+}
+
 
 /* Hides topnav links when the screen is smaller than the specified width */
 @media screen and (max-width: 1100px) {
@@ -136,15 +177,24 @@ h2, label, th {
     text-align: center;
     font-size: 125%;
     background-color: black;
-    color: #44813E;
-    border: 3px solid #44813E;
+    color: floralwhite;
+    opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 input[type=file] {
     text-align: center;
     background-color: black;
-    color: #44813E;
-    border: 3px solid #44813E;
+    box-shadow: 0 0 5px black;
+    color: floralwhite;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+    transition-duration: 0.5s;
 }
 
 p {
@@ -159,31 +209,35 @@ p {
 }
 
 input[type=submit]:hover, .editbutton:hover, button[type=submit]:hover, .flashybutton:hover {
-    color: #FBD848;
+    color: #f9ab23;
+    box-shadow: 0 0 20px #f9ab23;
 }
 
 input[type=submit], .editbutton, button[type=submit], .flashybutton {
     text-align: center;
     background-color: black;
-    color: #FBD848;
     padding: 8px 16px;
     cursor: pointer;
     text-decoration: none;
     transition-duration: 0.5s;
-}
-
-input[type=submit], .editbutton, button[type=submit], .flashybutton {
-    color: #92C24C;
-    border: 6px solid #44813E;
+    /*border: 3px solid #e0604c;*/
+    box-shadow: 0 0 5px black;
+    color: floralwhite;
 }
 
 input[type=text], input[type=number], input[type=password], textarea, #firstName, #lastName, #email {
     width: 100%;
     padding: 6px 10px;
     display: inline-block;
-    border: 6px solid #44813E;
+    box-shadow: 0 0 5px black;
     border-radius: 4px;
     box-sizing: border-box;
+    transition-duration: 0.5s;
+}
+
+input[type=text]:hover, input[type=number]:hover, input[type=password]:hover, textarea:hover, #firstName:hover,
+#lastName:hover, #email:hover, select:hover, input[type=file]:hover, .gridImage:hover {
+    box-shadow: 0 0 15px black;
 }
 
 textarea {
@@ -198,11 +252,17 @@ table {
 }
 
 td {
-    border: 3px solid #44813E;
+    box-shadow: 0 0 5px black;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #44813E;
     font-size: 125%;
+    background-color: #f93f23;
+    color: floralwhite;
+    opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 .edittable {
@@ -213,7 +273,8 @@ td {
 
 #padding, .container, .addContainer {
     padding: 26px;
-    border: 6px solid #44813E;
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
 }
 
 .spaceLarge {
@@ -235,7 +296,7 @@ td {
 .viewImage {
     width: 300px;
     border-radius: 35%;
-    border: 6px solid #44813E;
+    box-shadow: 0 0 5px black;
 }
 
 .addContainer {
@@ -282,7 +343,11 @@ label {
 .message, .messagesmall {
     text-align: center;
     font-size: 400%;
-    color: #44813E;
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }
 
 .messagesmall {
@@ -290,7 +355,6 @@ label {
 }
 
 .foodname {
-    color: #FFC72C;
     text-decoration: none;
     font-size: 150%;
     text-align: center;
@@ -312,13 +376,13 @@ td {
     height: 200px;
     margin: 40px;
     border-radius: 35%;
-    border: 6px solid #44813E;
+    box-shadow: 0 0 5px black;
 }
 
 select {
     width: 100%;
     height: 33px;
-    border: 6px solid #44813E;
+    box-shadow: 0 0 5px black;
     border-radius: 4px;
 }
 
@@ -351,7 +415,7 @@ select {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    border: 6px solid #44813E;
+    box-shadow: 0 0 5px black;
     text-align: center;
     padding: 130px;
 }
@@ -404,19 +468,18 @@ select {
     color: white;
 }
 
-.imagetextplace {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .gridImage {
     width: 300px;
-    border: 6px solid #44813E;
+    /*border: 3px solid #f93f23;*/
+    border-radius: 10%;
+    box-shadow: 0 0 5px black;
+    transition-duration: 0.5s;
 }
 
 .green {
-    background-color: #92C24C;
-    color: #44813E;
+    background-color: #f93f23;
+}
+
+.logoutmove {
+    margin-right: 40px;
 }

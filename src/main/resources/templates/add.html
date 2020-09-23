@@ -4,6 +4,7 @@
     <title>EatAndTreat - Add</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Finger Paint'>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
 </head>
 <body>
@@ -11,33 +12,45 @@
     <!--Top navigation-->
     <ul>
         <li>
-            <a th:href="@{/index}" class="nopadding"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-        <li class="topnav">
-            <a th:href="@{/index}">EatAndTreat</a></li>
-        <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/mykitchen}" class="nopadding">
-                <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-        <li class="topnav totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/mykitchen}">MyKitchen</a></li>
-        <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/login}" class="nopadding">
-                <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-        <li class="topnav totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/login}">MyKitchen</a></li>
-        <li class="searchbarli"><input id="searchbar" type="text" placeholder="Search"></li>
+            <a th:href="@{/index}" class="nopadding">
+                <img class="broccoli" src="/images/broccoli.png" alt="Logo">
+            </a>
+        </li>
+        <li class="topnav eatandtreattext">
+            <a th:href="@{/index}">EatAndTreat</a>
+        </li>
+        <li class="totheright">
+            <a th:href="@{/logout}" class="nopadding">
+                <img class="logout" src="/images/logout.jpg" alt="Logo">
+            </a>
+        </li>
+        <li class="topnav totheright imagetextcontainer" th:unless="${#authorization.expression('hasRole(''USER'')')}">
+            <a class="kitchenlogocontainer" th:href="@{/login}">
+                <img class="kitchenlogo" src="/images/cook.png" alt="Kitchen">
+            </a>
+            <div class="kitchenlogotextplace">MyKitchen</div>
+        </li>
+        <li class="totheright imagetextcontainer" th:if="${#authorization.expression('hasRole(''USER'')')}">
+            <a class="kitchenlogocontainer" th:href="@{/mykitchen}">
+                <img class="kitchenlogo" src="/images/cook.png" alt="Kitchen">
+            </a>
+            <div class="kitchenlogotextplace">MyKitchen</div>
+        </li>
+        <li class="searchbarli">
+            <input id="searchbar" type="text" placeholder="Search">
+        </li>
     </ul>
     <!--Lower navigation-->
     <ul class="navborder">
         <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="lowernav" th:href="@{/recipes}">Recipe</a></li>
+            <a class="lowernav" th:href="@{/recipes}">Recipe</a>
+        </li>
         <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="lowernav" th:href="@{/cuisine}">Cuisine</a></li>
+            <a class="lowernav" th:href="@{/cuisine}">Cuisine</a>
+        </li>
         <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="lowernav" th:href="@{/category}">Category</a></li>
-        <li class="loginoutbutton">
-            <a class="lowernav" th:href="@{/logout}">Logout</a></li>
-        <li class="loginoutbutton">
-            <a class="lowernav" th:href="@{/login}">Login</a></li>
+            <a class="lowernav" th:href="@{/category}">Category</a>
+        </li>
     </ul>
     <div class="flex-container">
         <div class="spaceMedium"></div>
@@ -146,6 +159,7 @@
             </form>
         </div>
     </div>
+    <div class="spaceMedium"></div>
 </sec:authorize>
 <script type="text/javascript" src="script/fileUploadCheck.js"></script>
 </body>
