@@ -43,6 +43,7 @@ public class RecipeController {
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         model.addAttribute("allIngredients", ingredientRepository.findAll());

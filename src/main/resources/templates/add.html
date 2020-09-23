@@ -112,10 +112,10 @@
 
                             <div id="rowIngredients">
                                     <input list="ingredients" name="ingredient" />
-                                        <datalist id="ingredients">
+                                        <datalist id="ingredients" th:field="*{ingredients}">
                                             <option th:each="ingredient: ${#lists.sort(allIngredients)}"
-                                                    th:value="${ingredient.getIngredientId()}"
-                                                    th:label="${ingredient.getIngredientName()}">
+                                                    th:value="${ingredient.ingredientName}"
+                                                    th:label="${ingredient.ingredientName}">
                                             </option>
                                         </datalist>
                             </div>
@@ -130,8 +130,10 @@
                             }
 
                             document.getElementById('removeRow').onclick = function () {
-                                var container = document.getElementById('element-wrapper');
-                                container.removeChild(container.lastChild);
+                                if (document.getElementById('element-wrapper').childElementCount > 1) {
+                                    var container = document.getElementById('element-wrapper');
+                                    container.removeChild(container.lastChild);
+                                }
                             }
                         </script>
 

@@ -39,7 +39,7 @@ INSERT INTO recipes.recipe VALUES
 (2, 40, null, 50, 'Asian style', 'Broccoli Dish', 4, 2, 3, 1),
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
 (4, 20, null, 30, 'Just do it', 'Eierbal', 8, 1, 3, 1),
-(5, 40, null, 50, 'Asian style', 'Bubble milk thea', 4, 2, 3, 1),
+(5, 40, null, 50, 'Asian style', 'Bubble milk tea', 4, 2, 3, 1),
 (6, 20, null, 30, 'From your local snackbar', 'Frikandel speciaal', 8, 1, 3, 1),
 (7, 20, null, 30, 'Just do it', 'Appeltaart', 8, 1, 3, 1),
 (8, 40, null, 50, 'Asian style', 'Nachos', 4, 2, 3, 1);
