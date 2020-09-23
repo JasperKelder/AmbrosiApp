@@ -32,28 +32,28 @@
     <div class="spaceLarge"></div>
     <div class="flex-container">
         <div id="padding">
-            <!-- changepassword form -->
+            <!-- change email address form -->
             <form th:action="@{/changeemailaddress}" th:object="${user}" method="post">
                 <div class="row">
                 </div>
                 <div>
                     <div class="column-left">
-                        <label for="emailaddress">new email adress</label>
+                        <label for="emailAddress">new email address</label>
                     </div>
                     <div class="column-right">
-                        <input type="emailaddress" id="emailaddress" name="emailaddress" th:field="*{emailAddress}" required
-                               placeholder=" new email adress"/>
+                        <input type="email" id="emailAddress" th:field="*{emailAddress}" required
+                               placeholder=" new email address"/>
                         <p>
                             <button type="submit">Save new email address</button>
-                        </p>
-                        </p>
-                        <div class="spaceTiny"></div>
-                        <p>
-                            <a class="flashybutton" th:href="@{/userinfo}">Go back to my info</a>
                         </p>
                     </div>
                 </div>
             </form>
+            </p>
+            <div class="spaceTiny"></div>
+            <p>
+                <a class="flashybutton" th:href="@{/userinfo}">Go back to my info</a>
+            </p>
         </div>
     </div>
 </sec:authorize>

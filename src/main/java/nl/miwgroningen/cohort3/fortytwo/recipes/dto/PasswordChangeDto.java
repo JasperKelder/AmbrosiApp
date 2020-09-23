@@ -6,7 +6,6 @@ public class PasswordChangeDto {
 
     //Constructors
     public PasswordChangeDto(String password) {
-        super();
         this.password = password;
     }
 
