@@ -17,7 +17,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #92C24C;
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
     border-bottom-style: none;
 }
 
@@ -74,10 +74,11 @@ li a:hover, #active {
     float: none;
     margin: auto;
     width: 300px;
-    padding-top: 30px;
+    padding-top: 25px;
 }
+
 #searchbar {
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
     border-radius: 25px;
     background-color: #c2bc4c;
     color: black;
@@ -86,7 +87,7 @@ li a:hover, #active {
     transition-duration: 0.5s;
 }
 
-#searchbar:hover {
+#searchbar:hover, .broccoli:hover {
     background-color: #FBD848;
 }
 
@@ -96,14 +97,15 @@ li a:hover, #active {
 }
 
 .broccoli {
-    background-color: #92C24C;
+    background-color: #c2bc4c;
     width: 85px;
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
     border-radius: 50%;
     cursor: pointer;
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 3px;
+    transition-duration: 0.5s;
 }
 
 /* Hides topnav links when the screen is smaller than the specified width */
@@ -149,23 +151,11 @@ p {
     text-align: center;
 }
 
-.container {
-    background-color: #51afe6;
+.flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.flex-container, .flex-container-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.flex-container-nav {
-    background-color: black;
 }
 
 input[type=submit]:hover, .editbutton:hover, button[type=submit]:hover, .flashybutton:hover {
@@ -175,7 +165,7 @@ input[type=submit]:hover, .editbutton:hover, button[type=submit]:hover, .flashyb
 input[type=submit], .editbutton, button[type=submit], .flashybutton {
     text-align: center;
     background-color: black;
-    color: #44813E;
+    color: #FBD848;
     padding: 8px 16px;
     cursor: pointer;
     text-decoration: none;
@@ -184,14 +174,14 @@ input[type=submit], .editbutton, button[type=submit], .flashybutton {
 
 input[type=submit], .editbutton, button[type=submit], .flashybutton {
     color: #92C24C;
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
 }
 
 input[type=text], input[type=number], input[type=password], textarea, #firstName, #lastName, #email {
     width: 100%;
     padding: 6px 10px;
     display: inline-block;
-    border: 3px solid black;
+    border: 6px solid #44813E;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -223,7 +213,7 @@ td {
 
 #padding, .container, .addContainer {
     padding: 26px;
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
 }
 
 .spaceLarge {
@@ -245,7 +235,7 @@ td {
 .viewImage {
     width: 300px;
     border-radius: 35%;
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
 }
 
 .addContainer {
@@ -322,13 +312,13 @@ td {
     height: 200px;
     margin: 40px;
     border-radius: 35%;
-    border: 3px solid #7c003e;
+    border: 6px solid #44813E;
 }
 
 select {
     width: 100%;
     height: 33px;
-    border: 3px solid black;
+    border: 6px solid #44813E;
     border-radius: 4px;
 }
 
@@ -361,7 +351,7 @@ select {
 [class*="col-"] {
     float: left;
     padding: 15px;
-    border: 1px solid #1e9696;
+    border: 6px solid #44813E;
     text-align: center;
     padding: 130px;
 }
@@ -423,7 +413,7 @@ select {
 
 .gridImage {
     width: 300px;
-    border: 3px solid #44813E;
+    border: 6px solid #44813E;
 }
 
 .green {
