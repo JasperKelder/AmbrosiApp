@@ -19,8 +19,8 @@ import java.security.Principal;
  */
 
 @Controller
-@RequestMapping("/changeemailadress")
-public class ChangeEmailAdressController {
+@RequestMapping("/changeemailaddress")
+public class ChangeEmailAddressController {
 
     @Autowired
     UserService userService;
@@ -28,13 +28,12 @@ public class ChangeEmailAdressController {
     @Autowired
     UserRepository userRepository;
 
-    public ChangeEmailAdressController(UserService userService) {
-        super();
+    public ChangeEmailAddressController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/changeemailadress")
-    protected String showUser(Model model, Principal principal) {
+    @GetMapping("/changeemailaddress")
+    protected String showUserEmail(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
         return "userinfo";
     }
@@ -43,15 +42,15 @@ public class ChangeEmailAdressController {
     public EmailChangeDto emailChangeDto() { return new EmailChangeDto(); }
 
     @GetMapping
-    public String showEmailAdressForm() {
-        return "changeemailadress";
+    public String showEmailAddressForm() {
+        return "changeemailaddress";
     }
 
-    //method to save new email adress with current user
+    //method to save new email address with current user
     @PostMapping
-    public String saveNewEmailadress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
-        userService.saveNewEmailadress(emailChangeDto, principal);
-        return "redirect:/changeemailadress?success";
+    public String saveNewEmailaddress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
+        userService.save(emailChangeDto, principal);
+        return "redirect:/changeemailaddress?success";
     }
 
 }

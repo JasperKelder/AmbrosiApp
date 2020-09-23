@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
     //method to change email. get current user using findbyemail method and save only new email
     @Override
-    public User saveNewEmailadress(EmailChangeDto emailChangeDto, Principal principal) {
+    public User save(EmailChangeDto emailChangeDto, Principal principal) {
         User user = userRepository.findByEmailAddress(principal.getName());
         user.setEmailAddress(emailChangeDto.getEmailAddress());
 

@@ -29,7 +29,6 @@ public class ChangePasswordController {
     UserRepository userRepository;
 
     public ChangePasswordController(UserService userService) {
-        super();
         this.userService = userService;
     }
 

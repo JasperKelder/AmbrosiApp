@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - MyInfo</title>
@@ -32,7 +33,7 @@
     <div class="flex-container">
         <div id="padding">
             <!-- changepassword form -->
-            <form th:action="@{/changeemailadress}" th:object="${user}" method="post">
+            <form th:action="@{/changeemailaddress}" th:object="${user}" method="post">
                 <div class="row">
                 </div>
                 <div>
@@ -43,19 +44,17 @@
                         <input type="emailaddress" id="emailaddress" name="emailaddress" th:field="*{emailAddress}" required
                                placeholder=" new email adress"/>
                         <p>
-                            <button type="submit">Save new email adress</button>
+                            <button type="submit">Save new email address</button>
                         </p>
                         </p>
                         <div class="spaceTiny"></div>
                         <p>
                             <a class="flashybutton" th:href="@{/userinfo}">Go back to my info</a>
                         </p>
-                        </div>
                     </div>
                 </div>
             </form>
         </div>
-    </div>
     </div>
 </sec:authorize>
 </body>

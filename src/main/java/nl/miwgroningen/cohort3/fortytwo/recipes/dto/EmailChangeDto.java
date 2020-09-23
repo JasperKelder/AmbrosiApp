@@ -6,7 +6,6 @@ public class EmailChangeDto {
 
     //Constructors
     public EmailChangeDto(String emailAddress) {
-        super();
         this.emailAddress = emailAddress;
     }
 
@@ -15,4 +14,5 @@ public class EmailChangeDto {
     //Getters and Setters
     public String getEmailAddress() { return emailAddress; }
     public void setEmailAddress(String emailAddress) { this.emailAddress = emailAddress; }
+
 }
