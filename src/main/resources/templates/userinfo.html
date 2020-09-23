@@ -62,21 +62,17 @@
                                placeholder="Last Name"/>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="column-left">
-                        <label for="lastName">Emailadress</label>
-                    </div>
-                    <div class="column-right">
-                        <input type="text" id="emailadress" name="emailadress" th:value="${user.getEmailAddress()}" required
-                               placeholder="emailadress"/>
-                    </div>
-                </div>
                 <p>
                     <button type="submit">Update</button>
                 </p>
                 <div class="spaceTiny"></div>
                 <p>
                     <a class="flashybutton" th:href="@{/changepassword}">Change your password</a>
+                </p>
+                </p>
+                <div class="spaceTiny"></div>
+                <p>
+                    <a class="flashybutton" th:href="@{/changeemailadress}">Change your email adress</a>
                 </p>
             </form>
         </div>

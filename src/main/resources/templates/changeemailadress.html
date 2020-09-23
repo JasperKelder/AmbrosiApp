@@ -1,0 +1,62 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - MyInfo</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Top navigation-->
+    <ul>
+        <li><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+        <li><a th:href="@{/index}">EatAndTreat</a></li>
+        <li class="totheright"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></li>
+        <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/mykitchen}">MyKitchen</a></li>
+        <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}"><a th:href="@{/login}">MyKitchen</a></li>
+    </ul>
+    <!--Lower navigation-->
+    <ul class="navborder">
+        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                              th:href="@{/recipes}">Recipe</a></li>
+        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                              th:href="@{/cuisine}">Cuisine</a></li>
+        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')"><a class="lowernav"
+                                                                              th:href="@{/category}">Category</a></li>
+        <li class="loginoutbutton"><a class="lowernav"
+                                      th:href="@{/logout}">Logout</a></li>
+        <li class="loginoutbutton"><a class="lowernav"
+                                      th:href="@{/login}">Login</a></li>
+    </ul>
+    <div class="spaceLarge"></div>
+    <div class="flex-container">
+        <div id="padding">
+            <!-- changepassword form -->
+            <form th:action="@{/changeemailadress}" th:object="${user}" method="post">
+                <div class="row">
+                </div>
+                <div>
+                    <div class="column-left">
+                        <label for="emailaddress">new email adress</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="emailaddress" id="emailaddress" name="emailaddress" th:field="*{emailAddress}" required
+                               placeholder=" new email adress"/>
+                        <p>
+                            <button type="submit">Save new email adress</button>
+                        </p>
+                        </p>
+                        <div class="spaceTiny"></div>
+                        <p>
+                            <a class="flashybutton" th:href="@{/userinfo}">Go back to my info</a>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</sec:authorize>
+</body>
+</html>

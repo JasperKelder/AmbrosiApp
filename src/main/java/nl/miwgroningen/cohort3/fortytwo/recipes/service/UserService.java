@@ -14,6 +14,6 @@ public interface UserService extends UserDetailsService {
 
     User save(PasswordChangeDto passwordChangeDto, Principal principal);
 
-    User changeEmailadress(EmailChangeDto emailChangeDto, Principal principal);
+    User saveNewEmailadress(EmailChangeDto emailChangeDto, Principal principal);
 
 }

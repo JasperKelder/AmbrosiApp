@@ -47,17 +47,4 @@ public class UserInfoController {
         return "redirect:/mykitchen";
     }
 
-    @ModelAttribute("user")
-    public EmailChangeDto emailChangeDto() {
-        return new EmailChangeDto();
-    }
-
-
-    //method to save new emailadress with current user
-    @PostMapping
-    public String saveNewEmailadress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
-        userService.changeEmailadress(emailChangeDto, principal);
-        return "redirect:/changeeailadress?success";
-    }
-
 }
