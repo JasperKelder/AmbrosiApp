@@ -48,7 +48,6 @@ public class User {
     }
 
     public User(String password) {
-        super();
         this.password = password;
     }
 
@@ -58,6 +57,7 @@ public class User {
     public String toString() {
         return firstName;
     }
+
 
     //Getters and Setters
     public Integer getUserId() {

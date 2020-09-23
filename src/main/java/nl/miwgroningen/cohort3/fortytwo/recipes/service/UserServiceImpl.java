@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.EmailChangeDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.UserRegistrationDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Role;
@@ -51,6 +52,15 @@ public class UserServiceImpl implements UserService {
     public User save(PasswordChangeDto passwordChangeDto, Principal principal) {
         User user = userRepository.findByEmailAddress(principal.getName());
         user.setPassword(passwordEncoder.encode(passwordChangeDto.getPassword()));
+
+        return userRepository.save(user);
+    }
+
+    //method to change email. get current user using findbyemail method and save only new email
+    @Override
+    public User save(EmailChangeDto emailChangeDto, Principal principal) {
+        User user = userRepository.findByEmailAddress(principal.getName());
+        user.setEmailAddress(emailChangeDto.getEmailAddress());
 
         return userRepository.save(user);
     }

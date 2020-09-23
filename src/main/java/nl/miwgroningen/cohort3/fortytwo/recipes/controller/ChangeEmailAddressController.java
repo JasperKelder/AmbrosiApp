@@ -1,6 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.EmailChangeDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ import java.security.Principal;
  */
 
 @Controller
-@RequestMapping("/changepassword")
-public class ChangePasswordController {
+@RequestMapping("/changeemailaddress")
+public class ChangeEmailAddressController {
 
     @Autowired
     UserService userService;
@@ -27,31 +27,29 @@ public class ChangePasswordController {
     @Autowired
     UserRepository userRepository;
 
-    public ChangePasswordController(UserService userService) {
+    public ChangeEmailAddressController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/changepassword")
-    protected String showUser(Model model, Principal principal) {
+    @GetMapping("/changeemailaddress")
+    protected String showUserEmail(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
         return "userinfo";
     }
 
     @ModelAttribute("user")
-    public PasswordChangeDto passwordChangeDto() {
-        return new PasswordChangeDto();
-    }
+    public EmailChangeDto emailChangeDto() { return new EmailChangeDto(); }
 
     @GetMapping
-    public String showPasswordChangeForm() {
-        return "changepassword";
+    public String showEmailAddressForm() {
+        return "changeemailaddress";
     }
 
-    //method to save new password with current user
+    //method to save new email address with current user
     @PostMapping
-    public String saveNewPassword(@ModelAttribute("user") PasswordChangeDto passwordChangeDto, Principal principal) {
-        userService.save(passwordChangeDto, principal);
-        return "redirect:/changepassword?success";
+    public String saveNewEmailaddress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
+        userService.save(emailChangeDto, principal);
+        return "redirect:/changeemailaddress?success";
     }
 
 }
