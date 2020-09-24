@@ -159,6 +159,16 @@ li a:hover, .kitchenlogotextplace:hover {
         width: 90%;
     }
 }
+@media screen and (max-width: 480px) {
+    .broccoli {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .logout {
+        margin-left: 10px;
+        margin-right: 0px;
+    }
+}
 
 h2, label, th {
     text-align: center;
