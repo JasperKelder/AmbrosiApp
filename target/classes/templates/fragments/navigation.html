@@ -5,27 +5,27 @@
 <body>
 <nav th:fragment="navigation">
     <ul>
-        <li>
+        <li class="floatleft">
             <a th:href="@{/index}" class="nopadding">
                 <img class="broccoli" src="/images/broccoli.png" alt="Logo">
             </a>
         </li>
-        <li class="topnav eat">
+        <li class="floatleft eat">
             <a th:href="@{/index}">EatAndTreat</a>
         </li>
-        <li class="totheright">
+        <li class="floatright">
             <a th:href="@{/logout}" class="nopadding">
                 <img class="logout" src="/images/logout.jpg" alt="Logo">
             </a>
         </li>
-        <li class="topnav totheright imagetextcontainer" id="mykitchencentered"
+        <li class="floatright imagetextcontainer mykitchen"
             th:unless="${#authorization.expression('hasRole(''USER'')')}">
             <a class="kitchenlogocontainer" th:href="@{/login}">
                 <img class="kitchenlogo" src="/images/cook.png" alt="Kitchen">
             </a>
             <div class="kitchenlogotextplace">MyKitchen</div>
         </li>
-        <li class="totheright imagetextcontainer" id="mykitchencentered"
+        <li class="floatright imagetextcontainer mykitchen"
             th:if="${#authorization.expression('hasRole(''USER'')')}">
             <a class="kitchenlogocontainer" th:href="@{/mykitchen}">
                 <img class="kitchenlogo" src="/images/cook.png" alt="Kitchen">
