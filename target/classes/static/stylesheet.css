@@ -92,7 +92,7 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 
 #searchbar:hover {
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 10px black;
 }
 
 ::placeholder {
@@ -121,7 +121,7 @@ li a:hover, .kitchenlogotextplace:hover {
     width: 60px;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 25px;
+    margin-top: 35px;
     transition-duration: 0.5s;
 }
 
@@ -207,7 +207,6 @@ input[type=submit], .editbutton, button[type=submit], .flashybutton {
     cursor: pointer;
     text-decoration: none;
     transition-duration: 0.5s;
-    /*border: 3px solid #e0604c;*/
     box-shadow: 0 0 5px black;
     color: floralwhite;
 }
@@ -224,7 +223,7 @@ input[type=text], input[type=number], input[type=password], textarea, #firstName
 
 input[type=text]:hover, input[type=number]:hover, input[type=password]:hover, textarea:hover, #firstName:hover,
 #lastName:hover, #email:hover, select:hover, input[type=file]:hover, .gridImage:hover {
-    box-shadow: 0 0 15px black;
+    box-shadow: 0 0 10px black;
 }
 
 textarea {
@@ -304,12 +303,6 @@ td {
     float: left;
     width: 60%;
     margin: 10px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 @media screen and (max-width: 800px) {
@@ -397,16 +390,28 @@ select {
 
 [class*="col-"] {
     float: left;
-    padding: 15px;
-    box-shadow: 0 0 5px black;
-    text-align: center;
-    padding: 130px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Resizes the grid columns for smaller screens */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
+    [class*="col-"] {
+        width: 33.33%;
+    }
+}
+@media only screen and (max-width: 950px) {
     [class*="col-"] {
         width: 50%;
+    }
+}
+@media only screen and (max-width: 625px) {
+    [class*="col-"] {
+        width: 100%;
     }
 }
 
@@ -432,6 +437,13 @@ select {
     font-size: 17px;
 }
 
+
+.imagetextcontainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
 .textshadow {
     color: white;
     font-size: 20px;
@@ -445,12 +457,6 @@ select {
     transform: translate(-50%, -50%);
 }
 
-.imagetextcontainer {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
 .gridImage {
     width: 300px;
     border-radius: 10%;
@@ -458,6 +464,6 @@ select {
     transition-duration: 0.5s;
 }
 
-.green {
+.color {
     background-color: #f93f23;
 }

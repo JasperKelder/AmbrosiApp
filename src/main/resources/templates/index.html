@@ -7,42 +7,19 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-
-<!--<div class="spaceMedium"></div>-->
-<!--<div class="row">-->
-<!--    <div class="col-3">1</div>-->
-<!--    <div class="col-3">2</div>-->
-<!--    <div class="col-3">3</div>-->
-<!--    <div class="col-3">4</div>-->
-<!--</div>-->
-<!--<div class="row">-->
-<!--    <div class="col-3">1</div>-->
-<!--    <div class="col-3">2</div>-->
-<!--    <div class="col-3">3</div>-->
-<!--    <div class="col-3">4</div>-->
-<!--</div>-->
-
 <!--Main page-->
 <div class="spaceSmall"></div>
 <div th:if="${allRecipes.size() < 1}">
     <div class="message">Nothing to see here, <a href="/add">Add your recipe!</a></div>
 </div>
 <div th:if="${allRecipes.size() >= 1}">
-    <!--Grid-container creates a new container where max 8 grid items can be stored-->
-    <div class="grid-container">
-        <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
-            <!--This will add all the info into the grid items-->
-            <div class="grid-item imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
-                <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
-                <div class="foodname textshadow" th:text="${allRecipes.get(i).recipeTitle}"></div>
-            </div>
-            <!--Everytime that the size of the items modulo 8 equals 0 create new grid-->
-            <div th:if="${i} % 8 == 0">
-                <div th:if="${i} % 8 != 0">
-                </div>
-            </div>
+    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+        <!--This will add all the info into the grid items-->
+        <div class="col-3 imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
+            <a th:href="@{/view/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="gridImage"></a>
+            <div class="foodname textshadow" th:text="${allRecipes.get(i).recipeTitle}"></div>
         </div>
     </div>
 </div>
