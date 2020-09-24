@@ -161,14 +161,12 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 @media screen and (max-width: 480px) {
     .broccoli {
-        /*width: 60px;*/
         margin-left: 0px;
         margin-right: 0px;
     }
     .logout {
         margin-left: 10px;
         margin-right: 0px;
-        /*display: none;*/
     }
 }
 
