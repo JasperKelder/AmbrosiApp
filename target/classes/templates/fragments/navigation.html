@@ -3,7 +3,6 @@
 <head>
 </head>
 <body>
-<!--Top navigation-->
 <nav th:fragment="navigation">
     <ul>
         <li>
@@ -11,7 +10,7 @@
                 <img class="broccoli" src="/images/broccoli.png" alt="Logo">
             </a>
         </li>
-        <li class="topnav eatandtreattext">
+        <li class="topnav eat">
             <a th:href="@{/index}">EatAndTreat</a>
         </li>
         <li class="totheright">
@@ -19,13 +18,15 @@
                 <img class="logout" src="/images/logout.jpg" alt="Logo">
             </a>
         </li>
-        <li class="topnav totheright imagetextcontainer" th:unless="${#authorization.expression('hasRole(''USER'')')}">
+        <li class="topnav totheright imagetextcontainer" id="mykitchencentered"
+            th:unless="${#authorization.expression('hasRole(''USER'')')}">
             <a class="kitchenlogocontainer" th:href="@{/login}">
                 <img class="kitchenlogo" src="/images/cook.png" alt="Kitchen">
             </a>
             <div class="kitchenlogotextplace">MyKitchen</div>
         </li>
-        <li class="totheright imagetextcontainer" th:if="${#authorization.expression('hasRole(''USER'')')}">
+        <li class="totheright imagetextcontainer" id="mykitchencentered"
+            th:if="${#authorization.expression('hasRole(''USER'')')}">
             <a class="kitchenlogocontainer" th:href="@{/mykitchen}">
                 <img class="kitchenlogo" src="/images/cook.png" alt="Kitchen">
             </a>
@@ -35,7 +36,7 @@
             <input id="searchbar" type="text" placeholder="Search">
         </li>
     </ul>
-    <!--Lower navigation-->
+    <!--Admin navigation-->
     <ul class="navborder">
         <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
             <a class="lowernav" th:href="@{/recipes}">Recipe</a>

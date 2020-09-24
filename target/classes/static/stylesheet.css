@@ -114,7 +114,7 @@ li a:hover, .kitchenlogotextplace:hover {
     margin-top: 7px;
 }
 
-.eatandtreattext {
+.eat {
     margin-top: 12px;
 }
 
@@ -149,29 +149,39 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 
 
-/* Hides topnav links when the screen is smaller than the specified width */
+/* Hides EatAndTreat text when the screen is smaller than the specified width */
 @media screen and (max-width: 1100px) {
-    .topnav a {
+    .eat {
         display: none;
+    }
+    .searchbarli {
+        padding-top: 0px;
+        padding-bottom: 25px;
+        width: 90%;
+    }
+    #mykitchencentered {
+        float: none;
+        margin: auto;
+        padding-top: 15px;
     }
 }
 
-/* Changes the searchbar width when the screen is smaller than the specified width */
-@media screen and (max-width: 750px) {
-    .searchbarli {
-        width: 200px;
-    }
-}
-@media screen and (max-width: 650px) {
-    .searchbarli {
-        width: 150px;
-    }
-}
-@media screen and (max-width: 600px) {
-    .searchbarli {
-        width: 80px;
-    }
-}
+/*!* Changes the searchbar width when the screen is smaller than the specified width *!*/
+/*@media screen and (max-width: 750px) {*/
+/*    .searchbarli {*/
+/*        width: 200px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 650px) {*/
+/*    .searchbarli {*/
+/*        width: 150px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 600px) {*/
+/*    .searchbarli {*/
+/*        width: 80px;*/
+/*    }*/
+/*}*/
 
 h2, label, th {
     text-align: center;

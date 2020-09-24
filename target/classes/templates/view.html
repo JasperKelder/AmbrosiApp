@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - View Recipe</title>
     <div th:replace="fragments/head :: head"></div>
@@ -9,7 +9,7 @@
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
 <div class="spaceSmall"></div>
-<!-- d to indicate what can be printed-->
+<!--Indicates what can be printed-->
 <div id="printpage">
     <!--Displays the recipe title-->
     <div class="message" th:text="${recipe.recipeTitle}"></div>
