@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - Add</title>
-    <div th:replace="fragments/head :: head" />
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation" />
+    <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
         <div class="addContainer green">
-            <!-- Add recipe form -->
+            <!--Add recipe form-->
             <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="column-right">
                         <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
-                            <!-- Dropdown box displaying all cuisines -->
+                            <!--Dropdown box displaying all cuisines-->
                             <option th:each="cuisine : ${allCuisines}"
                                     th:value="${cuisine.cuisineId}"
                                     th:text="${cuisine.cuisineName}">
@@ -90,7 +90,7 @@
                     </div>
                     <div class="column-right">
                         <select id="category" name="category" th:field="*{categoryName}" required>
-                            <!-- Dropdown box displaying all categories -->
+                            <!--Dropdown box displaying all categories-->
                             <option th:each="category : ${allCategories}"
                                     th:value="${category.categoryId}"
                                     th:text="${category.categoryName}">
@@ -103,12 +103,13 @@
                         <label for="file">Image</label>
                     </div>
                     <div class="column-right">
-                        <input type="file" name="file" id="file" onchange="FileValidation()" th:placeholder="|data:image/jpeg;base64,${currentImage}|">
+                        <input type="file" name="file" id="file" onchange="FileValidation()"
+                               th:placeholder="|data:image/jpeg;base64,${currentImage}|">
                     </div>
                 </div>
                 <div th:unless="${currentImage} == null">
                     <div class="row">Current image:</div>
-                        <img th:src="|data:image/jpeg;base64,${currentImage}|"/>
+                    <img th:src="|data:image/jpeg;base64,${currentImage}|"/>
                 </div>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">

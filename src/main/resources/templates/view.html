@@ -1,23 +1,23 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - View Recipe</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <!--Navigation-->
-<nav th:replace="fragments/navigation :: navigation"/>
+<nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
 <div class="spaceSmall"></div>
-<!-- Id to indicate what can be printed -->
+<!-- d to indicate what can be printed-->
 <div id="printpage">
-    <!-- Displays the recipe title -->
+    <!--Displays the recipe title-->
     <div class="message" th:text="${recipe.recipeTitle}"></div>
     <div class="flex-container">
         <div class="grid-container-view">
             <div class="grid-item-view">
                 <div class="flex-container">
-                    <!-- Displays ingredients in a grid to the left -->
+                    <!--Displays ingredients in a grid to the left-->
                     <table class="green">
                         <tr>
                             <th>Ingredients</th>
@@ -28,13 +28,13 @@
                     </table>
                 </div>
             </div>
-            <!-- Displays an image in a grid in the center -->
+            <!--Displays an image in a grid in the center-->
             <div class="grid-item-view">
                 <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" class="viewImage">
             </div>
             <div class="grid-item-view">
                 <div class="flex-container">
-                    <!-- Displays preparation in a grid to the right -->
+                    <!--Displays preparation in a grid to the right-->
                     <table class="green">
                         <tr>
                             <th>Preparation</th>
@@ -48,12 +48,12 @@
         </div>
     </div>
     <div class="spaceMedium"></div>
-    <!-- Shows who added the recipe -->
+    <!--Shows who added the recipe-->
     <div class="messagesmall">Contributed by</div>
     <div class="messagesmall" th:text="${recipe.user}"></div>
     <div class="spaceMedium"></div>
     <div class="flex-container">
-        <!-- Show servings, preparationTime, cookTime, cuisine and category -->
+        <!--Show servings, preparationTime, cookTime, cuisine and category-->
         <table class="green">
             <tr>
                 <th>Servings</th>
@@ -77,7 +77,7 @@
             </tr>
         </table>
         <div class="spaceMedium"></div>
-        <!-- Button for printing -->
+        <!--Button for printing-->
         <input type="submit" value="Print" onClick="printPageArea('printpage')">
     </div>
 </div>

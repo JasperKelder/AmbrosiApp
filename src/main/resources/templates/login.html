@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - Login</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <!--Navigation-->
-<nav th:replace="fragments/navigation :: navigation"/>
+<nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
 <div class="flex-container">
     <div class="spaceLarge"></div>
     <div id="padding" class="green">
-        <!-- Login form -->
+        <!--Login form-->
         <form th:action="@{/login}" method="post">
             <input class="margin" type="text" id="username" name="username" placeholder="Email address"
                    autofocus="autofocus">
@@ -19,11 +19,11 @@
             <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
         </form>
         <div class="spaceTiny"></div>
-        <!-- Navigation for register -->
+        <!--Navigation for register-->
         <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
     </div>
     <div class="spaceMedium"></div>
-    <!-- Displays a message after an unsuccessful login -->
+    <!--Displays a message after an unsuccessful login-->
     <div class="messagesmall" th:if="${param.error}">Invalid email address or password</div>
 </div>
 </div>

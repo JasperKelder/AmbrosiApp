@@ -2,16 +2,16 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - MyKitchen</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation"/>
+    <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceLarge"></div>
-        <!-- Displays the users firstname -->
+        <!--Displays the users firstname-->
         <div class="message">Welcome<br>
             <div th:text="${user.getFirstName()}"></div>
         </div>

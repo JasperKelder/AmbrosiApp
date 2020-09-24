@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - MyInfo</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation"/>
+    <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
         <div class="addContainer green">
-            <!-- Userinfo update form -->
+            <!--Userinfo update form-->
             <form action="/update">
                 <div class="row">
                     <div class="column-left">

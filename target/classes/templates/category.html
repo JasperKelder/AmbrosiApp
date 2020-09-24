@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - Category</title>
-    <div th:replace="fragments/head :: head" />
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation" />
+    <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
         <div id="padding">
-            <!-- Add category form -->
+            <!--Add category form-->
             <form action="#" th:action="@{/category}" th:object="${category}" method="post">
                 <p hidden><input type="text" th:field="*{categoryId}"/></p>
                 <p><input type="text" th:field="*{categoryName}" required placeholder="Category"/></p>
@@ -21,13 +21,10 @@
         </div>
         <div class="spaceMedium"></div>
         <table>
-            <!-- Displays all categories -->
+            <!--Displays all categories-->
             <tr th:each="category: ${allCategories}">
                 <td th:text="${category.categoryName}"></td>
-                <!-- Deletes the category, hidden because it can cause an error -->
-                <!--                    <td class="edittable"><a th:href="@{/category/delete/{categoryId}(categoryId=${category.categoryId})}"-->
-                <!--                                             class="editbutton">Delete</a></td>-->
-                <!-- Loads the category in the add category form so it can be update -->
+                <!-- Loads the category in the add category form so it can be update-->
                 <td class="edittable"><a
                         th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
                         class="editbutton">Update</a></td>

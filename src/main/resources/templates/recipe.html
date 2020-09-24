@@ -2,33 +2,33 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - Admin</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation"/>
+    <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
         <div id="padding">
-            <!-- Takes the user to the add recipe form -->
+            <!--Takes the user to the add recipe form-->
             <form th:action="@{/add}">
                 <p><input type="submit" value="Submit"/></p>
             </form>
         </div>
         <div class="spaceMedium"></div>
-        <!-- Displays all recipes -->
+        <!--Displays all recipes-->
         <table>
             <tr th:each="recipe: ${allRecipes}">
                 <td>
                     <div th:text="${recipe.recipeTitle}"></div>
                     </a>
                 </td>
-                <!-- Deletes the recipe -->
+                <!--Deletes the recipe-->
                 <td class="edittable"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
                                          class="editbutton">Delete</a></td>
-                <!-- Takes the user to the update recipe form -->
+                <!--Takes the user to the update recipe form-->
                 <td class="edittable"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
                                          class="editbutton">Update</a></td>
             </tr>

@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - Cuisine</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation"/>
+    <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
         <div id="padding">
-            <!-- Add cuisine form -->
+            <!--Add cuisine form-->
             <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
                 <p hidden><input type="text" th:field="*{cuisineId}"/></p>
                 <p><input type="text" th:field="*{cuisineName}" required placeholder="Cuisine"/></p>
@@ -21,13 +21,10 @@
         </div>
         <div class="spaceMedium"></div>
         <table>
-            <!-- Displays all cuisines -->
+            <!--Displays all cuisines-->
             <tr th:each="cuisine: ${allCuisines}">
                 <td th:text="${cuisine.cuisineName}"></td>
-                <!-- Deletes the cuisine, hidden because it can cause an error -->
-                <!--                    <td class="edittable"><a th:href="@{/cuisine/delete/{cuisineId}(cuisineId=${cuisine.cuisineId})}"-->
-                <!--                                             class="editbutton">Delete</a></td>-->
-                <!-- Loads the cuisine in the add cuisine form so it can be update -->
+                <!--Loads the cuisine in the add cuisine form so it can be update-->
                 <td class="edittable"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
                                          class="editbutton">Update</a></td>
             </tr>

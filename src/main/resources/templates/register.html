@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - Register</title>
-    <div th:replace="fragments/head :: head"/>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <!--Navigation-->
-<nav th:replace="fragments/navigation :: navigation"/>
+<nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
 <div class="flex-container">
     <div class="spaceLarge"></div>
     <div class="addContainer green">
-        <!-- Registration form -->
+        <!--Registration form-->
         <form th:action="@{/registration}" th:object="${user}" method="post">
             <div class="row">
                 <div class="column-left">
@@ -54,11 +54,11 @@
             </p>
         </form>
         <div class="spaceTiny"></div>
-        <!-- Navigation for login -->
+        <!--Navigation for login-->
         <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
     </div>
     <div class="spaceMedium"></div>
-    <!-- Displays a message after a successful registration -->
+    <!--Displays a message after a successful registration-->
     <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
 </div>
 </body>
