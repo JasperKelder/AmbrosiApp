@@ -9,17 +9,22 @@
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
-    <div class="flex-container">
-        <div class="spaceLarge"></div>
+    <div class="spaceLarge"></div>
+    <div class="col-4 imagetextcontainer">
+        <a th:href="@{/add}"><img id="recipe" src="/images/pen.png" alt="Recipe"></a>
+        <div class="textshadow">Add recipe</div>
+    </div>
+    <div class="col-4">
         <!--Displays the users firstname-->
-        <div class="message">Welcome<br>
+        <div class="message" id="down">Welcome<br>
             <div th:text="${user.getFirstName()}"></div>
         </div>
-        <div class="spaceLarge"></div>
-        <a class="flashybutton" th:href="@{/add}">Add recipe</a>
-        <div class="spaceLarge"></div>
-        <a class="flashybutton" th:href="@{/userinfo}">My info</a>
     </div>
+    <div class="col-4 imagetextcontainer">
+        <a th:href="@{/userinfo}"><img id="cook" src="/images/myinfo.png" alt="Cook"></a>
+        <div class="textshadow">My info</div>
+    </div>
+
 </sec:authorize>
 </body>
 </html>

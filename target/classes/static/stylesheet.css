@@ -402,25 +402,50 @@ select {
     float: left;
 }
 
+.col-4 {
+    height: 300px;
+    background-color: darkgrey;
+}
+
+#down {
+    margin-top: 50px;
+}
+
+#cook {
+    width: 175px;
+}
+
+#recipe {
+    margin-top: 30px;
+    width: 160px;
+}
+
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
 
-/* Resizes the grid columns for smaller screens */
+/* Resizes the image grid columns for smaller screens */
 @media only screen and (max-width: 1200px) {
-    [class*="col-"] {
+    [class*="col-3"] {
         width: 33.33%;
     }
 }
 @media only screen and (max-width: 950px) {
-    [class*="col-"] {
+    [class*="col-3"] {
         width: 50%;
     }
 }
 @media only screen and (max-width: 625px) {
-    [class*="col-"] {
+    [class*="col-3"] {
+        width: 100%;
+    }
+}
+
+/* Resizes the MyKitchen grid columns for smaller screens */
+@media only screen and (max-width: 1050px) {
+    [class*="col-4"] {
         width: 100%;
     }
 }
