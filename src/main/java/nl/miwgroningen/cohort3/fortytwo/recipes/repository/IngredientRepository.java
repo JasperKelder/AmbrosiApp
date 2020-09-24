@@ -2,7 +2,12 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.repository;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -11,4 +16,9 @@ import java.util.Optional;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
     Optional<Ingredient> findByIngredientName(String ingredientName);
+
+    @Transactional
+    //@Modifying
+    @Query(value = "SELECT * FROM ingredient WHERE ingredient_name LIKE CONCAT ('%',:term,'%');", nativeQuery = true)
+    List<Ingredient> getSuggestions(@Param("term") String term);
 }

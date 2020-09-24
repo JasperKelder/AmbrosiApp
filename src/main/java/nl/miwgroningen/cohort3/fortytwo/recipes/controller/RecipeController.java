@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.LabelValueDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
@@ -40,9 +41,14 @@ public class RecipeController {
     @Autowired
     UserRepository userRepository;
 
+    private String firstThreeCharacters;
+
+    private List<Ingredient> allIngredientsFiltered;
+
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         model.addAttribute("allIngredients", ingredientRepository.findAll());
@@ -146,5 +152,31 @@ public class RecipeController {
             return "viewloggedin";
         }
         return "redirect:/indexloggedin";
+    }
+
+    @RequestMapping(value = "/ingredientAutocomplete")
+    @ResponseBody
+    public List<LabelValueDto> ingredientAutocomplete(@RequestParam(value = "term", required = false,
+            defaultValue = "") String term) {
+        List<LabelValueDto> suggestions = new ArrayList<LabelValueDto>();
+        try {
+            // only update when term is three characters.
+            if (term.length() == 3) {
+                firstThreeCharacters = term;
+                allIngredientsFiltered = ingredientRepository.getSuggestions(term);
+            }
+            for (Ingredient ingredient : allIngredientsFiltered) {
+                System.out.println(ingredient.getIngredientName());
+                if (ingredient.getIngredientName().contains(term)) {
+                    LabelValueDto labelValueDto = new LabelValueDto();
+                    labelValueDto.setLabel(ingredient.getIngredientName());
+                    labelValueDto.setValue(Integer.toString(ingredient.getIngredientId()));
+                    suggestions.add(labelValueDto);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return suggestions;
     }
 }

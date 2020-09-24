@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/stylesheet.css"/>
     <link rel="icon" type="image/png" href="/images/smileySmall.png">
     <!--    Insert jquery -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -108,7 +109,26 @@
                                 } );
                             </script>-->
 
+                            <script type="text/javascript">
+                                $(function() {
+                                    $("#Ingredient_Name").autocomplete({
+                                        source: "ingredientAutocomplete",
+                                        minLength: 3,
+                                        select: function(event, ui) {
+                                            this.value = ui.item.label;
+                                            $("#Ingredient_ID").val(ui.item.value);
+                                            return false;
+                                        }
+                                    });
 
+                                });
+                            </script>
+
+                            <input id="Ingredient_Name" type="text" name="ingredientName" th:value="${ingredient.ingredientName}">
+                            <input id="Ingredient_ID" type="hidden" name="ingredientId" th:value="${ingredient.ingredientId}">
+
+
+<!--
 
                             <div id="rowIngredients">
                                 <input list="ingredients" name="ingredients" />
@@ -137,7 +157,7 @@
                                     container.removeChild(container.lastChild);
                                 }
                             }
-                        </script>
+                        </script> -->
 
 
                     </div>
