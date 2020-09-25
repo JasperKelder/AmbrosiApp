@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Base64;
 
 /**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+
  * For the sake of overview, we have made this service which contains:
  *  error handling for uploading a file
  *  Converter to convert byte[] images from the Mysql database to Base64 so the html can read them.
