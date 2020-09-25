@@ -228,7 +228,7 @@ input[type=submit], .editbutton, button[type=submit], .flashybutton {
     border-style: none;
 }
 
-input[type=text], input[type=number], input[type=password], textarea, #firstName, #lastName, #email {
+input[type=text], input[type=number], input[type=password], input[type=email], textarea, #firstName, #lastName, #email {
     width: 100%;
     padding: 6px 10px;
     display: inline-block;

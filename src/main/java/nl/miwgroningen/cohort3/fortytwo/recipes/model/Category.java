@@ -17,6 +17,13 @@ public class Category {
     @Column
     private String categoryName;
 
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Category() {
+    }
+
     @Override
     public String toString() {
         return categoryName;

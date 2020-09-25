@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
  */
-public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
+public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     
 }

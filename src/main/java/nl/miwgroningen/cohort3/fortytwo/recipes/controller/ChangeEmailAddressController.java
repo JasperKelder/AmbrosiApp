@@ -31,6 +31,7 @@ public class ChangeEmailAddressController {
         this.userService = userService;
     }
 
+    //method to get current user
     @GetMapping("/changeemailaddress")
     protected String showUserEmail(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
@@ -49,7 +50,7 @@ public class ChangeEmailAddressController {
     @PostMapping
     public String saveNewEmailaddress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
         userService.save(emailChangeDto, principal);
-        return "redirect:/changeemailaddress?success";
+        return "redirect:/logout";
     }
 
 }
