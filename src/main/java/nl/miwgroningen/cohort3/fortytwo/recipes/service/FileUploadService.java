@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Base64;
 
 /**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+
  * For the sake of overview, we have made this service which contains:
  *  error handling for uploading a file
  *  Converter to convert byte[] images from the Mysql database to Base64 so the html can read them.
@@ -24,22 +26,22 @@ public class FileUploadService {
                 // 1. Breakfast 2.Lunch 3.Dinner 4. Snacks 5. Cheating
                 switch(recipe.getCategoryName().getCategoryId()) {
                     case 1:
-                        image = new File("src/main/resources/static/images/food.jpg");
-                        break;
-                    case 2:
-                        image = new File("src/main/resources/static/images/demo/2.jpeg");
-                        break;
-                    case 3:
                         image = new File("src/main/resources/static/images/demo/3.jpeg");
                         break;
-                    case 4:
+                    case 2:
                         image = new File("src/main/resources/static/images/demo/8.jpeg");
+                        break;
+                    case 3:
+                        image = new File("src/main/resources/static/images/demo/7.jpeg");
+                        break;
+                    case 4:
+                        image = new File("src/main/resources/static/images/demo/1.jpeg");
                         break;
                     case 5:
                         image = new File("src/main/resources/static/images/demo/6.jpeg");
                         break;
                     default:
-                        image = new File("src/main/resources/static/images/demo/4.jpeg");
+                        image = new File("src/main/resources/static/images/demo/8.jpeg");
                 }
                 FileInputStream imageInFile = new FileInputStream(image);
                 byte[] imageInBytes = imageInFile.readAllBytes();

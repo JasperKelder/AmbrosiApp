@@ -1,47 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - Register</title>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheet.css"/>
-    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
-<!--Top navigation-->
-<ul>
-    <li>
-        <a th:href="@{/index}" class="nopadding"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-    <li class="topnav">
-        <a th:href="@{/index}">EatAndTreat</a></li>
-    <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/mykitchen}" class="nopadding">
-            <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-    <li class="topnav totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/mykitchen}">MyKitchen</a></li>
-    <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/login}" class="nopadding">
-            <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-    <li class="topnav totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/login}">MyKitchen</a></li>
-    <li class="searchbarli"><input id="searchbar" type="text" placeholder="Search"></li>
-</ul>
-<!--Lower navigation-->
-<ul class="navborder">
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a class="lowernav" th:href="@{/recipes}">Recipe</a></li>
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a class="lowernav" th:href="@{/cuisine}">Cuisine</a></li>
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a class="lowernav" th:href="@{/category}">Category</a></li>
-    <li class="loginoutbutton">
-        <a class="lowernav" th:href="@{/logout}">Logout</a></li>
-    <li class="loginoutbutton">
-        <a class="lowernav" th:href="@{/login}">Login</a></li>
-</ul>
+<!--Navigation-->
+<nav th:replace="fragments/navigation :: navigation"></nav>
+<!--Main page-->
 <div class="flex-container">
     <div class="spaceLarge"></div>
-    <div class="addContainer">
-        <!-- Registration form -->
+    <div class="addContainer color">
+        <!--Registration form-->
         <form th:action="@{/registration}" th:object="${user}" method="post">
             <div class="row">
                 <div class="column-left">
@@ -84,11 +54,11 @@
             </p>
         </form>
         <div class="spaceTiny"></div>
-        <!-- Navigation for login -->
+        <!--Navigation for login-->
         <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
     </div>
     <div class="spaceMedium"></div>
-    <!-- Displays a message after a successful registration -->
+    <!--Displays a message after a successful registration-->
     <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
 </div>
 </body>

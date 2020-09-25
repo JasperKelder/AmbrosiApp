@@ -66,7 +66,7 @@ public class Recipe {
     @Lob
     private byte[] image;
 
-    public Recipe(byte[] image) {
+    public Recipe(byte[] image, Category categoryName) {
         this.image = image;
     }
 

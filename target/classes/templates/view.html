@@ -1,54 +1,24 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - View Recipe</title>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheet.css"/>
-    <link rel="icon" type="image/png" href="/images/smileySmall.png">
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
-<!--Top navigation-->
-<ul>
-    <li>
-        <a th:href="@{/index}" class="nopadding"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-    <li class="topnav">
-        <a th:href="@{/index}">EatAndTreat</a></li>
-    <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/mykitchen}" class="nopadding">
-            <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-    <li class="topnav totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/mykitchen}">MyKitchen</a></li>
-    <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/login}" class="nopadding">
-            <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-    <li class="topnav totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-        <a th:href="@{/login}">MyKitchen</a></li>
-    <li class="searchbarli"><input id="searchbar" type="text" placeholder="Search"></li>
-</ul>
-<!--Lower navigation-->
-<ul class="navborder">
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a class="lowernav" th:href="@{/recipes}">Recipe</a></li>
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a class="lowernav" th:href="@{/cuisine}">Cuisine</a></li>
-    <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-        <a class="lowernav" th:href="@{/category}">Category</a></li>
-    <li class="loginoutbutton">
-        <a class="lowernav" th:href="@{/logout}">Logout</a></li>
-    <li class="loginoutbutton">
-        <a class="lowernav" th:href="@{/login}">Login</a></li>
-</ul>
+<!--Navigation-->
+<nav th:replace="fragments/navigation :: navigation"></nav>
+<!--Main page-->
 <div class="spaceSmall"></div>
-<!-- Id to indicate what can be printed -->
+<!--Indicates what can be printed-->
 <div id="printpage">
-    <!-- Displays the recipe title -->
+    <!--Displays the recipe title-->
     <div class="message" th:text="${recipe.recipeTitle}"></div>
     <div class="flex-container">
         <div class="grid-container-view">
             <div class="grid-item-view">
                 <div class="flex-container">
-                    <!-- Displays ingredients in a grid to the left -->
-                    <table>
+                    <!--Displays ingredients in a grid to the left-->
+                    <table class="color">
                         <tr>
                             <th>Ingredients</th>
                         </tr>
@@ -60,14 +30,14 @@
                     </table>
                 </div>
             </div>
-            <!-- Displays an image in a grid in the center -->
+            <!--Displays an image in a grid in the center-->
             <div class="grid-item-view">
                 <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" class="viewImage">
             </div>
             <div class="grid-item-view">
                 <div class="flex-container">
-                    <!-- Displays preparation in a grid to the right -->
-                    <table>
+                    <!--Displays preparation in a grid to the right-->
+                    <table class="color">
                         <tr>
                             <th>Preparation</th>
                         </tr>
@@ -80,13 +50,13 @@
         </div>
     </div>
     <div class="spaceMedium"></div>
-    <!-- Shows who added the recipe -->
+    <!--Shows who added the recipe-->
     <div class="messagesmall">Contributed by</div>
     <div class="messagesmall" th:text="${recipe.user}"></div>
     <div class="spaceMedium"></div>
     <div class="flex-container">
-        <!-- Show servings, preparationTime, cookTime, cuisine and category -->
-        <table>
+        <!--Show servings, preparationTime, cookTime, cuisine and category-->
+        <table class="color">
             <tr>
                 <th>Servings</th>
                 <td th:text="${recipe.servings}"></td>
@@ -109,10 +79,11 @@
             </tr>
         </table>
         <div class="spaceMedium"></div>
-        <!-- Button for printing -->
+        <!--Button for printing-->
         <input type="submit" value="Print" onClick="printPageArea('printpage')">
     </div>
 </div>
+<div class="spaceMedium"></div>
 <script>
     function printPageArea(divIDToPrint) {
         var printContent = document.getElementById(divIDToPrint);

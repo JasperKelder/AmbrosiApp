@@ -2,51 +2,17 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - Add</title>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheet.css"/>
-    <link rel="icon" type="image/png" href="/images/smileySmall.png">
-    <!--    Insert jquery -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
-    <!--Top navigation-->
-    <ul>
-        <li>
-            <a th:href="@{/index}" class="nopadding"><img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-        <li class="topnav">
-            <a th:href="@{/index}">EatAndTreat</a></li>
-        <li class="totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/mykitchen}" class="nopadding">
-                <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-        <li class="topnav totheright" th:if="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/mykitchen}">MyKitchen</a></li>
-        <li class="totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/login}" class="nopadding">
-                <img class="broccoli" src="/images/broccoli.png" alt="Logo"></a></li>
-        <li class="topnav totheright" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-            <a th:href="@{/login}">MyKitchen</a></li>
-        <li class="searchbarli"><input id="searchbar" type="text" placeholder="Search"></li>
-    </ul>
-    <!--Lower navigation-->
-    <ul class="navborder">
-        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="lowernav" th:href="@{/recipes}">Recipe</a></li>
-        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="lowernav" th:href="@{/cuisine}">Cuisine</a></li>
-        <li class="adminbutton" sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="lowernav" th:href="@{/category}">Category</a></li>
-        <li class="loginoutbutton">
-            <a class="lowernav" th:href="@{/logout}">Logout</a></li>
-        <li class="loginoutbutton">
-            <a class="lowernav" th:href="@{/login}">Login</a></li>
-    </ul>
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
-        <div class="addContainer">
-            <!-- Add recipe form -->
+        <div class="addContainer color">
+            <!--Add recipe form-->
             <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
@@ -161,7 +127,7 @@
                     </div>
                     <div class="column-right">
                         <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
-                            <!-- Dropdown box displaying all cuisines -->
+                            <!--Dropdown box displaying all cuisines-->
                             <option th:each="cuisine : ${allCuisines}"
                                     th:value="${cuisine.cuisineId}"
                                     th:text="${cuisine.cuisineName}">
@@ -175,7 +141,7 @@
                     </div>
                     <div class="column-right">
                         <select id="category" name="category" th:field="*{categoryName}" required>
-                            <!-- Dropdown box displaying all categories -->
+                            <!--Dropdown box displaying all categories-->
                             <option th:each="category : ${allCategories}"
                                     th:value="${category.categoryId}"
                                     th:text="${category.categoryName}">
@@ -188,7 +154,8 @@
                         <label for="file">Image</label>
                     </div>
                     <div class="column-right">
-                        <input type="file" name="file" id="file" onchange="FileValidation()" th:placeholder="|data:image/jpeg;base64,${currentImage}|">
+                        <input type="file" name="file" id="file" onchange="FileValidation()"
+                               th:placeholder="|data:image/jpeg;base64,${currentImage}|">
                     </div>
                 </div>
                 <div th:unless="${currentImage} == null">
@@ -201,6 +168,7 @@
             </form>
         </div>
     </div>
+    <div class="spaceMedium"></div>
 </sec:authorize>
 <script type="text/javascript" src="script/fileUploadCheck.js"></script>
 </body>

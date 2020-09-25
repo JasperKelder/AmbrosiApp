@@ -1,10 +1,12 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Finger Paint';
     box-sizing: border-box;
 }
 
 body {
-    background-color: #007c7c;
+    background-color: floralwhite;
+    padding: 0;
+    margin: 0;
 }
 
 /* Navigation */
@@ -13,41 +15,53 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: black;
-    border: 3px solid #7c003e;
+    background-color: #f93f23;
     border-bottom-style: none;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
 }
 
 .navborder {
-    border-bottom-style: solid;
+    background-color: black;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
 }
 
-li {
-    float: left;
+.floatright {
+    float:right;
+}
+
+.floatleft {
+    float:left
 }
 
 li a {
     display: block;
     text-align: center;
     text-decoration: none;
-    color: #1e9696;
+    color: floralwhite;
     font-size: 30px;
     padding: 30px 0px;
-    transition-duration: 0.5s;
+    transition-duration: 1s;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }
 
 .nopadding {
     padding: 0px 0px;
 }
 
-li a:hover, #active {
-    color: #FFC72C;
+li a:hover, .kitchenlogotextplace:hover {
+    text-shadow: -2px 2px 0 #f9ab23,
+    2px 2px 0 #f9ab23,
+    2px -2px 0 #f9ab23,
+    -2px -2px 0 #f9ab23;
 }
 
 .lowernav {
     font-size: 20px;
-    padding: 0px 0px;
-    float: right;
+    padding: 0px 5px;
+    float: left;
 }
 
 .loginoutbutton {
@@ -63,54 +77,96 @@ li a:hover, #active {
     float: none;
     margin: auto;
     width: 300px;
-    padding-top: 30px;
+    padding-top: 45px;
 }
+
 #searchbar {
-    border: 3px solid #1e9696;
+    border: none;
     border-radius: 25px;
-    background-color: #007c7c;
+    background-color: floralwhite;
     color: black;
     text-align: center;
     font-size: 120%;
+    transition-duration: 0.5s;
+    box-shadow: 0 0 5px black;
+}
+
+#searchbar:hover {
+    box-shadow: 0 0 10px black;
 }
 
 ::placeholder {
-    color: black;
+    color: floralwhite;
     opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 .broccoli {
-    background-color: black;
-    width: 85px;
-    border: 3px solid #7c003e;
-    border-radius: 50%;
+    width: 120px;
     cursor: pointer;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 3px;
+    transition-duration: 0.5s;
+    margin-top: 7px;
 }
 
-/* Hides topnav links when the screen is smaller than the specified width */
-@media screen and (max-width: 1100px) {
-    .topnav a {
+.eat {
+    margin-top: 12px;
+}
+
+.logout {
+    width: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 35px;
+    transition-duration: 0.5s;
+}
+
+.kitchenlogocontainer {
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+.kitchenlogo {
+    width: 100px;
+}
+
+.kitchenlogotextplace {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    transition-duration: 0.5s;
+}
+
+/* Changes the navigation bar when the user's screen is smaller than the specified width */
+@media screen and (max-width: 1150px) {
+    .eat {
         display: none;
     }
-}
 
-/* Changes the searchbar width when the screen is smaller than the specified width */
-@media screen and (max-width: 750px) {
     .searchbarli {
-        width: 200px;
+        padding-top: 0px;
+        padding-bottom: 15px;
+        width: 90%;
     }
 }
-@media screen and (max-width: 650px) {
-    .searchbarli {
-        width: 150px;
+@media screen and (max-width: 480px) {
+    .broccoli {
+        margin-left: 0px;
+        margin-right: 0px;
     }
-}
-@media screen and (max-width: 600px) {
-    .searchbarli {
-        width: 80px;
+    .logout {
+        margin-left: 10px;
+        margin-right: 0px;
     }
 }
 
@@ -118,67 +174,66 @@ h2, label, th {
     text-align: center;
     font-size: 125%;
     background-color: black;
-    color: #1e9696;
-    border: 3px solid #7c003e;
+    color: floralwhite;
+    opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 input[type=file] {
     text-align: center;
     background-color: black;
-    color: #1e9696;
-    border: 3px solid #7c003e;
+    box-shadow: 0 0 5px black;
+    color: floralwhite;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+    transition-duration: 0.5s;
 }
 
 p {
     text-align: center;
 }
 
-.container {
-    background-color: #51afe6;
+.flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.flex-container, .flex-container-nav {
-    background-color: #007c7c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.flex-container-nav {
-    background-color: black;
 }
 
 input[type=submit]:hover, .editbutton:hover, button[type=submit]:hover, .flashybutton:hover {
-    color: #FFC72C;
+    color: #f9ab23;
+    box-shadow: 0 0 20px #f9ab23;
 }
 
 input[type=submit], .editbutton, button[type=submit], .flashybutton {
     text-align: center;
     background-color: black;
-    color: #8dd5ff;
     padding: 8px 16px;
     cursor: pointer;
     text-decoration: none;
     transition-duration: 0.5s;
-}
-
-input[type=submit], .editbutton, button[type=submit], .flashybutton {
-    color: #1e9696;
-    border: 3px solid #7c003e;
+    box-shadow: 0 0 5px black;
+    color: floralwhite;
 }
 
 input[type=text], input[type=number], input[type=password], textarea, #firstName, #lastName, #email {
     width: 100%;
     padding: 6px 10px;
     display: inline-block;
-    border: 3px solid black;
+    box-shadow: 0 0 5px black;
     border-radius: 4px;
     box-sizing: border-box;
+    transition-duration: 0.5s;
+}
+
+input[type=text]:hover, input[type=number]:hover, input[type=password]:hover, textarea:hover, #firstName:hover,
+#lastName:hover, #email:hover, select:hover, input[type=file]:hover, .gridImage:hover {
+    box-shadow: 0 0 10px black;
 }
 
 textarea {
@@ -193,11 +248,17 @@ table {
 }
 
 td {
-    border: 3px solid #1e9696;
+    box-shadow: 0 0 5px black;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #FFC72C;
     font-size: 125%;
+    background-color: #f93f23;
+    color: floralwhite;
+    opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
 }
 
 .edittable {
@@ -208,7 +269,8 @@ td {
 
 #padding, .container, .addContainer {
     padding: 26px;
-    border: 3px solid #1e9696;
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
 }
 
 .spaceLarge {
@@ -227,45 +289,10 @@ td {
     padding: 0.1px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 250px 250px 250px 250px;
-    padding: 50px;
-    grid-column-gap: 75px;
-    grid-row-gap: 140px;
-}
-
-.grid-container-view {
-    display: grid;
-    grid-template-columns: 300px 350px 300px;
-    grid-template-rows: 260px;
-    padding: 50px;
-    grid-gap: 75px;
-}
-
-.grid-item {
-    border: 3px solid #1e9696;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-.grid-item-view {
-    padding: 10px;
-    text-align: center;
-    font-size: 17px;
-}
-
-.gridImage {
-    width: 200px;
-    padding-bottom: 30px;
-}
-
 .viewImage {
     width: 300px;
     border-radius: 35%;
-    border: 3px solid #7c003e;
+    box-shadow: 0 0 5px black;
 }
 
 .addContainer {
@@ -288,12 +315,6 @@ td {
     margin: 10px;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 @media screen and (max-width: 800px) {
     .column-left, .column-right {
         width: 100%;
@@ -312,7 +333,11 @@ label {
 .message, .messagesmall {
     text-align: center;
     font-size: 400%;
-    color: white;
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }
 
 .messagesmall {
@@ -320,7 +345,6 @@ label {
 }
 
 .foodname {
-    color: #FFC72C;
     text-decoration: none;
     font-size: 150%;
     text-align: center;
@@ -342,13 +366,13 @@ td {
     height: 200px;
     margin: 40px;
     border-radius: 35%;
-    border: 3px solid #7c003e;
+    box-shadow: 0 0 5px black;
 }
 
 select {
     width: 100%;
     height: 33px;
-    border: 3px solid black;
+    box-shadow: 0 0 5px black;
     border-radius: 4px;
 }
 
@@ -358,10 +382,6 @@ select {
 
 .width {
     width: 100px;
-}
-
-.totheright {
-    float:right
 }
 
 /* Responsive grid > each row should have a total width of 100%, adding up the col-nrs should therefore result in 12 */
@@ -380,15 +400,105 @@ select {
 
 [class*="col-"] {
     float: left;
-    padding: 15px;
-    border: 1px solid #1e9696;
-    text-align: center;
-    padding: 130px;
 }
 
-/* Resizes the gird columns for smaller screens */
-@media only screen and (max-width: 1000px) {
-    [class*="col-"] {
+.col-4 {
+    height: 300px;
+    background-color: darkgrey;
+}
+
+#down {
+    margin-top: 50px;
+}
+
+#cook {
+    width: 175px;
+}
+
+#recipe {
+    margin-top: 30px;
+    width: 160px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Resizes the image grid columns for smaller screens */
+@media only screen and (max-width: 1200px) {
+    [class*="col-3"] {
+        width: 33.33%;
+    }
+}
+@media only screen and (max-width: 950px) {
+    [class*="col-3"] {
         width: 50%;
     }
+}
+@media only screen and (max-width: 625px) {
+    [class*="col-3"] {
+        width: 100%;
+    }
+}
+
+/* Resizes the MyKitchen grid columns for smaller screens */
+@media only screen and (max-width: 1050px) {
+    [class*="col-4"] {
+        width: 100%;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 250px 250px 250px 250px;
+    grid-column-gap: 10px;
+    grid-row-gap: 100px;
+}
+
+.grid-container-view {
+    display: grid;
+    grid-template-columns: 300px 350px 300px;
+    grid-template-rows: 260px;
+    padding: 50px;
+    grid-gap: 75px;
+}
+
+.grid-item-view {
+    padding: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+.imagetextcontainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.textshadow {
+    color: white;
+    font-size: 20px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gridImage {
+    width: 300px;
+    border-radius: 10%;
+    box-shadow: 0 0 5px black;
+    transition-duration: 0.5s;
+}
+
+.color {
+    background-color: #f93f23;
 }

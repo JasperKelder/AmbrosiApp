@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - MyInfo</title>
+    <div th:replace="fragments/head :: head"></div>
+
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
+    <div class="spaceMedium"></div>
+    <div class="flex-container">
+        <div id="padding">
+            <!-- change email address form -->
+            <form th:action="@{/changeemailaddress}" th:object="${user}" method="post">
+                <div class="row">
+                </div>
+                <div>
+                    <div class="column-left">
+                        <label for="emailAddress">new email address</label>
+                    </div>
+                    <div class="column-right">
+                        <input type="email" id="emailAddress" th:field="*{emailAddress}" required
+                               placeholder=" new email address"/>
+                        <p>
+                            <button type="submit">Save new email address</button>
+                        </p>
+                    </div>
+                </div>
+            </form>
+            </p>
+            <div class="spaceTiny"></div>
+            <p>
+                <a class="flashybutton" th:href="@{/userinfo}">Go back to my info</a>
+            </p>
+        </div>
+    </div>
+</sec:authorize>
+</body>
+</html>

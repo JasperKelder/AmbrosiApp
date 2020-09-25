@@ -1,7 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.dto.PasswordChangeDto;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +28,10 @@ public class ChangePasswordController {
     UserRepository userRepository;
 
     public ChangePasswordController(UserService userService) {
-        super();
         this.userService = userService;
     }
 
+    //method to get current user
     @GetMapping("/changepassword")
     protected String showUser(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));

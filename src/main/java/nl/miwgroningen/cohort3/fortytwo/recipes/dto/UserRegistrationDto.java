@@ -1,5 +1,9 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.dto;
 
+/**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ */
+
 public class UserRegistrationDto {
 
     private String firstName;
