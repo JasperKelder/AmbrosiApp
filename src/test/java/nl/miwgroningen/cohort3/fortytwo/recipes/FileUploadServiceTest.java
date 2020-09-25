@@ -1,4 +1,4 @@
-package nl.miwgroningen.cohort3.fortytwo.recipes.service;
+package nl.miwgroningen.cohort3.fortytwo.recipes;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Category;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
