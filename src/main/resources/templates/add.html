@@ -88,7 +88,7 @@
                 </div>
                 <div class="row">
                     <div class="column-left">
-                        <label for="ingredients">Ingredients</label>
+                        <label>Ingredients</label>
                     </div>
                     <div class="column-right">
                         <div id="element-wrapper">
@@ -97,7 +97,7 @@
                                 $(function() {
                                     $("#Ingredient_Name").autocomplete({
                                         source: "ingredientAutocomplete",
-                                        minLength: 3,
+                                        minLength: 1,
                                         select: function(event, ui) {
                                             this.value = ui.item.label;
                                             $("#Ingredient_ID").val(ui.item.value);

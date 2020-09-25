@@ -24,6 +24,10 @@ import java.util.Optional;
 @Controller
 public class RecipeController {
 
+    //Specify the number of characters that you must type in before the autocomplete gives suggestions. If you want to
+    // change this, you also have to change this number in the javascript autocomplete script.
+    private static final Integer NR_OF_CHARACTERS_AUTOCOMPLETE = 1;
+
     FileUploadService fileUploadService = new FileUploadService();
 
     @Autowired
@@ -41,8 +45,6 @@ public class RecipeController {
     @Autowired
     UserRepository userRepository;
 
-    private String firstThreeCharacters;
-
     private List<Ingredient> allIngredientsFiltered;
 
     @GetMapping("/add")
@@ -56,8 +58,8 @@ public class RecipeController {
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image, Principal principal,
-                                BindingResult result) throws IOException {
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image,
+                                Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "add";
         }
@@ -158,15 +160,12 @@ public class RecipeController {
     @ResponseBody
     public List<LabelValueDto> ingredientAutocomplete(@RequestParam(value = "term", required = false,
             defaultValue = "") String term) {
-        List<LabelValueDto> suggestions = new ArrayList<LabelValueDto>();
+        List<LabelValueDto> suggestions = new ArrayList<>();
         try {
-            // only update when term is three characters.
-            if (term.length() == 3) {
-                firstThreeCharacters = term;
+            if (term.length() == NR_OF_CHARACTERS_AUTOCOMPLETE) {
                 allIngredientsFiltered = ingredientRepository.getSuggestions(term);
             }
             for (Ingredient ingredient : allIngredientsFiltered) {
-                System.out.println(ingredient.getIngredientName());
                 if (ingredient.getIngredientName().contains(term)) {
                     LabelValueDto labelValueDto = new LabelValueDto();
                     labelValueDto.setLabel(ingredient.getIngredientName());

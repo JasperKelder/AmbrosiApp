@@ -88,32 +88,16 @@
                 </div>
                 <div class="row">
                     <div class="column-left">
-                        <label for="ingredients">Ingredients</label>
+                        <label>Ingredients</label>
                     </div>
                     <div class="column-right">
                         <div id="element-wrapper">
-                            <!--
-
-<select id="ingredients" name="ingredient" th:field="*{ingredients}" required>
-                                    <option th:each="ingredient : ${allIngredients}"
-                                            th:value="${ingredient.getIngredientId()}"
-                                            th:text="${ingredient.getIngredientName()}">
-                                    </option>
-                                </select>
-                            <script>
-                                $( function() {
-                                    $( "#tags" ).autocomplete({
-                                        source: "autocomplete",
-                                        minLength: 3
-                                    });
-                                } );
-                            </script>-->
 
                             <script type="text/javascript">
                                 $(function() {
                                     $("#Ingredient_Name").autocomplete({
                                         source: "ingredientAutocomplete",
-                                        minLength: 3,
+                                        minLength: 1,
                                         select: function(event, ui) {
                                             this.value = ui.item.label;
                                             $("#Ingredient_ID").val(ui.item.value);
@@ -126,7 +110,7 @@
 
                             <input id="Ingredient_Name" type="text" name="ingredientName" th:value="${ingredient.ingredientName}">
                             <input id="Ingredient_ID" type="hidden" name="ingredientId" th:value="${ingredient.ingredientId}">
-
+                        </div>
 
 <!--
 

@@ -29,9 +29,9 @@ public class UserInfoController {
 
     // method for updating the first and last name of a user
     @RequestMapping(path = "/update", produces = MediaType.TEXT_PLAIN_VALUE)
-    protected String updateFirstName(@RequestParam String firstName,
-                                  @RequestParam String lastName,
-                                  Principal principal) {
+    protected String updateName(@RequestParam String firstName,
+                                @RequestParam String lastName,
+                                Principal principal) {
         User user = userRepository.findByEmailAddress(principal.getName());
         userRepository.updateName(firstName, lastName, user.getUserId());
         return "redirect:/mykitchen";
