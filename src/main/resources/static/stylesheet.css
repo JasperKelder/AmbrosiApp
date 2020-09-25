@@ -413,10 +413,9 @@ select {
     float: left;
 }
 
-.col-4 {
-    height: 300px;
-    background-color: darkgrey;
-}
+/*.col-4 {*/
+/*    height: 300px;*/
+/*}*/
 
 .col-6 {
     /*border: solid;*/
@@ -460,7 +459,7 @@ select {
 }
 
 /* Resizes the MyKitchen grid columns for smaller screens */
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1350px) {
     [class*="col-4"] {
         width: 100%;
     }
@@ -531,7 +530,7 @@ select {
 }
 
 .postit-text {
-    top: 50%;
+    top: 60%;
 }
 
 .title-text {
@@ -543,23 +542,23 @@ select {
 }
 
 .prep-text {
-    top: 25%;
+    top: 24%;
 }
 
 .servings-text {
-    top: 35%;
+    top: 32%;
 }
 
 .preptime-text {
-    top: 45%;
+    top: 40%;
 }
 
 .cooktime-text {
-    top: 55%;
+    top: 48%;
 }
 
 .cuisine-text {
-    top: 65%;
+    top: 56%;
 }
 
 #postit {
@@ -579,4 +578,32 @@ select {
 
 .view-resize {
     width: 400px;
+}
+
+.image-resize {
+    width: 450px;
+}
+
+.image-move {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.postit-move {
+    margin-top: 100px;
+}
+
+.prepnote-resize {
+    width: 50px;
+}
+
+.postithead {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.print-place {
+    top: 85%;
 }

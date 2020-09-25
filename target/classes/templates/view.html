@@ -11,15 +11,17 @@
 <div class="spaceMedium"></div>
 <!--Indicates what can be printed-->
 <div id="printpage">
-    <div class="col-6 imagetextcontainer">
+    <div class="col-4 imagetextcontainer postit-move">
         <img id="postit" src="/images/postit.png" alt="Post-it">
+        <div class="postithead messagesmall">Ingredients</div>
         <div class="textshadow postit-text" th:text="${recipe.ingredients}"></div>
     </div>
-    <div class="col-6 imagetextcontainer">
-        <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" class="gridImage" id="recipepicdown">
+    <div class="col-4 imagetextcontainer image-move">
+        <a th:href="@{/index}"><img th:src="|data:image/jpeg;base64,${image}|" alt="Food"
+                                                         class="gridImage image-resize" id="recipepicdown"></a>
     </div>
-    <div class="col-12 imagetextcontainer">
-        <img id="postit" src="/images/prepnote.png" alt="Post-it">
+    <div class="col-4 imagetextcontainer">
+        <img id="postit" src="/images/prepnote.png" alt="Post-it" class="prepnote-resize">
         <div class="messagesmall view-text title-text" th:text="${recipe.recipeTitle}"></div>
         <div class="messagesmall view-text user-text" th:text="${recipe.user}"></div>
         <div class="view-text view-font prep-text" th:text="${recipe.recipePreperation}"></div>
@@ -27,13 +29,8 @@
         <div class="view-text view-font preptime-text" th:text="${recipe.preperationTime}"></div>
         <div class="view-text view-font cooktime-text" th:text="${recipe.cooktime}"></div>
         <div class="view-text view-font cuisine-text" th:text="${recipe.cuisineName}"></div>
+        <input class="view-text view-font print-place" type="submit" value="Print" onClick="printPageArea('printpage')">
     </div>
-</div>
-<div class="col-12 imagetextcontainer">
-    <div class="spaceSmall"></div>
-    <!--Button for printing-->
-    <input type="submit" value="Print" onClick="printPageArea('printpage')">
-    <div class="spaceSmall"></div>
 </div>
 <script>
     function printPageArea(divIDToPrint) {
