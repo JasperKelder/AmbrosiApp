@@ -418,8 +418,13 @@ select {
     background-color: darkgrey;
 }
 
-#down {
-    margin-top: 50px;
+.col-6 {
+    /*border: solid;*/
+    height: 370px;
+}
+
+#recipepicdown {
+    margin-top: 30px;
 }
 
 #cook {
@@ -457,6 +462,13 @@ select {
 /* Resizes the MyKitchen grid columns for smaller screens */
 @media only screen and (max-width: 1050px) {
     [class*="col-4"] {
+        width: 100%;
+    }
+}
+
+/* Resizes the view recipe grid columns for smaller screens */
+@media only screen and (max-width: 900px) {
+    [class*="col-6"] {
         width: 100%;
     }
 }
@@ -503,6 +515,57 @@ select {
     transform: translate(-50%, -50%);
 }
 
+.view-text {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.view-font {
+    color: white;
+    font-size: 20px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+}
+
+.postit-text {
+    top: 50%;
+}
+
+.title-text {
+    top: 5%;
+}
+
+.user-text {
+    top: 15%;
+}
+
+.prep-text {
+    top: 25%;
+}
+
+.servings-text {
+    top: 35%;
+}
+
+.preptime-text {
+    top: 45%;
+}
+
+.cooktime-text {
+    top: 55%;
+}
+
+.cuisine-text {
+    top: 65%;
+}
+
+#postit {
+    width: 450px;
+}
+
 .gridImage {
     width: 300px;
     border-radius: 10%;
@@ -512,4 +575,8 @@ select {
 
 .color {
     background-color: #f93f23;
+}
+
+.view-resize {
+    width: 400px;
 }
