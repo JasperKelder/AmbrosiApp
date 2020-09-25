@@ -3,6 +3,10 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ */
+
 @Entity
 @Table(name = "role")
 public class Role {

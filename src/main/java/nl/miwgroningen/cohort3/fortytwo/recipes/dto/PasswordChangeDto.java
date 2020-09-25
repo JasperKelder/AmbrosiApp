@@ -1,5 +1,9 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.dto;
 
+/**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ */
+
 public class PasswordChangeDto {
 
     private String password;
@@ -8,7 +12,6 @@ public class PasswordChangeDto {
     public PasswordChangeDto(String password) {
         this.password = password;
     }
-
     public PasswordChangeDto() {};
 
     //Getters and Setters

@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.security.Principal;
 
+/**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ */
+
 public interface UserService extends UserDetailsService {
 
     User save(UserRegistrationDto registrationDto);

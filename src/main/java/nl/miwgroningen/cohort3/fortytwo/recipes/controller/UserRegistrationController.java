@@ -5,6 +5,10 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ */
+
 @Controller
 @RequestMapping("/registration")
 public class UserRegistrationController {
@@ -27,6 +31,7 @@ public class UserRegistrationController {
         return "register";
     }
 
+    //method for registering new user
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
         userService.save(registrationDto);
