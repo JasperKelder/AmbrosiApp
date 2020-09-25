@@ -12,8 +12,4 @@ class FileUploadTests {
         Assert.assertEquals("True", "True");
     }
 
-    @Test
-    void thisIsFalse(){
-        Assert.assertEquals("True", "False");
-    }
 }
