@@ -10,6 +10,6 @@ public class FileUploadServiceTest {
     @Test
     public void convertToBase64WithNullImageTest() {
         // Given
-        Assert.assertEquals("Yes", "Yes");
+        Assert.assertEquals("Yes", "False");
     }
 }
