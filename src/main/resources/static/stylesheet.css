@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+input[type=text], input[type=number], input[type=password], input[type=file], textarea, #firstName, #lastName, #email,
+th, td, select {
+    font-family: Arial;
+}
+
 body {
     background-color: floralwhite;
     padding: 0;
@@ -89,6 +94,7 @@ li a:hover, .kitchenlogotextplace:hover {
     font-size: 120%;
     transition-duration: 0.5s;
     box-shadow: 0 0 5px black;
+    font-family: 'Finger Paint';
 }
 
 #searchbar:hover {
@@ -96,12 +102,12 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 
 ::placeholder {
-    color: floralwhite;
-    opacity: 1;
-    text-shadow: -1px 1px 0 black,
-    1px 1px 0 black,
-    1px -1px 0 black,
-    -1px -1px 0 black;
+    /*color: floralwhite;*/
+    /*opacity: 1;*/
+    /*text-shadow: -1px 1px 0 black,*/
+    /*1px 1px 0 black,*/
+    /*1px -1px 0 black,*/
+    /*-1px -1px 0 black;*/
 }
 
 .broccoli {
@@ -219,6 +225,7 @@ input[type=submit], .editbutton, button[type=submit], .flashybutton {
     transition-duration: 0.5s;
     box-shadow: 0 0 5px black;
     color: floralwhite;
+    border-style: none;
 }
 
 input[type=text], input[type=number], input[type=password], textarea, #firstName, #lastName, #email {
@@ -259,6 +266,10 @@ td {
     1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+}
+
+th {
+    box-shadow: 0 0 5px black;
 }
 
 .edittable {
