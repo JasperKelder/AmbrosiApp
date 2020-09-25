@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - MyKitchen</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
+    <div class="spaceLarge"></div>
+    <div class="col-4 imagetextcontainer">
+        <a th:href="@{/newcookbook}"><img id="recipe" src="/images/pen.png" alt="Recipe"></a>
+        <div class="textshadow">Add Cookbook</div>
+    </div>
+
+
+
+</sec:authorize>
+</body>
+</html>

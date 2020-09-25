@@ -27,37 +27,22 @@ public class Cookbook {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "my_cookbooks",
+            name = "mycookbooks",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "userId"),
+                    name = "cookbook_id", referencedColumnName = "cookbookId"),
             inverseJoinColumns = @JoinColumn(
-                    name = "cookbookId", referencedColumnName = "roleId"))
-    private List<Role> cookbooks;
+                    name = "recipe_Id", referencedColumnName = "recipeId"))
+    private List<Recipe> recipes;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "my_recipes",
-            joinColumns = @JoinColumn(
-                    name = "cookbookId", referencedColumnName = "userId"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "recipiId", referencedColumnName = "roleId"))
-    private List<Role> recipes;
 
     //Getters and Setters
     public Integer getCookbookId() { return cookbookId; }
-
     public void setCookbookId(Integer cookbookId) { this.cookbookId = cookbookId; }
-
     public String getCookbookName() { return cookbookName; }
-
     public void setCookbookName(String cookbookName) { this.cookbookName = cookbookName; }
-
-    public List<Role> getCookbooks() { return cookbooks; }
-
-    public void setCookbooks(List<Role> cookbooks) { this.cookbooks = cookbooks; }
-
-    public List<Role> getRecipes() { return recipes; }
-
-    public void setRecipes(List<Role> recipes) { this.recipes = recipes; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    public List<Recipe> getRecipes() { return recipes; }
+    public void setRecipes(List<Recipe> recipes) { this.recipes = recipes; }
 
 }
