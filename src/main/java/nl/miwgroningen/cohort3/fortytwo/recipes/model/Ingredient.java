@@ -26,6 +26,13 @@ public class Ingredient implements Comparable<Ingredient> {
         return ingredientName.compareTo(ingredient.getIngredientName());
     }
 
+    public Ingredient() {
+    }
+
+    public Ingredient(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
     // Getters and setters:
     public Integer getIngredientId() {
         return ingredientId;
