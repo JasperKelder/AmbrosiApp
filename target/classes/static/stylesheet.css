@@ -466,10 +466,6 @@ select {
     }
 }
 
-.col-4 {
-    border: solid black;
-}
-
 .imagetextcontainer {
     position: relative;
     text-align: center;
@@ -604,7 +600,7 @@ select {
 }
 
 .quote-container {
-    margin-top: 12%;
+    margin-top: 10%;
     position: relative;
 }
 
