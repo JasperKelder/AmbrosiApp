@@ -576,3 +576,7 @@ select {
 .color {
     background-color: #f93f23;
 }
+
+.view-resize {
+    width: 400px;
+}
