@@ -440,10 +440,6 @@ select {
     float: none;
 }
 
-#recipepicdown {
-    margin-top: 30px;
-}
-
 #cook {
     width: 175px;
 }
@@ -470,42 +466,9 @@ select {
     }
 }
 
-/* Resizes the MyKitchen grid columns for smaller screens */
-@media only screen and (max-width: 1350px) {
-    [class*="col-4"] {
-        width: 100%;
-    }
+.col-4 {
+    border: solid black;
 }
-
-/* Resizes the view recipe grid columns for smaller screens */
-@media only screen and (max-width: 900px) {
-    [class*="col-6"] {
-        width: 100%;
-    }
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 250px 250px 250px 250px;
-    grid-column-gap: 10px;
-    grid-row-gap: 100px;
-}
-
-.grid-container-view {
-    display: grid;
-    grid-template-columns: 300px 350px 300px;
-    grid-template-rows: 260px;
-    padding: 50px;
-    grid-gap: 75px;
-}
-
-.grid-item-view {
-    padding: 10px;
-    text-align: center;
-    font-size: 17px;
-}
-
 
 .imagetextcontainer {
     position: relative;
@@ -598,26 +561,6 @@ select {
 
 .image-move {
     margin-top: 125px;
-    margin-bottom: 100px;
-}
-
-.postit-move {
-    margin-top: 100px;
-}
-
-.prepnote-resize {
-    width: 50px;
-}
-
-.postithead {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.print-place {
-    top: 85%;
 }
 
 /* styling paper */
@@ -625,7 +568,7 @@ select {
     width: 550px;
     height: 650px;
     position: relative;
-    margin: 20px auto;
+    margin: 30px auto;
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: white;
@@ -660,29 +603,18 @@ select {
     word-spacing: 5px;
 }
 
-.col-12 {
-    margin-left: 50%;
-}
-
 .quote-container {
     margin-top: 12%;
     position: relative;
 }
 
 .note {
-    color: #333;
     position: relative;
     width: 330px;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px;
     font-size: 19px;
     box-shadow: 0 0 5px black;
-}
-
-.note .author {
-    display: block;
-    margin: 40px 0 0 0;
-    text-align: right;
 }
 
 .yellow {
@@ -692,4 +624,29 @@ select {
     -o-transform: rotate(2deg);
     -ms-transform: rotate(2deg);
     transform: rotate(2deg);
+}
+
+/* Resizes the view recipe grid columns for smaller screens */
+@media only screen and (max-width: 1650px) {
+    [class*="col-4"] {
+        width: 50%;
+    }
+    .image-move {
+        margin-top: 20px;
+    }
+    #paper {
+        margin-left: 100px;
+    }
+    .quote-container {
+        margin-top: 0px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 1300px) {
+    [class*="col-4"] {
+        width: 100%;
+    }
+    #paper {
+        margin-left: 25%;
+    }
 }

@@ -8,14 +8,12 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
-</div>
-
 <!--Indicates what can be printed-->
-<!--<div id="printpage">-->
-<div class="row">
+<div class="row" id="printpage">
     <div class="col-4 imagetextcontainer image-move">
-        <a th:href="@{/index}"><img th:src="|data:image/jpeg;base64,${image}|" alt="Food"
-                                    class="gridImage image-resize" id="recipepicdown"></a>
+        <a th:href="@{/index}">
+            <img th:src="|data:image/jpeg;base64,${image}|" alt="Food"
+                 class="gridImage image-resize"></a>
     </div>
     <div class="col-4" id="paper">
         <div id="pattern">
@@ -43,10 +41,11 @@
             <div class="recipe-title">Ingredients</div>
             <br>
             <div th:text="${recipe.ingredients}"></div>
-            <br>
+            <br><br><br>
+            <div onClick="printPageArea('printpage')">Click to print recipe</div>
         </div>
+    </div>
 </div>
-<!--<input type="submit" value="Print" onClick="printPageArea('printpage')">-->
 <script>
     function printPageArea(divIDToPrint) {
         var printContent = document.getElementById(divIDToPrint);
