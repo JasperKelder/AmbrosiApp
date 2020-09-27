@@ -341,7 +341,7 @@ label {
     margin: 10px;
 }
 
-.message, .messagesmall {
+.message, .messagesmall, .recipe-title, .recipe-indication {
     text-align: center;
     font-size: 400%;
     color: #f9ab23;
@@ -349,6 +349,18 @@ label {
     2px 2px 0 black,
     2px -2px 0 black,
     -2px -2px 0 black;
+}
+
+.recipe-title {
+    font-size: 200%;
+}
+
+.recipe-indication {
+    font-size: 100%;
+}
+
+#recipe-user {
+    text-align: center;
 }
 
 .messagesmall {
@@ -413,13 +425,19 @@ select {
     float: left;
 }
 
-/*.col-4 {*/
-/*    height: 300px;*/
-/*}*/
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 .col-6 {
     /*border: solid;*/
     height: 370px;
+}
+
+.col-12 {
+    float: none;
 }
 
 #recipepicdown {
@@ -433,12 +451,6 @@ select {
 #recipe {
     margin-top: 30px;
     width: 160px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 /* Resizes the image grid columns for smaller screens */
@@ -581,11 +593,11 @@ select {
 }
 
 .image-resize {
-    width: 450px;
+    width: 350px;
 }
 
 .image-move {
-    margin-top: 50px;
+    margin-top: 125px;
     margin-bottom: 100px;
 }
 
@@ -606,4 +618,78 @@ select {
 
 .print-place {
     top: 85%;
+}
+
+/* styling paper */
+#paper {
+    width: 550px;
+    height: 650px;
+    position: relative;
+    margin: 20px auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: white;
+    box-shadow: 0 0 5px black;
+}
+
+/* styling red vertical line */
+#paper::before {
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    background-color: rgba(255,0,0,0.6);
+}
+
+/* styling blue horizontal lines */
+#pattern {
+    height: 100%;
+    background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+}
+
+/* styling text content */
+#content {
+    padding-top: 6px;
+    padding-left: 56px;
+    padding-right: 16px;
+    line-height: 25px;
+    font-size: 19px;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+}
+
+.col-12 {
+    margin-left: 50%;
+}
+
+.quote-container {
+    margin-top: 12%;
+    position: relative;
+}
+
+.note {
+    color: #333;
+    position: relative;
+    width: 330px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 19px;
+    box-shadow: 0 0 5px black;
+}
+
+.note .author {
+    display: block;
+    margin: 40px 0 0 0;
+    text-align: right;
+}
+
+.yellow {
+    background: #eae672;
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(2deg);
 }
