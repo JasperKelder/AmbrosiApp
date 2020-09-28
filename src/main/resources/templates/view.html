@@ -16,8 +16,9 @@
             <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" id="view-image">
         </a>
     </div>
-    <!--Displays the recipe written on paper-->
-    <div class="col-4" id="paper">
+    <div class="col-4">
+        <!--Displays the recipe written on paper-->
+        <div id="paper">
         <div id="paper-pattern">
             <div id="paper-content">
                 <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
@@ -35,7 +36,9 @@
                 <div th:text="${'Cuisine: ' + recipe.cuisineName}"></div>
                 <br>
                 <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>
+                <br>
             </div>
+        </div>
         </div>
     </div>
     <div class="col-4" id="postit-container">

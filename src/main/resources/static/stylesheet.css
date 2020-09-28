@@ -208,8 +208,7 @@ li a:hover, .kitchenlogotextplace:hover {
 
 /* Styles the view recipe paper */
 #paper {
-    width: 550px;
-    height: 650px;
+    width: 450px;
     position: relative;
     margin: 30px auto;
     padding-top: 40px;
@@ -253,20 +252,20 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 
 #view-image {
-    width: 350px;
+    width: 325px;
     border-radius: 10%;
     box-shadow: 0 0 5px black;
     transition-duration: 0.5s;
 }
 
 #postit-container {
-    margin-top: 10%;
+    margin-top: 125px;
     position: relative;
 }
 
 .postit {
     position: relative;
-    width: 330px;
+    width: 325px;
     margin: auto;
     padding: 20px;
     font-size: 19px;
@@ -279,8 +278,12 @@ li a:hover, .kitchenlogotextplace:hover {
     transform: rotate(2deg);
 }
 
+.col-4 {
+    border: solid;
+}
+
 /* Resizes the view recipe grid columns for smaller screens */
-@media only screen and (max-width: 1650px) {
+@media only screen and (max-width: 1360px) {
     [class*="col-4"] {
         width: 50%;
     }
