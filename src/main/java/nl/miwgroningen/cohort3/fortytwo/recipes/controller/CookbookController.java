@@ -49,15 +49,12 @@ public class CookbookController {
         List<Cookbook> cookbooks = cookbookRepository.findAll();
         List<Cookbook> myCookbooks = new ArrayList<>();
 
-
         for (Cookbook cookbook : cookbooks) {
             if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
                 myCookbooks.add(cookbook);
 
             }
-
         }
-
         model.addAttribute("allMyCookbooks", myCookbooks);
         return "mycookbooks";
     }
