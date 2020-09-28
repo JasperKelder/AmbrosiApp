@@ -1,4 +1,4 @@
-package nl.miwgroningen.cohort3.fortytwo.recipes;
+package nl.miwgroningen.cohort3.fortytwo.recipes.integrationtesting;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Category;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
