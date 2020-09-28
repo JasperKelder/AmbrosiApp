@@ -11,7 +11,7 @@
     <!--Main page-->
 
 
-    <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
         <div hidden><input type="text" th:field="*{cookbookId}"/></div>
         <div class="row">
             <div class="column-left">

@@ -1,6 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CookbookRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -41,6 +44,15 @@ public class CookbookController {
         cookbookRepository.save(cookbook);
 
         return "redirect:/mykitchen";
+    }
+
+    @GetMapping("/mycookbooks")
+    protected String showCookbook(Model model) {
+        List<Cookbook> cookbooks = cookbookRepository.findAll();
+        model.addAttribute("allMyCookbooks", cookbookRepository.findAll());
+
+        return "mycookbooks";
+
     }
 
 
