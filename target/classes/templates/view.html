@@ -8,16 +8,18 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
-<!--Indicates what can be printed-->
+<!--The printpage id indicates what can be printed-->
 <div class="row" id="printpage">
-    <div class="col-4 imagetextcontainer image-move">
+    <!--Displays the recipe's image-->
+    <div class="col-4" id="view-image-container">
         <a th:href="@{/index}">
-            <img th:src="|data:image/jpeg;base64,${image}|" alt="Food"
-                 class="gridImage image-resize"></a>
+            <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" id="view-image">
+        </a>
     </div>
+    <!--Displays the recipe written on paper-->
     <div class="col-4" id="paper">
-        <div id="pattern">
-            <div id="content">
+        <div id="paper-pattern">
+            <div id="paper-content">
                 <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
                 <br>
                 <div th:text="${recipe.user}" id="recipe-user"></div>
@@ -36,12 +38,14 @@
             </div>
         </div>
     </div>
-    <div class="col-4 quote-container">
-        <div class="note yellow">
+    <div class="col-4" id="postit-container">
+        <!--Displays the ingredients written on a post it-->
+        <div class="postit">
             <div class="recipe-title">Ingredients</div>
             <br>
             <div th:text="${recipe.ingredients}"></div>
             <br><br><br>
+            <!--Temporary location for the print function-->
             <div onClick="printPageArea('printpage')">Click to print (will be moved)</div>
             <br>
         </div>
