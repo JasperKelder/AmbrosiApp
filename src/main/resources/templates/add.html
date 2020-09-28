@@ -107,11 +107,12 @@
                     //
                     // });
 
-
+                    var i = 1
                     $(document).ready(function () {
                         $("#add").click(function () {
+                            i = i + 1;
                             var lastField = $("#dynamicRows div:last");
-                            var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 2;
+                            var intId = (lastField && lastField.length && lastField.data("idx") + 1) || i;
                             var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
                             var ingredientInput = $("<input id=\"myInput" + intId + "\" type=\"text\" class=\"ingredientInput\" name=\"ingredientName" + intId + "\"/>");
                             var removeButton = $("<input type=\"button\" class=\"remove\" value=\" - \" />");
@@ -288,6 +289,7 @@
                 </div>
                 <div class="row">
                     <input id="floatrightbutton" type="submit" value="Submit">
+                </div>
                 </div>
             </form>
         </div>
