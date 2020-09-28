@@ -1,8 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -33,7 +31,6 @@ public class Cookbook {
             inverseJoinColumns = @JoinColumn(
                     name = "recipe_Id", referencedColumnName = "recipeId"))
     private List<Recipe> recipes;
-
 
     //Getters and Setters
     public Integer getCookbookId() { return cookbookId; }
