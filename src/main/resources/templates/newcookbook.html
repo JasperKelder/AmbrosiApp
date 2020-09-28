@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - MyKitchen</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
+
+
+    <form th:action="@{/newCookbook}" th:object="${cookbook}" method="post" enctype="multipart/form-data">
+        <div hidden><input type="text" th:field="*{cookbookId}"/></div>
+        <div class="row">
+            <div class="column-left">
+                <label for="cookbookName">My Cookbook Name</label>
+            </div>
+            <div class="column-right">
+                <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}"
+                       required placeholder="My Cookbook"/>
+            </div>
+        </div>
+        <div class="row">
+            <input id="floatrightbutton" type="submit" value="Submit">
+        </div>
+    </form>
+
+
+</sec:authorize>
+</body>
+</html>
