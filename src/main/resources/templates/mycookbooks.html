@@ -17,8 +17,7 @@
         <table>
             <tr th:each="cookbook: ${allMyCookbooks}">
                 <td>
-                    <div th:text="${cookbook.getCookbookName()}"></div>
-                    </a>
+                        <div><a th:href="@{/myrecipes/{cookbookId}(cookbookId=${cookbook.cookbookId})}" th:text="${cookbook.getCookbookName()}"></a></div>
                 </td>
             </tr>
         </table>

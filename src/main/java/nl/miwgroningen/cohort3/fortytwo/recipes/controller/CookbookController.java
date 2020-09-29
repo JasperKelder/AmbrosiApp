@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -64,17 +66,28 @@ public class CookbookController {
         return "mycookbooks";
     }
 
-    //method to get al recipes linked to selected cookbook
-    @GetMapping("/myrecipes")
-    protected String showRecipesForCookbook(Cookbook cookbook) {
-        Cookbook currentCookbook = cookbookRepository.getOne(cookbook.getCookbookId());
+    //method to get al recipes added by current user in my first cookbook
+    @GetMapping("/myrecipes/{id}")
+    protected String showRecipesForMyFirstCookbook(@PathVariable("id") final Integer cookbookId, Model model, Cookbook cookbook, Principal principal) {
+        Cookbook currentCookbook = cookbookRepository.getOne(cookbookId);
+
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
 
         List<Recipe> recipes = recipeRepository.findAll();
         List<Recipe> myRecipes = new ArrayList<>();
 
         for (Recipe recipe : recipes) {
-            if (currentCookbook.getCookbookId() ==
+            if (recipe.getUser().getUserId() == currentUser.getUserId()) {
+                myRecipes.add(recipe);
+
+            }
+            currentCookbook.setRecipes(myRecipes);
+            cookbookRepository.save(currentCookbook);
+            model.addAttribute("myRecipes", myRecipes);
+
         }
+        return "myrecipes";
     }
 
 }
+
