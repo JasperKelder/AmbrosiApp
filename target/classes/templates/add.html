@@ -62,10 +62,14 @@
                     </div>
                     <div class="column-right">
 
+                        <div id="dynamicList">
+
+                        </div>
                         <div id="dynamicRows">
                             <div class="fieldwrapper" id="field1">
                                 <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
                                 <input id="myIngredients" type="hidden" class="ingredientList" th:value="${allIngredientsJson}">
+                                <input id="myIngredientsRecipe" type="hidden" class="ingredientListRecipe" th:value="${ingredientsRecipeJson}">
                                 <input type="button" class="remove" value=" - ">
                             </div>
                         </div>
@@ -180,33 +184,48 @@
                     var ingredientsArray = JSON.parse(ingredientsString);
                     autocomplete(document.getElementById("myInput1"), ingredientsArray);
 
+                    var ingredientsRecipeString = document.getElementById("myIngredientsRecipe").value;
+                    if (ingredientsRecipeString !== "") {
+                        var ingredientsArrayRecipe = JSON.parse(ingredientsRecipeString);
+                        makeIngredientList(ingredientsArrayRecipe);
+                    }
+
+                    // fill textfields with ingredients of the existing recipe:
+                    function makeIngredientList(array) {
+                        for (var i = 0; i < array.length; i++) {
+                            var ingredientWrapper = $('<div class="ingredientwrapper"/>')
+                            var ingredientField = $('<input type="text" value="' + array[i] + '" name="ingredientName[]"></input>');
+                            var removeButton = $('<input type="button" class="remove" value=" - " />');
+                            removeButton.click(function () {
+                                $(this).parent().remove();
+                            });
+                            ingredientWrapper.append(ingredientField);
+                            ingredientWrapper.append(removeButton);
+                            $("#dynamicList").append(ingredientWrapper);
+                        }
+                    }
+
+
+                    // add input fields for the ingredients dynamically:
+                    $(document).ready(function () {
+                        $("#add").click(function () {
+                            var lastField = $("#dynamicRows div:last");
+                            var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 2;
+                            var fieldWrapper = $('<div class="fieldwrapper" id="field' + intId + '"/>');
+                            fieldWrapper.data("idx", intId);
+                            var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" name="ingredientName[]" />');
+                            var removeButton = $('<input type="button" class="remove" value=" - " />');
+                            removeButton.click(function () {
+                                $(this).parent().remove();
+                            });
+                            fieldWrapper.append(ingredientInput);
+                            fieldWrapper.append(removeButton);
+                            $("#dynamicRows").append(fieldWrapper);
+                            autocomplete(document.getElementById("myInput" + intId), ingredientsArray);
+                        });
+                    });
 
                 </script>
-
-                    <script type="text/javascript">
-
-                        var i = 1
-                        $(document).ready(function () {
-                            $("#add").click(function () {
-                                i = i + 1;
-                                var lastField = $("#dynamicRows div:last");
-                                var intId = (lastField && lastField.length && lastField.data("idx") + 1) || i;
-                                var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
-                                var ingredientInput = $("<input id=\"myInput" + intId + "\" type=\"text\" class=\"ingredientInput\" name=\"ingredientName[]\" />");
-                                var removeButton = $("<input type=\"button\" class=\"remove\" value=\" - \" />");
-                                removeButton.click(function () {
-                                    $(this).parent().remove();
-                                });
-                                fieldWrapper.append(ingredientInput);
-                                fieldWrapper.append(removeButton);
-                                $("#dynamicRows").append(fieldWrapper);
-                                autocomplete(document.getElementById("myInput" + i), ingredientsArray);
-                            });
-                        });
-                    </script>
-
-
-
 
                 <div class="row">
                     <div class="column-left">

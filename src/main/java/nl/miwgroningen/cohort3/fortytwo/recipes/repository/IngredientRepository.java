@@ -16,9 +16,4 @@ import java.util.Optional;
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
     Optional<Ingredient> findByIngredientName(String ingredientName);
-
-    @Transactional
-    //@Modifying
-    @Query(value = "SELECT * FROM ingredient WHERE ingredient_name LIKE CONCAT ('%',:term,'%');", nativeQuery = true)
-    List<Ingredient> getSuggestions(@Param("term") String term);
 }

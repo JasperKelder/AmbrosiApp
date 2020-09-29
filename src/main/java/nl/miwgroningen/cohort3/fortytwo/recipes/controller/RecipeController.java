@@ -1,7 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import com.google.gson.Gson;
-import nl.miwgroningen.cohort3.fortytwo.recipes.dto.LabelValueDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
@@ -46,8 +45,6 @@ public class RecipeController {
     @Autowired
     UserRepository userRepository;
 
-    private List<Ingredient> allIngredientsFiltered;
-
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
@@ -62,7 +59,6 @@ public class RecipeController {
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
-        model.addAttribute("allIngredients", allIngredients);
         return "add";
     }
 
@@ -76,12 +72,13 @@ public class RecipeController {
         else{
             List<Ingredient> ingredients = new ArrayList<>();
             for (String string : ingredientName) {
-                Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
-                Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
-                ingredients.add(ingredient);
-                recipe.setIngredients(ingredients);
+                if (string != null && !string.trim().isEmpty()) {
+                    Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
+                    Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
+                    ingredients.add(ingredient);
+                    recipe.setIngredients(ingredients);
+                }
             }
-
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             // If there is no image uploaded, save default image.
             if (image.isEmpty()){
@@ -142,7 +139,26 @@ public class RecipeController {
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         model.addAttribute("allIngredients", ingredientRepository.findAll());
+
+        List<Ingredient> allIngredients = ingredientRepository.findAll();
+        ArrayList<String> allIngredientNames = new ArrayList<>();
+        for (Ingredient ingredient : allIngredients) {
+            allIngredientNames.add(ingredient.getIngredientName());
+        }
+        Gson gson = new Gson();
+        String allIngredientsJson = gson.toJson(allIngredientNames);
+        model.addAttribute("allIngredientsJson", allIngredientsJson);
+
         if (recipe.isPresent()) {
+
+            List<Ingredient> ingredientsRecipe = recipe.get().getIngredients();
+            ArrayList<String> allIngredientsRecipe = new ArrayList<>();
+            for (Ingredient ingredient : ingredientsRecipe) {
+                allIngredientsRecipe.add(ingredient.getIngredientName());
+            }
+            String ingredientsRecipeJson = gson.toJson(allIngredientsRecipe);
+            model.addAttribute("ingredientsRecipeJson", ingredientsRecipeJson);
+
             // If current image is present then convert it to base64 string so it can be displayed as a place holder
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
@@ -172,49 +188,6 @@ public class RecipeController {
             return "viewloggedin";
         }
         return "redirect:/indexloggedin";
-    }
-
-//    @RequestMapping(value = "/ingredientAutocomplete")
-//    @ResponseBody
-//    public List<LabelValueDto> ingredientAutocomplete(@RequestParam(value = "term", required = false,
-//            defaultValue = "") String term) {
-//        List<LabelValueDto> suggestions = new ArrayList<>();
-//        try {
-//            if (term.length() == NR_OF_CHARACTERS_AUTOCOMPLETE) {
-//                allIngredientsFiltered = ingredientRepository.getSuggestions(term);
-//            }
-//            for (Ingredient ingredient : allIngredientsFiltered) {
-//                if (ingredient.getIngredientName().contains(term)) {
-//                    LabelValueDto labelValueDto = new LabelValueDto();
-//                    labelValueDto.setLabel(ingredient.getIngredientName());
-//                    labelValueDto.setValue(Integer.toString(ingredient.getIngredientId()));
-//                    suggestions.add(labelValueDto);
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return suggestions;
-//    }
-
-    @RequestMapping(value = "/ingredientAutocomplete")
-    @ResponseBody
-    public String ingredientAutocomplete() {
-        ArrayList<String> suggestions = new ArrayList<>();
-        try {
-            allIngredientsFiltered = ingredientRepository.getSuggestions("");
-            for (Ingredient ingredient : allIngredientsFiltered) {
-                suggestions.add(ingredient.getIngredientName());
-                System.out.println("ok");
-                System.out.println(ingredient.getIngredientName());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Gson gson = new Gson();
-        String suggestionsJson = gson.toJson(suggestions);
-        System.out.println(suggestionsJson);
-        return suggestionsJson;
     }
 
 }
