@@ -100,6 +100,20 @@
                 </div>
                 <div class="row">
                     <div class="column-left">
+                        <label for="cookbook">Cookbooks</label>
+                    </div>
+                    <div class="column-right">
+                        <select id="cookbook" name="cookbook" th:object="${cookbook}" required>
+                            <!--Dropdown box displaying all categories-->
+                            <option th:each="cookbook : ${allUserCookbooks}"
+                                    th:value="${cookbook.cookbookId}"
+                                    th:text="${cookbook.cookbookName}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-left">
                         <label for="file">Image</label>
                     </div>
                     <div class="column-right">
@@ -107,6 +121,8 @@
                                th:placeholder="|data:image/jpeg;base64,${currentImage}|">
                     </div>
                 </div>
+
+
                 <div th:unless="${currentImage} == null">
                     <div class="row">Current image:</div>
                     <img th:src="|data:image/jpeg;base64,${currentImage}|"/>
