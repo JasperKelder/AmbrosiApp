@@ -19,26 +19,26 @@
     <div class="col-4">
         <!--Displays the recipe written on paper-->
         <div id="paper">
-            <div id="paper-pattern">
-                <div id="paper-content">
-                    <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
-                    <br>
-                    <div th:text="${recipe.user}" id="recipe-user"></div>
-                    <br>
-                    <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
-                    <br>
-                    <div th:text="${'Cook-time: ' + recipe.cooktime + ' minutes'}"></div>
-                    <br>
-                    <div th:text="${'Servings: ' + recipe.servings}"></div>
-                    <br>
-                    <div th:text="${'Category: ' + recipe.categoryName}"></div>
-                    <br>
-                    <div th:text="${'Cuisine: ' + recipe.cuisineName}"></div>
-                    <br>
-                    <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>
-                    <br>
-                </div>
+        <div id="paper-pattern">
+            <div id="paper-content">
+                <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
+                <br>
+                <div th:text="${recipe.user}" id="recipe-user"></div>
+                <br>
+                <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
+                <br>
+                <div th:text="${'Cook-time: ' + recipe.cooktime + ' minutes'}"></div>
+                <br>
+                <div th:text="${'Servings: ' + recipe.servings}"></div>
+                <br>
+                <div th:text="${'Category: ' + recipe.categoryName.categoryName}"></div>
+                <br>
+                <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
+                <br>
+                <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>
+                <br>
             </div>
+        </div>
         </div>
     </div>
     <div class="col-4" id="postit-container">
