@@ -1,15 +1,15 @@
-package nl.miwgroningen.cohort3.fortytwo.recipes;
+package nl.miwgroningen.cohort3.fortytwo.recipes.recipesapplicationtest;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class RecipesApplicationTests {
 
     @Test
     void contextLoads() {
-        Assert.assertEquals("True", "True");
+        assertEquals("True", "True");
     }
 
 }
