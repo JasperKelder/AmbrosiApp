@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 input[type=text], input[type=number], input[type=password], input[type=file], textarea, #firstName, #lastName, #email,
 th, td, select {
     font-family: Arial;
@@ -10,8 +14,10 @@ th, td, select {
 
 body {
     background-color: floralwhite;
-    padding: 0;
     margin: 0;
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
 /* Start grid CSS */
@@ -55,7 +61,6 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #f93f23;
-    border-bottom-style: none;
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
 }
 
@@ -259,7 +264,7 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 
 #postit-container {
-    margin-top: 125px;
+    margin-top: 160px;
     position: relative;
 }
 
@@ -276,10 +281,15 @@ li a:hover, .kitchenlogotextplace:hover {
     -o-transform: rotate(2deg);
     -ms-transform: rotate(2deg);
     transform: rotate(2deg);
+    min-height: 275px;
 }
 
-.col-4 {
-    border: solid;
+.col-12 {
+    text-align: center;
+}
+
+#printer {
+    width: 110px;
 }
 
 /* Resizes the view recipe grid columns for smaller screens */
@@ -287,23 +297,20 @@ li a:hover, .kitchenlogotextplace:hover {
     [class*="col-4"] {
         width: 50%;
     }
-    .image-move {
+    #view-image-container {
+        margin-top: 30px;
+    }
+    #postit-container {
+        margin-top: 20px;
+        width: 100%;
+    }
+    #printer {
         margin-top: 20px;
     }
-    #paper {
-        margin-left: 100px;
-    }
-    .postit-container {
-        margin-top: 0px;
-        width: 100%;
-    }
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 950px) {
     [class*="col-4"] {
         width: 100%;
-    }
-    #paper {
-        margin-left: 25%;
     }
 }
 
@@ -596,4 +603,29 @@ select {
 
 .color {
     background-color: #f93f23;
+}
+
+/*.footer {*/
+/*    position: fixed;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);*/
+/*    text-align: center;*/
+/*    height: 75px;*/
+/*}*/
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);
+    background-color: #f93f23;
+}
+
+#print-button {
+    /*margin-top: 15px;*/
 }
