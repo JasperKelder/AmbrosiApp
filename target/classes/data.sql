@@ -43,3 +43,12 @@ INSERT INTO recipes.recipe VALUES
 (6, 20, null, 'Frikandel speciaal', 30, 'From your local snackbar', 'Frikandel speciaal', 8, 1, 3, 1),
 (7, 20, null, 'Appeltaart', 30, 'Just do it', 'Appeltaart', 8, 2, 3, 1),
 (8, 40, null, 'Nachos', 50, 'Asian style', 'Nachos', 4, 3, 3, 1);
+
+/* cookbook_id, cookbook_name, user_id */
+INSERT INTO recipes.cookbook VALUES
+(1, 'My first cookbook', 3),
+(2, 'My first cookbook', 2),
+(3, 'My first cookbook', 1),
+(4, 'My second cookbook', 3),
+(5, 'My second cookbook', 2),
+(6, 'My second cookbook', 1);
