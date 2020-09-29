@@ -20,8 +20,7 @@
         <table>
             <tr th:each="recipe: ${myRecipes}">
                 <td>
-                    <div th:text="${recipe.getRecipeTitle()}"></div>
-                    </a>
+                    <div><a th:href="@{/view/{recipeId}(recipeId=${recipe.recipeId})}" th:text="${recipe.getRecipeTitle()}"></a></div>
                 </td>
             </tr>
         </table>
