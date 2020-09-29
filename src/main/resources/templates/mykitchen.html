@@ -2,40 +2,28 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - MyKitchen</title>
-    <div th:replace="fragments/head :: head"></div>
+    <div th:replace="fragments/mykitchen :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
+    <div class="message" id="smaller">
+        <div th:text="${'Welcome ' + user.getFirstName()}"></div>
+    </div>
     <div class="spaceLarge"></div>
-    <div class="col-4 imagetextcontainer">
-        <a th:href="@{/add}"><img id="recipe" src="/images/addrecipe.png" alt="Recipe"></a>
-        <div class="textshadow">Add recipe</div>
+    <div class="col-12 imagetextcontainer">
+        <br>
+        <a class="flashybutton" th:href="@{/add}">Add recipe</a>
+        <br><br><br>
+        <a class="flashybutton" th:href="@{/userinfo}">My info</a>
+        <br><br><br>
+        <!--link to created new cookbook-->
+        <a class="flashybutton" th:href="@{/newcookbook}">New Cookbook</a>
+        <!--link to all my cookbooks-->
+        <a class="flashybutton" th:href="@{/mycookbooks}">My Cookbooks</a>
     </div>
-    <div class="col-4">
-        <!--Displays the users firstname-->
-        <div class="message" id="down">Welcome<br>
-            <div th:text="${user.getFirstName()}"></div>
-        </div>
-    </div>
-    <div class="col-4 imagetextcontainer">
-        <a th:href="@{/userinfo}"><img id="cook" src="/images/myinfo.png" alt="Cook"></a>
-        <div class="textshadow">My info</div>
-    </div>
-
-    <!--link to created new cookbook-->
-    <div class="spaceSmall"></div>
-    <div><a th:href="@{/newcookbook}">new Cookbook</a></div>
-    </div>
-    <!--link to all my cookbooks-->
-    <div class="spaceSmall"></div>
-    <div><a th:href="@{/mycookbooks}">My Cookbooks</a></div>
-    </div>
-
-
-
 </sec:authorize>
 </body>
 </html>
