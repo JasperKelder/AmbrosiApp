@@ -93,14 +93,16 @@ li a {
     float:right;
 }
 
-li a:hover, .nav-mykitchen-text:hover {
-    text-shadow: -2px 2px 0 #f9ab23,
-    2px 2px 0 #f9ab23,
-    2px -2px 0 #f9ab23,
-    -2px -2px 0 #f9ab23;
+#nav-logo {
+    width: 120px;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-right: 50px;
+    transition-duration: 0.5s;
+    margin-top: 7px;
 }
 
-#nav-logo {
+#nav-logo-text {
     margin-top: 45px;
 }
 
@@ -134,14 +136,21 @@ li a:hover, .nav-mykitchen-text:hover {
     transition-duration: 0.5s;
 }
 
-.searchbarli {
+li a:hover, .nav-mykitchen-text:hover {
+    text-shadow: -2px 2px 0 #f9ab23,
+    2px 2px 0 #f9ab23,
+    2px -2px 0 #f9ab23,
+    -2px -2px 0 #f9ab23;
+}
+
+#nav-search-container {
     float: none;
     margin: auto;
     width: 300px;
     padding-top: 45px;
 }
 
-#searchbar {
+#nav-search {
     border: none;
     border-radius: 25px;
     background-color: floralwhite;
@@ -153,19 +162,8 @@ li a:hover, .nav-mykitchen-text:hover {
     font-family: 'Finger Paint';
 }
 
-#searchbar:hover {
+#nav-search:hover {
     box-shadow: 0 0 10px black;
-}
-
-/*::placeholder {}*/
-
-.broccoli {
-    width: 120px;
-    cursor: pointer;
-    margin-left: 50px;
-    margin-right: 50px;
-    transition-duration: 0.5s;
-    margin-top: 7px;
 }
 
 /* Admin navigation extension */
@@ -183,24 +181,14 @@ li a:hover, .nav-mykitchen-text:hover {
 
 /* Changes the navigation bar when the user's screen is smaller than the specified width */
 @media screen and (max-width: 1150px) {
-    #nav-logo {
+    #nav-logo-text {
         display: none;
     }
 
-    .searchbarli {
+    #nav-search-container {
         padding-top: 0px;
         padding-bottom: 15px;
         width: 90%;
-    }
-}
-@media screen and (max-width: 480px) {
-    .broccoli {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-    .logout {
-        margin-left: 10px;
-        margin-right: 0px;
     }
 }
 

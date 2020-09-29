@@ -3,38 +3,45 @@
 <head>
 </head>
 <body>
+<!--Navigation-->
 <nav th:fragment="navigation">
     <ul>
+        <!--EatAndTreat logo-->
         <li class="nav-left">
             <a th:href="@{/index}">
-                <img class="broccoli" src="/images/broccoli.png" alt="EatAndTreat Logo">
+                <img id="nav-logo" src="/images/broccoli.png" alt="EatAndTreat Logo">
             </a>
         </li>
-        <li class="nav-left" id="nav-logo">
+        <!--EatAndTreat text-->
+        <li class="nav-left" id="nav-logo-text">
             <a th:href="@{/index}">EatAndTreat</a>
         </li>
+        <!--Logout button-->
         <li class="nav-right">
             <a th:href="@{/logout}">
                 <img id="nav-logout" src="/images/logout.jpg" alt="Logout image">
             </a>
         </li>
+        <!--MyKitchen logo referring to login for users that aren't logged in-->
         <li class="nav-right imagetextcontainer" th:unless="${#authorization.expression('hasRole(''USER'')')}">
             <a class="nav-mykitchen-container" th:href="@{/login}">
                 <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
             </a>
             <div class="nav-mykitchen-text">MyKitchen</div>
         </li>
+        <!--MyKitchen logo referring to MyKitchen for users that are logged in-->
         <li class="nav-right imagetextcontainer" th:if="${#authorization.expression('hasRole(''USER'')')}">
             <a class="nav-mykitchen-container" th:href="@{/mykitchen}">
                 <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
             </a>
             <div class="nav-mykitchen-text">MyKitchen</div>
         </li>
-        <li class="searchbarli">
-            <input id="searchbar" type="text" placeholder="Search">
+        <!--Searchbar-->
+        <li id="nav-search-container">
+            <input id="nav-search" type="text" placeholder="Search">
         </li>
     </ul>
-    <!--Admin navigation-->
+    <!--Extended navigation for admin users-->
     <ul id="nav-admin">
         <li sec:authorize="hasAuthority('ROLE_ADMIN')">
             <a class="nav-admin-button" th:href="@{/recipes}">Recipe</a>
