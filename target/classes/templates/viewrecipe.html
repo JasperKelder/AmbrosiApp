@@ -13,7 +13,7 @@
     <!--Displays the recipe's image-->
     <div class="col-4" id="view-image-container">
         <a th:href="@{/index}">
-            <img th:src="|data:image/jpeg;base64,${image}|" alt="Food" id="view-image">
+            <img id="view-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
         </a>
     </div>
     <div class="col-4">
@@ -32,7 +32,7 @@
                     <div th:text="${'Servings: ' + recipe.servings}"></div>
                     <br>
                     <!--We have to call categoryName and cuisineName twice because the first time we will make a call-->
-                    <!--to the model and the second call is the actual name from the model.-->
+                    <!--to the model and the second call is the actual name from the model-->
                     <div th:text="${'Category: ' + recipe.categoryName.categoryName}"></div>
                     <br>
                     <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
@@ -53,6 +53,7 @@
         </div>
     </div>
 </div>
+<!--Footer for displaying the print button-->
 <footer>
     <button onClick="printPageArea('printpage')" class="flashybutton" id="print-button">Print</button>
 </footer>

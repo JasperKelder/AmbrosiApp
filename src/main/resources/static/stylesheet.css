@@ -26,41 +26,6 @@ body {
     color: white;
 }
 
-/* Start grid CSS */
-
-/* Responsive grid > each row should have a total width of 100%, adding up the col-nrs should therefore result in 12 */
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-
-[class*="col-"] {
-    float: left;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.grid-image {
-    width: 300px;
-    border-radius: 10%;
-    box-shadow: 0 0 5px black;
-    transition-duration: 0.5s;
-}
-
-/* End grid CSS */
-/* */
 /* Start navigation CSS */
 
 ul {
@@ -102,8 +67,12 @@ li a {
     margin-top: 7px;
 }
 
+#nav-logo-text-container {
+    margin-top: 40px;
+}
+
 #nav-logo-text {
-    margin-top: 45px;
+    font-size: 40px;
 }
 
 .nav-mykitchen-container {
@@ -180,8 +149,8 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Changes the navigation bar when the user's screen is smaller than the specified width */
-@media screen and (max-width: 1150px) {
-    #nav-logo-text {
+@media screen and (max-width: 1280px) {
+    #nav-logo-text-container {
         display: none;
     }
 
@@ -193,6 +162,76 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* End navigation CSS */
+/* */
+/* Start grid CSS */
+
+/* Responsive grid > each row should have a total width of 100%, adding up the col-nrs should therefore result in 12 */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.grid-image {
+    width: 300px;
+    border-radius: 10%;
+    box-shadow: 0 0 5px black;
+    transition-duration: 0.5s;
+}
+
+/* End grid CSS */
+/* */
+/* Start overview CSS */
+
+.index-foodname {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Resizes the overview image grid columns for smaller screens */
+@media only screen and (max-width: 1280px) {
+    [class*="col-3"] {
+        width: 33.33%;
+    }
+}
+@media only screen and (max-width: 950px) {
+    [class*="col-3"] {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 625px) {
+    [class*="col-3"] {
+        width: 100%;
+    }
+}
+
+/* End overview CSS */
 /* */
 /* Start view recipe page CSS */
 
@@ -269,12 +308,16 @@ li a:hover, .nav-mykitchen-text:hover {
     min-height: 275px;
 }
 
-.col-12 {
+/* Footer to accommodate the print button */
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
     text-align: center;
-}
-
-#printer {
-    width: 110px;
+    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);
+    background-color: #f93f23;
 }
 
 /* Resizes the view recipe grid columns for smaller screens */
@@ -289,9 +332,6 @@ li a:hover, .nav-mykitchen-text:hover {
         margin-top: 20px;
         width: 100%;
     }
-    #printer {
-        margin-top: 20px;
-    }
 }
 @media only screen and (max-width: 950px) {
     [class*="col-4"] {
@@ -300,6 +340,8 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* End view recipe page CSS */
+/* */
+/* Start general CSS */
 
 h2, label, th {
     text-align: center;
@@ -311,6 +353,16 @@ h2, label, th {
     1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+}
+
+.message, .messagesmall, .recipe-title, .recipe-indication {
+    text-align: center;
+    font-size: 400%;
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }
 
 input[type=file] {
@@ -466,16 +518,6 @@ label {
     margin: 10px;
 }
 
-.message, .messagesmall, .recipe-title, .recipe-indication {
-    text-align: center;
-    font-size: 400%;
-    color: #f9ab23;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-}
-
 .recipe-title {
     font-size: 200%;
 }
@@ -490,13 +532,6 @@ label {
 
 .messagesmall {
     font-size: 200%;
-}
-
-.foodname {
-    text-decoration: none;
-    font-size: 150%;
-    text-align: center;
-    margin: 10px;
 }
 
 .float, #float {
@@ -550,21 +585,8 @@ select {
     width: 160px;
 }
 
-/* Resizes the image grid columns for smaller screens */
-@media only screen and (max-width: 1200px) {
-    [class*="col-3"] {
-        width: 33.33%;
-    }
-}
-@media only screen and (max-width: 950px) {
-    [class*="col-3"] {
-        width: 50%;
-    }
-}
-@media only screen and (max-width: 625px) {
-    [class*="col-3"] {
-        width: 100%;
-    }
+.color {
+    background-color: #f93f23;
 }
 
 .textshadow {
@@ -578,33 +600,4 @@ select {
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.color {
-    background-color: #f93f23;
-}
-
-/*.footer {*/
-/*    position: fixed;*/
-/*    left: 0;*/
-/*    bottom: 0;*/
-/*    width: 100%;*/
-/*    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);*/
-/*    text-align: center;*/
-/*    height: 75px;*/
-/*}*/
-
-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);
-    background-color: #f93f23;
-}
-
-#print-button {
-    /*margin-top: 15px;*/
 }
