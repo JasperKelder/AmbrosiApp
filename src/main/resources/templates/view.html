@@ -31,9 +31,11 @@
                 <br>
                 <div th:text="${'Servings: ' + recipe.servings}"></div>
                 <br>
-                <div th:text="${'Category: ' + recipe.categoryName}"></div>
+<!--                We have to call categoryName and cuisineName twice because the first time we will make a call to the-->
+<!--                model and the second call is the actual name from the model.-->
+                <div th:text="${'Category: ' + recipe.categoryName.categoryName}"></div>
                 <br>
-                <div th:text="${'Cuisine: ' + recipe.cuisineName}"></div>
+                <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
                 <br>
                 <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>
                 <br>
