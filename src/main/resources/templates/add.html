@@ -175,7 +175,7 @@
                         });
                     }
 
-                    // turn the allIngredientsJson from the recipeController into an js array:
+                    // turn the allIngredientsJson from the recipeController into an array:
                     var ingredientsString = document.getElementById("myIngredients").value;
                     var ingredientsArray = JSON.parse(ingredientsString);
                     autocomplete(document.getElementById("myInput1"), ingredientsArray);

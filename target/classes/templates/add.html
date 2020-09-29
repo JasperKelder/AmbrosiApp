@@ -175,11 +175,9 @@
                         });
                     }
 
+                    // turn the allIngredientsJson from the recipeController into an array:
                     var ingredientsString = document.getElementById("myIngredients").value;
-
                     var ingredientsArray = JSON.parse(ingredientsString);
-
-
                     autocomplete(document.getElementById("myInput1"), ingredientsArray);
 
 
@@ -205,15 +203,6 @@
                                 autocomplete(document.getElementById("myInput" + i), ingredientsArray);
                             });
                         });
-                        var values = [];
-                        $('.fieldwrapper').each(function(){
-                            values.push($(this).val());
-                        });
-                        var count = $('.fieldwrapper').length;
-                        console.log(values);
-                        console.log(count);
-
-
                     </script>
 
 

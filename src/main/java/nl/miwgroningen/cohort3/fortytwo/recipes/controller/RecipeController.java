@@ -68,17 +68,20 @@ public class RecipeController {
 
     @PostMapping({"/add"})
     protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image,
-                                @RequestParam("ingredientName") String ingredientName,
+                                @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "add";
         }
         else{
             List<Ingredient> ingredients = new ArrayList<>();
-            Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName);
-            Ingredient ingredient = ingredientOptional.orElse(new Ingredient(ingredientName));
-            ingredients.add(ingredient);
-            recipe.setIngredients(ingredients);
+            for (String string : ingredientName) {
+                Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
+                Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
+                ingredients.add(ingredient);
+                recipe.setIngredients(ingredients);
+            }
+
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             // If there is no image uploaded, save default image.
             if (image.isEmpty()){
