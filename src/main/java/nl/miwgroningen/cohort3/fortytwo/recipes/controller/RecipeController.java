@@ -1,11 +1,9 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CuisineRepository;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +37,9 @@ public class RecipeController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CookbookRepository cookbookRepository;
+
     @GetMapping("/add")
     protected String createRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
@@ -62,6 +63,7 @@ public class RecipeController {
             else {
                 recipe.setImage(image.getBytes());
             }
+
             recipeRepository.save(recipe);
         }
             return "redirect:/index";

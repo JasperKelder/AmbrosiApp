@@ -68,24 +68,10 @@ public class CookbookController {
 
     //method to get al recipes added by current user in my first cookbook
     @GetMapping("/myrecipes/{id}")
-    protected String showRecipesForMyFirstCookbook(@PathVariable("id") final Integer cookbookId, Model model, Cookbook cookbook, Principal principal) {
+    protected String showRecipesForMyFirstCookbook(@PathVariable("id") final Integer cookbookId, Model model) {
         Cookbook currentCookbook = cookbookRepository.getOne(cookbookId);
+        model.addAttribute("myRecipes", currentCookbook.getRecipes());
 
-        User currentUser = userRepository.findByEmailAddress(principal.getName());
-
-        List<Recipe> recipes = recipeRepository.findAll();
-        List<Recipe> myRecipes = new ArrayList<>();
-
-        for (Recipe recipe : recipes) {
-            if (recipe.getUser().getUserId() == currentUser.getUserId()) {
-                myRecipes.add(recipe);
-
-            }
-            currentCookbook.setRecipes(myRecipes);
-            cookbookRepository.save(currentCookbook);
-            model.addAttribute("myRecipes", myRecipes);
-
-        }
         return "myrecipes";
     }
 
