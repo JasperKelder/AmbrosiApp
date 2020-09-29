@@ -1,7 +1,9 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CookbookRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class CookbookController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RecipeRepository recipeRepository;
 
     //method for creating new cookbook
     @GetMapping("/newcookbook")
@@ -57,6 +62,19 @@ public class CookbookController {
         }
         model.addAttribute("allMyCookbooks", myCookbooks);
         return "mycookbooks";
+    }
+
+    //method to get al recipes linked to selected cookbook
+    @GetMapping("/myrecipes")
+    protected String showRecipesForCookbook(Cookbook cookbook) {
+        Cookbook currentCookbook = cookbookRepository.getOne(cookbook.getCookbookId());
+
+        List<Recipe> recipes = recipeRepository.findAll();
+        List<Recipe> myRecipes = new ArrayList<>();
+
+        for (Recipe recipe : recipes) {
+            if (currentCookbook.getCookbookId() ==
+        }
     }
 
 }

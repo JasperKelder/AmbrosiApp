@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - MyKitchen</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
+
+    <form th:action="@{/myrecipes}" th:object="${allMyCookbooks}" method="get">
+        </div>
+        <div class="spaceMedium"></div>
+        <!--Displays all cookbooks-->
+        <table>
+            <tr th:each="cookbook: ${allMyCookbooks}">
+                <td>
+                    <div th:text="${cookbook.getCookbookName()}"></div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</sec:authorize>
+</body>
+</html>
