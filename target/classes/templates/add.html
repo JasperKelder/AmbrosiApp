@@ -64,7 +64,7 @@
 
                         <div id="dynamicRows">
                             <div class="fieldwrapper" id="field1">
-                                <input id="myInput1" type="text" class="ingredientInput" name="ingredientName1">
+                                <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
                                 <input id="myIngredients" type="hidden" class="ingredientList" th:value="${allIngredientsJson}">
                                 <input type="button" class="remove" value=" - ">
                             </div>
@@ -179,8 +179,6 @@
 
                     var ingredientsArray = JSON.parse(ingredientsString);
 
-                    var numItems = $('div.fieldwrapper').length;
-                    console.log(numItems);
 
                     autocomplete(document.getElementById("myInput1"), ingredientsArray);
 
@@ -196,7 +194,7 @@
                                 var lastField = $("#dynamicRows div:last");
                                 var intId = (lastField && lastField.length && lastField.data("idx") + 1) || i;
                                 var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
-                                var ingredientInput = $("<input id=\"myInput" + intId + "\" type=\"text\" class=\"ingredientInput\" name=\"ingredientName" + intId + "\"/>");
+                                var ingredientInput = $("<input id=\"myInput" + intId + "\" type=\"text\" class=\"ingredientInput\" name=\"ingredientName[]\" />");
                                 var removeButton = $("<input type=\"button\" class=\"remove\" value=\" - \" />");
                                 removeButton.click(function () {
                                     $(this).parent().remove();
@@ -204,7 +202,7 @@
                                 fieldWrapper.append(ingredientInput);
                                 fieldWrapper.append(removeButton);
                                 $("#dynamicRows").append(fieldWrapper);
-                                autocomplete(document.getElementById("myInput" + intId + "\""), ingredientsArray);
+                                autocomplete(document.getElementById("myInput" + i), ingredientsArray);
                             });
                         });
                         var values = [];
@@ -214,6 +212,7 @@
                         var count = $('.fieldwrapper').length;
                         console.log(values);
                         console.log(count);
+
 
                     </script>
 
