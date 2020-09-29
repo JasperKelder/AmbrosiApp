@@ -2,6 +2,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,16 +42,31 @@ public class RecipeController {
     CookbookRepository cookbookRepository;
 
     @GetMapping("/add")
-    protected String createRecipe(Model model) {
+    protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("cookbook", new Cookbook());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+        List<Cookbook> cookbooks = new ArrayList<>(cookbookRepository.findAll());
+        List<Cookbook> userCookbooks = new ArrayList<>();
+
+        for (Cookbook cookbook : cookbooks) {
+            if (currentUser.getUserId() == cookbook.getUser().getUserId()){
+                userCookbooks.add(cookbook);
+            }
+        }
+        model.addAttribute("allUserCookbooks", userCookbooks);
         return "add";
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image, Principal principal,
-                                BindingResult result) throws IOException {
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe,@ModelAttribute("cookbook") Cookbook cookbook,
+    @RequestParam("file") MultipartFile image, Principal principal, BindingResult result) throws IOException {
+        // Create a list of recipes
+        List<Recipe> recipeToCookbook = new ArrayList<>();
+
         if (result.hasErrors()) {
             return "add";
         }
@@ -64,10 +80,16 @@ public class RecipeController {
                 recipe.setImage(image.getBytes());
             }
 
+            // This will add the recipe to the cookbook
+            recipeToCookbook.add(recipe);
+            cookbook.setRecipes(recipeToCookbook);
+
+            cookbookRepository.save(cookbook);
             recipeRepository.save(recipe);
         }
             return "redirect:/index";
     }
+
 
     @GetMapping({"/index", "/"})
     protected String showRecipes(Model model) {

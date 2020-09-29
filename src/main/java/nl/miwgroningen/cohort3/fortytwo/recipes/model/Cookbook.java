@@ -16,6 +16,9 @@ public class Cookbook {
     private Integer cookbookId;
 
     @Column
+    private boolean isPrivate;
+
+    @Column
     private String cookbookName;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -41,5 +44,6 @@ public class Cookbook {
     public void setUser(User user) { this.user = user; }
     public List<Recipe> getRecipes() { return recipes; }
     public void setRecipes(List<Recipe> recipes) { this.recipes = recipes; }
-
+    public boolean isPrivate() { return isPrivate; }
+    public void setPrivate(boolean aPrivate) { isPrivate = aPrivate; }
 }

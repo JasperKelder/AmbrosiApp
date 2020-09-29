@@ -594,3 +594,12 @@ select {
 .color {
     background-color: #f93f23;
 }
+
+
+#animationWindow {
+    width: 50%;
+    height: 50%;
+    -webkit-tap-highlight-color:transparent;
+
+    cursor:pointer;
+}
