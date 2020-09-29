@@ -33,10 +33,5 @@ public class UserLoginController {
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
         return "mykitchen";
     }
-
-    @GetMapping("/loggedout")
-    public String logout() {
-        return "logout";
-    }
 }
 

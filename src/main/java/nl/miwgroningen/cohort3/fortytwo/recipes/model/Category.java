@@ -21,13 +21,7 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public Category() {
-    }
-
-    @Override
-    public String toString() {
-        return categoryName;
-    }
+    public Category() {}
 
     public Integer getCategoryId() {
         return categoryId;

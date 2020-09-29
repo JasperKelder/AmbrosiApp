@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 input[type=text], input[type=number], input[type=password], input[type=file], textarea, #firstName, #lastName, #email,
 th, td, select {
     font-family: Arial;
@@ -10,10 +14,155 @@ th, td, select {
 
 body {
     background-color: floralwhite;
-    padding: 0;
     margin: 0;
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
+.imagetextcontainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* Start navigation CSS */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f93f23;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+}
+
+li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: floralwhite;
+    font-size: 30px;
+    transition-duration: 1s;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+}
+
+.nav-left {
+    float:left
+}
+
+.nav-right {
+    float:right;
+}
+
+#nav-logo {
+    width: 120px;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-right: 50px;
+    transition-duration: 0.5s;
+    margin-top: 7px;
+}
+
+#nav-logo-text-container {
+    margin-top: 40px;
+}
+
+#nav-logo-text {
+    font-size: 40px;
+}
+
+.nav-mykitchen-container {
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+.nav-mykitchen {
+    width: 100px;
+}
+
+.nav-mykitchen-text {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    transition-duration: 0.5s;
+}
+
+#nav-logout {
+    width: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 35px;
+    transition-duration: 0.5s;
+}
+
+li a:hover, .nav-mykitchen-text:hover {
+    text-shadow: -2px 2px 0 #f9ab23,
+    2px 2px 0 #f9ab23,
+    2px -2px 0 #f9ab23,
+    -2px -2px 0 #f9ab23;
+}
+
+#nav-search-container {
+    float: none;
+    margin: auto;
+    width: 300px;
+    padding-top: 45px;
+}
+
+#nav-search {
+    border: none;
+    border-radius: 25px;
+    background-color: floralwhite;
+    color: black;
+    text-align: center;
+    font-size: 120%;
+    transition-duration: 0.5s;
+    box-shadow: 0 0 5px black;
+    font-family: 'Finger Paint';
+}
+
+#nav-search:hover {
+    box-shadow: 0 0 10px black;
+}
+
+/* Admin navigation extension */
+#nav-admin {
+    background-color: black;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+}
+
+.nav-admin-button {
+    font-size: 20px;
+    padding: 0px 5px;
+    float: left;
+    margin-left: 7px;
+}
+
+/* Changes the navigation bar when the user's screen is smaller than the specified width */
+@media screen and (max-width: 1280px) {
+    #nav-logo-text-container {
+        display: none;
+    }
+
+    #nav-search-container {
+        padding-top: 0px;
+        padding-bottom: 15px;
+        width: 90%;
+    }
+}
+
+/* End navigation CSS */
+/* */
 /* Start grid CSS */
 
 /* Responsive grid > each row should have a total width of 100%, adding up the col-nrs should therefore result in 12 */
@@ -46,170 +195,49 @@ body {
     box-shadow: 0 0 5px black;
     transition-duration: 0.5s;
 }
+
 /* End grid CSS */
+/* */
+/* Start overview CSS */
 
-/* Start navigation CSS */
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #f93f23;
-    border-bottom-style: none;
-    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
-}
-
-.navborder {
-    background-color: black;
-    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
-}
-
-.floatright {
-    float:right;
-}
-
-.floatleft {
-    float:left
-}
-
-li a {
-    display: block;
-    text-align: center;
+.index-foodname {
     text-decoration: none;
-    color: floralwhite;
-    font-size: 30px;
-    padding: 30px 0px;
-    transition-duration: 1s;
+    color: white;
+    font-size: 25px;
     text-shadow: -2px 2px 0 black,
     2px 2px 0 black,
     2px -2px 0 black,
     -2px -2px 0 black;
-}
-
-.nopadding {
-    padding: 0px 0px;
-}
-
-li a:hover, .kitchenlogotextplace:hover {
-    text-shadow: -2px 2px 0 #f9ab23,
-    2px 2px 0 #f9ab23,
-    2px -2px 0 #f9ab23,
-    -2px -2px 0 #f9ab23;
-}
-
-.lowernav {
-    font-size: 20px;
-    padding: 0px 5px;
-    float: left;
-}
-
-.loginoutbutton {
-    float: right;
-    margin-right: 21px;
-}
-
-.adminbutton {
-    margin-left: 21px;
-}
-
-.searchbarli {
-    float: none;
-    margin: auto;
-    width: 300px;
-    padding-top: 45px;
-}
-
-#searchbar {
-    border: none;
-    border-radius: 25px;
-    background-color: floralwhite;
-    color: black;
-    text-align: center;
-    font-size: 120%;
-    transition-duration: 0.5s;
-    box-shadow: 0 0 5px black;
-    font-family: 'Finger Paint';
-}
-
-#searchbar:hover {
-    box-shadow: 0 0 10px black;
-}
-
-/*::placeholder {}*/
-
-.broccoli {
-    width: 120px;
-    cursor: pointer;
-    margin-left: 50px;
-    margin-right: 50px;
-    transition-duration: 0.5s;
-    margin-top: 7px;
-}
-
-.eat {
-    margin-top: 12px;
-}
-
-.logout {
-    width: 60px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 35px;
-    transition-duration: 0.5s;
-}
-
-.kitchenlogocontainer {
-    padding: 0;
-    margin-top: 3px;
-    margin-bottom: 20px;
-}
-
-.kitchenlogo {
-    width: 100px;
-}
-
-.kitchenlogotextplace {
     position: absolute;
-    top: 87%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    transition-duration: 0.5s;
 }
 
-/* Changes the navigation bar when the user's screen is smaller than the specified width */
-@media screen and (max-width: 1150px) {
-    .eat {
-        display: none;
-    }
-
-    .searchbarli {
-        padding-top: 0px;
-        padding-bottom: 15px;
-        width: 90%;
+/* Resizes the overview image grid columns for smaller screens */
+@media only screen and (max-width: 1280px) {
+    [class*="col-3"] {
+        width: 33.33%;
     }
 }
-@media screen and (max-width: 480px) {
-    .broccoli {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-    .logout {
-        margin-left: 10px;
-        margin-right: 0px;
+@media only screen and (max-width: 950px) {
+    [class*="col-3"] {
+        width: 50%;
     }
 }
-/* End navigation CSS */
+@media only screen and (max-width: 625px) {
+    [class*="col-3"] {
+        width: 100%;
+    }
+}
 
+/* End overview CSS */
+/* */
 /* Start view recipe page CSS */
 
 /* Styles the view recipe paper */
 #paper {
-    width: 550px;
-    height: 650px;
+    width: 450px;
     position: relative;
     margin: 30px auto;
     padding-top: 40px;
@@ -253,20 +281,20 @@ li a:hover, .kitchenlogotextplace:hover {
 }
 
 #view-image {
-    width: 350px;
+    width: 325px;
     border-radius: 10%;
     box-shadow: 0 0 5px black;
     transition-duration: 0.5s;
 }
 
 #postit-container {
-    margin-top: 10%;
+    margin-top: 160px;
     position: relative;
 }
 
 .postit {
     position: relative;
-    width: 330px;
+    width: 325px;
     margin: auto;
     padding: 20px;
     font-size: 19px;
@@ -277,34 +305,43 @@ li a:hover, .kitchenlogotextplace:hover {
     -o-transform: rotate(2deg);
     -ms-transform: rotate(2deg);
     transform: rotate(2deg);
+    min-height: 275px;
+}
+
+/* Footer to accommodate the print button */
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);
+    background-color: #f93f23;
 }
 
 /* Resizes the view recipe grid columns for smaller screens */
-@media only screen and (max-width: 1650px) {
+@media only screen and (max-width: 1360px) {
     [class*="col-4"] {
         width: 50%;
     }
-    .image-move {
+    #view-image-container {
+        margin-top: 30px;
+    }
+    #postit-container {
         margin-top: 20px;
-    }
-    #paper {
-        margin-left: 100px;
-    }
-    .postit-container {
-        margin-top: 0px;
         width: 100%;
     }
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 950px) {
     [class*="col-4"] {
         width: 100%;
-    }
-    #paper {
-        margin-left: 25%;
     }
 }
 
 /* End view recipe page CSS */
+/* */
+/* Start general CSS */
 
 h2, label, th {
     text-align: center;
@@ -316,6 +353,16 @@ h2, label, th {
     1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+}
+
+.message, .messagesmall, .recipe-title, .recipe-indication {
+    text-align: center;
+    font-size: 400%;
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
 }
 
 input[type=file] {
@@ -471,16 +518,6 @@ label {
     margin: 10px;
 }
 
-.message, .messagesmall, .recipe-title, .recipe-indication {
-    text-align: center;
-    font-size: 400%;
-    color: #f9ab23;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-}
-
 .recipe-title {
     font-size: 200%;
 }
@@ -495,13 +532,6 @@ label {
 
 .messagesmall {
     font-size: 200%;
-}
-
-.foodname {
-    text-decoration: none;
-    font-size: 150%;
-    text-align: center;
-    margin: 10px;
 }
 
 .float, #float {
@@ -555,27 +585,8 @@ select {
     width: 160px;
 }
 
-/* Resizes the image grid columns for smaller screens */
-@media only screen and (max-width: 1200px) {
-    [class*="col-3"] {
-        width: 33.33%;
-    }
-}
-@media only screen and (max-width: 950px) {
-    [class*="col-3"] {
-        width: 50%;
-    }
-}
-@media only screen and (max-width: 625px) {
-    [class*="col-3"] {
-        width: 100%;
-    }
-}
-
-.imagetextcontainer {
-    position: relative;
-    text-align: center;
-    color: white;
+.color {
+    background-color: #f93f23;
 }
 
 .textshadow {
@@ -589,8 +600,4 @@ select {
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.color {
-    background-color: #f93f23;
 }

@@ -52,7 +52,7 @@ public class User {
     }
 
 
-    //Used in view.html to display the user who added the recipe
+    //Used in viewrecipe.html to display the user who added the recipe
     @Override
     public String toString() {
         return firstName;

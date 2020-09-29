@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>EatAndTreat - View Recipe</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+<!--Navigation-->
+<nav th:replace="fragments/navigation :: navigation"></nav>
+<!--Main page-->
+<!--The printpage id indicates what can be printed-->
+<div class="row" id="printpage">
+    <!--Displays the recipe's image-->
+    <div class="col-4" id="view-image-container">
+        <a th:href="@{/index}">
+            <img id="view-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
+        </a>
+    </div>
+    <div class="col-4">
+        <!--Displays the recipe written on paper-->
+        <div id="paper">
+            <div id="paper-pattern">
+                <div id="paper-content">
+                    <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
+                    <br>
+                    <div th:text="${recipe.user}" id="recipe-user"></div>
+                    <br>
+                    <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
+                    <br>
+                    <div th:text="${'Cook-time: ' + recipe.cooktime + ' minutes'}"></div>
+                    <br>
+                    <div th:text="${'Servings: ' + recipe.servings}"></div>
+                    <br>
+                    <!--We have to call categoryName and cuisineName twice because the first time we will make a call-->
+                    <!--to the model and the second call is the actual name from the model-->
+                    <div th:text="${'Category: ' + recipe.categoryName.categoryName}"></div>
+                    <br>
+                    <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
+                    <br>
+                    <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" id="postit-container">
+        <!--Displays the ingredients written on a post it-->
+        <div class="postit">
+            <div class="recipe-title">Ingredients</div>
+            <br>
+            <div th:text="${recipe.ingredients}"></div>
+            <br><br><br>
+        </div>
+    </div>
+</div>
+<!--Footer for displaying the print button-->
+<footer>
+    <button onClick="printPageArea('printpage')" class="flashybutton" id="print-button">Print</button>
+</footer>
+<script>
+    function printPageArea(divIDToPrint) {
+        var printContent = document.getElementById(divIDToPrint);
+        var WinPrint = window.open('', '', 'width=900,height=650');
+        WinPrint.document.write(printContent.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+    }
+</script>
+</body>
+</html>

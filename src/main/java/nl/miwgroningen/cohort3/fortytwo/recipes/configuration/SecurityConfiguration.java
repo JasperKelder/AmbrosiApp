@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/loggedout?logout")
+                .logoutSuccessUrl("/index?logout")
                 .permitAll();
         http.formLogin().defaultSuccessUrl("/mykitchen", true);
     }

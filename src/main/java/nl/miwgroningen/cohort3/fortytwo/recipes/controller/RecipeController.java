@@ -104,18 +104,6 @@ public class RecipeController {
         return "index";
     }
 
-    @GetMapping("/indexloggedin")
-    protected String showRecipesLoggedIn(Model model) {
-        List<Recipe> recipes = recipeRepository.findAll();
-        List<String> imagesList = new ArrayList<>();
-        for (Recipe recipe : recipes) {
-            imagesList.add(fileUploadService.convertToBase64(recipe));
-        }
-        model.addAttribute("allRecipes", recipeRepository.findAll());
-        model.addAttribute("allImages", imagesList);
-        return "indexloggedin";
-    }
-
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
@@ -147,25 +135,14 @@ public class RecipeController {
         return "index";
     }
 
-    @GetMapping("/view/{id}")
+    @GetMapping("/viewrecipe/{id}")
     protected String showRecipe(@PathVariable("id") final Integer recipeId, Model model) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             model.addAttribute("recipe", recipe.get());
             model.addAttribute("image", fileUploadService.convertToBase64(recipe.get()));
-            return "view";
+            return "viewrecipe";
         }
         return "redirect:/index";
-    }
-
-    @GetMapping("/viewloggedin/{id}")
-    protected String showRecipeLoggedIn(@PathVariable("id") final Integer recipeId, Model model) {
-        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
-        if (recipe.isPresent()) {
-            model.addAttribute("recipe", recipe.get());
-            model.addAttribute("image", fileUploadService.convertToBase64(recipe.get()));
-            return "viewloggedin";
-        }
-        return "redirect:/indexloggedin";
     }
 }
