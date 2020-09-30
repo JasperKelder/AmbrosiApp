@@ -68,7 +68,9 @@
                         <div id="dynamicRows">
                             <div class="fieldwrapper" id="field1">
                                 <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
+<!--                                list of all ingredients in database:-->
                                 <input id="myIngredients" type="hidden" class="ingredientList" th:value="${allIngredientsJson}">
+<!--                                list of all ingredients with recipe (for update recipe):-->
                                 <input id="myIngredientsRecipe" type="hidden" class="ingredientListRecipe" th:value="${ingredientsRecipeJson}">
                                 <input type="button" class="remove" value=" - ">
                             </div>
