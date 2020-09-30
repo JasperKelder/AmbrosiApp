@@ -84,7 +84,6 @@ public class RecipeController {
             recipeToCookbook.add(recipe);
             cookbook.setRecipes(recipeToCookbook);
 
-            cookbookRepository.save(cookbook);
             recipeRepository.save(recipe);
         }
             return "redirect:/index";
@@ -121,7 +120,7 @@ public class RecipeController {
     }
 
     @GetMapping("/add/update/{recipeId}")
-    protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model) {
+    protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model, Cookbook cookbook) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
@@ -130,6 +129,7 @@ public class RecipeController {
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe);
+            model.addAttribute("allUserCookbooks", cookbookRepository.getOne(recipeId));
             return "add";
         }
         return "index";
