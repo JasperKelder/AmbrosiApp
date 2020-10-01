@@ -34,7 +34,6 @@ INSERT INTO recipes.user_roles VALUES
 
 /* recipe_id, cooktime, image ingredients, prep_time, recipe_prep, recipe_title, servings, category_id, cuisine_id, user_id */
 /* Has to be after insertion of the values it references (category, cuisine, user)*/
-INSERT INTO recipes.recipe VALUES
 (1, 20, null, 30, 'Just do it', 'Strawberry Cake', 8, 1, 3, 1),
 (2, 40, null, 50, 'Asian style', 'Broccoli Dish', 4, 2, 3, 1),
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
@@ -43,6 +42,15 @@ INSERT INTO recipes.recipe VALUES
 (6, 20, null, 30, 'From your local snackbar', 'Frikandel speciaal', 8, 1, 3, 1),
 (7, 20, null, 30, 'Just do it', 'Appeltaart', 8, 1, 3, 1),
 (8, 40, null, 50, 'Asian style', 'Nachos', 4, 2, 3, 1);
+
+/* cookbook_id, cookbook_name, is_private user_id */
+INSERT INTO recipes.cookbook VALUES
+(1, 'My first cookbook', 1, 3),
+(2, 'My first cookbook', 0, 2),
+(3, 'My first cookbook', 1, 1),
+(4, 'My second cookbook', 1, 3),
+(5, 'My second cookbook', 0, 2),
+(6, 'My second cookbook', 1, 1);
 
 INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (1, 'egg'),

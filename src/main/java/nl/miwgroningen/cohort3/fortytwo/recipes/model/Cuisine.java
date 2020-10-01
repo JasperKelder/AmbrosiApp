@@ -17,11 +17,6 @@ public class Cuisine {
     @Column(unique = true)
     private String cuisineName;
 
-    @Override
-    public String toString() {
-        return cuisineName;
-    }
-
     public Integer getCuisineId() {
         return cuisineId;
     }

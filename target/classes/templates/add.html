@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div th:replace="fragments/mykitchen :: head"></div>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
@@ -258,6 +259,20 @@
                             <option th:each="category : ${allCategories}"
                                     th:value="${category.categoryId}"
                                     th:text="${category.categoryName}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-left">
+                        <label for="cookbook">Cookbooks</label>
+                    </div>
+                    <div class="column-right">
+                        <select id="cookbook" name="cookbook" th:object="${cookbook}" required>
+                            <!--Dropdown box displaying all categories-->
+                            <option th:each="cookbook : ${allUserCookbooks}"
+                                    th:value="${cookbook.cookbookId}"
+                                    th:text="${cookbook.cookbookName}">
                             </option>
                         </select>
                     </div>

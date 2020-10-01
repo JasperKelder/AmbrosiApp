@@ -1,15 +1,28 @@
+# Programming language
 language: java
+
+# JDK version
 jdk:
   - oraclejdk11
 
+# The dependencies from the maven pom file will be cached so the runtime of the testbuild
+# will be much shorter.
 cache:
   directories:
     - $HOME/.m2
 
+# Services could also be a H2 database or docker for example
 services:
   - mysql
 
+# Before installing dependencies run the following sql script
 before_install:
   - mysql -u root --password="" < sql/travis-init.sql
 
-script: mvn clean install
+# Add scripts to the travis console P stands for a maven Profile, the profiles are
+# defined in the pom file. Profiles give you the ability to run individual tests.
+script:
+  - >
+    mvn clean install &&
+    mvn test -Pcomponent-tests surefire:test &&
+    mvn test -Pintegration-tests surefire:test

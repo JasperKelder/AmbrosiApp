@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - MyInfo</title>
-    <div th:replace="fragments/head :: head"></div>
+    <div th:replace="fragments/mykitchen :: head"></div>
 
 </head>
 <body>
@@ -12,29 +12,29 @@
     <!--Main page-->
     <div class="spaceMedium"></div>
     <div class="flex-container">
-        <div id="padding">
+        <div class="addContainer color">
             <!-- change email address form -->
             <form th:action="@{/changeemailaddress}" th:object="${user}" method="post">
                 <div class="row">
                 </div>
                 <div>
-                    <div class="column-left">
-                        <label for="emailAddress">new email address</label>
+                    <div class="column-left" id="wider">
+                        <label for="emailAddress">EmailAddress</label>
                     </div>
                     <div class="column-right">
-                        <input type="email" id="emailAddress" th:field="*{emailAddress}" required
-                               placeholder=" new email address"/>
-                        <p>
-                            <button type="submit">Save new email address</button>
-                        </p>
+                        <input type="email" id="emailAddress" name="password" th:field="*{emailAddress}" required
+                               placeholder="EmailAddress"/>
                     </div>
                 </div>
+                <div class="spaceLarge"></div>
+                <p>
+                    <button type="submit">Save new email address</button>
+                </p>
+                <div class="spaceTiny"></div>
+                <p>
+                    <a class="flashybutton" th:href="@{/userinfo}">Back to my info</a>
+                </p>
             </form>
-            </p>
-            <div class="spaceTiny"></div>
-            <p>
-                <a class="flashybutton" th:href="@{/userinfo}">Go back to my info</a>
-            </p>
         </div>
     </div>
 </sec:authorize>

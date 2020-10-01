@@ -2,7 +2,10 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import com.google.gson.Gson;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
+import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +27,6 @@ import java.util.Optional;
 @Controller
 public class RecipeController {
 
-    //Specify the number of characters that you must type in before the autocomplete gives suggestions. If you want to
-    // change this, you also have to change this number in the javascript autocomplete script.
-    private static final Integer NR_OF_CHARACTERS_AUTOCOMPLETE = 1;
-
     FileUploadService fileUploadService = new FileUploadService();
 
     @Autowired
@@ -45,10 +44,14 @@ public class RecipeController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CookbookRepository cookbookRepository;
+
     @GetMapping("/add")
-    protected String createRecipe(Model model) {
+    protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("ingredient", new Ingredient());
+        model.addAttribute("cookbook", new Cookbook());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         List<Ingredient> allIngredients = ingredientRepository.findAll();
@@ -59,13 +62,20 @@ public class RecipeController {
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
+
+        // gets current users cookbooks
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+        List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
+        model.addAttribute("allUserCookbooks", userCookbooks);
         return "add";
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @RequestParam("file") MultipartFile image,
-                                @RequestParam("ingredientName[]") String[] ingredientName,
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
+    @RequestParam("file") MultipartFile image, @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
+        // Create a list of recipes
+        List<Recipe> recipeToCookbook = new ArrayList<>();
         if (result.hasErrors()) {
             return "add";
         }
@@ -87,6 +97,16 @@ public class RecipeController {
             else {
                 recipe.setImage(image.getBytes());
             }
+
+            // This will add the recipe to the cookbook
+            recipeToCookbook.add(recipe);
+
+            // save the recipe in a cookbook with creation of recipe, not when updating the recipe:
+            if (recipe.getRecipeId() == null) {
+                cookbook.setRecipes(recipeToCookbook);
+            }
+
+
             recipeRepository.save(recipe);
         }
             return "redirect:/index";
@@ -103,18 +123,6 @@ public class RecipeController {
         model.addAttribute("allImages", imagesList);
 
         return "index";
-    }
-
-    @GetMapping("/indexloggedin")
-    protected String showRecipesLoggedIn(Model model) {
-        List<Recipe> recipes = recipeRepository.findAll();
-        List<String> imagesList = new ArrayList<>();
-        for (Recipe recipe : recipes) {
-            imagesList.add(fileUploadService.convertToBase64(recipe));
-        }
-        model.addAttribute("allRecipes", recipeRepository.findAll());
-        model.addAttribute("allImages", imagesList);
-        return "indexloggedin";
     }
 
     @GetMapping("/recipes")
@@ -134,10 +142,12 @@ public class RecipeController {
     }
 
     @GetMapping("/add/update/{recipeId}")
-    protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model) {
+    protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model, Principal principal) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        User user = userRepository.findByEmailAddress(principal.getName());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+        model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
         model.addAttribute("allIngredients", ingredientRepository.findAll());
 
         List<Ingredient> allIngredients = ingredientRepository.findAll();
@@ -168,26 +178,14 @@ public class RecipeController {
         return "index";
     }
 
-    @GetMapping("/view/{id}")
+    @GetMapping("/viewrecipe/{id}")
     protected String showRecipe(@PathVariable("id") final Integer recipeId, Model model) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             model.addAttribute("recipe", recipe.get());
             model.addAttribute("image", fileUploadService.convertToBase64(recipe.get()));
-            return "view";
+            return "viewrecipe";
         }
         return "redirect:/index";
     }
-
-    @GetMapping("/viewloggedin/{id}")
-    protected String showRecipeLoggedIn(@PathVariable("id") final Integer recipeId, Model model) {
-        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
-        if (recipe.isPresent()) {
-            model.addAttribute("recipe", recipe.get());
-            model.addAttribute("image", fileUploadService.convertToBase64(recipe.get()));
-            return "viewloggedin";
-        }
-        return "redirect:/indexloggedin";
-    }
-
 }

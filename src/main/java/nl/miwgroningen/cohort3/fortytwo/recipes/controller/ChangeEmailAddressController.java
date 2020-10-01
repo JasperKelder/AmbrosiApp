@@ -50,7 +50,7 @@ public class ChangeEmailAddressController {
     @PostMapping
     public String saveNewEmailaddress(@ModelAttribute("user") EmailChangeDto emailChangeDto, Principal principal) {
         userService.save(emailChangeDto, principal);
-        return "redirect:/changeemailaddress?success";
+        return "redirect:/logout";
     }
 
 }
