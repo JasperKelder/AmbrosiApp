@@ -1,5 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
+import com.google.gson.Gson;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
@@ -36,6 +38,9 @@ public class RecipeController {
     CuisineRepository cuisineRepository;
 
     @Autowired
+    IngredientRepository ingredientRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -44,9 +49,18 @@ public class RecipeController {
     @GetMapping("/add")
     protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
+        model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("cookbook", new Cookbook());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+        List<Ingredient> allIngredients = ingredientRepository.findAll();
+        ArrayList<String> allIngredientNames = new ArrayList<>();
+        for (Ingredient ingredient : allIngredients) {
+            allIngredientNames.add(ingredient.getIngredientName());
+        }
+        Gson gson = new Gson();
+        String allIngredientsJson = gson.toJson(allIngredientNames);
+        model.addAttribute("allIngredientsJson", allIngredientsJson);
 
         // gets current users cookbooks
         User currentUser = userRepository.findByEmailAddress(principal.getName());
@@ -56,15 +70,24 @@ public class RecipeController {
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe,@ModelAttribute("cookbook") Cookbook cookbook,
-    @RequestParam("file") MultipartFile image, Principal principal, BindingResult result) throws IOException {
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
+    @RequestParam("file") MultipartFile image, @RequestParam("ingredientName[]") String[] ingredientName,
+                                Principal principal, BindingResult result) throws IOException {
         // Create a list of recipes
         List<Recipe> recipeToCookbook = new ArrayList<>();
-
         if (result.hasErrors()) {
             return "add";
         }
         else{
+            List<Ingredient> ingredients = new ArrayList<>();
+            for (String string : ingredientName) {
+                if (string != null && !string.trim().isEmpty()) {
+                    Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
+                    Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
+                    ingredients.add(ingredient);
+                    recipe.setIngredients(ingredients);
+                }
+            }
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             // If there is no image uploaded, save default image.
             if (image.isEmpty()){
@@ -87,7 +110,6 @@ public class RecipeController {
         }
             return "redirect:/index";
     }
-
 
     @GetMapping({"/index", "/"})
     protected String showRecipes(Model model) {
@@ -125,7 +147,27 @@ public class RecipeController {
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
+        model.addAttribute("allIngredients", ingredientRepository.findAll());
+
+        List<Ingredient> allIngredients = ingredientRepository.findAll();
+        ArrayList<String> allIngredientNames = new ArrayList<>();
+        for (Ingredient ingredient : allIngredients) {
+            allIngredientNames.add(ingredient.getIngredientName());
+        }
+        Gson gson = new Gson();
+        String allIngredientsJson = gson.toJson(allIngredientNames);
+        model.addAttribute("allIngredientsJson", allIngredientsJson);
+
         if (recipe.isPresent()) {
+
+            List<Ingredient> ingredientsRecipe = recipe.get().getIngredients();
+            ArrayList<String> allIngredientsRecipe = new ArrayList<>();
+            for (Ingredient ingredient : ingredientsRecipe) {
+                allIngredientsRecipe.add(ingredient.getIngredientName());
+            }
+            String ingredientsRecipeJson = gson.toJson(allIngredientsRecipe);
+            model.addAttribute("ingredientsRecipeJson", ingredientsRecipeJson);
+
             // If current image is present then convert it to base64 string so it can be displayed as a place holder
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
