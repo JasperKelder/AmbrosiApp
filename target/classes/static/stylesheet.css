@@ -605,3 +605,13 @@ select {
 #smaller {
     font-size: 50px;
 }
+
+.cookbook-text {
+    color: white;
+    font-size: 20px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    text-decoration: none;
+}
