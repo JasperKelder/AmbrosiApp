@@ -76,7 +76,12 @@ public class RecipeController {
 
             // This will add the recipe to the cookbook
             recipeToCookbook.add(recipe);
-            cookbook.setRecipes(recipeToCookbook);
+
+            // save the recipe in a cookbook with creation of recipe, not when updating the recipe:
+            if (recipe.getRecipeId() == null) {
+                cookbook.setRecipes(recipeToCookbook);
+            }
+
 
             recipeRepository.save(recipe);
         }
