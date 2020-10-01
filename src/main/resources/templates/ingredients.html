@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - Ingredients</title>
+    <div th:replace="fragments/mykitchen :: head"></div>
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
+    <div class="flex-container">
+        <div class="spaceMedium"></div>
+        <div id="padding">
+            <!--Add ingredients form-->
+            <form action="#" th:action="@{/ingredients}" th:object="${ingredient}" method="post">
+                <p hidden><input type="text" th:field="*{ingredientId}"/></p>
+                <p><input type="text" th:field="*{ingredientName}" required placeholder="Ingredient"/></p>
+                <p><input type="submit" value="Submit"/></p>
+            </form>
+        </div>
+        <div class="spaceMedium"></div>
+        <table>
+            <!--Displays all ingredients-->
+            <tr th:each="ingredient: ${allIngredients}">
+                <td th:text="${ingredient.ingredientName}"></td>
+                <!-- Loads the category in the add category form so it can be update-->
+                <td class="edittable"><a
+                        th:href="@{/ingredients/update/{ingredientId}(ingredientId=${ingredient.ingredientId})}"
+                        class="editbutton">Update</a></td>
+            </tr>
+        </table>
+    </div>
+</sec:authorize>
+</body>
+</html>

@@ -52,6 +52,9 @@
         <li sec:authorize="hasAuthority('ROLE_ADMIN')">
             <a class="nav-admin-button" th:href="@{/category}">Category</a>
         </li>
+        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a class="nav-admin-button" th:href="@{/ingredients}">Ingredients</a>
+        </li>
     </ul>
 </nav>
 </body>
