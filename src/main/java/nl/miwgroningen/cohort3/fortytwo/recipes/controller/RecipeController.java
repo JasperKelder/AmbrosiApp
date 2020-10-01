@@ -48,15 +48,9 @@ public class RecipeController {
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
 
+        // gets current users cookbooks
         User currentUser = userRepository.findByEmailAddress(principal.getName());
-        List<Cookbook> cookbooks = new ArrayList<>(cookbookRepository.findAll());
-        List<Cookbook> userCookbooks = new ArrayList<>();
-
-        for (Cookbook cookbook : cookbooks) {
-            if (currentUser.getUserId() == cookbook.getUser().getUserId()){
-                userCookbooks.add(cookbook);
-            }
-        }
+        List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
         model.addAttribute("allUserCookbooks", userCookbooks);
         return "add";
     }
@@ -120,16 +114,17 @@ public class RecipeController {
     }
 
     @GetMapping("/add/update/{recipeId}")
-    protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model, Cookbook cookbook) {
+    protected String updateRecipe(@PathVariable("recipeId") final Integer recipeId, Model model, Principal principal) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        User user = userRepository.findByEmailAddress(principal.getName());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+        model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
         if (recipe.isPresent()) {
             // If current image is present then convert it to base64 string so it can be displayed as a place holder
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe);
-            model.addAttribute("allUserCookbooks", cookbookRepository.getOne(recipeId));
             return "add";
         }
         return "index";
