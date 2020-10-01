@@ -34,6 +34,7 @@ INSERT INTO recipes.user_roles VALUES
 
 /* recipe_id, cooktime, image ingredients, prep_time, recipe_prep, recipe_title, servings, category_id, cuisine_id, user_id */
 /* Has to be after insertion of the values it references (category, cuisine, user)*/
+INSERT INTO recipes.recipe VALUES
 (1, 20, null, 30, 'Just do it', 'Strawberry Cake', 8, 1, 3, 1),
 (2, 40, null, 50, 'Asian style', 'Broccoli Dish', 4, 2, 3, 1),
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
@@ -70,5 +71,3 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (1, 4),
 (2, 5),
 (3, 9);
-
-
