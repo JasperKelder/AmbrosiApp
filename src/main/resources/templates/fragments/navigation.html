@@ -38,10 +38,12 @@
         </li>
         <!--Searchbar-->
         <li id="nav-search-container">
-            <form action="#" th:action="@{/searchresults}" method="post">
-                <p><input id="nav-search" type="text" placeholder="Search" name="searchTerm"/></p>
-                <p><input type="submit" value="Search"/></p>
-            </form>
+            <p><input id="nav-search" type="text" placeholder="Search"/></p>
+            <p>
+                <button>
+                    <a href="" onclick="this.href= '/searchresults/'+document.getElementById('nav-search').value">Search</a>
+                </button>
+            </p>
         </li>
 
     </ul>
@@ -61,5 +63,6 @@
         </li>
     </ul>
 </nav>
+<script type="text/javascript" src="script/search.js"></script>
 </body>
 </html>
