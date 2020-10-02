@@ -71,7 +71,8 @@ public class RecipeController {
 
     @PostMapping({"/add"})
     protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
-    @RequestParam("file") MultipartFile image, @RequestParam("ingredientName[]") String[] ingredientName,
+                                @RequestParam("file") MultipartFile image,
+                                @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
         // Create a list of recipes
         List<Recipe> recipeToCookbook = new ArrayList<>();
@@ -120,7 +121,6 @@ public class RecipeController {
         }
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
-
         return "index";
     }
 
@@ -187,4 +187,12 @@ public class RecipeController {
         }
         return "redirect:/index";
     }
+
+    @PostMapping("/searchresults")
+    protected String showSearchResults(@RequestParam("searchTerm") String searchTerm, Model model) {
+        List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
+        model.addAttribute("searchResults", searchResults);
+        return "searchresults";
+    }
+
 }

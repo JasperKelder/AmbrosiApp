@@ -38,8 +38,12 @@
         </li>
         <!--Searchbar-->
         <li id="nav-search-container">
-            <input id="nav-search" type="text" placeholder="Search">
+            <form action="#" th:action="@{/searchresults}" method="post">
+                <p><input id="nav-search" type="text" placeholder="Search" name="searchTerm"/></p>
+                <p><input type="submit" value="Submit"/></p>
+            </form>
         </li>
+
     </ul>
     <!--Extended navigation for admin users-->
     <ul id="nav-admin">
