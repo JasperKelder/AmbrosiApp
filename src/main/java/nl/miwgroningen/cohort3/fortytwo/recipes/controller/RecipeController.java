@@ -191,6 +191,12 @@ public class RecipeController {
     @PostMapping("/searchresults")
     protected String showSearchResults(@RequestParam("searchTerm") String searchTerm, Model model) {
         List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
+        List<Recipe> searchResultsByIngredient = recipeRepository.getSuggestionsByIngredient(searchTerm);
+        for (Recipe recipe: searchResultsByIngredient) {
+            if (!searchResults.contains(recipe)) {
+                searchResults.add(recipe);
+            }
+        }
         model.addAttribute("searchResults", searchResults);
         return "searchresults";
     }
