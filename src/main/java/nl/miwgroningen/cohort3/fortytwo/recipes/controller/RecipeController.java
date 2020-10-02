@@ -188,8 +188,8 @@ public class RecipeController {
         return "redirect:/index";
     }
 
-    @PostMapping("/searchresults")
-    protected String showSearchResults(@RequestParam("searchTerm") String searchTerm, Model model) {
+    @GetMapping("/searchresults/{searchterm}")
+    protected String showSearchResults(@PathVariable("searchterm") String searchTerm, Model model) {
         List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
         List<Recipe> searchResultsByIngredient = recipeRepository.getSuggestionsByIngredient(searchTerm);
         for (Recipe recipe: searchResultsByIngredient) {
