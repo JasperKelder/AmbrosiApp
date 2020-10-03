@@ -2,10 +2,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +84,7 @@ public class RecipeController {
                     Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
                     Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
                     ingredients.add(ingredient);
-                    recipe.setIngredients(ingredients);
+//                    recipe.setIngredients(ingredients);
                 }
             }
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
@@ -167,11 +164,18 @@ public class RecipeController {
 
         if (recipe.isPresent()) {
 
-            List<Ingredient> ingredientsRecipe = recipe.get().getIngredients();
+            //List<Ingredient> ingredientsRecipe = recipe.get().getIngredients();
+            Set<RecipeIngredient> ingredientsRecipe = recipe.get().getRecipeIngredients();
+            System.out.println(ingredientsRecipe.toString());
             ArrayList<String> allIngredientsRecipe = new ArrayList<>();
-            for (Ingredient ingredient : ingredientsRecipe) {
-                allIngredientsRecipe.add(ingredient.getIngredientName());
+            for (RecipeIngredient ri: ingredientsRecipe) {
+                allIngredientsRecipe.add(ri.getIngredient().getIngredientName());
             }
+//            }
+//            ArrayList<String> allIngredientsRecipe = new ArrayList<>();
+//            for (Ingredient ingredient : ingredientsRecipe) {
+//                allIngredientsRecipe.add(ingredient.getIngredientName());
+//            }
             String ingredientsRecipeJson = gson.toJson(allIngredientsRecipe);
             model.addAttribute("ingredientsRecipeJson", ingredientsRecipeJson);
 

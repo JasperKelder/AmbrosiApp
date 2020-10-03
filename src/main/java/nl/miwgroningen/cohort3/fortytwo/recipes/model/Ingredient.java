@@ -3,7 +3,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 import com.google.gson.annotations.Expose;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Ingredient implements Comparable<Ingredient> {
@@ -18,8 +18,10 @@ public class Ingredient implements Comparable<Ingredient> {
     private String ingredientName;
 
     @Expose(serialize = false)
-    @ManyToMany(mappedBy="ingredients")
-    private List<Recipe> recipes;
+    @OneToMany(mappedBy="ingredient")
+    private Set<RecipeIngredient> recipeIngredients;
+
+    private String measuring_unit;
 
     @Override
     public String toString() {
@@ -55,11 +57,11 @@ public class Ingredient implements Comparable<Ingredient> {
         this.ingredientName = ingredientName;
     }
 
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-    }
+//    public List<Recipe> getRecipes() {
+//        return recipes;
+//    }
+//
+//    public void setRecipes(List<Recipe> recipes) {
+//        this.recipes = recipes;
+//    }
 }

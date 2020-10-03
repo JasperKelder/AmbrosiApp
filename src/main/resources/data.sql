@@ -53,21 +53,21 @@ INSERT INTO recipes.cookbook VALUES
 (5, 'My second cookbook', 0, 2),
 (6, 'My second cookbook', 1, 1);
 
-INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
-(1, 'egg'),
-(2, 'flower'),
-(3, 'butter'),
-(4, 'strawberries'),
-(5, 'milk'),
-(6, 'vanilla pod'),
-(7, 'salt'),
-(8, 'sugar'),
-(9, 'water');
+INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`, `measuring_unit`) VALUES
+(1, 'egg', 'pieces'),
+(2, 'flower', 'gram'),
+(3, 'butter', 'gram'),
+(4, 'strawberries', 'gram'),
+(5, 'milk', 'liter'),
+(6, 'vanilla pod', 'pieces'),
+(7, 'salt', 'gram'),
+(8, 'sugar', 'gram'),
+(9, 'water', 'liter');
 
-INSERT INTO recipes.recipe_ingredients VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(2, 5),
-(3, 9);
+INSERT INTO recipes.recipe_ingredient (`recipe_id`, `ingredient_id`, `quantity`) VALUES
+(1, 1, 2),
+(1, 2, 300),
+(1, 3, 250),
+(1, 4, 250),
+(2, 5, 1),
+(3, 9, 1);
