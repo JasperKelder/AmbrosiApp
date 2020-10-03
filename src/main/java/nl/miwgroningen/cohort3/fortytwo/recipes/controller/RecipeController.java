@@ -1,6 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
@@ -119,6 +120,9 @@ public class RecipeController {
         for (Recipe recipe : recipes) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
+        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        String testIngredients = gsonBuilder.toJson(recipes);
+        System.out.println(testIngredients);
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
         return "index";
@@ -156,6 +160,9 @@ public class RecipeController {
         }
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
+        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        String testIngredients = gsonBuilder.toJson(allIngredients);
+        System.out.println(testIngredients);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
 
         if (recipe.isPresent()) {

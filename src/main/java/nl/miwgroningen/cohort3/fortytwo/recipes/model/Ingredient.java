@@ -1,18 +1,23 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Ingredient implements Comparable<Ingredient> {
 
+    @Expose
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ingredientId;
 
+    @Expose
     @Column(unique = true)
     private String ingredientName;
 
+    @Expose(serialize = false)
     @ManyToMany(mappedBy="ingredients")
     private List<Recipe> recipes;
 

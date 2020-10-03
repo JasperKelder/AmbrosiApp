@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.util.StringUtils;
@@ -18,6 +19,7 @@ import java.util.List;
 @Entity
 public class Recipe {
 
+    @Expose
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recipeId;
@@ -35,6 +37,7 @@ public class Recipe {
     @Column
     private Integer servings;
 
+    @Expose
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "recipe_ingredients",
