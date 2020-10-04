@@ -18,7 +18,8 @@
         <div class="spaceMedium"></div>
         <div class="addContainer color">
             <!--Add recipe form-->
-            <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data" autocomplete="off">
+            <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data"
+                  autocomplete="off">
                 <div hidden><input type="text" th:field="*{recipeId}"/></div>
                 <div class="row">
                     <div class="column-left">
@@ -62,24 +63,21 @@
                         <label>Ingredients</label>
                     </div>
                     <div class="column-right">
-
                         <div id="dynamicList">
-
                         </div>
                         <div id="dynamicRows">
                             <div class="fieldwrapper" id="field1">
                                 <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
-<!--                                list of all ingredients in database:-->
-                                <input id="myIngredients" type="hidden" class="ingredientList" th:value="${allIngredientsJson}">
-<!--                                list of all ingredients with recipe (for update recipe):-->
-                                <input id="myIngredientsRecipe" type="hidden" class="ingredientListRecipe" th:value="${ingredientsRecipeJson}">
-                                <input type="button" class="remove" value=" - ">
+                                <!--list of all ingredients in database:-->
+                                <input id="myIngredients" type="hidden" class="ingredientList"
+                                       th:value="${allIngredientsJson}">
+                                <!--list of all ingredients with recipe (for update recipe):-->
+                                <input id="myIngredientsRecipe" type="hidden" class="ingredientListRecipe"
+                                       th:value="${ingredientsRecipeJson}">
                             </div>
                         </div>
-
                         <input type="button" value="Add ingredient" class="add" id="add">
                     </div>
-
                 <div class="row">
                     <div class="column-left">
                         <label for="cooktime">Cook-time</label>

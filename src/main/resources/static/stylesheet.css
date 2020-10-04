@@ -747,3 +747,31 @@ select {
     justify-content: center;
     align-items: center;
 }
+
+.remove {
+    font-family: Arial;
+    height: 30px;
+    width: 30px;
+    transition-duration: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+}
+
+.add {
+    font-family: Arial;
+    transition-duration: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+    height: 20px;
+}
+
+.remove:hover, .add:hover {
+    box-shadow: 0 0 10px black;
+}
+
+#myInput2, #myInput3, #myInput3, #myInput4, #myInput5, #myInput6, #myInput7, #myInput8, #myInput9, #myInput10
+#myInput11, #myInput12, #myInput13, #myInput14, #myInput15, #myInput16, #myInput17, #myInput18, #myInput19, #myInput20 {
+    width: 438px;
+}
