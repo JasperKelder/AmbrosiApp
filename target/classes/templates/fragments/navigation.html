@@ -37,15 +37,22 @@
             <div class="nav-mykitchen-text">MyKitchen</div>
         </li>
         <!--Searchbar-->
+<!--        <li id="nav-search-container">-->
+<!--            <p><input id="nav-search" type="text" placeholder="Search"/></p>-->
+<!--            <p>-->
+<!--                <button>-->
+<!--                    <a href="" onclick="this.href= '/searchresults/'+document.getElementById('nav-search').value">Search</a>-->
+<!--                </button>-->
+<!--            </p>-->
+<!--        </li>-->
         <li id="nav-search-container">
-            <p><input id="nav-search" type="text" placeholder="Search"/></p>
-            <p>
-                <button>
-                    <a href="" onclick="this.href= '/searchresults/'+document.getElementById('nav-search').value">Search</a>
-                </button>
-            </p>
+            <div id="nav-search-bar">
+                <input id="nav-search" type="text" placeholder="Search"/>
+                <a onclick="this.href='/searchresults/'+document.getElementById('nav-search').value">
+                    <img id="nav-search-icon" src="images/search.png">
+                </a>
+            </div>
         </li>
-
     </ul>
     <!--Extended navigation for admin users-->
     <ul id="nav-admin">
