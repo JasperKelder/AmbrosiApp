@@ -780,3 +780,27 @@ select {
     min-width: 700px;
     min-height: 450px;
 }
+
+.search-text {
+    color: #f9ab23;
+    font-size: 20px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    text-decoration: none;
+}
+
+#search-table {
+    width: 100px;
+}
+
+#search-table td {
+    transition-duration: 0.5s;
+    border: 1px solid black;
+}
+
+#search-table td:hover {
+    border: 1px solid #f9ab23;
+    box-shadow: 0 0 15px #f9ab23;
+}

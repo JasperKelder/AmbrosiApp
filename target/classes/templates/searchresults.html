@@ -14,10 +14,10 @@
             <div class="flex-container">
                 <form th:action="@{/searchresults}" th:object="${searchResults}" method="post">
                     <!--Displays all cookbooks-->
-                    <table>
+                    <table id="search-table">
                         <tr th:each="recipe: ${searchResults}">
                             <td>
-                                <a class="cookbook-text"
+                                <a class="search-text"
                                    th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
                                    th:text="${recipe.getRecipeTitle()}"></a>
                             </td>
