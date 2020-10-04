@@ -12,12 +12,13 @@
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
+    <div class="spaceLarge"></div>
+    <div class="spaceMedium"></div>
     <div class="message" id="smaller">
         <div th:text="${'Welcome ' + user.getFirstName()}"></div>
     </div>
-    <div class="spaceLarge"></div>
     <div class="col-12 imagetextcontainer">
-        <br>
+        <br><br>
         <a class="flashybutton" th:href="@{/add}">Add Recipe</a>
         <br><br><br>
         <button id="myinfo-button" class="flashybutton">My Info</button>
@@ -33,7 +34,7 @@
         <div th:replace="fragments/mycookbook :: mycookbook"></div>
     </div>
 </sec:authorize>
-<script type="text/javascript" src="script/modalView.js"></script>
-<script type="text/javascript" src="script/myCookbook.js"></script>
+<script type="text/javascript" src="script/modalview.js"></script>
+<script type="text/javascript" src="script/mycookbook.js"></script>
 </body>
 </html>

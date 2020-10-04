@@ -148,11 +148,14 @@ li a:hover, .nav-mykitchen-text:hover {
     cursor: pointer;
     position: absolute;
     top: 76%;
-    right: -3%;
+    right: -4%;
     transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: floralwhite;
+    transition-duration: 0.5s;
 }
 
-#nav-search:hover {
+#nav-search-bar:hover, #nav-search-icon:hover {
     box-shadow: 0 0 10px black;
 }
 
