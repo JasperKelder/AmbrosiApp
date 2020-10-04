@@ -47,9 +47,13 @@
         <!--Displays the ingredients written on a post it-->
         <div class="postit">
             <div class="recipe-title">Ingredients</div>
-            <br>
-            <div th:text="${recipe.recipeIngredients.g}"></div>
-            <br><br><br>
+<!--            <br>-->
+<!--            <div th:text="${recipe.recipeIngredients}"></div>-->
+<!--            <br><br><br>-->
+
+            <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
+                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
+
         </div>
     </div>
 </div>

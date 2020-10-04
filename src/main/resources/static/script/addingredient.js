@@ -101,12 +101,15 @@ var ingredientsArray = JSON.parse(ingredientsString);
 autocomplete(document.getElementById("myInput1"), ingredientsArray);
 
 var ingredientsRecipeString = document.getElementById("myIngredientsRecipe").value;
+// check if there are values in the ingredientsRecipeString, if there are, populate the dynamic ingredient fields
+// through makeIngredientLis()
 if (ingredientsRecipeString !== "") {
     var ingredientsArrayRecipe = JSON.parse(ingredientsRecipeString);
+    console.log(ingredientsRecipeString);
     makeIngredientList(ingredientsArrayRecipe);
 }
 
-// fill textfields with ingredients of the existing recipe:
+// fill the dynamic ingredient fields with ingredients of the existing recipe:
 function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')

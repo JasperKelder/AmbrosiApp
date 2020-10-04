@@ -7,12 +7,17 @@ import java.io.Serializable;
 @Embeddable
 public class RecipeIngredientsKey implements Serializable {
     @Column(name = "recipe_id")
-    public Integer recipeId;
+    private Integer recipeId;
 
     @Column(name = "ingredient_id")
-    public Integer ingredientId;
+    private Integer ingredientId;
 
     public RecipeIngredientsKey() {
+    }
+
+    public RecipeIngredientsKey(Integer recipeId, Integer ingredientId) {
+        this.recipeId = recipeId;
+        this.ingredientId = ingredientId;
     }
 
     public int hashCode() {

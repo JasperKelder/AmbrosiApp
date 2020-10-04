@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class RecipeIngredient {
 
     @EmbeddedId
-    RecipeIngredientsKey recipeIngredientsKey;
+    RecipeIngredientsKey recipeIngredientsKey = new RecipeIngredientsKey();
 
     @ManyToOne
     @MapsId("recipeId")

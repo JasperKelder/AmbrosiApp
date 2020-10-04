@@ -42,7 +42,7 @@ public class Recipe {
 //    private List<Ingredient> ingredients;
 
     @Expose
-    @OneToMany(mappedBy="recipe")
+    @OneToMany(mappedBy="recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<RecipeIngredient> recipeIngredients;
 
 

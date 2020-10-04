@@ -44,6 +44,9 @@ public class RecipeController {
     @Autowired
     CookbookRepository cookbookRepository;
 
+    @Autowired
+    RecipeIngredientRepository recipeIngredientRepository;
+
     @GetMapping("/add")
     protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
@@ -78,15 +81,20 @@ public class RecipeController {
             return "add";
         }
         else{
-            List<Ingredient> ingredients = new ArrayList<>();
+            // first check if the ingredients are in the database (if not, make a new ingredient),
+            // then save them in recipe_ingredient
+            Set<RecipeIngredient> recipeIngredients = new HashSet<>();
             for (String string : ingredientName) {
                 if (string != null && !string.trim().isEmpty()) {
                     Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
                     Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
-                    ingredients.add(ingredient);
-//                    recipe.setIngredients(ingredients);
+                    RecipeIngredient recipeIngredient = new RecipeIngredient();
+                    recipeIngredient.setIngredient(ingredient);
+                    recipeIngredient.setRecipe(recipe);
+                    recipeIngredients.add(recipeIngredient);
                 }
             }
+            recipe.setRecipeIngredients(recipeIngredients);
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             // If there is no image uploaded, save default image.
             if (image.isEmpty()){
@@ -103,8 +111,6 @@ public class RecipeController {
             if (recipe.getRecipeId() == null) {
                 cookbook.setRecipes(recipeToCookbook);
             }
-
-
             recipeRepository.save(recipe);
         }
             return "redirect:/index";
@@ -117,9 +123,9 @@ public class RecipeController {
         for (Recipe recipe : recipes) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        String testIngredients = gsonBuilder.toJson(recipes);
-        System.out.println(testIngredients);
+//        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+//        String testIngredients = gsonBuilder.toJson(recipes);
+//        System.out.println(testIngredients);
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
         return "index";
@@ -150,6 +156,7 @@ public class RecipeController {
         model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
         model.addAttribute("allIngredients", ingredientRepository.findAll());
 
+        // generate a list of all the ingredient names and convert to Json (for the autocomplete)
         List<Ingredient> allIngredients = ingredientRepository.findAll();
         ArrayList<String> allIngredientNames = new ArrayList<>();
         for (Ingredient ingredient : allIngredients) {
@@ -157,25 +164,14 @@ public class RecipeController {
         }
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
-        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        String testIngredients = gsonBuilder.toJson(allIngredients);
-        System.out.println(testIngredients);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
 
         if (recipe.isPresent()) {
-
-            //List<Ingredient> ingredientsRecipe = recipe.get().getIngredients();
             Set<RecipeIngredient> ingredientsRecipe = recipe.get().getRecipeIngredients();
-            System.out.println(ingredientsRecipe.toString());
             ArrayList<String> allIngredientsRecipe = new ArrayList<>();
             for (RecipeIngredient ri: ingredientsRecipe) {
                 allIngredientsRecipe.add(ri.getIngredient().getIngredientName());
             }
-//            }
-//            ArrayList<String> allIngredientsRecipe = new ArrayList<>();
-//            for (Ingredient ingredient : ingredientsRecipe) {
-//                allIngredientsRecipe.add(ingredient.getIngredientName());
-//            }
             String ingredientsRecipeJson = gson.toJson(allIngredientsRecipe);
             model.addAttribute("ingredientsRecipeJson", ingredientsRecipeJson);
 
