@@ -7,10 +7,10 @@
     <div class="messagesmall">My Cookbook</div>
     <div class="spaceSmall"></div>
     <div class="flex-container">
-
         <button onclick="openOrClose()" class="flashybutton">New</button>
         <!--New cookbook-->
         <div id="new-cookbook">
+            <div class="spaceSmall"></div>
             <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
                 <div hidden><input type="text" th:field="*{cookbookId}"/></div>
                 <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}" required
@@ -23,7 +23,7 @@
             </form>
         </div>
         <!--Displays all cookbooks-->
-        <div class="spaceMedium"></div>
+        <div class="spaceSmall"></div>
         <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
             <tr th:each="cookbook: ${allMyCookbooks}">
                 <div class="imagetextcontainer flex">

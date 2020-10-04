@@ -341,7 +341,7 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Footer to accommodate the print button */
-footer {
+#print-footer {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -774,4 +774,9 @@ select {
 #myInput2, #myInput3, #myInput3, #myInput4, #myInput5, #myInput6, #myInput7, #myInput8, #myInput9, #myInput10
 #myInput11, #myInput12, #myInput13, #myInput14, #myInput15, #myInput16, #myInput17, #myInput18, #myInput19, #myInput20 {
     width: 438px;
+}
+
+.open-book {
+    min-width: 700px;
+    min-height: 450px;
 }

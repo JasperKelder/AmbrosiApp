@@ -156,6 +156,7 @@
     width: 250px;
     background: #0073a8;
     right: 7.5px;
+    box-shadow: 0 0 10px black;
 }
 .book5:before,
 .book5:after{
@@ -226,6 +227,7 @@
     width: 300px;
     background: forestgreen;
     right: 7.5px;
+    box-shadow: 0 0 10px black;
 }
 .book7:before,
 .book7:after{
