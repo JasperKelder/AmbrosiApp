@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<div th:fragment="mycookbook" class="addContainer color modal-guts">
+    <div class="messagesmall">My Cookbook</div>
+    <div class="spaceSmall"></div>
+    <div class="flex-container">
+
+        <button onclick="openOrClose()" class="flashybutton">New</button>
+        <!--New cookbook-->
+        <div id="new-cookbook">
+            <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
+                <div hidden><input type="text" th:field="*{cookbookId}"/></div>
+                <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}" required
+                       placeholder="New Cookbook"/>
+                <div class="spaceSmall"></div>
+                <label for="isPrivate">Private</label>
+                <input type="checkbox" th:field="*{private}" th:checked="${cookbook.private}" id="isPrivate"/>
+                <div class="spaceSmall"></div>
+                <input id="floatrightbutton" type="submit" value="Submit">
+            </form>
+        </div>
+        <!--Displays all cookbooks-->
+        <div class="spaceMedium"></div>
+        <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
+            <tr th:each="cookbook: ${allMyCookbooks}">
+                <div class="imagetextcontainer flex">
+                    <div class="book5"></div>
+                    <div class="book7"></div>
+                    <a class="cookbook-text"
+                       th:href="@{/myrecipes/{cookbookId}(cookbookId=${cookbook.cookbookId})}"
+                       th:text="${cookbook.getCookbookName()}"></a>
+                </div>
+            </tr>
+        </form>
+    </div>
+    <div class="spaceMedium"></div>
+</div>
+<script type="text/javascript" src="script/mycookbook.js"></script>
+</body>
+</html>
