@@ -64,7 +64,9 @@ INSERT INTO recipes.recipe VALUES
 (8, 15, null, 15, 'Preheat the oven to 200 degrees. Cover a baking tray with parchment paper. Beat the Greek yogurt with the eggs and milk and add a good pinch of salt and pepper. Mix the flour with the baking powder and add this little by little. Grate 100 grams of the halloumi. Cut the remaining 50 grams of the halloumi into small pieces (we will use this later for the topping). Add the halloumi grater to the mixture and stir well. Using a large spoon or ice cream scoop, place 8 scoops on the baking tray lined with parchment paper. Sprinkle the halloumi pieces and pumpkin seeds on top of the bulbs. Bake the buns in the oven for 15 minutes. Let it cool down and enjoy.',
     'Greek savory yogurt dumplings', 4, 1, 7, 7),
 (9, 20, null, 5, 'Peel and finely chop the onion and garlic. Heat a dash of oil in a frying pan. Fry the onion with the garlic. Add the cumin and a good pinch of salt and pepper. Drain the water from the chickpea pot and rinse in a colander. Place the chickpeas in a food processor with the onion mixture, parsley and wheat flour and mix until coarsely. Then make 12 balls with your hands. Heat a good splash of oil in the pan and fry the falafel in 10 minutes until golden brown.',
-   'Home made falafel', 12, 4, 6, 4);
+   'Home made falafel', 12, 4, 6, 4),
+(10, 45, null, 10, 'Preheat the oven to 200 degrees. Peel the bananas. Place bananas, spelled flour, eggs, honey and baking powder together in the bowl or a food processor. Melt the coconut oil and put this in the bowl as well. Mix everything until you have a smooth batter. Coarsely chop the dark chocolate. Mix three quarters of the chocolate with 175 grams of raspberries through the batter. Cover a cake tin with baking paper and pour the batter into the tin. Finish the banana bread with the remaining raspberries and chocolate on top. Bake in the oven for 45 minutes. Let the cake cool and serve.',
+ 'Banana bread with chocolate and raspberries', 10, 1, 3, 7);
 
 /* cookbook_id, cookbook_name, is_private user_id */
 INSERT INTO recipes.cookbook VALUES
@@ -127,16 +129,23 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (49, 'unsalted butter'),
 (50, 'condensed milk'),
 (51, 'sea salt'),
-(52, 'fudge');
+(52, 'fudge'),
+(53, 'bananas'),
+(54, 'honey'),
+(55, 'coconut oil'),
+(56, 'dark chocolate'),
+(57, 'raspberries');
 
 
 INSERT INTO recipes.recipe_ingredients VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(2, 5),
-(3, 9),
+(10, 1),
+(10, 2),
+(10, 17),
+(10, 53),
+(10, 54),
+(10, 55),
+(10, 56),
+(10, 57),
 (9, 10),
 (9, 11),
 (9, 12),
