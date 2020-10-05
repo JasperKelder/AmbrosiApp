@@ -771,13 +771,13 @@ select {
     box-shadow: 0 0 10px black;
 }
 
-#myInput2, #myInput3, #myInput3, #myInput4, #myInput5, #myInput6, #myInput7, #myInput8, #myInput9, #myInput10
+#myInput2, #myInput3, #myInput4, #myInput5, #myInput6, #myInput7, #myInput8, #myInput9, #myInput10,
 #myInput11, #myInput12, #myInput13, #myInput14, #myInput15, #myInput16, #myInput17, #myInput18, #myInput19, #myInput20 {
-    width: 438px;
+    width: 85%;
 }
 
-@media only screen and (max-width: 1280px) {
-    #myInput2, #myInput3, #myInput3, #myInput4, #myInput5, #myInput6, #myInput7, #myInput8, #myInput9, #myInput10
+@media only screen and (max-width: 800px) {
+    #myInput2, #myInput3, #myInput4, #myInput5, #myInput6, #myInput7, #myInput8, #myInput9, #myInput10,
     #myInput11, #myInput12, #myInput13, #myInput14, #myInput15, #myInput16, #myInput17, #myInput18, #myInput19, #myInput20 {
         width: 322px;
     }

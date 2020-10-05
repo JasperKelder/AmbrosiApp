@@ -83,4 +83,9 @@ public class MyKitchenController {
         userService.save(passwordChangeDto, principal);
         return "redirect:/changepassword?success";
     }
+
+    @GetMapping("/draw")
+    public String draw() {
+        return "draw";
+    }
 }
