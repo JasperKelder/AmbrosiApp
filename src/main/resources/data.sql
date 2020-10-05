@@ -47,8 +47,10 @@ INSERT INTO recipes.user_roles VALUES
 /* recipe_id, cooktime, image ingredients, prep_time, recipe_prep, recipe_title, servings, category_id, cuisine_id, user_id */
 /* Has to be after insertion of the values it references (category, cuisine, user)*/
 INSERT INTO recipes.recipe VALUES
-(1, 20, null, 30, 'Just do it', 'Strawberry Cake', 8, 1, 3, 1),
-(2, 25, null, 5, 'Asian style', 'Cod with chorizo from the oven', 2, 3, 5, 6),
+(1, 60, null, 30, 'Grind the cookies in the food processor. Meanwhile, melt 100 grams of butter and stir into the cookie crumbs. Line a tin (we use a 24cm tin) with parchment paper, grease the sides of the tin with some butter and then divide the biscuit mixture over the bottom. Make sure you also make the border about 2 inches high. Press down well with a spoon and put in it in the fridge. Now melt the rest of the butter in a pot. Then add the condensed milk and caster sugar and keep stirring. It takes about 10 minutes for the caramel to have the right consistency. After 5 minutes, add 2 teaspoons of sea salt and keep stirring. Remove the tin from the refrigerator and divide the caramel over it. Put the tin back in the refrigerator and let it cool for an hour. Meanwhile, melt the chocolate together with 100 milliliters of milk au-bain marie (in a bowl over a pan of boiling water). Pour the chocolate over the caramel layer once it has cooled down properly. Put the cake in the fridge for another 30 minutes, so that the chocolate hardens. Melt 100 grams of fudge with the rest of the milk in a pot until caramel. In the meantime, cut the rest of the fudge into small cubes. Finish the cake with the fudge cubes, 2 teaspoons of sea salt and a drizzle of the caramel on top!',
+ 'Salted caramel pie', 10, 5, 3, 4),
+(2, 25, null, 5, 'Preheat the oven to 180 degrees. Chop the onion and garlic fine, the cherry tomatoes in half and the chorizo into cubes. Heat a dash of oil in a frying pan and fry the onion and garlic in it, until the onion looks translucent. Add the cherry tomatoes and season with salt and pepper. Fry for 5 minutes, until the tomatoes become soft. Add the passata and half of the fresh basil and let it simmer for about 10 minutes on low heat. Spoon the sauce into an oven dish and spread the cod over it. Finish with the chorizo pieces and the rest of the fresh basil. Bake the casserole in the oven for about 10-12 minutes. Serve with the ciabatta.',
+'Cod with chorizo from the oven', 2, 3, 5, 6),
 (3, 40, null, 10, 'Preheat the oven to 180 degrees. Lightly grease a 22 cm tin (20 or 24 is also possible) with some oil. Let the slices of dough thaw and once that''s done, line the mold with it. Meanwhile cut the zucchini into small cubes and the spring onions into rings. Heat some oil in a frying pan and add the zucchini and onion, fry over medium heat. Cut the woody bottoms off the green asparagus and cut them in half. Put the top halves of the asparagus aside for a while, cut the bottom halves into three pieces per half. Add the asparagus pieces to the zucchini and spring onion and fry for another minute or two. Place the eggs in a bowl with the crème fraîche and a good pinch of salt and pepper and stir well. Remove the vegetables from the frying pan (if necessary, pat dry with some kitchen paper if there is still a lot of oil on it) and stir through the mixture as well. Now take the piece of cheese and grate some cheese into the mixture, five tablespoons. Give it a stir. Prick a few holes in the bottom of your lined pan with a fork and pour the mixture into it. Take the remaining halves of the asparagus and divide over the cake. Finish with some more grated cheese, about five tablespoons. Place the cake in the oven and bake for 35-40 minutes until golden brown and done.',
     'Simple asparagus quiche', 1, 2, 3, 5),
 (4, 60, null, 20, 'Mix the butter and sugar until creamy. This can be done in a small saucepan, in which the butter can be melted over low heat so that it mixes easily. Add the milk and mix until well incorporated. Then add the flour and a pinch of salt and mix into a crumbly dough. Crumble the chocolate chip cookies into chocolate chips and mix well. Now turn 16 small balls from the dough and place them on a plate. Let the balls rest in the refrigerator for 1 hour. Only when the dough balls have rested in the refrigerator long enough, do you melt the chocolate. Put this au bain-marie (in a bowl over a pan of boiling water). Remove the balls from the refrigerator and use a skewer to pass them through the melted chocolate. When you have done this, place the truffles on a parchment-lined plate. Return the truffles to the refrigerator until the chocolate has set.',
@@ -70,8 +72,8 @@ INSERT INTO recipes.cookbook VALUES
 (2, 'Jasper his favorite cookbook', 0, 5),
 (3, 'Reinout his favorite cookbook', 0, 6),
 (4, 'Nathalie her favorite cookbook', 0, 7),
-(5, 'My second cookbook', 0, 2),
-(6, 'My second cookbook', 1, 1);
+(5, 'Jasper likes snacks', 0, 5),
+(6, 'Recipes my girlfriend loves', 1, 6);
 
 INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (1, 'egg'),
@@ -120,7 +122,12 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (44, 'chorizo'),
 (45, 'passata (sifted tomatoes)'),
 (46, 'codfish'),
-(47, 'ciabatta bread');
+(47, 'ciabatta bread'),
+(48, 'butter cookies'),
+(49, 'unsalted butter'),
+(50, 'condensed milk'),
+(51, 'sea salt'),
+(52, 'fudge');
 
 
 INSERT INTO recipes.recipe_ingredients VALUES
@@ -178,5 +185,13 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (2, 44),
 (2, 45),
 (2, 46),
-(2, 47);
+(2, 47),
+(1, 36),
+(1, 37),
+(1, 5),
+(1, 48),
+(1, 49),
+(1, 50),
+(1, 51),
+(1, 52);
 
