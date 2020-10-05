@@ -50,7 +50,8 @@ INSERT INTO recipes.recipe VALUES
 (1, 20, null, 30, 'Just do it', 'Strawberry Cake', 8, 1, 3, 1),
 (2, 40, null, 50, 'Asian style', 'Broccoli Dish', 4, 2, 3, 1),
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
-(4, 20, null, 30, 'Just do it', 'Eierbal', 8, 1, 3, 1),
+(4, 60, null, 20, 'Mix the butter and sugar until creamy. This can be done in a small saucepan, in which the butter can be melted over low heat so that it mixes easily. Add the milk and mix until well incorporated. Then add the flour and a pinch of salt and mix into a crumbly dough. Crumble the chocolate chip cookies into chocolate chips and mix well. Now turn 16 small balls from the dough and place them on a plate. Let the balls rest in the refrigerator for 1 hour. Only when the dough balls have rested in the refrigerator long enough, do you melt the chocolate. Put this au bain-marie (in a bowl over a pan of boiling water). Remove the balls from the refrigerator and use a skewer to pass them through the melted chocolate. When you have done this, place the truffles on a parchment-lined plate. Return the truffles to the refrigerator until the chocolate has set.',
+'Cookie dough truffels', 16, 4, 3, 4),
 (5, 15, null, 5, 'Prepare the orzo according to the directions on the package. Heat a frying pan and fry the bacon in a dry frying pan for 5 minutes until crispy. Remove the seeds from the pepper and cut into cubes. Fry the bell pepper for the last 2 minutes with the bacon. Stir the bacon, bell pepper, pesto and 75 grams of goat cheese through the orzo and divide between 2 plates. Finish with the rest of the goat cheese.',
     'Orzo with bacon and goat cheese', 2, 3, 1, 7),
 (6, 10, null, 0, 'Slice the olives and quarter the cherry tomatoes. Place half of the basil in a bowl with 3 tablespoons of olive oil and a pinch of pepper and salt and mix well with a hand blender. Mix the lamb''s lettuce with the olives, cherry tomatoes, basil oil and the rest of the basil leaves and finish with the burrata on top.',
@@ -105,7 +106,10 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (31, 'bacon'),
 (32, 'red pepper'),
 (33, 'goat cheese'),
-(34, 'red pesto');
+(34, 'red pesto'),
+(35, 'chocolate cookies'),
+(36, 'light brown caster sugar'),
+(37, 'milk chocolate');
 
 
 INSERT INTO recipes.recipe_ingredients VALUES
@@ -142,6 +146,12 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (5, 31),
 (5, 32),
 (5, 33),
-(5, 34);
-
+(5, 34),
+(4, 3),
+(4, 5),
+(4, 2),
+(4, 8),
+(4, 35),
+(4, 36),
+(4, 37);
 
