@@ -4,7 +4,8 @@ INSERT INTO recipes.cuisine VALUES
 (3,'Dutch'),
 (4,'German'),
 (5,'Spanish'),
-(6,'Oriental');
+(6,'Oriental'),
+(7,'Greek');
 
 INSERT INTO recipes.category VALUES
 (1,'Breakfast'),
@@ -51,11 +52,14 @@ INSERT INTO recipes.recipe VALUES
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
 (4, 20, null, 30, 'Just do it', 'Eierbal', 8, 1, 3, 1),
 (5, 40, null, 50, 'Asian style', 'Bubble milk tea', 4, 2, 3, 1),
-(6, 20, null, 30, 'From your local snackbar', 'Frikandel speciaal', 8, 1, 3, 1),
-(7, 20, null, 30, 'Just do it', 'Appeltaart', 8, 1, 3, 1),
-(8, 40, null, 50, 'Asian style', 'Nachos', 4, 2, 3, 1),
+(6, 10, null, 0, 'Snijd de olijven in plakjes en de cherrytomaatjes in vieren. Doe de helft van de basilicum samen met 3 eetlepels olijfolie en een snuf peper en zout in een kommetje en mix met een staafmixer goed door elkaar. Meng de veldsla met de olijven, de cherrytomaten, de basilicumolie en de rest van de basilicumblaadjes en maak af met de burrata on top.',
+    'Salade met burrata en olijven', 2, 2, 1, 6),
+(7, 15, null, 5, 'Verhit een scheutje olie in een koekenpan en bak hierin de gnocchi in 20 minuten gaar. Snijd de kipdijfilet in stukjes, rasp de schil van een halve citroen en pers het sap eruit. Verhit een scheutje olie in een andere koekenpan en bak de kip in zo''n 10 minuten gaar. Breng op smaak met peper en zout. Voeg de laatste 3 minuten de doperwten toe aan de kip. Voeg vervolgens het citroensap en de kookroom toe en breng het geheel aan de kook. Laat dit nog zo''n 3 minuten koken tot de room iets is ingedikt. Verdeel de gnocchi en de saus over twee borden en maak af met wat citroenrasp on top!',
+    'Romige gnocchi met doperwten', 2, 3, 1, 5),
+(8, 15, null, 15, 'Verwarm de oven voor op 200 graden. Bekleed een bakplaat met bakpapier. Klop de Griekse yoghurt met de eieren en melk en voeg een flinke snuf peper en zout toe. Meng de bloem met het bakpoeder en voeg dit beetje bij beetje toe. Rasp 100 gram van de halloumi. Snijd de overige 50 gram van de halloumi in kleine stukjes (dit gebruiken we straks voor de topping). Voeg de halloumi-rasp toe aan het mengsel en roer nog even goed door. Leg met een grote lepel of ijsschep 8 bollen op de met bakpapier beklede bakplaat. Strooi on top van de bollen de halloumi-stukjes en pompoenpitten. Bak de broodjes 15 minuten in de oven. Even laten afkoelen en smullen maar.',
+    'Griekse hartige yoghurtbollen', 4, 1, 7, 7),
 (9, 20, null, 5, 'Pel en snijd de ui en knoflook fijn. Verwarm een scheutje olie in een koekenpan. Bak de ui samen met de knoflook. Voeg de komijn toe en een flinke snuf peper en zout. Giet het water uit de pot van de kikkererwten en spoel ze af in een vergiet. Doe de kikkererwten in een keukenmachine samen met het ui-mengsel, de peterselie en de tarwebloem en meng tot een grof mengsel. Maak hiervan vervolgens met je handen 12 balletjes. Verwarm weer een flinke scheut olie in de pan en bak de falafel om en om in 10 minuten mooi goudbruin.',
-   'Home made falafel', 12, 4, 6, 3);
+   'Home made falafel', 12, 4, 6, 4);
 
 /* cookbook_id, cookbook_name, is_private user_id */
 INSERT INTO recipes.cookbook VALUES
@@ -81,7 +85,22 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (12, 'kikkererwten'),
 (13, 'gemalen komijn'),
 (14, 'peterselie'),
-(15, 'tarwebloem');
+(15, 'tarwebloem'),
+(16, 'Griekse yoghurt'),
+(17, 'bakpoeder'),
+(18, 'Griekse halloumi'),
+(19, 'pompoenpitjes'),
+(20, 'gnocchi'),
+(21, 'kippendijen'),
+(22, 'citroen'),
+(23, 'doperwten'),
+(24, 'kookroom'),
+(25, 'zwarte olijven'),
+(26, 'cherry tomaatjes'),
+(27, 'basilicum'),
+(28, 'veldsla'),
+(29, 'burrata');
+
 
 INSERT INTO recipes.recipe_ingredients VALUES
 (1, 1),
@@ -95,4 +114,23 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (9, 12),
 (9, 13),
 (9, 14),
-(9, 15);
+(9, 15),
+(8, 1),
+(8, 5),
+(8, 2),
+(8, 16),
+(8, 17),
+(8, 18),
+(8, 19),
+(7, 20),
+(7, 21),
+(7, 22),
+(7, 23),
+(7, 24),
+(6, 25),
+(6, 26),
+(6, 27),
+(6, 28),
+(6, 29);
+
+
