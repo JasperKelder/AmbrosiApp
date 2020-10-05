@@ -51,7 +51,8 @@ INSERT INTO recipes.recipe VALUES
 (2, 40, null, 50, 'Asian style', 'Broccoli Dish', 4, 2, 3, 1),
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
 (4, 20, null, 30, 'Just do it', 'Eierbal', 8, 1, 3, 1),
-(5, 40, null, 50, 'Asian style', 'Bubble milk tea', 4, 2, 3, 1),
+(5, 15, null, 5, 'Bereid de orzo volgens de aanwijzingen op de verpakking. Verhit een koekenpan en bak de bacon in een droge koekenpan in zo''n 5 minuten krokant. Verwijder de zaadlijsten uit de paprika en snijd in blokjes. Bak de paprika de laatste 2 minuten mee met de bacon. Roer de bacon, de paprika, de pesto en 75 gram van de geitenkaas door de orzo en verdeel over 2 borden. Maak af met de rest van de geitenkaas.',
+    'Orzo met bacon en geitenkaas', 2, 3, 1, 7),
 (6, 10, null, 0, 'Snijd de olijven in plakjes en de cherrytomaatjes in vieren. Doe de helft van de basilicum samen met 3 eetlepels olijfolie en een snuf peper en zout in een kommetje en mix met een staafmixer goed door elkaar. Meng de veldsla met de olijven, de cherrytomaten, de basilicumolie en de rest van de basilicumblaadjes en maak af met de burrata on top.',
     'Salade met burrata en olijven', 2, 2, 1, 6),
 (7, 15, null, 5, 'Verhit een scheutje olie in een koekenpan en bak hierin de gnocchi in 20 minuten gaar. Snijd de kipdijfilet in stukjes, rasp de schil van een halve citroen en pers het sap eruit. Verhit een scheutje olie in een andere koekenpan en bak de kip in zo''n 10 minuten gaar. Breng op smaak met peper en zout. Voeg de laatste 3 minuten de doperwten toe aan de kip. Voeg vervolgens het citroensap en de kookroom toe en breng het geheel aan de kook. Laat dit nog zo''n 3 minuten koken tot de room iets is ingedikt. Verdeel de gnocchi en de saus over twee borden en maak af met wat citroenrasp on top!',
@@ -99,7 +100,12 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (26, 'cherry tomaatjes'),
 (27, 'basilicum'),
 (28, 'veldsla'),
-(29, 'burrata');
+(29, 'burrata'),
+(30, 'orzo'),
+(31, 'bacon'),
+(32, 'rode paprika'),
+(33, 'geitenkaas'),
+(34, 'rode pesto');
 
 
 INSERT INTO recipes.recipe_ingredients VALUES
@@ -131,6 +137,11 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (6, 26),
 (6, 27),
 (6, 28),
-(6, 29);
+(6, 29),
+(5, 30),
+(5, 31),
+(5, 32),
+(5, 33),
+(5, 34);
 
 

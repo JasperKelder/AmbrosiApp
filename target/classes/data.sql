@@ -51,8 +51,10 @@ INSERT INTO recipes.recipe VALUES
 (2, 40, null, 50, 'Asian style', 'Broccoli Dish', 4, 2, 3, 1),
 (3, 20, null, 30, 'From your local snackbar', 'Hollands glorie', 8, 1, 3, 1),
 (4, 20, null, 30, 'Just do it', 'Eierbal', 8, 1, 3, 1),
-(5, 40, null, 50, 'Asian style', 'Bubble milk tea', 4, 2, 3, 1),
-(6, 20, null, 30, 'From your local snackbar', 'Frikandel speciaal', 8, 1, 3, 1),
+(5, 15, null, 5, 'Bereid de orzo volgens de aanwijzingen op de verpakking. Verhit een koekenpan en bak de bacon in een droge koekenpan in zo''n 5 minuten krokant. Verwijder de zaadlijsten uit de paprika en snijd in blokjes. Bak de paprika de laatste 2 minuten mee met de bacon. Roer de bacon, de paprika, de pesto en 75 gram van de geitenkaas door de orzo en verdeel over 2 borden. Maak af met de rest van de geitenkaas.',
+    'Orzo met bacon en geitenkaas', 2, 3, 1, 7),
+(6, 10, null, 0, 'Snijd de olijven in plakjes en de cherrytomaatjes in vieren. Doe de helft van de basilicum samen met 3 eetlepels olijfolie en een snuf peper en zout in een kommetje en mix met een staafmixer goed door elkaar. Meng de veldsla met de olijven, de cherrytomaten, de basilicumolie en de rest van de basilicumblaadjes en maak af met de burrata on top.',
+    'Salade met burrata en olijven', 2, 2, 1, 6),
 (7, 15, null, 5, 'Verhit een scheutje olie in een koekenpan en bak hierin de gnocchi in 20 minuten gaar. Snijd de kipdijfilet in stukjes, rasp de schil van een halve citroen en pers het sap eruit. Verhit een scheutje olie in een andere koekenpan en bak de kip in zo''n 10 minuten gaar. Breng op smaak met peper en zout. Voeg de laatste 3 minuten de doperwten toe aan de kip. Voeg vervolgens het citroensap en de kookroom toe en breng het geheel aan de kook. Laat dit nog zo''n 3 minuten koken tot de room iets is ingedikt. Verdeel de gnocchi en de saus over twee borden en maak af met wat citroenrasp on top!',
     'Romige gnocchi met doperwten', 2, 3, 1, 5),
 (8, 15, null, 15, 'Verwarm de oven voor op 200 graden. Bekleed een bakplaat met bakpapier. Klop de Griekse yoghurt met de eieren en melk en voeg een flinke snuf peper en zout toe. Meng de bloem met het bakpoeder en voeg dit beetje bij beetje toe. Rasp 100 gram van de halloumi. Snijd de overige 50 gram van de halloumi in kleine stukjes (dit gebruiken we straks voor de topping). Voeg de halloumi-rasp toe aan het mengsel en roer nog even goed door. Leg met een grote lepel of ijsschep 8 bollen op de met bakpapier beklede bakplaat. Strooi on top van de bollen de halloumi-stukjes en pompoenpitten. Bak de broodjes 15 minuten in de oven. Even laten afkoelen en smullen maar.',
@@ -93,7 +95,17 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (21, 'kippendijen'),
 (22, 'citroen'),
 (23, 'doperwten'),
-(24, 'kookroom');
+(24, 'kookroom'),
+(25, 'zwarte olijven'),
+(26, 'cherry tomaatjes'),
+(27, 'basilicum'),
+(28, 'veldsla'),
+(29, 'burrata'),
+(30, 'orzo'),
+(31, 'bacon'),
+(32, 'rode paprika'),
+(33, 'geitenkaas'),
+(34, 'rode pesto');
 
 
 INSERT INTO recipes.recipe_ingredients VALUES
@@ -120,6 +132,16 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (7, 21),
 (7, 22),
 (7, 23),
-(7, 24);
+(7, 24),
+(6, 25),
+(6, 26),
+(6, 27),
+(6, 28),
+(6, 29),
+(5, 30),
+(5, 31),
+(5, 32),
+(5, 33),
+(5, 34);
 
 
