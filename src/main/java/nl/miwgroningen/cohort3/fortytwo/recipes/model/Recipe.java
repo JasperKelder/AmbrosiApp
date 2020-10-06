@@ -73,7 +73,30 @@ public class Recipe {
     }
 
     public Recipe() {
+    }
 
+    public void addRecipeIngredient(RecipeIngredient ri) {
+        addRecipeIngredient(ri, true);
+    }
+
+    public void addRecipeIngredient(RecipeIngredient ri, boolean add) {
+        if (ri != null) {
+            if(getRecipeIngredients().contains(ri)) {
+                getRecipeIngredients().remove(ri);
+                getRecipeIngredients().add(ri);
+            }
+            else {
+                getRecipeIngredients().add(ri);
+            }
+            if (add) {
+                ri.setRecipe(this, false);
+            }
+        }
+    }
+
+    public void removeRecipeIngredient(RecipeIngredient recipeIngredient) {
+        getRecipeIngredients().remove(recipeIngredient);
+        recipeIngredient.setRecipe(null);
     }
 
     public Integer getRecipeId() {

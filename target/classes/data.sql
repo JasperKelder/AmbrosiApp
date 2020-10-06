@@ -75,7 +75,9 @@ INSERT INTO recipes.cookbook VALUES
 (3, 'Reinout his favorite cookbook', 0, 6),
 (4, 'Nathalie her favorite cookbook', 0, 7),
 (5, 'Jasper likes snacks', 0, 5),
-(6, 'Recipes my girlfriend loves', 1, 6);
+(6, 'Recipes my girlfriend loves', 1, 6),
+(7, 'Test', 0, 2),
+(8, 'Test', 0, 3);
 
 INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (1, 'egg'),
