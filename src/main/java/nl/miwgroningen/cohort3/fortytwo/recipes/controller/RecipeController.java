@@ -121,6 +121,7 @@ public class RecipeController {
         }
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
+        model.addAttribute("allCategories", categoryRepository.findAll());
         return "index";
     }
 
@@ -199,6 +200,19 @@ public class RecipeController {
         }
         model.addAttribute("searchResults", searchResults);
         return "searchresults";
+    }
+
+    @GetMapping("/index/filterresults/{categoryId}")
+    protected String showFilterResults(@PathVariable("categoryId") int categoryId, Model model) {
+        List<Recipe> filterByCategory = recipeRepository.categoryFilter(categoryId);
+        List<String> imagesList = new ArrayList<>();
+        for (Recipe recipe : filterByCategory) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+        model.addAttribute("recipesByCategory", filterByCategory);
+        model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allImages", imagesList);
+        return "filterresults";
     }
 
 }

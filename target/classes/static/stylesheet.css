@@ -142,7 +142,7 @@ li a:hover, .nav-mykitchen-text:hover {
     outline: none;
 }
 
-#nav-search-icon {
+#nav-searchfunction-icon {
     height: 35px;
     width: 35px;
     cursor: pointer;
@@ -808,4 +808,36 @@ input[id*="myInput"]:not(#myInput1) {
 #search-table td:hover {
     border: 1px solid #f9ab23;
     box-shadow: 0 0 15px #f9ab23;
+}
+
+.collapsible {
+    border-radius: 4px;
+    width: 100%;
+    border: none;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: darkorange;
+}
+
+.active, .collapsible:hover {
+    background-color: darkorange;
+}
+
+.content {
+    display: none;
+    text-decoration: none;
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.content-data {
+    text-decoration: none;
+}
+
+p.filter-header {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
 }
