@@ -109,7 +109,7 @@ public class RecipeController {
 
             recipeRepository.save(recipe);
         }
-            return "redirect:/index";
+            return "redirect:/mykitchen";
     }
 
     @GetMapping({"/index", "/"})

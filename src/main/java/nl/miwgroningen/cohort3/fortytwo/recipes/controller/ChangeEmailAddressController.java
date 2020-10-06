@@ -31,13 +31,6 @@ public class ChangeEmailAddressController {
         this.userService = userService;
     }
 
-//    //method to get current user
-//    @GetMapping("/changeemailaddress")
-//    protected String showUserEmail(Model model, Principal principal) {
-//        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
-//        return "userinfo";
-//    }
-
     @ModelAttribute("user")
     public EmailChangeDto emailChangeDto() { return new EmailChangeDto(); }
 

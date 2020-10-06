@@ -31,13 +31,6 @@ public class CookbookController {
     @Autowired
     RecipeRepository recipeRepository;
 
-//    //method for creating new cookbook
-//    @GetMapping("/newcookbook")
-//    protected String createCookbook(Model model) {
-//        model.addAttribute("cookbook", new Cookbook());
-//        return "newcookbook";
-//    }
-
     @PostMapping("/newcookbook")
     protected String saveCookbook(@ModelAttribute("cookbook") Cookbook cookbook, Principal principal) {
         cookbook.setUser(userRepository.findByEmailAddress(principal.getName()));
@@ -45,24 +38,6 @@ public class CookbookController {
 
         return "redirect:/mykitchen";
     }
-
-//    //method to get all cookbooks linked to current user
-//    @GetMapping("/mycookbooks")
-//    protected String showCookbook(Model model, Principal principal) {
-//        User currentUser = userRepository.findByEmailAddress(principal.getName());
-//
-//        List<Cookbook> cookbooks = cookbookRepository.findAll();
-//        List<Cookbook> myCookbooks = new ArrayList<>();
-//
-//        for (Cookbook cookbook : cookbooks) {
-//            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
-//                myCookbooks.add(cookbook);
-//
-//            }
-//        }
-//        model.addAttribute("allMyCookbooks", myCookbooks);
-//        return "mycookbooks";
-//    }
 
     // Method to get the recipes from the cookbookId by user
     @GetMapping("/myrecipes/{id}")

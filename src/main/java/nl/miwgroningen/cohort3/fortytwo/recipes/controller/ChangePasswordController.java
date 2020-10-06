@@ -31,13 +31,6 @@ public class ChangePasswordController {
         this.userService = userService;
     }
 
-//    //method to get current user
-//    @GetMapping("/changepassword")
-//    protected String showUser(Model model, Principal principal) {
-//        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
-//        return "userinfo";
-//    }
-
     @ModelAttribute("user")
     public PasswordChangeDto passwordChangeDto() {
         return new PasswordChangeDto();
