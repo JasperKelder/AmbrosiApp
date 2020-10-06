@@ -137,7 +137,7 @@ INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
 (57, 'raspberries');
 
 
-INSERT INTO recipes.recipe_ingredients (`recipe_id`, `ingredient_id`) VALUES
+INSERT INTO recipes.recipe_ingredient (`recipe_id`, `ingredient_id`) VALUES
 (10, 1),
 (10, 2),
 (10, 17),
