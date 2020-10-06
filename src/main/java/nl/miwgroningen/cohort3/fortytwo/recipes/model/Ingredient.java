@@ -26,9 +26,8 @@ public class Ingredient implements Comparable<Ingredient> {
         return ingredientName.compareTo(ingredient.getIngredientName());
     }
 
-    public Ingredient() {
-    }
-
+    // constructors
+    public Ingredient() { }
     public Ingredient(String ingredientName) {
         this.ingredientName = ingredientName;
     }
@@ -37,23 +36,18 @@ public class Ingredient implements Comparable<Ingredient> {
     public Integer getIngredientId() {
         return ingredientId;
     }
-
     public void setIngredientId(Integer ingredientId) {
         this.ingredientId = ingredientId;
     }
-
     public String getIngredientName() {
         return ingredientName;
     }
-
     public void setIngredientName(String ingredientName) {
         this.ingredientName = ingredientName;
     }
-
     public List<Recipe> getRecipes() {
         return recipes;
     }
-
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }

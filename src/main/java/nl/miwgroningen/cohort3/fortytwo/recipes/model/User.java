@@ -58,7 +58,6 @@ public class User {
         return firstName;
     }
 
-
     //Getters and Setters
     public Integer getUserId() {
         return userId;

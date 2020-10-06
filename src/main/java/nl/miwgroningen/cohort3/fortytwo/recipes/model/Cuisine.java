@@ -2,10 +2,10 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import javax.persistence.*;
 
-// Cuisines are for example Italian Kitchen, French, Asian etc..
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
+ * Cuisines are for example Italian Kitchen, French, Asian etc..
  */
 @Entity
 public class Cuisine {
@@ -17,18 +17,16 @@ public class Cuisine {
     @Column(unique = true)
     private String cuisineName;
 
+    // getters and setters
     public Integer getCuisineId() {
         return cuisineId;
     }
-
     public void setCuisineId(Integer cuisineId) {
         this.cuisineId = cuisineId;
     }
-
     public String getCuisineName() {
         return cuisineName;
     }
-
     public void setCuisineName(String cuisineName) {
         this.cuisineName = cuisineName;
     }
