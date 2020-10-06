@@ -12,14 +12,6 @@ public class UserRegistrationDto {
     private String password;
 
     //Constructors
-    public UserRegistrationDto(String firstName, String lastName, String emailAddress, String password) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.password = password;
-    }
-
     public UserRegistrationDto() {}
 
     //Getters and Setters

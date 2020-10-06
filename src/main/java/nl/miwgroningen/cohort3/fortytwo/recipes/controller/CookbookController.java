@@ -1,6 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
+
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CookbookRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
