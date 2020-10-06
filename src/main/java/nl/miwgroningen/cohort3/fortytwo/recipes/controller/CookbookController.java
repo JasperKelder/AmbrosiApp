@@ -1,6 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CookbookRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -35,6 +38,27 @@ public class CookbookController {
         cookbookRepository.save(cookbook);
 
         return "redirect:/mykitchen";
+    }
+
+    @GetMapping("/mycookbooks")
+    protected String showCookbook(Model model, Principal principal) {
+        //method for creating new cookbook
+        model.addAttribute("cookbook", new Cookbook());
+
+        //method to get all cookbooks linked to current user
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+
+        List<Cookbook> cookbooks = cookbookRepository.findAll();
+        List<Cookbook> myCookbooks = new ArrayList<>();
+
+        for (Cookbook cookbook : cookbooks) {
+            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
+                myCookbooks.add(cookbook);
+
+            }
+        }
+        model.addAttribute("allMyCookbooks", myCookbooks);
+        return "mycookbooks";
     }
 
     // Method to get the recipes from the cookbookId by user

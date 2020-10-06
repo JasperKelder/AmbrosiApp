@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/background.css"/>
     <link rel="stylesheet" href="/book.css"/>
     <link rel="stylesheet" href="/bookstack.css"/>
+    <link rel="stylesheet" href="/cookbook.css"/>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
@@ -23,18 +24,14 @@
         <br><br><br>
         <button id="myinfo-button" class="flashybutton">My Info</button>
         <br><br><br>
-        <button id="mycookbook-button" class="flashybutton">My Cookbook</button>
+        <a class="flashybutton" th:href="@{/mycookbooks}">My Cookbook</a>
+        <!--        <button id="mycookbook-button" class="flashybutton">My Cookbook</button>-->
     </div>
     <div class="modal" id="myinfo-modal">
         <button class="close-button flashybutton" id="myinfo-close-button">X</button>
         <div th:replace="fragments/myinfo :: myinfo"></div>
     </div>
-    <div class="modal" id="mycookbook-modal">
-        <button class="close-button flashybutton" id="mycookbook-close-button">X</button>
-        <div th:replace="fragments/mycookbook :: mycookbook"></div>
-    </div>
 </sec:authorize>
 <script type="text/javascript" src="script/modalview.js"></script>
-<script type="text/javascript" src="script/mycookbook.js"></script>
 </body>
 </html>

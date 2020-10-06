@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - My Cookbook</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" href="/background.css"/>
+    <link rel="stylesheet" href="/cookbook.css"/>
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Main page-->
+    <div class="messagesmall">My Cookbook</div>
+    <div class="spaceSmall"></div>
+    <div class="flex-container">
+        <button onclick="openOrClose()" class="flashybutton">New</button>
+        <!--New cookbook-->
+        <div id="new-cookbook">
+            <div class="spaceSmall"></div>
+            <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
+                <div hidden><input type="text" th:field="*{cookbookId}"/></div>
+                <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}" required
+                       placeholder="New Cookbook"/>
+                <div class="spaceSmall"></div>
+                <label for="isPrivate">Private</label>
+                <input type="checkbox" th:field="*{private}" th:checked="${cookbook.private}" id="isPrivate"/>
+                <div class="spaceSmall"></div>
+                <input id="floatrightbutton" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <!--Displays all cookbooks-->
+    <div class="spaceSmall"></div>
+    <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
+        <div th:each="cookbook: ${allMyCookbooks}">
+            <div class="col-6 book-container">
+                <figure class='book'>
+                    <!--Front-->
+                    <ul class='hardcover_front'>
+                        <li>
+                            <h1 th:text="${cookbook.getCookbookName()}" id="cookbook-name"></h1>
+                        </li>
+                        <li></li>
+                    </ul>
+                    <!--Pages-->
+                    <ul class='page'>
+                        <li></li>
+                        <li>
+                            <a class="btn"
+                               th:href="@{/myrecipes/{cookbookId}(cookbookId=${cookbook.cookbookId})}">Show Recipes</a>
+                        </li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <!--Back-->
+                    <ul class='hardcover_back'>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class='book_spine'>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </figure>
+            </div>
+        </div>
+    </form>
+    <div class="spaceMedium"></div>
+</sec:authorize>
+<script type="text/javascript" src="script/mycookbook.js"></script>
+</body>
+</html>
