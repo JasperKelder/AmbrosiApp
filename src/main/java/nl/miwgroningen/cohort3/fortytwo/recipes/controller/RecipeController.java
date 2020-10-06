@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.*;
 import java.util.List;
 import java.io.IOException;
@@ -75,7 +74,7 @@ public class RecipeController {
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
         // Create a list of recipes
-        List<Recipe> recipeToCookbook = new ArrayList<>();
+        List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
             return "add";
         }
@@ -109,7 +108,7 @@ public class RecipeController {
 
             recipeRepository.save(recipe);
         }
-            return "redirect:/index";
+            return "redirect:/mykitchen";
     }
 
     @GetMapping({"/index", "/"})

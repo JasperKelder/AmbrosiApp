@@ -142,7 +142,7 @@ li a:hover, .nav-mykitchen-text:hover {
     outline: none;
 }
 
-#nav-searchfunction-icon {
+#nav-search-icon {
     height: 35px;
     width: 35px;
     cursor: pointer;
@@ -248,17 +248,17 @@ li a:hover, .nav-mykitchen-text:hover {
 
 /* Resizes the overview image grid columns for smaller screens */
 @media only screen and (max-width: 1280px) {
-    [class*="col-3"] {
+    .overview-responsive {
         width: 33.33%;
     }
 }
 @media only screen and (max-width: 950px) {
-    [class*="col-3"] {
+    .overview-responsive {
         width: 50%;
     }
 }
 @media only screen and (max-width: 625px) {
-    [class*="col-3"] {
+    .overview-responsive {
         width: 100%;
     }
 }
@@ -354,7 +354,7 @@ li a:hover, .nav-mykitchen-text:hover {
 
 /* Resizes the view recipe grid columns for smaller screens */
 @media only screen and (max-width: 1360px) {
-    [class*="col-4"] {
+    .viewrecipe-responsive {
         width: 50%;
     }
     #view-image-container {
@@ -366,7 +366,7 @@ li a:hover, .nav-mykitchen-text:hover {
     }
 }
 @media only screen and (max-width: 950px) {
-    [class*="col-4"] {
+    .viewrecipe-responsive {
         width: 100%;
     }
 }
@@ -525,21 +525,14 @@ th {
 
 .column-left {
     float: left;
-    width: 20%;
+    width: 200px;
     margin: 10px;
 }
 
 .column-right {
     float: left;
-    width: 60%;
+    width: 400px;
     margin: 10px;
-}
-
-@media screen and (max-width: 800px) {
-    .column-left, .column-right {
-        width: 100%;
-        margin-top: 0;
-    }
 }
 
 label {
@@ -597,11 +590,6 @@ select {
 
 .width {
     width: 100px;
-}
-
-.col-6 {
-    /*border: solid;*/
-    height: 370px;
 }
 
 .col-12 {
@@ -748,39 +736,6 @@ select {
     align-items: center;
 }
 
-.remove {
-    font-family: Arial;
-    height: 30px;
-    width: 30px;
-    transition-duration: 0.5s;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-}
-
-.add {
-    font-family: Arial;
-    transition-duration: 0.5s;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-    height: 25px;
-}
-
-.remove:hover, .add:hover {
-    box-shadow: 0 0 10px black;
-}
-
-input[id*="myInput"]:not(#myInput1) {
-    width: 85%;
-}
-
-@media only screen and (max-width: 800px) {
-    input[id*="myInput"]:not(#myInput1) {
-        width: 322px;
-    }
-}
-
 .open-book {
     min-width: 700px;
     min-height: 450px;
@@ -809,6 +764,47 @@ input[id*="myInput"]:not(#myInput1) {
     border: 1px solid #f9ab23;
     box-shadow: 0 0 15px #f9ab23;
 }
+
+/* Start add recipe CSS */
+
+.add-responsive {
+    width: 700px;
+}
+
+@media screen and (max-width: 800px) {
+    .add-responsive {
+        width: 470px;
+    }
+}
+
+.remove {
+    font-family: Arial;
+    height: 30px;
+    width: 30px;
+    transition-duration: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+}
+
+.add {
+    font-family: Arial;
+    transition-duration: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+    height: 25px;
+}
+
+.remove:hover, .add:hover {
+    box-shadow: 0 0 10px black;
+}
+
+input[id*="myInput"]:not(#myInput1) {
+    width: 370px;
+}
+
+/* End add recipe CSS */
 
 .collapsible {
     border-radius: 4px;

@@ -1,8 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Category;
+
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Optional;
 
 @Controller
