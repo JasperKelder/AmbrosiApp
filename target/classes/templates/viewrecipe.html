@@ -11,12 +11,12 @@
 <!--The printpage id indicates what can be printed-->
 <div class="row" id="printpage">
     <!--Displays the recipe's image-->
-    <div class="col-4" id="view-image-container">
+    <div class="col-4 viewrecipe-responsive" id="view-image-container">
         <a th:href="@{/index}">
             <img id="view-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
         </a>
     </div>
-    <div class="col-4">
+    <div class="col-4 viewrecipe-responsive">
         <!--Displays the recipe written on paper-->
         <div id="paper">
             <div id="paper-pattern">
@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="col-4" id="postit-container">
+    <div class="col-4 viewrecipe-responsive" id="postit-container">
         <!--Displays the ingredients written on a post it-->
         <div class="postit">
             <div class="recipe-title">Ingredients</div>
