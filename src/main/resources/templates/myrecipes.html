@@ -30,7 +30,7 @@
                                 <tr th:each="recipe: ${myRecipes}">
                                     <a class="cookbook-text"
                                        th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
-                                       th:text="${recipe.getRecipeTitle()}"></a>
+                                       th:text="${recipe.getRecipeTitle()}"></a><br>
                                 </tr>
                             </table>
                         </form>

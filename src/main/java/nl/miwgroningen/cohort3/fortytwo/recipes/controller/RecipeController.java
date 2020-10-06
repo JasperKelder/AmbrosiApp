@@ -75,7 +75,7 @@ public class RecipeController {
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
         // Create a list of recipes
-        List<Recipe> recipeToCookbook = new ArrayList<>();
+        List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
             return "add";
         }
