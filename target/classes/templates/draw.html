@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - Cuisine</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" href="/background.css"/></head>
+<link rel="stylesheet" href="/draw.css"/></head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Main page-->
+    <canvas id='canvas'></canvas>
+</sec:authorize>
+<script type="text/javascript" src="script/draw.js"></script>
+</body>
+</html>

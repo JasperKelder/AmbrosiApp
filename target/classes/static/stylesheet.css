@@ -117,21 +117,45 @@ li a:hover, .nav-mykitchen-text:hover {
     margin: auto;
     width: 300px;
     padding-top: 45px;
+    position: relative;
+}
+
+#nav-search-bar {
+    height: 42px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    transition-duration: 0.5s;
+    box-shadow: 0 0 5px black;
+    background-color: floralwhite;
+    text-align: center;
 }
 
 #nav-search {
     border: none;
-    border-radius: 25px;
-    background-color: floralwhite;
     color: black;
     text-align: center;
     font-size: 120%;
-    transition-duration: 0.5s;
-    box-shadow: 0 0 5px black;
     font-family: 'Finger Paint';
+    width: 220px;
+    background-color: floralwhite;
+    box-shadow: none;
+    outline: none;
 }
 
-#nav-search:hover {
+#nav-search-icon {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    position: absolute;
+    top: 76%;
+    right: -4%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: floralwhite;
+    transition-duration: 0.5s;
+}
+
+#nav-search-bar:hover, #nav-search-icon:hover {
     box-shadow: 0 0 10px black;
 }
 
@@ -155,9 +179,17 @@ li a:hover, .nav-mykitchen-text:hover {
     }
 
     #nav-search-container {
-        padding-top: 0px;
-        padding-bottom: 15px;
+        margin-top: 100px;
+        margin-bottom: 15px;
         width: 90%;
+    }
+
+    #nav-search {
+        width: 85%;
+    }
+
+    #nav-search-icon {
+        right: 0%;
     }
 }
 
@@ -309,7 +341,7 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Footer to accommodate the print button */
-footer {
+#print-footer {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -637,4 +669,143 @@ select {
 .autocomplete-active {
     background-color: DodgerBlue !important;
     color: #ffffff;
+}
+
+/* MODAL */
+
+.modal {
+    /* This way it could be display flex or grid or whatever also. */
+    display: none;
+    /* Probably need media queries here */
+    width: 350px;
+    max-width: 100%;
+    height: 550px;
+    max-height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    /* Use this for centering if unknown width/height */
+    transform: translate(-50%, -50%);
+    /* If known, negative margins are probably better (less chance of blurry text). */
+    /* margin: -200px 0 0 -200px; */
+    background: white;
+    box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+.opened {
+    display: block;
+}
+
+.modal-guts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal .close-button {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    font-size: 1.3rem;
+}
+
+#mycookbook-modal {
+    width: 600px;
+    height: 500px;
+}
+
+#cookbook-container {
+    margin-left: 75px;
+}
+
+#new-cookbook {
+    display: none;
+}
+
+.cookbook-text {
+    color: white;
+    font-size: 20px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    text-decoration: none;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove {
+    font-family: Arial;
+    height: 30px;
+    width: 30px;
+    transition-duration: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+}
+
+.add {
+    font-family: Arial;
+    transition-duration: 0.5s;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+    height: 25px;
+}
+
+.remove:hover, .add:hover {
+    box-shadow: 0 0 10px black;
+}
+
+input[id*="myInput"]:not(#myInput1) {
+    width: 85%;
+}
+
+@media only screen and (max-width: 800px) {
+    input[id*="myInput"]:not(#myInput1) {
+        width: 322px;
+    }
+}
+
+.open-book {
+    min-width: 700px;
+    min-height: 450px;
+}
+
+.search-text {
+    color: #f9ab23;
+    font-size: 20px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    text-decoration: none;
+}
+
+#search-table {
+    width: 100px;
+}
+
+#search-table td {
+    transition-duration: 0.5s;
+    border: 1px solid black;
+}
+
+#search-table td:hover {
+    border: 1px solid #f9ab23;
+    box-shadow: 0 0 15px #f9ab23;
 }

@@ -21,7 +21,7 @@ public class Recipe {
     @Column
     private String recipeTitle;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String recipePreperation;
 
     @Column

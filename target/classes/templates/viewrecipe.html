@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - View Recipe</title>
-    <div th:replace="fragments/recipes :: head"></div>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <!--Navigation-->
@@ -47,18 +47,14 @@
         <!--Displays the ingredients written on a post it-->
         <div class="postit">
             <div class="recipe-title">Ingredients</div>
-<!--            <br>-->
-<!--            <div th:text="${recipe.recipeIngredients}"></div>-->
-<!--            <br><br><br>-->
-
             <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
-                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
-
+                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td><br>
+            </tr>
         </div>
     </div>
 </div>
 <!--Footer for displaying the print button-->
-<footer>
+<footer id="print-footer">
     <button onClick="printPageArea('printpage')" class="flashybutton" id="print-button">Print</button>
 </footer>
 <script>

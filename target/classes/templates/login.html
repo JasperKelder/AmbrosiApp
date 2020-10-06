@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>EatAndTreat - Login</title>
-    <div th:replace="fragments/mykitchen :: head"></div>
-</head>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" href="/background.css"/></head>
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
 <div class="flex-container">
     <div class="spaceLarge"></div>
+    <br>
     <div id="padding" class="color">
         <!--Login form-->
         <form th:action="@{/login}" method="post">

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>EatAndTreat - MyKitchen</title>
-    <div th:replace="fragments/mykitchen :: head"></div>
+    <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
     <!--Navigation-->
@@ -14,10 +14,10 @@
             <div class="flex-container">
                 <form th:action="@{/searchresults}" th:object="${searchResults}" method="post">
                     <!--Displays all cookbooks-->
-                    <table>
+                    <table id="search-table">
                         <tr th:each="recipe: ${searchResults}">
                             <td>
-                                <a class="cookbook-text"
+                                <a class="search-text"
                                    th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
                                    th:text="${recipe.getRecipeTitle()}"></a>
                             </td>

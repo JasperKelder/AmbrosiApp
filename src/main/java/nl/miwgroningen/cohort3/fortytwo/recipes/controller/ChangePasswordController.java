@@ -31,28 +31,23 @@ public class ChangePasswordController {
         this.userService = userService;
     }
 
-    //method to get current user
-    @GetMapping("/changepassword")
-    protected String showUser(Model model, Principal principal) {
-        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
-        return "userinfo";
-    }
+//    //method to get current user
+//    @GetMapping("/changepassword")
+//    protected String showUser(Model model, Principal principal) {
+//        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
+//        return "userinfo";
+//    }
 
     @ModelAttribute("user")
     public PasswordChangeDto passwordChangeDto() {
         return new PasswordChangeDto();
     }
 
-    @GetMapping
-    public String showPasswordChangeForm() {
-        return "changepassword";
-    }
-
     //method to save new password with current user
     @PostMapping
     public String saveNewPassword(@ModelAttribute("user") PasswordChangeDto passwordChangeDto, Principal principal) {
         userService.save(passwordChangeDto, principal);
-        return "redirect:/changepassword?success";
+        return "redirect:/mykitchen?success";
     }
 
 }
