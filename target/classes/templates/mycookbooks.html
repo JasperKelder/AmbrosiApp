@@ -4,14 +4,17 @@
     <title>EatAndTreat - My Cookbook</title>
     <div th:replace="fragments/head :: head"></div>
     <link rel="stylesheet" href="/cookbook.css"/>
+    <link rel="stylesheet" href="/background.css"/></head>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
-    <div class="message">My Cookbook</div>
-    <div class="spaceSmall"></div>
+    <div class="flex-container">
+        <div class="spaceSmall"></div>
+        <a class="flashybutton" th:href="@{/mykitchen}">Back</a>
+    </div>
     <!--New cookbook-->
     <div class="col-4">
         <div id="new-cookbook" class="container">
@@ -35,7 +38,8 @@
                     <!--Front-->
                     <ul class='hardcover_front'>
                         <li>
-                            <h1 th:text="${cookbook.getCookbookName()}" id="cookbook-name"></h1>
+                            <div class="spaceSmall"></div>
+                            <div class="messagesmall" th:text="${cookbook.getCookbookName()}" id="cookbook-name"></div>
                         </li>
                         <li></li>
                     </ul>

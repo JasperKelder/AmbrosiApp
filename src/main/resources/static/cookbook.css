@@ -29,8 +29,8 @@ a {
 }
 
 .btn:hover {
-    border-color: #16a085;
-    color: #16a085;
+    border-color: black;
+    color: black;
 }
 
 /* ///////////////////////////////////////////////////
@@ -66,8 +66,6 @@ Table of Contents
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
     text-align: center;
-    margin-left: 100px;
-    margin-right: 100px;
 }
 
 /*
@@ -76,7 +74,7 @@ Table of Contents
 
 /* HARDCOVER FRONT */
 .hardcover_front li:first-child {
-    background-color: #8B4513;
+    background-color: #f93f23;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -84,24 +82,24 @@ Table of Contents
 
 /* reverse */
 .hardcover_front li:last-child {
-    background: #8B4513;
+    background: #f93f23;
 }
 
 /* HARDCOVER BACK */
 .hardcover_back li:first-child {
-    background: #8B4513;
+    background: #f93f23;
 }
 
 /* reverse */
 .hardcover_back li:last-child {
-    background: #8B4513;
+    background: #f93f23;
 }
 
 .book_spine li:first-child {
-    background: #8B4513;
+    background: black;
 }
 .book_spine li:last-child {
-    background: #8B4513;
+    background: black;
 }
 
 /* thickness of cover */

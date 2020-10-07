@@ -388,6 +388,7 @@ h2, label, th {
 }
 
 .message, .messagesmall, .recipe-title, .recipe-indication {
+    text-decoration: none;
     text-align: center;
     font-size: 400%;
     color: #f9ab23;
@@ -626,16 +627,6 @@ select {
     font-size: 50px;
 }
 
-.cookbook-text {
-    color: white;
-    font-size: 20px;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    text-decoration: none;
-}
-
 .autocomplete {
     position: relative;
     display: inline-block;
@@ -672,7 +663,7 @@ select {
     position: fixed;
     z-index: 100;
     left: 50%;
-    top: 50%;
+    top: 60%;
     /* Use this for centering if unknown width/height */
     transform: translate(-50%, -50%);
     /* If known, negative margins are probably better (less chance of blurry text). */
