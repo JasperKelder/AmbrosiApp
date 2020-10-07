@@ -37,7 +37,7 @@ public class CookbookController {
         cookbook.setUser(userRepository.findByEmailAddress(principal.getName()));
         cookbookRepository.save(cookbook);
 
-        return "redirect:/mykitchen";
+        return "redirect:/mycookbooks";
     }
 
     @GetMapping("/mycookbooks")

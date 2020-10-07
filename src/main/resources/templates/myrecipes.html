@@ -3,7 +3,6 @@
 <head>
     <title>EatAndTreat - MyKitchen</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/background.css"/>
     <link rel="stylesheet" href="/book.css"/>
 </head>
 <body>
@@ -13,11 +12,6 @@
     <!--Main page-->
     <div class="spaceMedium"></div>
     <div class="flex-container">
-        <!--Shows a message when there are no recipes in the database-->
-        <div th:if="${myRecipes.size() < 1}">
-            <div class="messagesmall">This page is hungry</div>
-            <div class="messagesmall">Please feed it some recipes first</div>
-        </div>
         <div id="wrapper">
             <div id="container">
                 <section class="open-book">
@@ -39,6 +33,11 @@
                     </footer>
                 </section>
             </div>
+        </div>
+        <!--Shows a message when there are no recipes in the database-->
+        <div th:if="${myRecipes.size() < 1}">
+            <div class="messagesmall">This page is hungry</div>
+            <div class="messagesmall">Please feed it some recipes first</div>
         </div>
     </div>
 </sec:authorize>

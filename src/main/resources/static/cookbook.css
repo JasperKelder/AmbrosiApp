@@ -66,6 +66,8 @@ Table of Contents
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
     text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 /*

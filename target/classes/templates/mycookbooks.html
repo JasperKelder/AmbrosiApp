@@ -3,7 +3,6 @@
 <head>
     <title>EatAndTreat - My Cookbook</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/background.css"/>
     <link rel="stylesheet" href="/cookbook.css"/>
 </head>
 <body>
@@ -11,12 +10,11 @@
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <!--Main page-->
-    <div class="messagesmall">My Cookbook</div>
+    <div class="message">My Cookbook</div>
     <div class="spaceSmall"></div>
-    <div class="flex-container">
-        <button onclick="openOrClose()" class="flashybutton">New</button>
-        <!--New cookbook-->
-        <div id="new-cookbook">
+    <!--New cookbook-->
+    <div class="col-4">
+        <div id="new-cookbook" class="container">
             <div class="spaceSmall"></div>
             <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
                 <div hidden><input type="text" th:field="*{cookbookId}"/></div>
@@ -25,16 +23,14 @@
                 <div class="spaceSmall"></div>
                 <label for="isPrivate">Private</label>
                 <input type="checkbox" th:field="*{private}" th:checked="${cookbook.private}" id="isPrivate"/>
-                <div class="spaceSmall"></div>
                 <input id="floatrightbutton" type="submit" value="Submit">
             </form>
         </div>
     </div>
     <!--Displays all cookbooks-->
-    <div class="spaceSmall"></div>
     <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
         <div th:each="cookbook: ${allMyCookbooks}">
-            <div class="col-6 book-container">
+            <div class="col-4 book-container">
                 <figure class='book'>
                     <!--Front-->
                     <ul class='hardcover_front'>
