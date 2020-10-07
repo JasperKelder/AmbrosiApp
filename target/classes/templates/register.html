@@ -7,6 +7,13 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
+<nav>
+    <ul id="nav-admin">
+        <li>
+            <a id="nav-middle" th:href="@{/login}">Login</a>
+        </li>
+    </ul>
+</nav>
 <!--Main page-->
 <div class="flex-container">
     <div class="spaceLarge"></div>
@@ -53,13 +60,10 @@
                 <button type="submit">Register</button>
             </p>
         </form>
-        <div class="spaceTiny"></div>
-        <!--Navigation for login-->
-        <p><a class="flashybutton" th:href="@{/login}">Go to login</a></p>
     </div>
     <div class="spaceMedium"></div>
     <!--Displays a message after a successful registration-->
-    <div class="messagesmall" th:if="${param.success}">You've successfully registered</div>
+    <div class="messagesmall message-container" th:if="${param.success}">You've successfully registered</div>
 </div>
 </body>
 </html>

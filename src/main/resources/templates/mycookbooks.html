@@ -10,11 +10,8 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
+    <nav th:replace="fragments/navextra :: navextra"></nav>
     <!--Main page-->
-    <div class="flex-container">
-        <div class="spaceSmall"></div>
-        <a class="flashybutton" th:href="@{/mykitchen}">Back</a>
-    </div>
     <!--New cookbook-->
     <div class="col-4">
         <div id="new-cookbook" class="container">

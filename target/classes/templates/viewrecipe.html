@@ -7,6 +7,13 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
+<nav>
+    <ul id="nav-admin">
+        <li>
+            <a onClick="printPageArea('printpage')" id="nav-middle">Print</a>
+        </li>
+    </ul>
+</nav>
 <!--Main page-->
 <!--The printpage id indicates what can be printed-->
 <div class="row" id="printpage">
@@ -54,7 +61,7 @@
         </div>
     </div>
     <div class="col-12">
-        <div class="paper" id="preparation">
+        <div class="paper" id="preparation-paper">
             <div class="paper-pattern">
                 <div class="paper-content">
                     <div id="recipe-title">Preparation</div>
@@ -66,10 +73,6 @@
         </div>
     </div>
 </div>
-<!--Footer for displaying the print button-->
-<footer id="print-footer">
-    <button onClick="printPageArea('printpage')" class="flashybutton" id="print-button">Print</button>
-</footer>
 <script>
     function printPageArea(divIDToPrint) {
         var printContent = document.getElementById(divIDToPrint);

@@ -105,11 +105,18 @@ nav li a {
     transition-duration: 0.5s;
 }
 
-li a:hover, .nav-mykitchen-text:hover {
+.nav-mykitchen-text:hover {
     text-shadow: -2px 2px 0 #f9ab23,
     2px 2px 0 #f9ab23,
     2px -2px 0 #f9ab23,
     -2px -2px 0 #f9ab23;
+}
+
+li a:hover {
+    text-shadow: -1px 1px 0 #f9ab23,
+    1px 1px 0 #f9ab23,
+    1px -1px 0 #f9ab23,
+    -1px -1px 0 #f9ab23;
 }
 
 #nav-search-container {
@@ -169,7 +176,6 @@ li a:hover, .nav-mykitchen-text:hover {
     font-size: 20px;
     padding: 0px 5px;
     float: left;
-    margin-left: 7px;
 }
 
 /* Changes the navigation bar when the user's screen is smaller than the specified width */
@@ -504,6 +510,13 @@ th {
     background-color: #f93f23;
 }
 
+.message-container {
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
+    border: solid black;
+    padding: 5px;
+}
+
 .spaceLarge {
     padding: 30px;
 }
@@ -820,6 +833,22 @@ input[id*="myInput"]:not(#myInput1) {
     border: solid;
 }
 
-#preparation {
+#preparation-paper {
     width: 75%;
+}
+
+#nav-add {
+    float: left;
+    margin-left: 25%;
+}
+
+#nav-book {
+    float: right;
+    margin-right: 25%;
+}
+
+#nav-middle {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0px 5px;
 }

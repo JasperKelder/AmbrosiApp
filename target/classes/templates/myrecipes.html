@@ -10,6 +10,7 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
+    <nav th:replace="fragments/navextra :: navextra"></nav>
     <!--Main page-->
     <div class="spaceMedium"></div>
     <div class="flex-container">
@@ -20,32 +21,21 @@
                     <div th:if="${myRecipes.size() < 1}">
                         <div class="flex-container">
                             <div class="messagesmall">This book is hungry</div>
-                            <div class="spaceLarge"></div><div class="spaceLarge"></div><div class="spaceLarge"></div>
-                            <div class="spaceLarge"></div><div class="spaceLarge"></div><div class="spaceMedium"></div>
-                            <a class="flashybutton" th:href="@{/add}">Add Recipe</a>
                         </div>
                     </div>
-                    <!--                    <header>-->
-                    <!--                    </header>-->
-                    <article>
-                        <form th:action="@{/myrecipes}" th:object="${myRecipes}" method="get">
-                            <!--Displays my recipes-->
-                            <table>
-                                <tr th:each="recipe: ${myRecipes}">
-                                    <a class="messagesmall"
-                                       th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
-                                       th:text="${recipe.getRecipeTitle()}"></a><br>
-                                </tr>
-                            </table>
-                        </form>
-                    </article>
-                    <footer>
-                    </footer>
+                    <form th:action="@{/myrecipes}" th:object="${myRecipes}" method="get">
+                        <!--Displays my recipes-->
+                        <table>
+                            <tr th:each="recipe: ${myRecipes}">
+                                <a class="messagesmall"
+                                   th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
+                                   th:text="${recipe.getRecipeTitle()}"></a><br>
+                            </tr>
+                        </table>
+                    </form>
                 </section>
             </div>
         </div>
-        <div class="spaceMedium"></div>
-        <a class="flashybutton" th:href="@{/mycookbooks}">Back</a>
     </div>
 </sec:authorize>
 </body>
