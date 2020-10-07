@@ -241,7 +241,7 @@ li a:hover, .nav-mykitchen-text:hover {
     2px -2px 0 black,
     -2px -2px 0 black;
     position: absolute;
-    top: 85%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -268,7 +268,7 @@ li a:hover, .nav-mykitchen-text:hover {
 /* Start view recipe page CSS */
 
 /* Styles the view recipe paper */
-#paper {
+.paper {
     width: 450px;
     position: relative;
     margin: 30px auto;
@@ -279,7 +279,7 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Adds a red line to the view recipe paper */
-#paper::before {
+.paper::before {
     content: '';
     width: 2px;
     height: 100%;
@@ -290,13 +290,13 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Adds blue lines to the view recipe paper */
-#paper-pattern {
+.paper-pattern {
     height: 100%;
     background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
 }
 
 /* Styles the content of the view recipe paper  */
-#paper-content {
+.paper-content {
     padding-top: 6px;
     padding-left: 56px;
     padding-right: 16px;
@@ -387,7 +387,7 @@ h2, label, th {
     -1px -1px 0 black;
 }
 
-.message, .messagesmall, .recipe-title, .recipe-indication {
+.message, .messagesmall, .recipe-indication {
     text-decoration: none;
     text-align: center;
     font-size: 400%;
@@ -396,6 +396,16 @@ h2, label, th {
     2px 2px 0 black,
     2px -2px 0 black,
     -2px -2px 0 black;
+}
+
+#recipe-title {
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    font-size: 135%;
+    text-align: center;
 }
 
 input[type=file] {
@@ -591,10 +601,6 @@ select {
 
 .width {
     width: 100px;
-}
-
-.col-12 {
-    float: none;
 }
 
 #cook {
@@ -812,4 +818,8 @@ input[id*="myInput"]:not(#myInput1) {
     margin-left: 25%;
     margin-top: 10%;
     border: solid;
+}
+
+#preparation {
+    width: 75%;
 }
