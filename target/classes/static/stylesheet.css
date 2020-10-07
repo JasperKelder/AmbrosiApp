@@ -784,18 +784,23 @@ select {
     height: 30px;
     width: 30px;
     transition-duration: 0.5s;
-    background-color: white;
+    background-color: black;
+    color: white;
     cursor: pointer;
     box-shadow: 0 0 5px black;
+    border-style: none;
+    /*font-size: 130%;*/
 }
 
 .add {
     font-family: Arial;
     transition-duration: 0.5s;
-    background-color: white;
+    background-color: black;
+    color: white;
     cursor: pointer;
     box-shadow: 0 0 5px black;
     height: 25px;
+    border-style: none;
 }
 
 .remove:hover, .add:hover {
