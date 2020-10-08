@@ -65,7 +65,7 @@ public class RecipeController {
         User currentUser = userRepository.findByEmailAddress(principal.getName());
         List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
         model.addAttribute("allUserCookbooks", userCookbooks);
-        return "add";
+        return "addrecipe";
     }
 
     @PostMapping({"/add"})
@@ -76,7 +76,7 @@ public class RecipeController {
         // Create a list of recipes
         List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
-            return "add";
+            return "addrecipe";
         }
         else{
             List<Ingredient> ingredients = new ArrayList<>();
@@ -126,7 +126,7 @@ public class RecipeController {
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "recipe";
+        return "adminrecipe";
     }
 
     @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
@@ -171,7 +171,7 @@ public class RecipeController {
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe);
-            return "add";
+            return "addrecipe";
         }
         return "index";
     }

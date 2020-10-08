@@ -22,7 +22,7 @@ public class IngredientController {
     protected String getInfo(Model model) {
         model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("allIngredients", ingredientRepository.findAll());
-        return "ingredients";
+        return "adminingredients";
     }
 
     @GetMapping("/ingredients/delete/{ingredientId}")
@@ -38,7 +38,7 @@ public class IngredientController {
     @PostMapping({"/ingredients"})
     protected String saveIngredient(@ModelAttribute("ingredient") Ingredient ingredient, BindingResult result) {
         if (result.hasErrors()) {
-            return "ingredients";
+            return "adminingredients";
         } else {
             ingredientRepository.save(ingredient);
             return "redirect:/ingredients";
@@ -51,9 +51,9 @@ public class IngredientController {
         model.addAttribute("allIngredients", ingredientRepository.findAll());
         if (ingredient.isPresent()) {
             model.addAttribute("ingredient", ingredient);
-            return "ingredients";
+            return "adminingredients";
         }
-        return "ingredients";
+        return "adminingredients";
     }
 
 }

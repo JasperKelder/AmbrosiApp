@@ -3,8 +3,8 @@
 <head>
     <title>EatAndTreat - My Cookbooks</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/cookbook.css"/>
-    <link rel="stylesheet" href="/css/background.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+    <link rel="stylesheet" href="/css/mycookbooks.css"/>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
@@ -45,7 +45,8 @@
                         <li></li>
                         <li>
                             <a class="btn"
-                               th:href="@{/myrecipes/{cookbookId}(cookbookId=${cookbook.cookbookId})}">Show Recipes</a>
+                               th:href="@{/viewcookbook/{cookbookId}(cookbookId=${cookbook.cookbookId})}">
+                                Show Recipes</a>
                         </li>
                         <li></li>
                         <li></li>

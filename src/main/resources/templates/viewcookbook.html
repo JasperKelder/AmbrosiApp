@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EatAndTreat - MyKitchen</title>
+    <title>EatAndTreat - Cookbook</title>
     <div th:replace="fragments/head :: head"></div>
     <link rel="stylesheet" href="/css/background.css"/>
-    <link rel="stylesheet" href="/css/book.css"/>
+    <link rel="stylesheet" href="/css/viewcookbook.css"/>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
@@ -23,7 +23,7 @@
                             <div class="messagesmall">This book is hungry</div>
                         </div>
                     </div>
-                    <form th:action="@{/myrecipes}" th:object="${myRecipes}" method="get">
+                    <form th:action="@{/viewcookbook}" th:object="${myRecipes}" method="get">
                         <!--Displays my recipes-->
                         <table>
                             <tr th:each="recipe: ${myRecipes}">

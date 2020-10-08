@@ -68,7 +68,7 @@
         }
     </script>
     <!--Extended navigation for admin users-->
-    <ul id="nav-admin">
+    <ul id="nav-extra">
         <li sec:authorize="hasAuthority('ROLE_ADMIN')">
             <a class="nav-admin-button" th:href="@{/recipes}">Recipe</a>
         </li>

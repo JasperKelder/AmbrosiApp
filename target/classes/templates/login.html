@@ -3,12 +3,14 @@
 <head>
     <title>EatAndTreat - Login</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/background.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+</head>
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <nav>
-    <ul id="nav-admin">
+    <ul id="nav-extra">
+        <!--Needed to display the black bar-->
         <li id="nav-empty"></li>
     </ul>
 </nav>
@@ -16,7 +18,7 @@
 <div class="flex-container">
     <div class="spaceLarge"></div>
     <br>
-    <div id="padding" class="color">
+    <div class="container">
         <!--Login form-->
         <form th:action="@{/login}" method="post">
             <input class="margin" type="text" id="username" name="username" placeholder="Email address"

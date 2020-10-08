@@ -3,7 +3,8 @@
 <head>
     <title>EatAndTreat - Admin</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/background.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+</head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
@@ -12,7 +13,7 @@
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
-        <div id="padding">
+        <div class="container">
             <!--Takes the user to the add recipe form-->
             <form th:action="@{/add}">
                 <p><input type="submit" value="Submit"/></p>

@@ -3,7 +3,8 @@
 <head>
     <title>EatAndTreat - Cuisine</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/background.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+</head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
@@ -12,7 +13,7 @@
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
-        <div id="padding">
+        <div class="container">
             <!--Add cuisine form-->
             <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
                 <p hidden><input type="text" th:field="*{cuisineId}"/></p>
@@ -25,7 +26,7 @@
             <!--Displays all cuisines-->
             <tr th:each="cuisine: ${allCuisines}">
                 <td th:text="${cuisine.cuisineName}"></td>
-                <!--Loads the cuisine in the add cuisine form so it can be update-->
+                <!--Loads the cuisine in the add cuisine form so it can be updated-->
                 <td class="edittable"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
                                          class="editbutton">Update</a></td>
             </tr>

@@ -3,7 +3,8 @@
 <head>
     <title>EatAndTreat - Category</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/background.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+</head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
@@ -12,7 +13,7 @@
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
-        <div id="padding">
+        <div class="container">
             <!--Add category form-->
             <form action="#" th:action="@{/category}" th:object="${category}" method="post">
                 <p hidden><input type="text" th:field="*{categoryId}"/></p>
@@ -25,7 +26,7 @@
             <!--Displays all categories-->
             <tr th:each="category: ${allCategories}">
                 <td th:text="${category.categoryName}"></td>
-                <!-- Loads the category in the add category form so it can be update-->
+                <!-- Loads the category in the add category form so it can be updated-->
                 <td class="edittable"><a
                         th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
                         class="editbutton">Update</a></td>

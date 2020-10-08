@@ -62,12 +62,12 @@ public class CookbookController {
     }
 
     // Method to get the recipes from the cookbookId by user
-    @GetMapping("/myrecipes/{id}")
+    @GetMapping("/viewcookbook/{id}")
     protected String showRecipesForMyFirstCookbook(@PathVariable("id") final Integer cookbookId, Model model) {
         Cookbook currentCookbook = cookbookRepository.getOne(cookbookId);
         model.addAttribute("myRecipes", currentCookbook.getRecipes());
 
-        return "myrecipes";
+        return "viewcookbook";
     }
 
 }
