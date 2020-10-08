@@ -32,7 +32,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/viewrecipe/**",
                 "/searchresults/**",
                 "/images/**",
-                "/css/**").permitAll()
+                "/css/**",
+                "/script/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
