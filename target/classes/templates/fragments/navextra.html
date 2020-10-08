@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<!--Navigation-->
+<nav th:fragment="navextra">
+    <ul id="nav-admin">
+        <li>
+            <a id="nav-add" class="nav-admin-button" th:href="@{/add}">Add Recipe</a>
+            <a id="nav-book" class="nav-admin-button" th:href="@{/mycookbooks}">My Cookbooks</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

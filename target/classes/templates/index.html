@@ -7,6 +7,13 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
+<nav>
+    <ul id="nav-admin">
+        <li>
+            <a id="nav-middle">Cravings</a>
+        </li>
+    </ul>
+</nav>
 <!--Main page-->
 <div class="spaceSmall"></div>
 <!--Shows a message when there are no recipes in the database-->
@@ -19,7 +26,7 @@
     <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
     <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
         <!--This will add all the info into the grid items-->
-        <div class="col-3 imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
+        <div class="col-3 overview-responsive imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
             <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                 <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
             <div class="index-foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
