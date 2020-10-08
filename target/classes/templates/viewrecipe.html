@@ -8,7 +8,7 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <nav>
-    <ul id="nav-admin">
+    <ul id="nav-admin" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
         <li>
             <a onClick="printPageArea('printpage')" id="nav-middle">Print</a>
         </li>

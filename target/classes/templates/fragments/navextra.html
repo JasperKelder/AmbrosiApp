@@ -5,7 +5,7 @@
 <body>
 <!--Navigation-->
 <nav th:fragment="navextra">
-    <ul id="nav-admin">
+    <ul id="nav-admin" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
         <li>
             <a id="nav-add" class="nav-admin-button" th:href="@{/add}">Add Recipe</a>
             <a id="nav-book" class="nav-admin-button" th:href="@{/mycookbooks}">My Cookbooks</a>
