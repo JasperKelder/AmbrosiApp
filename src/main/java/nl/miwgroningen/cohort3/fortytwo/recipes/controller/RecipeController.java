@@ -108,7 +108,7 @@ public class RecipeController {
 
             recipeRepository.save(recipe);
         }
-            return "redirect:/mykitchen";
+        return "redirect:/mykitchen";
     }
 
     @GetMapping({"/index", "/"})
@@ -191,13 +191,18 @@ public class RecipeController {
     protected String showSearchResults(@PathVariable("searchterm") String searchTerm, Model model) {
         List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
         List<Recipe> searchResultsByIngredient = recipeRepository.getSuggestionsByIngredient(searchTerm);
+        List<String> imagesList = new ArrayList<>();
         for (Recipe recipe: searchResultsByIngredient) {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);
             }
+            imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-        model.addAttribute("searchResults", searchResults);
+        for (Recipe recipe: searchResults) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+            model.addAttribute("searchResults", searchResults);
+        model.addAttribute("allImages", imagesList);
         return "searchresults";
     }
-
 }
