@@ -9,9 +9,7 @@
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <nav>
     <ul id="nav-admin">
-        <li>
-            <a id="nav-middle" th:href="@{/registration}">Register</a>
-        </li>
+        <li id="nav-empty"></li>
     </ul>
 </nav>
 <!--Main page-->
@@ -26,6 +24,10 @@
             <input class="margin" type="password" id="password" name="password" placeholder="Password"/>
             <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
         </form>
+        <div class="spaceTiny"></div>
+        <!--Navigation for register-->
+        <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
+    </div>
     </div>
     <div class="spaceMedium"></div>
     <!--Displays a message after an unsuccessful login-->
