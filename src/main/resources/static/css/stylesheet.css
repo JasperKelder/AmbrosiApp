@@ -857,3 +857,7 @@ input[id*="myInput"]:not(#myInput1) {
     font-size: 20px;
     padding: 0px 5px;
 }
+
+#nav-empty {
+    padding: 15px;
+}
