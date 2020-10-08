@@ -28,7 +28,7 @@ body {
 
 /* Start navigation CSS */
 
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -37,7 +37,7 @@ ul {
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
 }
 
-li a {
+nav li a {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -105,11 +105,18 @@ li a {
     transition-duration: 0.5s;
 }
 
-li a:hover, .nav-mykitchen-text:hover {
+.nav-mykitchen-text:hover {
     text-shadow: -2px 2px 0 #f9ab23,
     2px 2px 0 #f9ab23,
     2px -2px 0 #f9ab23,
     -2px -2px 0 #f9ab23;
+}
+
+li a:hover {
+    text-shadow: -1px 1px 0 #f9ab23,
+    1px 1px 0 #f9ab23,
+    1px -1px 0 #f9ab23,
+    -1px -1px 0 #f9ab23;
 }
 
 #nav-search-container {
@@ -169,7 +176,6 @@ li a:hover, .nav-mykitchen-text:hover {
     font-size: 20px;
     padding: 0px 5px;
     float: left;
-    margin-left: 7px;
 }
 
 /* Changes the navigation bar when the user's screen is smaller than the specified width */
@@ -241,24 +247,24 @@ li a:hover, .nav-mykitchen-text:hover {
     2px -2px 0 black,
     -2px -2px 0 black;
     position: absolute;
-    top: 85%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 /* Resizes the overview image grid columns for smaller screens */
 @media only screen and (max-width: 1280px) {
-    [class*="col-3"] {
+    .overview-responsive {
         width: 33.33%;
     }
 }
 @media only screen and (max-width: 950px) {
-    [class*="col-3"] {
+    .overview-responsive {
         width: 50%;
     }
 }
 @media only screen and (max-width: 625px) {
-    [class*="col-3"] {
+    .overview-responsive {
         width: 100%;
     }
 }
@@ -268,7 +274,7 @@ li a:hover, .nav-mykitchen-text:hover {
 /* Start view recipe page CSS */
 
 /* Styles the view recipe paper */
-#paper {
+.paper {
     width: 450px;
     position: relative;
     margin: 30px auto;
@@ -279,7 +285,7 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Adds a red line to the view recipe paper */
-#paper::before {
+.paper::before {
     content: '';
     width: 2px;
     height: 100%;
@@ -290,13 +296,13 @@ li a:hover, .nav-mykitchen-text:hover {
 }
 
 /* Adds blue lines to the view recipe paper */
-#paper-pattern {
+.paper-pattern {
     height: 100%;
     background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
 }
 
 /* Styles the content of the view recipe paper  */
-#paper-content {
+.paper-content {
     padding-top: 6px;
     padding-left: 56px;
     padding-right: 16px;
@@ -354,7 +360,7 @@ li a:hover, .nav-mykitchen-text:hover {
 
 /* Resizes the view recipe grid columns for smaller screens */
 @media only screen and (max-width: 1360px) {
-    [class*="col-4"] {
+    .viewrecipe-responsive {
         width: 50%;
     }
     #view-image-container {
@@ -366,7 +372,7 @@ li a:hover, .nav-mykitchen-text:hover {
     }
 }
 @media only screen and (max-width: 950px) {
-    [class*="col-4"] {
+    .viewrecipe-responsive {
         width: 100%;
     }
 }
@@ -387,7 +393,8 @@ h2, label, th {
     -1px -1px 0 black;
 }
 
-.message, .messagesmall, .recipe-title, .recipe-indication {
+.message, .messagesmall, .recipe-indication {
+    text-decoration: none;
     text-align: center;
     font-size: 400%;
     color: #f9ab23;
@@ -395,6 +402,16 @@ h2, label, th {
     2px 2px 0 black,
     2px -2px 0 black,
     -2px -2px 0 black;
+}
+
+#recipe-title {
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    font-size: 135%;
+    text-align: center;
 }
 
 input[type=file] {
@@ -493,6 +510,13 @@ th {
     background-color: #f93f23;
 }
 
+.message-container {
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
+    border: solid black;
+    padding: 5px;
+}
+
 .spaceLarge {
     padding: 30px;
 }
@@ -525,21 +549,14 @@ th {
 
 .column-left {
     float: left;
-    width: 20%;
+    width: 200px;
     margin: 10px;
 }
 
 .column-right {
     float: left;
-    width: 60%;
+    width: 400px;
     margin: 10px;
-}
-
-@media screen and (max-width: 800px) {
-    .column-left, .column-right {
-        width: 100%;
-        margin-top: 0;
-    }
 }
 
 label {
@@ -599,15 +616,6 @@ select {
     width: 100px;
 }
 
-.col-6 {
-    /*border: solid;*/
-    height: 370px;
-}
-
-.col-12 {
-    float: none;
-}
-
 #cook {
     width: 175px;
 }
@@ -636,16 +644,6 @@ select {
 
 #smaller {
     font-size: 50px;
-}
-
-.cookbook-text {
-    color: white;
-    font-size: 20px;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    text-decoration: none;
 }
 
 .autocomplete {
@@ -684,7 +682,7 @@ select {
     position: fixed;
     z-index: 100;
     left: 50%;
-    top: 50%;
+    top: 60%;
     /* Use this for centering if unknown width/height */
     transform: translate(-50%, -50%);
     /* If known, negative margins are probably better (less chance of blurry text). */
@@ -719,14 +717,6 @@ select {
     height: 500px;
 }
 
-#cookbook-container {
-    margin-left: 75px;
-}
-
-#new-cookbook {
-    display: none;
-}
-
 .cookbook-text {
     color: white;
     font-size: 20px;
@@ -746,39 +736,6 @@ select {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.remove {
-    font-family: Arial;
-    height: 30px;
-    width: 30px;
-    transition-duration: 0.5s;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-}
-
-.add {
-    font-family: Arial;
-    transition-duration: 0.5s;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-    height: 25px;
-}
-
-.remove:hover, .add:hover {
-    box-shadow: 0 0 10px black;
-}
-
-input[id*="myInput"]:not(#myInput1) {
-    width: 85%;
-}
-
-@media only screen and (max-width: 800px) {
-    input[id*="myInput"]:not(#myInput1) {
-        width: 322px;
-    }
 }
 
 .open-book {
@@ -808,4 +765,95 @@ input[id*="myInput"]:not(#myInput1) {
 #search-table td:hover {
     border: 1px solid #f9ab23;
     box-shadow: 0 0 15px #f9ab23;
+}
+
+/* Start add recipe CSS */
+
+.add-responsive {
+    width: 700px;
+}
+
+@media screen and (max-width: 800px) {
+    .add-responsive {
+        width: 470px;
+    }
+}
+
+.remove {
+    font-family: Arial;
+    height: 30px;
+    width: 30px;
+    transition-duration: 0.5s;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+    border-style: none;
+    /*font-size: 130%;*/
+}
+
+.add {
+    font-family: Arial;
+    transition-duration: 0.5s;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+    height: 25px;
+    border-style: none;
+}
+
+.remove:hover, .add:hover {
+    box-shadow: 0 0 10px black;
+}
+
+input[id*="myInput"]:not(#myInput1) {
+    width: 370px;
+}
+
+/* End add recipe CSS */
+
+#mycookbook-modal {
+    width: 80%;
+    height: 70%;
+}
+
+.book-container {
+    padding: 50px;
+}
+
+
+.book {
+    margin-left: 50%;
+}
+
+#cookbook-name {
+
+}
+
+#new-cookbook {
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 10%;
+    border: solid;
+}
+
+#preparation-paper {
+    width: 75%;
+}
+
+#nav-add {
+    float: left;
+    margin-left: 25%;
+}
+
+#nav-book {
+    float: right;
+    margin-right: 25%;
+}
+
+#nav-middle {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0px 5px;
 }
