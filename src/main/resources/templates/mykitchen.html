@@ -15,14 +15,18 @@
     <!--Main page-->
     <div class="spaceLarge"></div>
     <div class="spaceMedium"></div>
-    <div class="message" id="smaller">
+    <div class="messagemedium">
+        <!--Displays a welcome message for the user-->
         <div th:text="${'Welcome ' + user.getFirstName()}"></div>
     </div>
     <div class="spaceMedium"></div>
     <div class="flex-container">
+        <!--Opens the My Info modal-->
         <button id="myinfo-button" class="flashybutton">My Info</button>
     </div>
+    <!--My Info modal, hidden by default-->
     <div class="modal" id="myinfo-modal">
+        <!--Button to hide the My Info modal-->
         <button class="close-button flashybutton" id="myinfo-close-button">X</button>
         <div th:replace="fragments/myinfo :: myinfo"></div>
     </div>

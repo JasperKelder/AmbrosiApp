@@ -21,19 +21,20 @@
     <div class="container">
         <!--Login form-->
         <form th:action="@{/login}" method="post">
-            <input class="margin" type="text" id="username" name="username" placeholder="Email address"
+            <input class="login-margin" type="text" id="username" name="username" placeholder="Email address"
                    autofocus="autofocus">
-            <input class="margin" type="password" id="password" name="password" placeholder="Password"/>
-            <p><input type="submit" name="login-submit" id="login-submit" value="Log In"/></p>
+            <input class="login-margin" type="password" id="password" name="password" placeholder="Password"/>
+            <div class="center">
+                <div class="spaceSmall"></div>
+                <input type="submit" name="login-submit" id="login-submit" value="Log In"/>
+                <div class="spaceSmall"></div>
+                <!--Navigation for register-->
+                <a class="flashybutton" th:href="@{/registration}">Go to register</a>
+            </div>
         </form>
-        <div class="spaceTiny"></div>
-        <!--Navigation for register-->
-        <p><a class="flashybutton" th:href="@{/registration}">Go to register</a></p>
-    </div>
     </div>
     <div class="spaceMedium"></div>
     <!--Displays a message after an unsuccessful login-->
-    <div class="messagesmall message-container" th:if="${param.error}">Invalid email address or password</div>
-</div>
+    <div class="messagesmall warning-container" th:if="${param.error}">Invalid email address or password</div>
 </div>
 </body>

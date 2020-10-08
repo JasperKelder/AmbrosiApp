@@ -199,6 +199,26 @@ li a:hover {
     }
 }
 
+#nav-add {
+    float: left;
+    margin-left: 25%;
+}
+
+#nav-book {
+    float: right;
+    margin-right: 25%;
+}
+
+#nav-middle {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0px 5px;
+}
+
+#nav-empty {
+    padding: 15px;
+}
+
 /* End navigation CSS */
 /* */
 /* Start grid CSS */
@@ -271,114 +291,7 @@ li a:hover {
 
 /* End overview CSS */
 /* */
-/* Start view recipe page CSS */
 
-/* Styles the view recipe paper */
-.paper {
-    width: 450px;
-    position: relative;
-    margin: 30px auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: white;
-    box-shadow: 0 0 5px black;
-}
-
-/* Adds a red line to the view recipe paper */
-.paper::before {
-    content: '';
-    width: 2px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 40px;
-    background-color: rgba(255,0,0,0.6);
-}
-
-/* Adds blue lines to the view recipe paper */
-.paper-pattern {
-    height: 100%;
-    background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
-}
-
-/* Styles the content of the view recipe paper  */
-.paper-content {
-    padding-top: 6px;
-    padding-left: 56px;
-    padding-right: 16px;
-    line-height: 25px;
-    font-size: 19px;
-    letter-spacing: 1px;
-    word-spacing: 5px;
-}
-
-#view-image-container {
-    margin-top: 125px;
-    position: relative;
-    text-align: center;
-}
-
-#view-image {
-    width: 325px;
-    border-radius: 10%;
-    box-shadow: 0 0 5px black;
-    transition-duration: 0.5s;
-}
-
-#postit-container {
-    margin-top: 160px;
-    position: relative;
-}
-
-.postit {
-    position: relative;
-    width: 325px;
-    margin: auto;
-    padding: 20px;
-    font-size: 19px;
-    box-shadow: 0 0 5px black;
-    background: #eae672;
-    -webkit-transform: rotate(2deg);
-    -moz-transform: rotate(2deg);
-    -o-transform: rotate(2deg);
-    -ms-transform: rotate(2deg);
-    transform: rotate(2deg);
-    min-height: 275px;
-}
-
-/* Footer to accommodate the print button */
-#print-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 0 -4px 6px 0 rgba(0,0,0,.2);
-    background-color: #f93f23;
-}
-
-/* Resizes the view recipe grid columns for smaller screens */
-@media only screen and (max-width: 1360px) {
-    .viewrecipe-responsive {
-        width: 50%;
-    }
-    #view-image-container {
-        margin-top: 30px;
-    }
-    #postit-container {
-        margin-top: 20px;
-        width: 100%;
-    }
-}
-@media only screen and (max-width: 950px) {
-    .viewrecipe-responsive {
-        width: 100%;
-    }
-}
-
-/* End view recipe page CSS */
-/* */
 /* Start general CSS */
 
 h2, label, th {
@@ -393,7 +306,7 @@ h2, label, th {
     -1px -1px 0 black;
 }
 
-.message, .messagesmall, .recipe-indication {
+.message, .messagemedium, .messagesmall {
     text-decoration: none;
     text-align: center;
     font-size: 400%;
@@ -404,29 +317,15 @@ h2, label, th {
     -2px -2px 0 black;
 }
 
-#recipe-title {
-    color: #f9ab23;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    font-size: 135%;
-    text-align: center;
+.messagemedium {
+    font-size: 300%;
 }
 
-input[type=file] {
-    text-align: center;
-    background-color: black;
-    box-shadow: 0 0 5px black;
-    color: floralwhite;
-    text-shadow: -1px 1px 0 black,
-    1px 1px 0 black,
-    1px -1px 0 black,
-    -1px -1px 0 black;
-    transition-duration: 0.5s;
+.messagesmall {
+    font-size: 200%;
 }
 
-p {
+.center {
     text-align: center;
 }
 
@@ -482,8 +381,6 @@ table {
 
 td {
     box-shadow: 0 0 5px black;
-    padding-top: 10px;
-    padding-bottom: 10px;
     font-size: 125%;
     background-color: #f93f23;
     color: floralwhite;
@@ -492,25 +389,26 @@ td {
     1px 1px 0 black,
     1px -1px 0 black,
     -1px -1px 0 black;
+    padding: 10px 20px 10px 20px
 }
 
 th {
     box-shadow: 0 0 5px black;
 }
 
-.edittable {
+.admin-table {
     padding-top: 20px;
     padding-bottom: 20px;
     width: 100px;
 }
 
-.container, .addContainer {
+.container {
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
 }
 
-.message-container {
+.warning-container {
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
     border: solid black;
@@ -529,19 +427,6 @@ th {
     padding: 10px;
 }
 
-.spaceTiny {
-    padding: 0.1px;
-}
-
-.viewImage {
-    width: 300px;
-    border-radius: 35%;
-    box-shadow: 0 0 5px black;
-}
-
-.addContainer {
-    width: 50%;
-}
 
 #floatrightbutton {
     float: right;
@@ -563,110 +448,12 @@ label {
     padding: 2px;
 }
 
-.margin {
+.login-margin {
     margin: 10px;
-}
-
-.recipe-title {
-    font-size: 200%;
-}
-
-.recipe-indication {
-    font-size: 100%;
-}
-
-#recipe-user {
-    text-align: center;
-}
-
-.messagesmall {
-    font-size: 200%;
-}
-
-.float, #float {
-    position: absolute;
-    bottom: 10px;
-    background-color: black;
-}
-
-td {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.elmo {
-    height: 200px;
-    margin: 40px;
-    border-radius: 35%;
-    box-shadow: 0 0 5px black;
-}
-
-select {
-    width: 100%;
-    height: 33px;
-    box-shadow: 0 0 5px black;
-    border-radius: 4px;
 }
 
 .center {
     text-align: center;
-}
-
-.width {
-    width: 100px;
-}
-
-#cook {
-    width: 175px;
-}
-
-#recipe {
-    margin-top: 30px;
-    width: 160px;
-}
-
-.color {
-    background-color: #f93f23;
-}
-
-.textshadow {
-    color: white;
-    font-size: 20px;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    position: absolute;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#smaller {
-    font-size: 50px;
-}
-
-.autocomplete {
-    position: relative;
-    display: inline-block;
-}
-
-.autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    border-bottom: 1px solid #d4d4d4;
-}
-
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-    background-color: #e9e9e9;
-}
-
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-    background-color: DodgerBlue !important;
-    color: #ffffff;
 }
 
 /* MODAL */
@@ -715,152 +502,4 @@ select {
 #mycookbook-modal {
     width: 600px;
     height: 500px;
-}
-
-.cookbook-text {
-    color: white;
-    font-size: 20px;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    text-decoration: none;
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.open-book {
-    min-width: 700px;
-    min-height: 450px;
-}
-
-.search-text {
-    color: #f9ab23;
-    font-size: 20px;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    text-decoration: none;
-}
-
-#search-table {
-    width: 100px;
-}
-
-#search-table td {
-    transition-duration: 0.5s;
-    border: 1px solid black;
-}
-
-#search-table td:hover {
-    border: 1px solid #f9ab23;
-    box-shadow: 0 0 15px #f9ab23;
-}
-
-/* Start add recipe CSS */
-
-#add-container {
-    width: 700px;
-    padding: 26px;
-    box-shadow: 0 0 5px black;
-    background-color: #f93f23;
-}
-
-@media screen and (max-width: 800px) {
-    #add-container {
-        width: 470px;
-    }
-}
-
-.remove {
-    font-family: Arial;
-    height: 30px;
-    width: 30px;
-    transition-duration: 0.5s;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-    border-style: none;
-    /*font-size: 130%;*/
-}
-
-.add {
-    font-family: Arial;
-    transition-duration: 0.5s;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 0 5px black;
-    height: 25px;
-    border-style: none;
-}
-
-.remove:hover, .add:hover {
-    box-shadow: 0 0 10px black;
-}
-
-input[id*="myInput"]:not(#myInput1) {
-    width: 370px;
-}
-
-/* End add recipe CSS */
-
-#mycookbook-modal {
-    width: 80%;
-    height: 70%;
-}
-
-.book-container {
-    padding: 50px;
-}
-
-
-.book {
-    margin-left: 50%;
-}
-
-#cookbook-name {
-
-}
-
-#new-cookbook {
-    width: 60%;
-    margin-left: 25%;
-    margin-top: 10%;
-    border: solid;
-}
-
-#preparation-paper {
-    width: 75%;
-}
-
-#nav-add {
-    float: left;
-    margin-left: 25%;
-}
-
-#nav-book {
-    float: right;
-    margin-right: 25%;
-}
-
-#nav-middle {
-    cursor: pointer;
-    font-size: 20px;
-    padding: 0px 5px;
-}
-
-#nav-empty {
-    padding: 15px;
 }

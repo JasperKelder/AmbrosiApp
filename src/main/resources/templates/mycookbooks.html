@@ -12,8 +12,8 @@
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <nav th:replace="fragments/navextra :: navextra"></nav>
     <!--Main page-->
-    <!--New cookbook-->
     <div class="col-4">
+        <!--New cookbook-->
         <div id="new-cookbook" class="container">
             <div class="spaceSmall"></div>
             <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
@@ -31,6 +31,7 @@
     <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
         <div th:each="cookbook: ${allMyCookbooks}">
             <div class="col-4 book-container">
+                <!--Displays a css styled book-->
                 <figure class='book'>
                     <!--Front-->
                     <ul class='hardcover_front'>

@@ -13,12 +13,13 @@
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
-        <div class="container">
+        <div class="container center">
             <!--Add cuisine form-->
             <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
-                <p hidden><input type="text" th:field="*{cuisineId}"/></p>
-                <p><input type="text" th:field="*{cuisineName}" required placeholder="Cuisine"/></p>
-                <p><input type="submit" value="Submit"/></p>
+                <div hidden><input type="text" th:field="*{cuisineId}"/></div>
+                <div><input type="text" th:field="*{cuisineName}" required placeholder="Cuisine"/></div>
+                <div class="spaceSmall"></div>
+                <input type="submit" value="Submit"/>
             </form>
         </div>
         <div class="spaceMedium"></div>
@@ -27,8 +28,8 @@
             <tr th:each="cuisine: ${allCuisines}">
                 <td th:text="${cuisine.cuisineName}"></td>
                 <!--Loads the cuisine in the add cuisine form so it can be updated-->
-                <td class="edittable"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
-                                         class="editbutton">Update</a></td>
+                <td class="admin-table"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
+                                           class="editbutton">Update</a></td>
             </tr>
         </table>
     </div>

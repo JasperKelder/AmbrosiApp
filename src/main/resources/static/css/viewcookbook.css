@@ -138,3 +138,8 @@
 .open-book footer > *:last-child {
     text-align: right;
 }
+
+.open-book {
+    min-width: 700px;
+    min-height: 450px;
+}

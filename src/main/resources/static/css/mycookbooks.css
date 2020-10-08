@@ -590,3 +590,18 @@ Table of Contents
         margin: 0 auto;
     }
 }
+
+.book-container {
+    padding: 50px;
+}
+
+.book {
+    margin-left: 50%;
+}
+
+#new-cookbook {
+    width: 60%;
+    margin-left: 25%;
+    margin-top: 10%;
+    border: solid;
+}

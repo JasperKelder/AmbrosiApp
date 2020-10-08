@@ -3,6 +3,7 @@
 <head>
     <title>EatAndTreat - View Recipe</title>
     <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" href="/css/viewrecipe.css"/>
 </head>
 <body>
 <!--Navigation-->
@@ -29,9 +30,9 @@
         <div class="paper">
             <div class="paper-pattern">
                 <div class="paper-content">
-                    <div th:text="${recipe.recipeTitle}" id="recipe-title"></div>
+                    <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
                     <br>
-                    <div th:text="${recipe.user}" id="recipe-user"></div>
+                    <div th:text="${recipe.user}" class="center"></div>
                     <br>
                     <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
                     <br>
@@ -45,8 +46,6 @@
                     <br>
                     <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
                     <br>
-                    <!--                                        <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>-->
-                    <!--                    <br>-->
                 </div>
             </div>
         </div>
@@ -54,7 +53,7 @@
     <div class="col-4 viewrecipe-responsive" id="postit-container">
         <!--Displays the ingredients written on a post it-->
         <div class="postit">
-            <div id="recipe-title">Ingredients</div>
+            <div class="recipe-title">Ingredients</div>
             <tr th:each="recipe: ${recipe.ingredients}">
                 <td th:text="${recipe.getIngredientName()}"></td><br>
             </tr>
@@ -65,7 +64,7 @@
         <div class="paper" id="preparation-paper">
             <div class="paper-pattern">
                 <div class="paper-content">
-                    <div id="recipe-title">Preparation</div>
+                    <div class="recipe-title">Preparation</div>
                     <br>
                     <div th:text="${recipe.recipePreperation}"></div>
                     <br>
