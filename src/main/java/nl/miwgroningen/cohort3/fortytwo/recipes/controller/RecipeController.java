@@ -75,45 +75,68 @@ public class RecipeController {
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
+
         // Create a list of recipes
         List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
             return "add";
         }
-        else{
-            // first check if the ingredients are in the database (if not, make a new ingredient),
-            // then save them in recipe_ingredient
+        else {
+            // If there is no image uploaded, save default image.
+            if (image.isEmpty()) {
+                recipe.setImage(null);
+            } else {
+                recipe.setImage(image.getBytes());
+            }
             Set<RecipeIngredient> recipeIngredients = new HashSet<>();
             for (String string : ingredientName) {
                 if (string != null && !string.trim().isEmpty()) {
                     Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
-                    Ingredient ingredient = ingredientOptional.orElse(new Ingredient(string));
+                    Ingredient ingredient;
+                    if (ingredientOptional.isPresent()) {
+                        ingredient = ingredientOptional.get();
+                    } else {
+                        ingredient = new Ingredient(string);
+                        ingredient.setMeasuring_unit("ml");
+                        ingredientRepository.save(ingredient);
+                    }
                     RecipeIngredient recipeIngredient = new RecipeIngredient();
                     recipeIngredient.setIngredient(ingredient);
-                    recipeIngredient.setRecipe(recipe);
                     recipeIngredients.add(recipeIngredient);
                 }
             }
-            recipe.setRecipeIngredients(recipeIngredients);
-            recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
-            // If there is no image uploaded, save default image.
-            if (image.isEmpty()){
-                recipe.setImage(null);
-            }
-            else {
-                recipe.setImage(image.getBytes());
-            }
 
-            // This will add the recipe to the cookbook
-            recipeToCookbook.add(recipe);
-
-            // save the recipe in a cookbook with creation of recipe, not when updating the recipe:
-            if (recipe.getRecipeId() == null) {
+            //when updating a recipe, the recipe has an id
+            if (recipe.getRecipeId() != null) {
+                recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
+                Optional<Recipe> currentRecipe = recipeRepository.findById(recipe.getRecipeId());
+                if (currentRecipe.isPresent()) {
+                    currentRecipe.get().setRecipeTitle(recipe.getRecipeTitle());
+                    currentRecipe.get().setCategoryName(recipe.getCategoryName());
+                    currentRecipe.get().setCuisineName(recipe.getCuisineName());
+                    currentRecipe.get().setCooktime(recipe.getCooktime());
+                    currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
+                    currentRecipe.get().setRecipePreperation(recipe.getRecipePreperation());
+                    currentRecipe.get().setServings(recipe.getServings());
+                    for (RecipeIngredient ri : recipeIngredients) {
+                        ri.setRecipe(currentRecipe.get());
+                    }
+                    currentRecipe.get().setRecipeIngredients(recipeIngredients);
+                    currentRecipe.get().setImage(recipe.getImage());
+                    recipeRepository.save(currentRecipe.get());
+                    return "redirect:/index";
+                }
+            } else {
+                recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
                 cookbook.setRecipes(recipeToCookbook);
+                recipeRepository.save(recipe);
+                for (RecipeIngredient ri : recipeIngredients) {
+                    ri.setRecipe(recipe);
+                    recipeIngredientRepository.save(ri);
+                }
             }
-            recipeRepository.save(recipe);
-        }
             return "redirect:/index";
+        }
     }
 
     @GetMapping({"/index", "/"})
@@ -123,11 +146,17 @@ public class RecipeController {
         for (Recipe recipe : recipes) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-//        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-//        String testIngredients = gsonBuilder.toJson(recipes);
-//        System.out.println(testIngredients);
+
+//        Optional<Recipe> testRecipe = recipeRepository.findById(1);
+//        if (testRecipe.isPresent()) {
+//            Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+//            String testIngredients = gsonBuilder.toJson(testRecipe.get().getRecipeIngredients());
+//            System.out.println(testIngredients);
+//        }
+
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
+
         return "index";
     }
 
@@ -178,7 +207,7 @@ public class RecipeController {
             // If current image is present then convert it to base64 string so it can be displayed as a place holder
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
-            model.addAttribute("recipe", recipe);
+            model.addAttribute("recipe", recipe.get());
             return "add";
         }
         return "index";

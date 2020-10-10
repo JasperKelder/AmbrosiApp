@@ -41,15 +41,19 @@ public class RecipeIngredient {
     }
 
     public void setRecipe(Recipe recipe) {
-        setRecipe(recipe, true);
+        this.recipe = recipe;
     }
 
-    public void setRecipe(Recipe recipe, boolean add) {
-        this.recipe = recipe;
-        if (recipe != null && add) {
-            recipe.addRecipeIngredient(this, false);
-        }
-    }
+    //    public void setRecipe(Recipe recipe) {
+//        setRecipe(recipe, true);
+//    }
+
+//    public void setRecipe(Recipe recipe, boolean add) {
+//        this.recipe = recipe;
+//        if (recipe != null && add) {
+//            recipe.addRecipeIngredient(this, false);
+//        }
+//    }
 
     public Ingredient getIngredient() {
         return ingredient;

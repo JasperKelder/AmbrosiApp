@@ -21,6 +21,7 @@ public class Ingredient implements Comparable<Ingredient> {
     @OneToMany(mappedBy="ingredient")
     private Set<RecipeIngredient> recipeIngredients;
 
+    @Expose
     private String measuring_unit;
 
     @Override
@@ -57,11 +58,19 @@ public class Ingredient implements Comparable<Ingredient> {
         this.ingredientName = ingredientName;
     }
 
-//    public List<Recipe> getRecipes() {
-//        return recipes;
-//    }
-//
-//    public void setRecipes(List<Recipe> recipes) {
-//        this.recipes = recipes;
-//    }
+    public Set<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
+    }
+
+    public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
+    }
+
+    public String getMeasuring_unit() {
+        return measuring_unit;
+    }
+
+    public void setMeasuring_unit(String measuring_unit) {
+        this.measuring_unit = measuring_unit;
+    }
 }
