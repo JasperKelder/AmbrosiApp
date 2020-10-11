@@ -61,9 +61,6 @@
         <li sec:authorize="hasAuthority('ROLE_ADMIN')">
             <a class="nav-admin-button" th:href="@{/ingredients}">Ingredients</a>
         </li>
-        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <a class="nav-admin-button" th:href="@{/draw}">Fun</a>
-        </li>
     </ul>
     <script type="text/javascript" src="/script/search.js"></script>
 </nav>

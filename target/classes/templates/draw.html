@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="/css/draw.css"/>
 </head>
 <body>
-<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
-    <!--Main page-->
-    <!--Click and drag to draw with 42's. Their size depends on the draw speed. Double click clears the canvas-->
-    <canvas id='canvas'></canvas>
-</sec:authorize>
+<!--Main page-->
+<!--Click and drag to draw with 42's. Their size depends on the draw speed. Double click clears the canvas-->
+<canvas id='canvas'></canvas>
 <script type="text/javascript" src="/script/draw.js"></script>
 </body>
 </html>

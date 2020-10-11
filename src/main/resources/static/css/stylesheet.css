@@ -503,3 +503,10 @@ label {
     width: 600px;
     height: 500px;
 }
+
+#add-container {
+    width: 700px;
+    padding: 26px;
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
+}
