@@ -100,8 +100,10 @@ nav li a {
 }
 
 #nav-logout {
-    width: 60px;
-    margin-right: 110px;
+    width: 70px;
+    margin-right: 150px;
+    margin-left: 80px;
+    margin-top: 20px;
 }
 
 .nav-mykitchen-text:hover {
@@ -125,6 +127,7 @@ li a:hover {
     padding-bottom: 5px;
     width: 55%;
     position: relative;
+    margin-bottom: 15px;
 }
 
 #nav-search-bar {
@@ -198,9 +201,9 @@ li a:hover {
     padding: 15px;
 }
 
-.recipes, .mykitchen {
-    margin-top: 25px;
-    margin-left: 50px;
+.mykitchen {
+    margin-top: 30px;
+    margin-left: 100px;
     margin-right: 50px;
     font-size: 35px;
 }
@@ -301,6 +304,15 @@ h2, label, th {
     2px 2px 0 black,
     2px -2px 0 black,
     -2px -2px 0 black;
+}
+
+#nav-eat {
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    font-size: 200%;
 }
 
 .messagemedium {
