@@ -3,10 +3,6 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
-import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.util.Set;
 
@@ -66,7 +62,6 @@ public class Recipe {
     public Recipe(byte[] image, Category categoryName) {
         this.image = image;
     }
-
     public Recipe() { }
 
     //getters and setters

@@ -1,7 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import com.google.gson.annotations.Expose;
-
 import javax.persistence.*;
 import java.util.Set;
 
