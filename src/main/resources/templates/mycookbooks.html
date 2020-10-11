@@ -10,6 +10,11 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
+    <!--Sliding down from navbar-->
+    <button type="button" class="collapsible">New Cookbook</button>
+    <div class="content">
+        <button id="myinfo-button" class="flashybutton">My Info</button>
+    </div>
     <!--Main page-->
     <div class="col-4">
         <!--New cookbook-->
@@ -68,5 +73,6 @@
     <div class="spaceMedium"></div>
 </sec:authorize>
 <script type="text/javascript" src="/script/mycookbook.js"></script>
+<script type="text/javascript" src="/script/slidedown.js"></script>
 </body>
 </html>

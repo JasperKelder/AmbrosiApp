@@ -11,9 +11,8 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <button type="button" class="collapsible">Add Recipe</button>
     <!--Main page-->
-    <div class="spaceMedium"></div>
     <div class="flex-container">
         <div id="add-container">
             <!--Add recipe form-->
