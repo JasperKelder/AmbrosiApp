@@ -7,14 +7,11 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<nav>
-    <!--Displays extra nav options, except for admin users-->
-    <ul id="nav-extra" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
-        <li>
-            <a id="nav-middle">Cravings</a>
-        </li>
-    </ul>
-</nav>
+<!--Sliding down from navbar-->
+<button type="button" class="collapsible">Filter</button>
+<div class="content">
+    <button class="flashybutton">Category</button>
+</div>
 <!--Main page-->
 <div class="spaceSmall"></div>
 <!--Shows a message when there are no recipes in the database-->
@@ -34,5 +31,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/script/slidedown.js"></script>
 </body>
 </html>

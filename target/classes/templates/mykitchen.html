@@ -11,19 +11,12 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
-    <!--Main page-->
-    <div class="spaceLarge"></div>
-    <div class="spaceMedium"></div>
-    <div class="messagemedium">
-        <!--Displays a welcome message for the user-->
-        <div th:text="${'Welcome ' + user.getFirstName()}"></div>
-    </div>
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
-        <!--Opens the My Info modal-->
+    <!--Sliding down from navbar-->
+    <button type="button" class="collapsible">My Info</button>
+    <div class="content">
         <button id="myinfo-button" class="flashybutton">My Info</button>
     </div>
+    <!--Main page-->
     <!--My Info modal, hidden by default-->
     <div class="modal center" id="myinfo-modal">
         <!--Button to hide the My Info modal-->
@@ -31,6 +24,7 @@
         <div th:replace="fragments/myinfo :: myinfo"></div>
     </div>
 </sec:authorize>
-<script type="text/javascript" src="script/modalview.js"></script>
+<script type="text/javascript" src="/script/modalview.js"></script>
+<script type="text/javascript" src="/script/slidedown.js"></script>
 </body>
 </html>

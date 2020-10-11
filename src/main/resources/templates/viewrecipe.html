@@ -8,14 +8,7 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<nav>
-    <!--Displays extra nav options, except for admin users-->
-    <ul id="nav-extra" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
-        <li>
-            <a onClick="printPageArea('printpage')" id="nav-middle">Print</a>
-        </li>
-    </ul>
-</nav>
+<button type="button" class="collapsible" onClick="printPageArea('printpage')">Print</button>
 <!--Main page-->
 <!--The printpage id indicates what can be printed-->
 <div class="row" id="printpage">

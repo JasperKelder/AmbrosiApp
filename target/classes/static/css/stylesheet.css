@@ -68,11 +68,13 @@ nav li a {
 }
 
 #nav-logo-text-container {
-    margin-top: 40px;
+    float: none;
+    margin: auto;
+    position: relative;
 }
 
 #nav-logo-text {
-    font-size: 40px;
+    /*font-size: 40px;*/
 }
 
 .nav-mykitchen-container {
@@ -99,10 +101,7 @@ nav li a {
 
 #nav-logout {
     width: 60px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 35px;
-    transition-duration: 0.5s;
+    margin-right: 110px;
 }
 
 .nav-mykitchen-text:hover {
@@ -122,8 +121,9 @@ li a:hover {
 #nav-search-container {
     float: none;
     margin: auto;
-    width: 300px;
-    padding-top: 45px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 55%;
     position: relative;
 }
 
@@ -143,7 +143,7 @@ li a:hover {
     text-align: center;
     font-size: 120%;
     font-family: 'Finger Paint';
-    width: 220px;
+    width: 90%;
     background-color: floralwhite;
     box-shadow: none;
     outline: none;
@@ -154,15 +154,15 @@ li a:hover {
     width: 35px;
     cursor: pointer;
     position: absolute;
-    top: 76%;
-    right: -4%;
+    top: 50%;
+    right: 0%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: floralwhite;
     transition-duration: 0.5s;
 }
 
-#nav-search-bar:hover, #nav-search-icon:hover {
+#nav-search-bar:hover {
     box-shadow: 0 0 10px black;
 }
 
@@ -176,27 +176,6 @@ li a:hover {
     font-size: 20px;
     padding: 0px 5px;
     float: left;
-}
-
-/* Changes the navigation bar when the user's screen is smaller than the specified width */
-@media screen and (max-width: 1280px) {
-    #nav-logo-text-container {
-        display: none;
-    }
-
-    #nav-search-container {
-        margin-top: 100px;
-        margin-bottom: 15px;
-        width: 90%;
-    }
-
-    #nav-search {
-        width: 85%;
-    }
-
-    #nav-search-icon {
-        right: 0%;
-    }
 }
 
 #nav-add {
@@ -217,6 +196,13 @@ li a:hover {
 
 #nav-empty {
     padding: 15px;
+}
+
+.recipes, .mykitchen {
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 35px;
 }
 
 /* End navigation CSS */
@@ -509,4 +495,43 @@ label {
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: black;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    color: floralwhite;
+    font-size: 25px;
+    padding: 5px;
+    transition-duration: 1s;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    border-radius: 0px 0px 50px 50px;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    width: 50%;
+    margin-left: 25%;
+}
+
+/*!* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) *!*/
+/*.active {*/
+/*    background-color: #f93f23;*/
+/*}*/
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    background-color: #f93f23;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-radius: 0px 0px 50px 50px;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    width: 40%;
+    margin-left: 30%;
 }
