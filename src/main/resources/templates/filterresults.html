@@ -16,11 +16,13 @@
             <a id="content-data" class="content-data"
                th:text="${category.categoryName}"
                th:href="@{${url}+','+${category.categoryId}}"></a><br>
+            <span th:each="categoryId : ${categoriesSelected}" th:if="${!categoriesSelected.contains(categoryId)}" >
+
+            </span>
         </span>
     </span>
 </div>
 <p>Filtered by:</p>
-<br>
 <span th:each="categorySelected: ${categoriesSelected}">
         <a th:text="${allCategories.get(categorySelected - 1).categoryName}"></a><br>
 </span>

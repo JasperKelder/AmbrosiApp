@@ -7,6 +7,7 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
+import nl.miwgroningen.cohort3.fortytwo.recipes.service.RemoveDuplicatesFromList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import java.util.Optional;
 public class RecipeController {
 
     FileUploadService fileUploadService = new FileUploadService();
+    RemoveDuplicatesFromList removeDuplicatesFromList = new RemoveDuplicatesFromList();
 
     @Autowired
     RecipeRepository recipeRepository;
@@ -65,7 +67,7 @@ public class RecipeController {
         User currentUser = userRepository.findByEmailAddress(principal.getName());
         List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
         model.addAttribute("allUserCookbooks", userCookbooks);
-        return "add";
+        return "addrecipe";
     }
 
     @PostMapping({"/add"})
@@ -76,8 +78,9 @@ public class RecipeController {
         // Create a list of recipes
         List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
-            return "add";
-        } else {
+            return "addrecipe";
+        }
+        else{
             List<Ingredient> ingredients = new ArrayList<>();
             for (String string : ingredientName) {
                 if (string != null && !string.trim().isEmpty()) {
@@ -89,9 +92,10 @@ public class RecipeController {
             }
             recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
             // If there is no image uploaded, save default image.
-            if (image.isEmpty()) {
+            if (image.isEmpty()){
                 recipe.setImage(null);
-            } else {
+            }
+            else {
                 recipe.setImage(image.getBytes());
             }
 
@@ -125,7 +129,7 @@ public class RecipeController {
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "recipe";
+        return "adminrecipe";
     }
 
     @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
@@ -170,7 +174,7 @@ public class RecipeController {
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe);
-            return "add";
+            return "addrecipe";
         }
         return "index";
     }
@@ -190,43 +194,43 @@ public class RecipeController {
     protected String showSearchResults(@PathVariable("searchterm") String searchTerm, Model model) {
         List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
         List<Recipe> searchResultsByIngredient = recipeRepository.getSuggestionsByIngredient(searchTerm);
-        for (Recipe recipe : searchResultsByIngredient) {
+        List<String> imagesList = new ArrayList<>();
+        for (Recipe recipe: searchResultsByIngredient) {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);
             }
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+        for (Recipe recipe: searchResults) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
         }
         model.addAttribute("searchResults", searchResults);
+        model.addAttribute("allImages", imagesList);
         return "searchresults";
     }
 
-    List<Recipe> filterByCategory = new ArrayList<>();
 
     @GetMapping("/index/filterresults/{categoryId}")
-    protected String showFilterResults(@PathVariable("categoryId") List<Integer> categoryIds, Model model) {
+    protected String showFilterResults(@PathVariable("categoryId") ArrayList<Integer> categoryIds, Model model) {
+        // Create a new ArrayList with unique categoryIds
+        ArrayList<Integer> newListWithoutDuplicates = removeDuplicatesFromList.removeDuplicates(categoryIds);
+        // Create list for images
+        List<String> imagesList = new ArrayList<>();
+        List<Recipe> recipesFilteredByCategory = new ArrayList<>();
 
-        for (int categoryId : categoryIds) {
-            filterByCategory.addAll(recipeRepository.categoryFilter(categoryId));
+        // Add all recipes from the database to the recipesfilteredbycategory list
+        for (int categoryId : newListWithoutDuplicates) {
+            recipesFilteredByCategory.addAll(recipeRepository.categoryFilter(categoryId));
         }
 
-            List<String> imagesList = new ArrayList<>();
-            for (Recipe recipe : filterByCategory) {
-                imagesList.add(fileUploadService.convertToBase64(recipe));
-            }
-            model.addAttribute("recipesByCategory", filterByCategory);
-            model.addAttribute("allCategories", categoryRepository.findAll());
-            model.addAttribute("allImages", imagesList);
-            model.addAttribute("categoriesSelected", categoryIds);
-            return "filterresults";
+        // Add images to the Recipes
+        for (Recipe recipe : recipesFilteredByCategory) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-
-//    @GetMapping("index/filterresults/delete/{categoryId}")
-//    protected String deleteFilter(@PathVariable("categoryId") Integer categoryId, Model model) {
-//        for (Recipe recipeFilteredByCategory : filterByCategory) {
-//            if (categoryId == recipeFilteredByCategory.getCategoryName().getCategoryId()) {
-//                filterByCategory.remove(recipeFilteredByCategory);
-//                return "filterresults";
-//            }
-//        }
-//        return "filterresults";
-//    }
+        model.addAttribute("recipesByCategory", recipesFilteredByCategory);
+        model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allImages", imagesList);
+        model.addAttribute("categoriesSelected", newListWithoutDuplicates);
+        return "filterresults";
+    }
 }
