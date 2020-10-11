@@ -97,7 +97,6 @@ public class RecipeController {
                         ingredient = ingredientOptional.get();
                     } else {
                         ingredient = new Ingredient(string);
-                        ingredient.setMeasuring_unit("ml");
                         ingredientRepository.save(ingredient);
                     }
                     RecipeIngredient recipeIngredient = new RecipeIngredient();
@@ -130,9 +129,9 @@ public class RecipeController {
                 recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
                 cookbook.setRecipes(recipeToCookbook);
                 recipeRepository.save(recipe);
-                for (RecipeIngredient ri : recipeIngredients) {
-                    ri.setRecipe(recipe);
-                    recipeIngredientRepository.save(ri);
+                for (RecipeIngredient recipeIngredient : recipeIngredients) {
+                    recipeIngredient.setRecipe(recipe);
+                    recipeIngredientRepository.save(recipeIngredient);
                 }
             }
             return "redirect:/index";
@@ -147,12 +146,12 @@ public class RecipeController {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
 
-//        Optional<Recipe> testRecipe = recipeRepository.findById(1);
-//        if (testRecipe.isPresent()) {
-//            Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-//            String testIngredients = gsonBuilder.toJson(testRecipe.get().getRecipeIngredients());
-//            System.out.println(testIngredients);
-//        }
+        Optional<Recipe> testRecipe = recipeRepository.findById(1);
+        if (testRecipe.isPresent()) {
+            Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            String testIngredients = gsonBuilder.toJson(testRecipe.get().getRecipeIngredients());
+            System.out.println(testIngredients);
+        }
 
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
