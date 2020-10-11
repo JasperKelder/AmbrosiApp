@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Optional;
 
 /**
@@ -26,13 +25,13 @@ public class CategoryController {
     protected String getInfo(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("allCategories", categoryRepository.findAll());
-        return "category";
+        return "admincategory";
     }
 
     @PostMapping({"/category"})
     protected String saveCategory(@ModelAttribute("category") Category category, BindingResult result) {
         if (result.hasErrors()) {
-            return "add";
+            return "addrecipe";
         } else {
             categoryRepository.save(category);
             return "redirect:/category";
@@ -55,8 +54,8 @@ public class CategoryController {
         model.addAttribute("allCategories", categoryRepository.findAll());
         if (category.isPresent()) {
             model.addAttribute("category", category);
-            return "category";
+            return "admincategory";
         }
-        return "category";
+        return "admincategory";
     }
 }

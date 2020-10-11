@@ -3,13 +3,13 @@
 <head>
     <title>EatAndTreat - Cuisine</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/background.css"/></head>
-<link rel="stylesheet" href="/draw.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+    <link rel="stylesheet" href="/css/draw.css"/>
+</head>
 <body>
-<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
-    <!--Main page-->
-    <canvas id='canvas'></canvas>
-</sec:authorize>
-<script type="text/javascript" src="script/draw.js"></script>
+<!--Main page-->
+<!--Click and drag to draw with 42's. Their size depends on the draw speed. Double click clears the canvas-->
+<canvas id='canvas'></canvas>
+<script type="text/javascript" src="/script/draw.js"></script>
 </body>
 </html>

@@ -5,8 +5,6 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,13 +28,6 @@ public class ChangePasswordController {
     public ChangePasswordController(UserService userService) {
         this.userService = userService;
     }
-
-//    //method to get current user
-//    @GetMapping("/changepassword")
-//    protected String showUser(Model model, Principal principal) {
-//        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
-//        return "userinfo";
-//    }
 
     @ModelAttribute("user")
     public PasswordChangeDto passwordChangeDto() {

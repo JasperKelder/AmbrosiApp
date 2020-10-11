@@ -1,8 +1,7 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Category;
+
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
-import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Optional;
 
 @Controller
@@ -24,7 +22,7 @@ public class IngredientController {
     protected String getInfo(Model model) {
         model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("allIngredients", ingredientRepository.findAll());
-        return "ingredients";
+        return "adminingredients";
     }
 
     @GetMapping("/ingredients/delete/{ingredientId}")
@@ -40,7 +38,7 @@ public class IngredientController {
     @PostMapping({"/ingredients"})
     protected String saveIngredient(@ModelAttribute("ingredient") Ingredient ingredient, BindingResult result) {
         if (result.hasErrors()) {
-            return "ingredients";
+            return "adminingredients";
         } else {
             ingredientRepository.save(ingredient);
             return "redirect:/ingredients";
@@ -53,9 +51,9 @@ public class IngredientController {
         model.addAttribute("allIngredients", ingredientRepository.findAll());
         if (ingredient.isPresent()) {
             model.addAttribute("ingredient", ingredient);
-            return "ingredients";
+            return "adminingredients";
         }
-        return "ingredients";
+        return "adminingredients";
     }
 
 }

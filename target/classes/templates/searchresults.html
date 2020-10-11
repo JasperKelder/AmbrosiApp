@@ -1,31 +1,30 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EatAndTreat - MyKitchen</title>
+    <title>EatAndTreat - Search Results</title>
     <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
-    <!--Navigation-->
-    <nav th:replace="fragments/navigation :: navigation"></nav>
-    <!--Main page-->
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
-        <div id="padding" class="color">
-            <div class="flex-container">
-                <form th:action="@{/searchresults}" th:object="${searchResults}" method="post">
-                    <!--Displays all cookbooks-->
-                    <table id="search-table">
-                        <tr th:each="recipe: ${searchResults}">
-                            <td>
-                                <a class="search-text"
-                                   th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
-                                   th:text="${recipe.getRecipeTitle()}"></a>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+<!--Navigation-->
+<nav th:replace="fragments/navigation :: navigation"></nav>
+<nav>
+    <ul id="nav-extra">
+        <!--Needed to display the black bar-->
+        <li id="nav-empty"></li>
+    </ul>
+</nav>
+<!--Main page-->
+<div class="spaceSmall"></div>
+<div th:if="${searchResults.size() >= 1}">
+    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+    <div th:each="i : ${#numbers.sequence(0, searchResults.size() - 1)}">
+        <!--This will add all the info into the grid items-->
+        <div class="col-3 overview-responsive imagetextcontainer" th:value="${searchResults.get(i).recipeId}">
+            <a th:href="@{/viewrecipe/{recipeId}(recipeId=${searchResults.get(i).recipeId})}">
+                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
+            <div class="index-foodname" th:text="${searchResults.get(i).recipeTitle}"></div>
         </div>
     </div>
+</div>
 </body>
 </html>

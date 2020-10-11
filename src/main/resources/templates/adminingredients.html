@@ -3,20 +3,23 @@
 <head>
     <title>EatAndTreat - Ingredients</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/background.css"/></head>
+    <link rel="stylesheet" href="/css/background.css"/>
+</head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
+    <nav th:replace="fragments/navextra :: navextra"></nav>
     <!--Main page-->
     <div class="flex-container">
         <div class="spaceMedium"></div>
-        <div id="padding">
+        <div class="container center">
             <!--Add ingredients form-->
             <form action="#" th:action="@{/ingredients}" th:object="${ingredient}" method="post">
-                <p hidden><input type="text" th:field="*{ingredientId}"/></p>
-                <p><input type="text" th:field="*{ingredientName}" required placeholder="Ingredient"/></p>
-                <p><input type="submit" value="Submit"/></p>
+                <div hidden><input type="text" th:field="*{ingredientId}"/></div>
+                <div><input type="text" th:field="*{ingredientName}" required placeholder="Ingredient"/></div>
+                <div class="spaceSmall"></div>
+                <input type="submit" value="Submit"/>
             </form>
         </div>
         <div class="spaceMedium"></div>
@@ -24,8 +27,8 @@
             <!--Displays all ingredients-->
             <tr th:each="ingredient: ${allIngredients}">
                 <td th:text="${ingredient.ingredientName}"></td>
-                <!-- Loads the category in the add category form so it can be update-->
-                <td class="edittable"><a
+                <!-- Loads the category in the add category form so it can be updated-->
+                <td class="admin-table"><a
                         th:href="@{/ingredients/update/{ingredientId}(ingredientId=${ingredient.ingredientId})}"
                         class="editbutton">Update</a></td>
             </tr>

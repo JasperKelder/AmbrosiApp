@@ -1,4 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;

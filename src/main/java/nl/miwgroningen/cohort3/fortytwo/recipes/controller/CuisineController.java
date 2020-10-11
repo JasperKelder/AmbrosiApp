@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Optional;
 
 /**
@@ -26,13 +25,13 @@ public class CuisineController {
     protected String createCuisine(Model model) {
         model.addAttribute("cuisine", new Cuisine());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
-        return "cuisine";
+        return "admincuisine";
     }
 
     @PostMapping({"/cuisine"})
     protected String saveCuisine(@ModelAttribute("cuisine") Cuisine cuisine, BindingResult result) {
         if (result.hasErrors()) {
-            return "add";
+            return "addrecipe";
         } else {
             cuisineRepository.save(cuisine);
             return "redirect:/cuisine";
@@ -55,8 +54,8 @@ public class CuisineController {
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         if (cuisine.isPresent()) {
             model.addAttribute("cuisine", cuisine);
-            return "cuisine";
+            return "admincuisine";
         }
-        return "cuisine";
+        return "admincuisine";
     }
 }

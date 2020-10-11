@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,30 +46,8 @@ public class MyKitchenController {
         //Method for showing user name in mykitchen.html
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
 
-        //method for creating new cookbook
-        model.addAttribute("cookbook", new Cookbook());
-
-        //method to get all cookbooks linked to current user
-        User currentUser = userRepository.findByEmailAddress(principal.getName());
-
-        List<Cookbook> cookbooks = cookbookRepository.findAll();
-        List<Cookbook> myCookbooks = new ArrayList<>();
-
-        for (Cookbook cookbook : cookbooks) {
-            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
-                myCookbooks.add(cookbook);
-            }
-        }
-        model.addAttribute("allMyCookbooks", myCookbooks);
         return "mykitchen";
     }
-
-//    //method to get current user
-//    @GetMapping("/changepassword")
-//    protected String showUser(Model model, Principal principal) {
-//        model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
-//        return "userinfo";
-//    }
 
     @ModelAttribute("user")
     public PasswordChangeDto passwordChangeDto() {

@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.*;
 import java.util.List;
 import java.io.IOException;
@@ -67,7 +66,7 @@ public class RecipeController {
         User currentUser = userRepository.findByEmailAddress(principal.getName());
         List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
         model.addAttribute("allUserCookbooks", userCookbooks);
-        return "add";
+        return "addrecipe";
     }
 
     @PostMapping({"/add"})
@@ -75,11 +74,10 @@ public class RecipeController {
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 Principal principal, BindingResult result) throws IOException {
-
         // Create a list of recipes
         List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
-            return "add";
+            return "addrecipe";
         }
         else {
             // If there is no image uploaded, save default image.
@@ -123,7 +121,7 @@ public class RecipeController {
                     currentRecipe.get().setRecipeIngredients(recipeIngredients);
                     currentRecipe.get().setImage(recipe.getImage());
                     recipeRepository.save(currentRecipe.get());
-                    return "redirect:/index";
+                    return "redirect:/mykitchen";
                 }
             } else {
                 recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
@@ -134,7 +132,7 @@ public class RecipeController {
                     recipeIngredientRepository.save(recipeIngredient);
                 }
             }
-            return "redirect:/index";
+            return "redirect:/mykitchen";
         }
     }
 
@@ -155,14 +153,13 @@ public class RecipeController {
 
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
-
         return "index";
     }
 
     @GetMapping("/recipes")
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
-        return "recipe";
+        return "adminrecipe";
     }
 
     @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
@@ -207,7 +204,7 @@ public class RecipeController {
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe.get());
-            return "add";
+            return "addrecipe";
         }
         return "index";
     }
@@ -227,13 +224,22 @@ public class RecipeController {
     protected String showSearchResults(@PathVariable("searchterm") String searchTerm, Model model) {
         List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
         List<Recipe> searchResultsByIngredient = recipeRepository.getSuggestionsByIngredient(searchTerm);
+        List<String> imagesList = new ArrayList<>();
+        // Easter egg
+        if (searchTerm.equals("42")) {
+            return "/draw";
+        }
         for (Recipe recipe: searchResultsByIngredient) {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);
             }
+            imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-        model.addAttribute("searchResults", searchResults);
+        for (Recipe recipe: searchResults) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+            model.addAttribute("searchResults", searchResults);
+        model.addAttribute("allImages", imagesList);
         return "searchresults";
     }
-
 }

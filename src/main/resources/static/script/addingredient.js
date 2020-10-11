@@ -114,7 +114,7 @@ function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')
         var ingredientField = $('<input type="text" value="' + array[i] + '" name="ingredientName[]"></input>');
-        var removeButton = $('<input type="button" class="remove" value=" - " />');
+        var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
@@ -132,7 +132,7 @@ $(document).ready(function () {
         var fieldWrapper = $('<div class="fieldwrapper" id="field' + intId + '"/>');
         fieldWrapper.data("idx", intId);
         var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" name="ingredientName[]" />');
-        var removeButton = $('<input type="button" class="remove" value=" - " />');
+        var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
