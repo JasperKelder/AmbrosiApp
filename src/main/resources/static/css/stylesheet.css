@@ -114,18 +114,18 @@ nav li a {
     margin-top: 25px;
 }
 
-.nav-mykitchen-text:hover {
-    text-shadow: -2px 2px 0 #f9ab23,
-    2px 2px 0 #f9ab23,
-    2px -2px 0 #f9ab23,
-    -2px -2px 0 #f9ab23;
-}
+/*.nav-mykitchen-text:hover {*/
+/*    text-shadow: -2px 2px 0 #f9ab23,*/
+/*    2px 2px 0 #f9ab23,*/
+/*    2px -2px 0 #f9ab23,*/
+/*    -2px -2px 0 #f9ab23;*/
+/*}*/
 
-li a:hover {
-    text-shadow: -1px 1px 0 #f9ab23,
-    1px 1px 0 #f9ab23,
-    1px -1px 0 #f9ab23,
-    -1px -1px 0 #f9ab23;
+li a:hover, #nav-eat:hover {
+    text-shadow: -0.5px 0.5px 0 #f9ab23,
+    0.5px 0.5px 0 #f9ab23,
+    0.5px -0.5px 0 #f9ab23,
+    -0.5px -0.5px 0 #f9ab23;
 }
 
 #nav-search-container {
@@ -143,7 +143,7 @@ li a:hover {
     border: 1px solid lightgray;
     transition-duration: 0.5s;
     box-shadow: 0 0 5px black;
-    background-color: floralwhite;
+    background-color: white;
     text-align: center;
 }
 
@@ -154,7 +154,7 @@ li a:hover {
     font-size: 120%;
     font-family: 'Finger Paint';
     width: 90%;
-    background-color: floralwhite;
+    background-color: white;
     box-shadow: none;
     outline: none;
 }
@@ -180,6 +180,7 @@ li a:hover {
 #nav-extra {
     background-color: black;
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    transition-duration: 0.5s;
 }
 
 .nav-admin-button {
@@ -222,6 +223,7 @@ li a:hover {
     2px -2px 0 black,
     -2px -2px 0 black;
     font-size: 230%;
+    transition-duration: 1s;
 }
 
 /* End navigation CSS */
@@ -526,7 +528,7 @@ label {
     outline: none;
     text-align: center;
     text-decoration: none;
-    color: floralwhite;
+    color: #e1e1e1;
     font-size: 20px;
     padding: 5px;
     transition-duration: 1s;
@@ -547,7 +549,7 @@ label {
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-    background-color: #f93f23;
+    background-color: #cfd8dc;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -565,4 +567,10 @@ label {
 
 #name-button {
     margin-right: 20px;
+}
+
+.blue-button {
+    background-color: #e1e1e1;
+    color: black;
+    border: black;
 }
