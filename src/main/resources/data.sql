@@ -20,7 +20,7 @@ INSERT INTO recipes.category VALUES
 INSERT INTO recipes.user VALUES
 (1, '42@gmail.com', 'Make IT Work', 'Elmo', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
 (2, 'admin', 'Admin', 'Admin', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6'),
-(3, 'a', 'Elmo', 'Elmo', '$2a$10$aPj.8aZIFIlfHThl5mxTKug4egApzZfgVzmNLRpQTTsG6fi8A579O'),
+(3, 'a', 'Elmo', 'Himself', '$2a$10$aPj.8aZIFIlfHThl5mxTKug4egApzZfgVzmNLRpQTTsG6fi8A579O'),
 /* password for our personal accounts is your first name */
 (4, 'jasmijn@jasmijn.nl', 'Jasmijn', 'van der Veen', '$2a$10$V3OOltwWvODq7.JWjS0Y4OOF0y5Vwp7r/ri5FJaXbDc6CE73On1WO'),
 (5, 'jasper@jasper.nl', 'Jasper', 'Kelder', '$2a$10$caT/JIhuqmpvxO2g7zPXcesD5fo5BcVVvbe5VZGxLwHen/u57ihHm'),
@@ -74,7 +74,7 @@ INSERT INTO recipes.cookbook VALUES
 (2, 'Jasper his favorite cookbook', 0, 5),
 (3, 'Reinout his favorite cookbook', 0, 6),
 (4, 'Nathalie her favorite cookbook', 0, 7),
-(5, 'Jasper likes snacks', 0, 5),
+(5, 'Elmo likes snacks', 0, 3),
 (6, 'Recipes my girlfriend loves', 1, 6);
 
 INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES

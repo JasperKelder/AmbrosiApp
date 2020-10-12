@@ -46,6 +46,22 @@ public class MyKitchenController {
         //Method for showing user name in mykitchen.html
         model.addAttribute("user", userRepository.findByEmailAddress(principal.getName()));
 
+        //method for creating new cookbook
+        model.addAttribute("cookbook", new Cookbook());
+
+        //method to get all cookbooks linked to current user
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+
+        List<Cookbook> cookbooks = cookbookRepository.findAll();
+        List<Cookbook> myCookbooks = new ArrayList<>();
+
+        for (Cookbook cookbook : cookbooks) {
+            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
+                myCookbooks.add(cookbook);
+
+            }
+        }
+        model.addAttribute("allMyCookbooks", myCookbooks);
         return "mykitchen";
     }
 

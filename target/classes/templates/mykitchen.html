@@ -3,8 +3,7 @@
 <head>
     <title>EatAndTreat - MyKitchen</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/book.css"/>
-    <link rel="stylesheet" href="/css/cookbook.css"/>
+    <link rel="stylesheet" href="/css/mycookbooks.css"/>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
@@ -24,6 +23,21 @@
     <div class="col-6">
         <a class="flashybutton nav-right mykitchen-button" th:href="@{/mycookbooks}">Add Cookbook</a>
     </div>
+    <!--Displays all cookbooks-->
+    <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
+        <div th:each="cookbook: ${allMyCookbooks}">
+            <div th:if="${allMyCookbooks.size() < 2}">
+                <div class="col-12 book-container">
+                    <nav th:replace="fragments/book :: book"></nav>
+                </div>
+            </div>
+            <div th:if="${allMyCookbooks.size() > 1}">
+                <div class="col-4 book-container">
+                    <nav th:replace="fragments/book :: book"></nav>
+                </div>
+            </div>
+        </div>
+    </form>
     <!--Name modal, hidden by default-->
     <div class="modal center" id="name-modal">
         <!--Button to hide the modal-->
@@ -73,5 +87,6 @@
 </sec:authorize>
 <script type="text/javascript" src="/script/modalview.js"></script>
 <script type="text/javascript" src="/script/slidedown.js"></script>
+<script type="text/javascript" src="/script/mycookbook.js"></script>
 </body>
 </html>

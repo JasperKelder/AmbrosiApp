@@ -58,7 +58,7 @@ public class CookbookController {
             }
         }
         model.addAttribute("allMyCookbooks", myCookbooks);
-        return "mycookbooks";
+        return "addcookbook";
     }
 
     // Method to get the recipes from the cookbookId by user
