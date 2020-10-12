@@ -100,10 +100,10 @@ nav li a {
 }
 
 #nav-logout {
-    width: 70px;
+    width: 60px;
     margin-right: 150px;
     margin-left: 80px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .nav-mykitchen-text:hover {
@@ -122,12 +122,11 @@ li a:hover {
 
 #nav-search-container {
     float: none;
-    margin: auto;
+    margin: auto auto 15px auto;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 55%;
     position: relative;
-    margin-bottom: 15px;
 }
 
 #nav-search-bar {
@@ -201,11 +200,20 @@ li a:hover {
     padding: 15px;
 }
 
-.mykitchen {
-    margin-top: 30px;
+.mykitchen, .logout {
+    margin-top: 50px;
     margin-left: 100px;
-    margin-right: 50px;
+    margin-right: 100px;
     font-size: 35px;
+}
+
+#nav-eat {
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    font-size: 230%;
 }
 
 /* End navigation CSS */
@@ -304,15 +312,6 @@ h2, label, th {
     2px 2px 0 black,
     2px -2px 0 black,
     -2px -2px 0 black;
-}
-
-#nav-eat {
-    color: #f9ab23;
-    text-shadow: -2px 2px 0 black,
-    2px 2px 0 black,
-    2px -2px 0 black,
-    -2px -2px 0 black;
-    font-size: 200%;
 }
 
 .messagemedium {
@@ -443,7 +442,8 @@ th {
 }
 
 label {
-    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .login-margin {
@@ -462,17 +462,18 @@ label {
     /* Probably need media queries here */
     width: 350px;
     max-width: 100%;
-    height: 550px;
+    /*height: 200px;*/
     max-height: 100%;
     position: fixed;
+    padding: 20px;
     z-index: 100;
     left: 50%;
-    top: 60%;
+    top: 50%;
     /* Use this for centering if unknown width/height */
     transform: translate(-50%, -50%);
     /* If known, negative margins are probably better (less chance of blurry text). */
     /* margin: -200px 0 0 -200px; */
-    background: white;
+    background: #f93f23;
     box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
 }
 .opened {
@@ -518,7 +519,7 @@ label {
     text-align: center;
     text-decoration: none;
     color: floralwhite;
-    font-size: 25px;
+    font-size: 20px;
     padding: 5px;
     transition-duration: 1s;
     text-shadow: -2px 2px 0 black,
@@ -546,4 +547,14 @@ label {
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
     width: 40%;
     margin-left: 30%;
+    text-align: center;
+}
+
+.mykitchen-button {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#name-button {
+    margin-right: 20px;
 }
