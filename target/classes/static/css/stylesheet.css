@@ -565,3 +565,7 @@ label {
     color: black;
     border: black;
 }
+
+.fade-in {
+    opacity: 0;
+}

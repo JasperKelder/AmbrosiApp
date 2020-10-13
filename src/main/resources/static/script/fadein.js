@@ -1,0 +1,1 @@
+$(".fade-in").delay(0).animate({"opacity": "1"}, 1000);

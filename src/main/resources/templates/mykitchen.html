@@ -18,74 +18,77 @@
         <button id="password-button" class="flashybutton nav-right blue-button">Password</button>
     </div>
     <!--Main page-->
-    <div class="col-6">
-        <a class="flashybutton nav-left mykitchen-button" th:href="@{/add}">Add Recipe</a>
-    </div>
-    <div class="col-6">
-        <a class="flashybutton nav-right mykitchen-button" th:href="@{/addcookbook}">Add Cookbook</a>
-    </div>
-    <!--Displays all cookbooks-->
-    <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
-        <div th:each="cookbook: ${allMyCookbooks}">
-            <div th:if="${allMyCookbooks.size() < 2}">
-                <div class="col-12 book-container">
-                    <nav th:replace="fragments/book :: book"></nav>
-                </div>
-            </div>
-            <div th:if="${allMyCookbooks.size() > 1}">
-                <div class="col-4 book-container cookbooks-responsive">
-                    <nav th:replace="fragments/book :: book"></nav>
-                </div>
-            </div>
+    <div class="fade-in">
+        <div class="col-6">
+            <a class="flashybutton nav-left mykitchen-button" th:href="@{/add}">Add Recipe</a>
         </div>
-    </form>
-    <!--Name modal, hidden by default-->
-    <div class="modal center" id="name-modal">
-        <!--Button to hide the modal-->
-        <button class="close-button flashybutton" id="name-close-button">X</button>
-        <!--Userinfo update form-->
-        <form action="/update">
-            <div class="messagesmall">First Name</div>
-            <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}" required
-                   placeholder="First Name"/>
-            <div class="messagesmall">Last Name</div>
-            <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
-                   placeholder="Last Name"/>
-            <p>
-                <button type="submit">Update</button>
-            </p>
+        <div class="col-6">
+            <a class="flashybutton nav-right mykitchen-button" th:href="@{/addcookbook}">Add Cookbook</a>
+        </div>
+        <!--Displays all cookbooks-->
+        <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
+            <div th:each="cookbook: ${allMyCookbooks}">
+                <div th:if="${allMyCookbooks.size() < 2}">
+                    <div class="col-12 book-container">
+                        <nav th:replace="fragments/book :: book"></nav>
+                    </div>
+                </div>
+                <div th:if="${allMyCookbooks.size() > 1}">
+                    <div class="col-4 book-container cookbooks-responsive">
+                        <nav th:replace="fragments/book :: book"></nav>
+                    </div>
+                </div>
+            </div>
         </form>
-    </div>
-    <!--Email modal, hidden by default-->
-    <div class="modal center" id="email-modal">
-        <!--Button to hide the modal-->
-        <button class="close-button flashybutton" id="email-close-button">X</button>
-        <div class="messagesmall">Email Address</div>
-        <!-- change email address form -->
-        <form th:action="@{/changeemailaddress}" th:object="${user}" method="post">
-            <input type="email" id="emailAddress" name="password" th:field="*{emailAddress}" required
-                   placeholder="EmailAddress"/>
-            <p>
-                <button type="submit">Update</button>
-            </p>
-        </form>
-    </div>
-    <!--Password modal, hidden by default-->
-    <div class="modal center" id="password-modal">
-        <!--Button to hide the modal-->
-        <button class="close-button flashybutton" id="password-close-button">X</button>
-        <div class="messagesmall">Password</div>
-        <!-- change password form -->
-        <form th:action="@{/changepassword}" th:object="${user}" method="post">
-            <input type="password" id="password" name="password" th:field="*{password}" required
-                   placeholder="Password"/>
-            <p>
-                <button type="submit">Update</button>
-            </p>
-            <div class="spaceTiny"></div>
-        </form>
+        <!--Name modal, hidden by default-->
+        <div class="modal center" id="name-modal">
+            <!--Button to hide the modal-->
+            <button class="close-button flashybutton" id="name-close-button">X</button>
+            <!--Userinfo update form-->
+            <form action="/update">
+                <div class="messagesmall">First Name</div>
+                <input type="text" id="firstName" name="firstName" th:value="${user.getFirstName()}" required
+                       placeholder="First Name"/>
+                <div class="messagesmall">Last Name</div>
+                <input type="text" id="lastName" name="lastName" th:value="${user.getLastName()}" required
+                       placeholder="Last Name"/>
+                <p>
+                    <button type="submit">Update</button>
+                </p>
+            </form>
+        </div>
+        <!--Email modal, hidden by default-->
+        <div class="modal center" id="email-modal">
+            <!--Button to hide the modal-->
+            <button class="close-button flashybutton" id="email-close-button">X</button>
+            <div class="messagesmall">Email Address</div>
+            <!-- change email address form -->
+            <form th:action="@{/changeemailaddress}" th:object="${user}" method="post">
+                <input type="email" id="emailAddress" name="password" th:field="*{emailAddress}" required
+                       placeholder="EmailAddress"/>
+                <p>
+                    <button type="submit">Update</button>
+                </p>
+            </form>
+        </div>
+        <!--Password modal, hidden by default-->
+        <div class="modal center" id="password-modal">
+            <!--Button to hide the modal-->
+            <button class="close-button flashybutton" id="password-close-button">X</button>
+            <div class="messagesmall">Password</div>
+            <!-- change password form -->
+            <form th:action="@{/changepassword}" th:object="${user}" method="post">
+                <input type="password" id="password" name="password" th:field="*{password}" required
+                       placeholder="Password"/>
+                <p>
+                    <button type="submit">Update</button>
+                </p>
+                <div class="spaceTiny"></div>
+            </form>
+        </div>
     </div>
 </sec:authorize>
+<script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/modalview.js"></script>
 <script type="text/javascript" src="/script/slidedown.js"></script>
 <script type="text/javascript" src="/script/mycookbook.js"></script>

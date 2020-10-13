@@ -14,24 +14,27 @@
     <button class="nav-right flashybutton blue-button">Cuisine</button>
 </div>
 <!--Main page-->
-<div class="spaceSmall"></div>
-<!--Shows a message when there are no recipes in the database-->
-<div th:if="${allRecipes.size() < 1}">
-    <div class="spaceMedium"></div>
-    <div class="message">This page is hungry</div>
-    <div class="message">Please feed it some recipes first</div>
-</div>
-<div th:if="${allRecipes.size() >= 1}">
-    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
-        <!--This will add all the info into the grid items-->
-        <div class="col-3 overview-responsive imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
-            <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
-            <div class="index-foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
+<div class="fade-in">
+    <div class="spaceSmall"></div>
+    <!--Shows a message when there are no recipes in the database-->
+    <div th:if="${allRecipes.size() < 1}">
+        <div class="spaceMedium"></div>
+        <div class="message">This page is hungry</div>
+        <div class="message">Please feed it some recipes first</div>
+    </div>
+    <div th:if="${allRecipes.size() >= 1}">
+        <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+            <!--This will add all the info into the grid items-->
+            <div class="col-3 overview-responsive imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
+                <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
+                <div class="index-foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/slidedown.js"></script>
 </body>
 </html>

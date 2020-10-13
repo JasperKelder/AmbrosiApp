@@ -9,24 +9,27 @@
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <button type="button" class="collapsible">Login</button>
 <!--Main page-->
-<div class="flex-container">
-    <div class="container" id="login-responsive">
-        <!--Login form-->
-        <form th:action="@{/login}" method="post">
-            <input class="login-margin" type="text" id="username" name="username" placeholder="Email address"
-                   autofocus="autofocus">
-            <input class="login-margin" type="password" id="password" name="password" placeholder="Password"/>
-            <div class="center">
-                <div class="spaceSmall"></div>
-                <input type="submit" name="login-submit" id="login-submit" value="Log In"/>
-                <div class="spaceSmall"></div>
-                <!--Navigation for register-->
-                <a class="flashybutton" th:href="@{/registration}">Go to register</a>
-            </div>
-        </form>
+<div class="fade-in">
+    <div class="flex-container">
+        <div class="container" id="login-responsive">
+            <!--Login form-->
+            <form th:action="@{/login}" method="post">
+                <input class="login-margin" type="text" id="username" name="username" placeholder="Email address"
+                       autofocus="autofocus">
+                <input class="login-margin" type="password" id="password" name="password" placeholder="Password"/>
+                <div class="center">
+                    <div class="spaceSmall"></div>
+                    <input type="submit" name="login-submit" id="login-submit" value="Log In"/>
+                    <div class="spaceSmall"></div>
+                    <!--Navigation for register-->
+                    <a class="flashybutton" th:href="@{/registration}">Go to register</a>
+                </div>
+            </form>
+        </div>
+        <div class="spaceMedium"></div>
+        <!--Displays a message after an unsuccessful login-->
+        <div class="messagesmall warning-container" th:if="${param.error}">Invalid email address or password</div>
     </div>
-    <div class="spaceMedium"></div>
-    <!--Displays a message after an unsuccessful login-->
-    <div class="messagesmall warning-container" th:if="${param.error}">Invalid email address or password</div>
 </div>
+<script type="text/javascript" src="/script/fadein.js"></script>
 </body>
