@@ -114,13 +114,6 @@ nav li a {
     margin-top: 25px;
 }
 
-/*.nav-mykitchen-text:hover {*/
-/*    text-shadow: -2px 2px 0 #f9ab23,*/
-/*    2px 2px 0 #f9ab23,*/
-/*    2px -2px 0 #f9ab23,*/
-/*    -2px -2px 0 #f9ab23;*/
-/*}*/
-
 li a:hover, #nav-eat:hover {
     text-shadow: -0.5px 0.5px 0 #f9ab23,
     0.5px 0.5px 0 #f9ab23,
@@ -135,6 +128,7 @@ li a:hover, #nav-eat:hover {
     padding-bottom: 5px;
     width: 55%;
     position: relative;
+    transition-duration: 1s;
 }
 
 #nav-search-bar {
@@ -216,6 +210,10 @@ li a:hover, #nav-eat:hover {
     font-size: 35px;
 }
 
+.logout {
+    margin-left: 150px;
+}
+
 #nav-eat {
     color: #f9ab23;
     text-shadow: -2px 2px 0 black,
@@ -277,23 +275,6 @@ li a:hover, #nav-eat:hover {
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-/* Resizes the overview image grid columns for smaller screens */
-@media only screen and (max-width: 1280px) {
-    .overview-responsive {
-        width: 33.33%;
-    }
-}
-@media only screen and (max-width: 950px) {
-    .overview-responsive {
-        width: 50%;
-    }
-}
-@media only screen and (max-width: 625px) {
-    .overview-responsive {
-        width: 100%;
-    }
 }
 
 /* End overview CSS */
@@ -413,6 +394,7 @@ th {
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
+    transition-duration: 1s;
 }
 
 .warning-container {
@@ -443,6 +425,7 @@ th {
     float: left;
     width: 200px;
     margin: 10px;
+    transition-duration: 1s;
 }
 
 .column-right {
@@ -469,7 +452,6 @@ label {
 .modal {
     /* This way it could be display flex or grid or whatever also. */
     display: none;
-    /* Probably need media queries here */
     width: 350px;
     max-width: 100%;
     /*height: 200px;*/
@@ -518,6 +500,7 @@ label {
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
+    transition-duration: 1s;
 }
 
 /* Style the button that is used to open and close the collapsible content */
