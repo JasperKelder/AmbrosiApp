@@ -37,27 +37,13 @@ public class CookbookController {
         cookbook.setUser(userRepository.findByEmailAddress(principal.getName()));
         cookbookRepository.save(cookbook);
 
-        return "redirect:/mycookbooks";
+        return "redirect:/mykitchen";
     }
 
-    @GetMapping("/mycookbooks")
+    @GetMapping("/addcookbook")
     protected String showCookbook(Model model, Principal principal) {
         //method for creating new cookbook
         model.addAttribute("cookbook", new Cookbook());
-
-        //method to get all cookbooks linked to current user
-        User currentUser = userRepository.findByEmailAddress(principal.getName());
-
-        List<Cookbook> cookbooks = cookbookRepository.findAll();
-        List<Cookbook> myCookbooks = new ArrayList<>();
-
-        for (Cookbook cookbook : cookbooks) {
-            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
-                myCookbooks.add(cookbook);
-
-            }
-        }
-        model.addAttribute("allMyCookbooks", myCookbooks);
         return "addcookbook";
     }
 

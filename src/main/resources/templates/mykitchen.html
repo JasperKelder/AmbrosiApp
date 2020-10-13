@@ -13,7 +13,7 @@
     <button type="button" class="collapsible" id="mykitchen-collapsible">My Info</button>
     <div class="content">
         <button id="name-button" class="flashybutton nav-left blue-button">Name</button>
-        <button id="email-button" class="flashybutton content-center blue-button">Email Address</button>
+        <button id="email-button" class="flashybutton content-center blue-button">Email</button>
         <button id="password-button" class="flashybutton nav-right blue-button">Password</button>
     </div>
     <!--Main page-->
@@ -21,7 +21,7 @@
         <a class="flashybutton nav-left mykitchen-button" th:href="@{/add}">Add Recipe</a>
     </div>
     <div class="col-6">
-        <a class="flashybutton nav-right mykitchen-button" th:href="@{/mycookbooks}">Add Cookbook</a>
+        <a class="flashybutton nav-right mykitchen-button" th:href="@{/addcookbook}">Add Cookbook</a>
     </div>
     <!--Displays all cookbooks-->
     <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div th:if="${allMyCookbooks.size() > 1}">
-                <div class="col-4 book-container">
+                <div class="col-4 book-container cookbooks-responsive">
                     <nav th:replace="fragments/book :: book"></nav>
                 </div>
             </div>

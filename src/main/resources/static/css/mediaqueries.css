@@ -3,6 +3,10 @@
         width: 60%;
         margin-left: 20%;
     }
+    .content {
+        width: 50%;
+        margin-left: 25%;
+    }
     #nav-search-container {
         width: 65%;
     }
@@ -22,8 +26,15 @@
         width: 70%;
         margin-left: 15%;
     }
+    .content {
+        width: 60%;
+        margin-left: 20%;
+    }
     #nav-search-container {
         width: 75%;
+    }
+    .mykitchen-button {
+        margin-top: 10px;
     }
 }
 @media only screen and (max-width: 1100px) {
@@ -38,8 +49,17 @@
         width: 80%;
         margin-left: 10%;
     }
+    .content {
+        width: 70%;
+        margin-left: 15%;
+    }
     #nav-search-container {
         width: 85%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .cookbooks-responsive {
+        width: 50%;
     }
 }
 @media only screen and (max-width: 950px) {
@@ -50,6 +70,10 @@
         width: 90%;
         margin-left: 5%;
     }
+    .content {
+        width: 80%;
+        margin-left: 10%;
+    }
     #nav-search-container {
         width: 95%;
     }
@@ -57,6 +81,11 @@
 @media screen and (max-width: 850px) {
     #add-container {
         width: 470px;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .cookbooks-responsive {
+        width: 100%;
     }
 }
 @media only screen and (max-width: 625px) {

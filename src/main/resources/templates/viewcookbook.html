@@ -20,6 +20,9 @@
                     <div th:if="${myRecipes.size() < 1}">
                         <div class="flex-container">
                             <div class="messagesmall">This book is hungry</div>
+                            <div class="messagesmall">Please feed it</div>
+                            <div class="spaceLarge"></div>
+                            <a class="flashybutton" th:href="@{/add}">Add Recipe</a>
                         </div>
                     </div>
                     <form th:action="@{/viewcookbook}" th:object="${myRecipes}" method="get">
