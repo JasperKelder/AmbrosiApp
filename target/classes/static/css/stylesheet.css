@@ -294,7 +294,7 @@ h2, label, th {
     -1px -1px 0 black;
 }
 
-.message, .messagemedium, .messagesmall {
+.message, .messagemedium, .messagesmall, .cookbook-title {
     text-decoration: none;
     text-align: center;
     font-size: 400%;
@@ -311,6 +311,14 @@ h2, label, th {
 
 .messagesmall {
     font-size: 200%;
+}
+
+.cookbook-title {
+    font-size: 150%;
+    padding-bottom: 5px;
+}
+#cookbook-name {
+    color: floralwhite;
 }
 
 .center {

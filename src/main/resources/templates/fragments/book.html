@@ -11,7 +11,9 @@
         <ul class='hardcover_front'>
             <li>
                 <div class="spaceSmall"></div>
-                <div class="messagesmall" th:text="${cookbook.getCookbookName()}" id="cookbook-name"></div>
+                <div class="cookbook-title">Cookbook</div>
+                <svg th:replace="fragments/avocado :: avocado"></svg>
+                <div class="cookbook-title" th:text="${cookbook.getCookbookName()}" id="cookbook-name"></div>
             </li>
             <li></li>
         </ul>
