@@ -100,21 +100,23 @@ var ingredientsString = document.getElementById("myIngredients").value;
 var ingredientsArray = JSON.parse(ingredientsString);
 autocomplete(document.getElementById("myInput1"), ingredientsArray);
 
-var ingredientsRecipeString = document.getElementById("myIngredientsRecipe").value;
-// check if there are values in the ingredientsRecipeString, if there are, populate the dynamic ingredient fields
-// through makeIngredientLis()
-if (ingredientsRecipeString !== "") {
-    var ingredientsArrayRecipe = JSON.parse(ingredientsRecipeString);
-    makeIngredientList(ingredientsArrayRecipe);
-}
+// var ingredientsRecipeString = document.getElementById("myIngredientsRecipe").value;
+// // check if there are values in the ingredientsRecipeString, if there are, populate the dynamic ingredient fields
+// // through makeIngredientLis()
+// if (ingredientsRecipeString !== "") {
+//     var ingredientsArrayRecipe = JSON.parse(ingredientsRecipeString);
+//     makeIngredientList(ingredientsArrayRecipe);
+// }
 
 var recipeString = document.getElementById("myRecipeToJson").value;
 if (recipeString !== "") {
     var recipeToJson = JSON.parse(recipeString);
     console.log(recipeToJson);
-    for (var ingredient in recipeToJson) {
-        console.log(recipeToJson[ingredient]);
+    for (var i = 0; i < recipeToJson.length; i++) {
+        console.log(recipeToJson[i].ingredient.ingredientName);
+        console.log(recipeToJson[i].ingredient.measuringUnit);
     }
+    makeIngredientListWithUnit(recipeToJson);
 }
 
 // fill the dynamic ingredient fields with ingredients of the existing recipe:
@@ -129,6 +131,24 @@ function makeIngredientList(array) {
         });
         ingredientWrapper.append(ingredientField);
         // ingredientWrapper.append(ingredientUnitField);
+        ingredientWrapper.append(removeButton);
+        $("#dynamicList").append(ingredientWrapper);
+    }
+}
+
+function makeIngredientListWithUnit(array) {
+    for (var i = 0; i < array.length; i++) {
+        var ingredientWrapper = $('<div class="ingredientwrapper"/>')
+        var ingredientField = $('<input type="text" value="' + array[i].ingredient.ingredientName + '" name="ingredientName[]">');
+        var ingredientUnitField = $('<input type="text" value="' + array[i].ingredient.measuringUnit + '" name="ingredientUnit[]">')
+        var ingredientQuantityField = $('<input type="text" value="' + array[i].quantity + '" name="ingredientQuantity[]">')
+        var removeButton = $('<input type="button" class="remove" value=" X " />');
+        removeButton.click(function () {
+            $(this).parent().remove();
+        });
+        ingredientWrapper.append(ingredientField);
+        ingredientWrapper.append(ingredientUnitField);
+        ingredientWrapper.append(ingredientQuantityField);
         ingredientWrapper.append(removeButton);
         $("#dynamicList").append(ingredientWrapper);
     }

@@ -13,10 +13,10 @@ public class Ingredient implements Comparable<Ingredient> {
     private Integer ingredientId;
 
     @Expose
-    @Column(unique = true)
+    @Column
     private String ingredientName;
 
-    @Expose(serialize = false)
+//    @Expose(serialize = false)
     @OneToMany(mappedBy="ingredient")
     private Set<RecipeIngredient> recipeIngredients;
 

@@ -74,13 +74,14 @@ public class RecipeController {
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 @RequestParam("ingredientUnit[]") String[] ingredientUnit,
+                                @RequestParam("ingredientQuantity[]") Integer[] ingredientQuantity,
                                 Principal principal, BindingResult result) throws IOException {
-        // Create a list of recipes
-        List<Recipe> recipeToCookbook = cookbook.getRecipes();
         if (result.hasErrors()) {
             return "addrecipe";
         }
         else {
+            // Create a list of recipes
+            List<Recipe> recipeToCookbook = cookbook.getRecipes();
             // If there is no image uploaded, save default image.
             if (image.isEmpty()) {
                 recipe.setImage(null);
@@ -90,17 +91,23 @@ public class RecipeController {
             Set<RecipeIngredient> recipeIngredients = new HashSet<>();
             for (int i = 0; i < ingredientName.length; i++) {
                 if (ingredientName[i] != null && !ingredientName[i].trim().isEmpty()) {
-                    Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
-                    Ingredient ingredient;
-                    if (ingredientOptional.isPresent() && ingredientOptional.get().getMeasuringUnit().equals(ingredientUnit[i])) {
-                        ingredient = ingredientOptional.get();
-                    } else {
+                    List<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
+                    Ingredient ingredient = null;
+                    if (!ingredientOptional.isEmpty()) {
+                        for (Ingredient ingredientOfList: ingredientOptional) {
+                            if (ingredientOfList.getMeasuringUnit().equals(ingredientUnit[i])) {
+                                ingredient = ingredientOfList;
+                            }
+                        }
+                    }
+                    if (ingredient == null) {
                         ingredient = new Ingredient(ingredientName[i]);
                         ingredient.setMeasuringUnit(ingredientUnit[i]);
                         ingredientRepository.save(ingredient);
                     }
                     RecipeIngredient recipeIngredient = new RecipeIngredient();
                     recipeIngredient.setIngredient(ingredient);
+                    recipeIngredient.setQuantity(ingredientQuantity[i]);
                     recipeIngredients.add(recipeIngredient);
                 }
             }

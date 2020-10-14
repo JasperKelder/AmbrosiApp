@@ -16,6 +16,6 @@ import java.util.Optional;
  */
 
 public interface IngredientRepository extends JpaRepository<Ingredient, Integer> {
-    Optional<Ingredient> findByIngredientName(String ingredientName);
+    List<Ingredient> findByIngredientName(String ingredientName);
 }
 
