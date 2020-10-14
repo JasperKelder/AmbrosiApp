@@ -73,6 +73,7 @@ public class RecipeController {
     protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
+                                @RequestParam("ingredientUnit[]") String[] ingredientUnit,
                                 Principal principal, BindingResult result) throws IOException {
         // Create a list of recipes
         List<Recipe> recipeToCookbook = cookbook.getRecipes();
@@ -87,14 +88,15 @@ public class RecipeController {
                 recipe.setImage(image.getBytes());
             }
             Set<RecipeIngredient> recipeIngredients = new HashSet<>();
-            for (String string : ingredientName) {
-                if (string != null && !string.trim().isEmpty()) {
-                    Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(string);
+            for (int i = 0; i < ingredientName.length; i++) {
+                if (ingredientName[i] != null && !ingredientName[i].trim().isEmpty()) {
+                    Optional<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
                     Ingredient ingredient;
-                    if (ingredientOptional.isPresent()) {
+                    if (ingredientOptional.isPresent() && ingredientOptional.get().getMeasuringUnit().equals(ingredientUnit[i])) {
                         ingredient = ingredientOptional.get();
                     } else {
-                        ingredient = new Ingredient(string);
+                        ingredient = new Ingredient(ingredientName[i]);
+                        ingredient.setMeasuringUnit(ingredientUnit[i]);
                         ingredientRepository.save(ingredient);
                     }
                     RecipeIngredient recipeIngredient = new RecipeIngredient();
@@ -194,11 +196,23 @@ public class RecipeController {
         if (recipe.isPresent()) {
             Set<RecipeIngredient> ingredientsRecipe = recipe.get().getRecipeIngredients();
             ArrayList<String> allIngredientsRecipe = new ArrayList<>();
+            ArrayList<String> allIngredientUnitsRecipe = new ArrayList<>();
+            ArrayList<Integer> allIngredientQuantities = new ArrayList<>();
             for (RecipeIngredient ri: ingredientsRecipe) {
                 allIngredientsRecipe.add(ri.getIngredient().getIngredientName());
+                allIngredientUnitsRecipe.add(ri.getIngredient().getMeasuringUnit());
+                allIngredientQuantities.add(ri.getQuantity());
             }
             String ingredientsRecipeJson = gson.toJson(allIngredientsRecipe);
             model.addAttribute("ingredientsRecipeJson", ingredientsRecipeJson);
+            Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            String recipeToJson = gsonBuilder.toJson(recipe.get().getRecipeIngredients());
+            model.addAttribute("recipeToJson", recipeToJson);
+
+//            String ingredientUnitsJason = gson.toJson(allIngredientUnitsRecipe);
+//            model.addAttribute("ingredientUnitsJason", ingredientUnitsJason);
+//            String ingredientQuantitiesJason = gson.toJson(allIngredientQuantities);
+//            model.addAttribute("ingredientQuantitiesJason", ingredientQuantitiesJason);
 
             // If current image is present then convert it to base64 string so it can be displayed as a place holder
             String currentImage = fileUploadService.convertToBase64(recipe.get());

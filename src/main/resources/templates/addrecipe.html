@@ -64,12 +64,16 @@
                         <div class="fieldwrapper" id="field1">
                             <!--Recipe ingredients-->
                             <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
+                            <input type="text" name="ingredientUnit[]">
+                            <input type="text" name="ingredientQuantity[]">
                             <!--list of all ingredients in database:-->
                             <input id="myIngredients" type="hidden" class="ingredientList"
                                    th:value="${allIngredientsJson}">
                             <!--list of all ingredients with recipe (for update recipe):-->
                             <input id="myIngredientsRecipe" type="hidden" class="ingredientListRecipe"
                                    th:value="${ingredientsRecipeJson}">
+                            <input id="myRecipeToJson" type="hidden" class="ingredientUnitListRecipe"
+                                   th:value="${recipeToJson}">
                         </div>
                     </div>
                     <input type="button" value="Add ingredient" class="add" id="add">

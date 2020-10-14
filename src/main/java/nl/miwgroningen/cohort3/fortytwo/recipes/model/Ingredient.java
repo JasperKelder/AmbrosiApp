@@ -21,7 +21,7 @@ public class Ingredient implements Comparable<Ingredient> {
     private Set<RecipeIngredient> recipeIngredients;
 
     @Expose
-    private String measuring_unit;
+    private String measuringUnit;
 
     @Override
     public String toString() {
@@ -65,11 +65,11 @@ public class Ingredient implements Comparable<Ingredient> {
         this.recipeIngredients = recipeIngredients;
     }
 
-    public String getMeasuring_unit() {
-        return measuring_unit;
+    public String getMeasuringUnit() {
+        return measuringUnit;
     }
 
-    public void setMeasuring_unit(String measuring_unit) {
-        this.measuring_unit = measuring_unit;
+    public void setMeasuringUnit(String measuring_unit) {
+        this.measuringUnit = measuring_unit;
     }
 }

@@ -105,20 +105,30 @@ var ingredientsRecipeString = document.getElementById("myIngredientsRecipe").val
 // through makeIngredientLis()
 if (ingredientsRecipeString !== "") {
     var ingredientsArrayRecipe = JSON.parse(ingredientsRecipeString);
-    console.log(ingredientsRecipeString);
     makeIngredientList(ingredientsArrayRecipe);
+}
+
+var recipeString = document.getElementById("myRecipeToJson").value;
+if (recipeString !== "") {
+    var recipeToJson = JSON.parse(recipeString);
+    console.log(recipeToJson);
+    for (var ingredient in recipeToJson) {
+        console.log(recipeToJson[ingredient]);
+    }
 }
 
 // fill the dynamic ingredient fields with ingredients of the existing recipe:
 function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')
-        var ingredientField = $('<input type="text" value="' + array[i] + '" name="ingredientName[]"></input>');
+        var ingredientField = $('<input type="text" value="' + array[i] + '" name="ingredientName[]">');
+        var ingredientUnitField = $('<input type="text" name="ingredientUnit[]">')
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
         ingredientWrapper.append(ingredientField);
+        // ingredientWrapper.append(ingredientUnitField);
         ingredientWrapper.append(removeButton);
         $("#dynamicList").append(ingredientWrapper);
     }
@@ -132,11 +142,13 @@ $(document).ready(function () {
         var fieldWrapper = $('<div class="fieldwrapper" id="field' + intId + '"/>');
         fieldWrapper.data("idx", intId);
         var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" name="ingredientName[]" />');
+        var ingredientUnitField = $('<input type="text" name="ingredientUnit[]">')
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
         fieldWrapper.append(ingredientInput);
+        fieldWrapper.append(ingredientUnitField);
         fieldWrapper.append(removeButton);
         $("#dynamicRows").append(fieldWrapper);
         autocomplete(document.getElementById("myInput" + intId), ingredientsArray);
