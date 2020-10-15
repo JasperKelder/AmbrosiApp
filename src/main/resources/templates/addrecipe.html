@@ -66,12 +66,10 @@
                             <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
                             <input type="text" name="ingredientUnit[]">
                             <input type="number" name="ingredientQuantity[]">
-                            <!--list of all ingredients in database:-->
+                            <!--list of all ingredients in database for the autocomplete:-->
                             <input id="myIngredients" type="hidden" class="ingredientList"
                                    th:value="${allIngredientsJson}">
                             <!--list of all ingredients with recipe (for update recipe):-->
-                            <input id="myIngredientsRecipe" type="hidden" class="ingredientListRecipe"
-                                   th:value="${ingredientsRecipeJson}">
                             <input id="myRecipeToJson" type="hidden" class="ingredientUnitListRecipe"
                                    th:value="${recipeToJson}">
                         </div>

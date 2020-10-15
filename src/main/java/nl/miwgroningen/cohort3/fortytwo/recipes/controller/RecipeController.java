@@ -78,8 +78,7 @@ public class RecipeController {
                                 Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "addrecipe";
-        }
-        else {
+        } else {
             // Create a list of recipes
             List<Recipe> recipeToCookbook = cookbook.getRecipes();
             // If there is no image uploaded, save default image.
@@ -88,18 +87,19 @@ public class RecipeController {
             } else {
                 recipe.setImage(image.getBytes());
             }
+            // a set of recipeIngredients must be filled with the right ingredients, measuring units and quantities.
             Set<RecipeIngredient> recipeIngredients = new HashSet<>();
             for (int i = 0; i < ingredientName.length; i++) {
                 if (ingredientName[i] != null && !ingredientName[i].trim().isEmpty()) {
+                    // first check if the ingredient and measuring unit combination is already in the database.
                     List<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
                     Ingredient ingredient = null;
-                    if (!ingredientOptional.isEmpty()) {
-                        for (Ingredient ingredientOfList: ingredientOptional) {
-                            if (ingredientOfList.getMeasuringUnit().equals(ingredientUnit[i])) {
-                                ingredient = ingredientOfList;
-                            }
+                    for (Ingredient ingredientOfList: ingredientOptional) {
+                        if (ingredientOfList.getMeasuringUnit().equals(ingredientUnit[i])) {
+                            ingredient = ingredientOfList;
                         }
                     }
+                    // when it's a new ingredient / measuring unit combination, save it in the database.
                     if (ingredient == null) {
                         ingredient = new Ingredient(ingredientName[i]);
                         ingredient.setMeasuringUnit(ingredientUnit[i]);
@@ -114,25 +114,30 @@ public class RecipeController {
 
             //when updating a recipe, the recipe has an id
             if (recipe.getRecipeId() != null) {
+                // because of the recipeIngredients it is not possible to save the recipe directly in the database (it
+                // becomes a detached entity). Getting the recipe from the database, altering it and than saving it does
+                // work.
                 recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
                 Optional<Recipe> currentRecipe = recipeRepository.findById(recipe.getRecipeId());
                 if (currentRecipe.isPresent()) {
                     currentRecipe.get().setRecipeTitle(recipe.getRecipeTitle());
-                    currentRecipe.get().setCategoryName(recipe.getCategoryName());
-                    currentRecipe.get().setCuisineName(recipe.getCuisineName());
-                    currentRecipe.get().setCooktime(recipe.getCooktime());
-                    currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
                     currentRecipe.get().setRecipePreperation(recipe.getRecipePreperation());
+                    currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
                     currentRecipe.get().setServings(recipe.getServings());
                     for (RecipeIngredient ri : recipeIngredients) {
                         ri.setRecipe(currentRecipe.get());
                     }
                     currentRecipe.get().setRecipeIngredients(recipeIngredients);
+                    currentRecipe.get().setCooktime(recipe.getCooktime());
+                    currentRecipe.get().setCuisineName(recipe.getCuisineName());
+                    currentRecipe.get().setCategoryName(recipe.getCategoryName());
                     currentRecipe.get().setImage(recipe.getImage());
                     recipeRepository.save(currentRecipe.get());
                     return "redirect:/mykitchen";
                 }
             } else {
+                // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
+                // after saving it.
                 recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
                 cookbook.setRecipes(recipeToCookbook);
                 recipeRepository.save(recipe);
@@ -188,9 +193,8 @@ public class RecipeController {
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
-        model.addAttribute("allIngredients", ingredientRepository.findAll());
 
-        // generate a list of all the ingredient names and convert to Json (for the autocomplete)
+        // generate a list of all the ingredient names and convert to Json (for the autocomplete).
         List<Ingredient> allIngredients = ingredientRepository.findAll();
         ArrayList<String> allIngredientNames = new ArrayList<>();
         for (Ingredient ingredient : allIngredients) {
@@ -201,27 +205,12 @@ public class RecipeController {
         model.addAttribute("allIngredientsJson", allIngredientsJson);
 
         if (recipe.isPresent()) {
-            Set<RecipeIngredient> ingredientsRecipe = recipe.get().getRecipeIngredients();
-            ArrayList<String> allIngredientsRecipe = new ArrayList<>();
-            ArrayList<String> allIngredientUnitsRecipe = new ArrayList<>();
-            ArrayList<Integer> allIngredientQuantities = new ArrayList<>();
-            for (RecipeIngredient ri: ingredientsRecipe) {
-                allIngredientsRecipe.add(ri.getIngredient().getIngredientName());
-                allIngredientUnitsRecipe.add(ri.getIngredient().getMeasuringUnit());
-                allIngredientQuantities.add(ri.getQuantity());
-            }
-            String ingredientsRecipeJson = gson.toJson(allIngredientsRecipe);
-            model.addAttribute("ingredientsRecipeJson", ingredientsRecipeJson);
+            // convert all the recipeIngredients to Json.
             Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
             String recipeToJson = gsonBuilder.toJson(recipe.get().getRecipeIngredients());
             model.addAttribute("recipeToJson", recipeToJson);
 
-//            String ingredientUnitsJason = gson.toJson(allIngredientUnitsRecipe);
-//            model.addAttribute("ingredientUnitsJason", ingredientUnitsJason);
-//            String ingredientQuantitiesJason = gson.toJson(allIngredientQuantities);
-//            model.addAttribute("ingredientQuantitiesJason", ingredientQuantitiesJason);
-
-            // If current image is present then convert it to base64 string so it can be displayed as a place holder
+            // If current image is present then convert it to base64 string so it can be displayed as a place holder.
             String currentImage = fileUploadService.convertToBase64(recipe.get());
             model.addAttribute("currentImage", currentImage);
             model.addAttribute("recipe", recipe.get());

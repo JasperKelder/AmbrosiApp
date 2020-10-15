@@ -55,7 +55,10 @@
         <div class="postit">
             <div class="recipe-title">Ingredients</div>
             <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
-                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td><br>
+                <td th:text="${recipeIngredient.getQuantity()}"></td>
+                <td th:text="${recipeIngredient.getIngredient().getMeasuringUnit()}"></td>
+                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
+                <br>
             </tr>
             <br>
         </div>
