@@ -14,11 +14,20 @@ public class MeasuringUnit {
 
     @Expose
     @Column(unique = true)
-    private String measuringUnitName;
+    private String measuringUnitName = null;
 
     @Expose
     @Column
     private String measuringUnitAbbreviation;
+
+    public MeasuringUnit() {
+    }
+
+    public MeasuringUnit(Integer measuringUnitId, String measuringUnitName, String measuringUnitAbbreviation) {
+        this.measuringUnitId = measuringUnitId;
+        this.measuringUnitName = measuringUnitName;
+        this.measuringUnitAbbreviation = measuringUnitAbbreviation;
+    }
 
     // getters and setters
     public Integer getMeasuringUnitId() {

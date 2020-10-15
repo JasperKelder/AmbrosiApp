@@ -19,7 +19,6 @@ public class Ingredient implements Comparable<Ingredient> {
     @Column
     private String ingredientName;
 
-//    @Expose(serialize = false)
     @OneToMany(mappedBy="ingredient")
     private Set<RecipeIngredient> recipeIngredients;
 
