@@ -1,7 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
@@ -98,7 +97,7 @@ public class RecipeController {
             } else {
                 recipe.setImage(image.getBytes());
             }
-            // a set of recipeIngredients must be filled with the right ingredients, measuring units and quantities.
+            // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
             Set<RecipeIngredient> recipeIngredients = new HashSet<>();
             for (int i = 0; i < ingredientName.length; i++) {
                 MeasuringUnit measuringUnit = measuringUnitRepository.findByMeasuringUnitId(ingredientUnit[i]);
@@ -169,28 +168,6 @@ public class RecipeController {
         for (Recipe recipe : recipes) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-
-//        String test = "";
-        List<MeasuringUnit> measuringUnitList = measuringUnitRepository.findAll();
-//        for (MeasuringUnit mu: measuringUnitList) {
-//            Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-//            String testMU = gsonBuilder.toJson(mu);
-//            System.out.println(mu.getMeasuringUnitName());
-//            test += "," + testMU;
-//        }
-//        System.out.println(test);
-
-        Optional<Recipe> testRecipe = recipeRepository.findById(1);
-        if (testRecipe.isPresent()) {
-            Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-            String testIngredients = gsonBuilder.toJson(testRecipe.get());
-            System.out.println(testIngredients);
-        }
-
-        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        String measuringUnitsToJson = gsonBuilder.toJson(measuringUnitRepository.findAll());
-        System.out.println(measuringUnitsToJson);
-
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
         return "index";
@@ -207,7 +184,7 @@ public class RecipeController {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);
         if (recipe.isPresent()) {
             recipeRepository.delete(recipe.get());
-            return "forward:/recipes/";
+            return "forward:/recipes";
         }
         return "forward:/recipes";
     }
@@ -221,6 +198,10 @@ public class RecipeController {
         model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
         model.addAttribute("allMeasuringUnits", measuringUnitRepository.findAll());
+
+        Gson gsonBuilder1 = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        String measuringUnitsToJson = gsonBuilder1.toJson(measuringUnitRepository.findAll());
+        model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
 
         // generate a list of all the ingredient names and convert to Json (for the autocomplete).
         List<Ingredient> allIngredients = ingredientRepository.findAll();
