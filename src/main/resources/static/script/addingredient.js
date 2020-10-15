@@ -110,7 +110,6 @@ if (recipeString !== "") {
 
 var allMeasuringUnits = document.getElementById("myIngredientMeasuringUnits").value;
 var allMeasuringUnitsArray = JSON.parse(allMeasuringUnits);
-console.log(allMeasuringUnitsArray);
 
 var $select = $("#measuringUnit").empty();
 $.each(allMeasuringUnitsArray, function (index, item) {
@@ -125,7 +124,7 @@ function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')
         var ingredientField = $('<input type="text" value="' + array[i].ingredient.ingredientName + '" name="ingredientName[]">');
-        var ingredientUnitField = $('<input type="text" value="' + array[i].ingredient.measuringUnit.measuringUnitName + '" name="ingredientUnit[]">')
+        var ingredientUnitField = $('<select id="measuringUnitExistingRecipe' + i + '" name="ingredientUnit[]">')
         var ingredientQuantityField = $('<input type="number" value="' + array[i].quantity + '" name="ingredientQuantity[]">')
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
@@ -136,6 +135,18 @@ function makeIngredientList(array) {
         ingredientWrapper.append(ingredientQuantityField);
         ingredientWrapper.append(removeButton);
         $("#dynamicList").append(ingredientWrapper);
+        var allMeasuringUnits = document.getElementById("myIngredientMeasuringUnits").value;
+        var allMeasuringUnitsArray = JSON.parse(allMeasuringUnits);
+        var $select = $("#measuringUnitExistingRecipe" + i).empty();
+        $.each(allMeasuringUnitsArray, function (index, item) {
+            $('<option />', {
+                value: item.measuringUnitId,
+                text: item.measuringUnitName,
+            }).appendTo($select)
+        })
+        // set the dropdown menu to the wright value:
+        $select.val(array[i].ingredient.measuringUnit.measuringUnitId);
+
     }
 }
 
