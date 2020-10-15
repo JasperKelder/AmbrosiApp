@@ -144,7 +144,7 @@ function makeIngredientList(array) {
                 text: item.measuringUnitName,
             }).appendTo($select)
         })
-        // set the dropdown menu to the right value:
+        // set the dropdown menu to the wright value:
         $select.val(array[i].ingredient.measuringUnit.measuringUnitId);
 
     }

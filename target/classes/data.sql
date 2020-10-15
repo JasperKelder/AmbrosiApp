@@ -79,65 +79,71 @@ INSERT INTO recipes.cookbook VALUES
 (7, 'Test', 0, 2),
 (8, 'Test', 0, 3);
 
-INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
-(1, 'egg'),
-(2, 'flower'),
-(3, 'butter'),
-(4, 'strawberries'),
-(5, 'milk'),
-(6, 'vanilla pod'),
-(7, 'salt'),
-(8, 'sugar'),
-(9, 'water'),
-(10, 'onion'),
-(11, 'garlic'),
-(12, 'chickpeas'),
-(13, 'ground cumin'),
-(14, 'parsley'),
-(15, 'wheat flour'),
-(16, 'Greek yoghurt'),
-(17, 'baking powder'),
-(18, 'Greek halloumi'),
-(19, 'pumpkin seeds'),
-(20, 'gnocchi'),
-(21, 'chicken thighs'),
-(22, 'lemon'),
-(23, 'peas'),
-(24, 'cooking cream'),
-(25, 'black olives'),
-(26, 'cherry tomatoes'),
-(27, 'basil'),
-(28, 'dandelion lettuce'),
-(29, 'burrata'),
-(30, 'orzo'),
-(31, 'bacon'),
-(32, 'red pepper'),
-(33, 'goat cheese'),
-(34, 'red pesto'),
-(35, 'chocolate cookies'),
-(36, 'light brown caster sugar'),
-(37, 'milk chocolate'),
-(38, 'peper'),
-(39, 'zucchini'),
-(40, 'spring onions'),
-(41, 'crème fraîche'),
-(42, 'grana padano'),
-(43, 'puff pastry'),
-(44, 'chorizo'),
-(45, 'passata (sifted tomatoes)'),
-(46, 'codfish'),
-(47, 'ciabatta bread'),
-(48, 'butter cookies'),
-(49, 'unsalted butter'),
-(50, 'condensed milk'),
-(51, 'sea salt'),
-(52, 'fudge'),
-(53, 'bananas'),
-(54, 'honey'),
-(55, 'coconut oil'),
-(56, 'dark chocolate'),
-(57, 'raspberries');
+INSERT INTO recipes.measuring_unit  (`measuring_unit_id`, `measuring_unit_name`, `measuring_unit_abbreviation`)  VALUES
+(1, '', ''),
+(2, 'gram', 'gr'),
+(3, 'milliliter', 'ml'),
+(4, 'pieces', 'pcs'),
+(5, 'liter', 'l');
 
+INSERT INTO `recipes`.`ingredient` VALUES
+(1, 'egg', 1, 1),
+(2, 'flower', 1, 2),
+(3, 'butter', 1, 2),
+(4, 'strawberries', 1, 2),
+(5, 'milk', 1, 3),
+(6, 'vanilla pod', 1, 1),
+(7, 'salt', 1, 2),
+(8, 'sugar', 1, 2),
+(9, 'water', 1, 3),
+(10, 'onion', 1, 4),
+(11, 'garlic', 1, 4),
+(12, 'chickpeas', 1, 2),
+(13, 'ground cumin', 1, 2),
+(14, 'parsley', 1, 2),
+(15, 'wheat flour', 1, 2),
+(16, 'Greek yoghurt', 1, 3),
+(17, 'baking powder', 1, 2),
+(18, 'Greek halloumi', 1, 2),
+(19, 'pumpkin seeds', 1, 2),
+(20, 'gnocchi', 1, 2),
+(21, 'chicken thighs', 1, 2),
+(22, 'lemon', 1, 1),
+(23, 'peas', 1, 2),
+(24, 'cooking cream', 1, 3),
+(25, 'black olives', 1, 2),
+(26, 'cherry tomatoes', 1, 2),
+(27, 'basil', 1, 2),
+(28, 'dandelion lettuce', 1, 2),
+(29, 'burrata', 1, 2),
+(30, 'orzo', 1, 2),
+(31, 'bacon', 1, 2),
+(32, 'red pepper', 1, 4),
+(33, 'goat cheese', 1, 2),
+(34, 'red pesto', 1, 2),
+(35, 'chocolate cookies', 1, 4),
+(36, 'light brown caster sugar', 1, 2),
+(37, 'milk chocolate', 1, 2),
+(38, 'pepper', 1, 2),
+(39, 'zucchini', 1, 4),
+(40, 'spring onions', 1, 4),
+(41, 'crème fraîche', 1, 3),
+(42, 'grana padano', 1, 2),
+(43, 'puff pastry', 1, 2),
+(44, 'chorizo', 1, 2),
+(45, 'passata (sifted tomatoes)', 1, 2),
+(46, 'codfish', 1, 2),
+(47, 'ciabatta bread', 1, 4),
+(48, 'butter cookies', 1, 4),
+(49, 'unsalted butter', 1, 2),
+(50, 'condensed milk', 1, 3),
+(51, 'sea salt', 1, 2),
+(52, 'fudge', 1, 2),
+(53, 'bananas', 1, 4),
+(54, 'honey', 1, 3),
+(55, 'coconut oil', 1, 3),
+(56, 'dark chocolate', 1, 2),
+(57, 'raspberries', 1, 2);
 
 INSERT INTO recipes.recipe_ingredient (`recipe_id`, `ingredient_id`) VALUES
 (10, 1),
@@ -206,130 +212,124 @@ INSERT INTO recipes.recipe_ingredient (`recipe_id`, `ingredient_id`) VALUES
 (1, 51),
 (1, 52);
 
-INSERT INTO recipes.measuring_unit  (`measuring_unit_id`, `measuring_unit_name`, `measuring_unit_abbreviation`)  VALUES
-(1, 'gram', 'gr'),
-(2, 'milliliter', 'ml'),
-(3, 'pieces', 'pcs'),
-(4, 'liter', 'l');
 
-
-
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '1');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '2');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '3');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '4');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '5');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '6');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '7');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '8');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '9');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '10');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '11');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '12');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '13');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '14');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '15');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '16');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '17');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '18');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '19');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '20');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '21');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '22');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '23');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '24');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '25');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '26');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '27');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '28');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '29');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '30');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '31');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '32');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '33');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '34');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '35');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '36');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '37');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '38');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '39');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '40');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '41');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '42');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '43');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '44');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '45');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '46');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '47');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '48');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '49');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '50');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '51');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '52');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '53');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '54');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '55');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '56');
-UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '57');
-
-
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '1');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '2');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '3');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '4');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '5');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '6');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '7');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '8');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '9');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '10');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'cloves' WHERE (`ingredient_id` = '11');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '12');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '13');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '14');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '15');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '16');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '17');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '18');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '19');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '20');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '21');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '22');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '23');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '24');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '25');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '26');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '27');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '28');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '29');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '30');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '31');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '32');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '33');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '34');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '35');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '36');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '37');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '38');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '39');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '40');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '41');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '42');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '43');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '44');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '45');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '46');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '47');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '48');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '49');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '50');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '51');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '52');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '53');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '54');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '55');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '56');
--- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '57');
+--
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '1');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '2');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '3');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '4');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '5');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '6');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '7');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '8');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '9');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '10');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '11');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '12');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '13');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '14');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '15');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '16');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '17');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '18');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '19');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '20');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '21');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '22');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '23');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '24');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '25');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '26');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '27');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '28');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '29');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '30');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '31');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '3' WHERE (`ingredient_id` = '32');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '33');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '34');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '35');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '4' WHERE (`ingredient_id` = '36');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '37');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '38');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '39');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '40');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '41');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '42');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '43');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '44');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '45');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '46');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '47');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '48');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '49');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '50');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '51');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '1' WHERE (`ingredient_id` = '52');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '53');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '54');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '55');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '56');
+-- UPDATE `recipes`.`ingredient` SET `measuring_unit_id` = '2' WHERE (`ingredient_id` = '57');
+--
+--
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '1');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '2');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '3');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '4');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '5');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '6');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '7');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '8');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '9');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '10');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'cloves' WHERE (`ingredient_id` = '11');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '12');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '13');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '14');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '15');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '16');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '17');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '18');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '19');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '20');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '21');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '22');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '23');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '24');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '25');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '26');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '27');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '28');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '29');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '30');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '31');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '32');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '33');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '34');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '35');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '36');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '37');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '38');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '39');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '40');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '41');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '42');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '43');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '44');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '45');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '46');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '47');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '48');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '49');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '50');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '51');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '52');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'pcs' WHERE (`ingredient_id` = '53');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '54');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'ml' WHERE (`ingredient_id` = '55');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '56');
+-- -- UPDATE `recipes`.`ingredient` SET `measuring_unit` = 'gr' WHERE (`ingredient_id` = '57');
 
 UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '1') and (`recipe_id` = '8');
 UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '2' WHERE (`ingredient_id` = '1') and (`recipe_id` = '10');

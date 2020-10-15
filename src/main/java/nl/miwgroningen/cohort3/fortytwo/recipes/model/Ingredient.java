@@ -28,6 +28,9 @@ public class Ingredient implements Comparable<Ingredient> {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private MeasuringUnit measuringUnit;
 
+    @Column
+    boolean validated;
+
     @Override
     public String toString() {
         return ingredientName;
@@ -76,5 +79,13 @@ public class Ingredient implements Comparable<Ingredient> {
 
     public void setMeasuringUnit(MeasuringUnit measuring_unit) {
         this.measuringUnit = measuring_unit;
+    }
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
     }
 }
