@@ -1,6 +1,9 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,7 +24,10 @@ public class Ingredient implements Comparable<Ingredient> {
     private Set<RecipeIngredient> recipeIngredients;
 
     @Expose
-    private String measuringUnit;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "measuringUnitId", referencedColumnName = "measuringUnitId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private MeasuringUnit measuringUnit;
 
     @Override
     public String toString() {
@@ -65,11 +71,11 @@ public class Ingredient implements Comparable<Ingredient> {
         this.recipeIngredients = recipeIngredients;
     }
 
-    public String getMeasuringUnit() {
+    public MeasuringUnit getMeasuringUnit() {
         return measuringUnit;
     }
 
-    public void setMeasuringUnit(String measuring_unit) {
+    public void setMeasuringUnit(MeasuringUnit measuring_unit) {
         this.measuringUnit = measuring_unit;
     }
 }

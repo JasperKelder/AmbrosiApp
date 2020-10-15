@@ -64,7 +64,8 @@
                         <div class="fieldwrapper" id="field1">
                             <!--Recipe ingredients-->
                             <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
-                            <input type="text" name="ingredientUnit[]">
+                            <select id="measuringUnit" name="ingredientUnit[]"></select>
+
                             <input type="number" name="ingredientQuantity[]">
                             <!--list of all ingredients in database for the autocomplete:-->
                             <input id="myIngredients" type="hidden" class="ingredientList"
@@ -72,6 +73,10 @@
                             <!--list of all ingredients with recipe (for update recipe):-->
                             <input id="myRecipeToJson" type="hidden" class="ingredientUnitListRecipe"
                                    th:value="${recipeToJson}">
+
+                            <input id="myIngredientMeasuringUnits" type="hidden" class="ingredientUnitsList"
+                                   th:value="${allMeasuringUnits}">
+
                         </div>
                     </div>
                     <input type="button" value="Add ingredient" class="add" id="add">

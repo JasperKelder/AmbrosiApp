@@ -46,6 +46,9 @@ public class RecipeController {
     @Autowired
     RecipeIngredientRepository recipeIngredientRepository;
 
+    @Autowired
+    MeasuringUnitRepository measuringUnitRepository;
+
     @GetMapping("/add")
     protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
@@ -53,6 +56,7 @@ public class RecipeController {
         model.addAttribute("cookbook", new Cookbook());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
+//        model.addAttribute("allMeasuringUnits", measuringUnitRepository.findAll());
         List<Ingredient> allIngredients = ingredientRepository.findAll();
         ArrayList<String> allIngredientNames = new ArrayList<>();
         for (Ingredient ingredient : allIngredients) {
@@ -61,6 +65,12 @@ public class RecipeController {
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
+
+        Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        String measuringUnitsToJson = gsonBuilder.toJson(measuringUnitRepository.findAll());
+        System.out.println(measuringUnitsToJson);
+
+        model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
 
         // gets current users cookbooks
         User currentUser = userRepository.findByEmailAddress(principal.getName());
@@ -73,7 +83,7 @@ public class RecipeController {
     protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
-                                @RequestParam("ingredientUnit[]") String[] ingredientUnit,
+                                @RequestParam("ingredientUnit[]") Integer[] ingredientUnit,
                                 @RequestParam("ingredientQuantity[]") Integer[] ingredientQuantity,
                                 Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
@@ -90,19 +100,20 @@ public class RecipeController {
             // a set of recipeIngredients must be filled with the right ingredients, measuring units and quantities.
             Set<RecipeIngredient> recipeIngredients = new HashSet<>();
             for (int i = 0; i < ingredientName.length; i++) {
+                MeasuringUnit measuringUnit = measuringUnitRepository.findByMeasuringUnitId(ingredientUnit[i]);
                 if (ingredientName[i] != null && !ingredientName[i].trim().isEmpty()) {
                     // first check if the ingredient and measuring unit combination is already in the database.
                     List<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
                     Ingredient ingredient = null;
                     for (Ingredient ingredientOfList: ingredientOptional) {
-                        if (ingredientOfList.getMeasuringUnit().equals(ingredientUnit[i])) {
+                        if (ingredientOfList.getMeasuringUnit() == measuringUnit) {
                             ingredient = ingredientOfList;
                         }
                     }
                     // when it's a new ingredient / measuring unit combination, save it in the database.
                     if (ingredient == null) {
                         ingredient = new Ingredient(ingredientName[i]);
-                        ingredient.setMeasuringUnit(ingredientUnit[i]);
+                        ingredient.setMeasuringUnit(measuringUnit);
                         ingredientRepository.save(ingredient);
                     }
                     RecipeIngredient recipeIngredient = new RecipeIngredient();
