@@ -1,6 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.repository;
 
-import com.sun.jdi.Value;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
