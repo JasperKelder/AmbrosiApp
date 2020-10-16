@@ -1,3 +1,4 @@
+//autocomplete function,source: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -104,10 +105,10 @@ autocomplete(document.getElementById("myInput1"), ingredientsArray);
 var recipeString = document.getElementById("myRecipeToJson").value;
 if (recipeString !== "") {
     var recipeToJson = JSON.parse(recipeString);
-    console.log(recipeToJson);
     makeIngredientList(recipeToJson);
 }
 
+// get a list of all the measuring units an add them to the dropdown box
 var allMeasuringUnits = document.getElementById("myIngredientMeasuringUnits").value;
 var allMeasuringUnitsArray = JSON.parse(allMeasuringUnits);
 
@@ -146,7 +147,6 @@ function makeIngredientList(array) {
         })
         // set the dropdown menu to the wright value:
         $select.val(array[i].ingredient.measuringUnit.measuringUnitId);
-
     }
 }
 
