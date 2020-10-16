@@ -63,10 +63,11 @@
                     <div id="dynamicRows">
                         <div class="fieldwrapper" id="field1">
                             <!--Recipe ingredients-->
-                            <input id="myInput1" type="text" class="ingredientInput" name="ingredientName[]">
+                            <input id="myInput1" type="text" class="ingredientInput" placeholder="Ingredient"
+                                   name="ingredientName[]">
                             <!-- this dropdown box for the measuring units is populated in addingredient.js-->
-                            <select id="measuringUnit" name="ingredientUnit[]"></select>
-                            <input type="number" name="ingredientQuantity[]">
+                            <select id="measuringUnit" name="ingredientUnit[]" placeholder="Unit"></select>
+                            <input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]">
                             <!--list of all ingredients in database for the autocomplete:-->
                             <input id="myIngredients" type="hidden" class="ingredientList"
                                    th:value="${allIngredientsJson}">
