@@ -199,7 +199,6 @@ public class RecipeController {
         if (searchTerm.equals("42")) {
             return "/draw";
         }
-        List<String> imagesList = new ArrayList<>();
         for (Recipe recipe: searchResultsByIngredient) {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);
