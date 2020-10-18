@@ -98,30 +98,8 @@ public class RecipeController {
                 recipe.setImage(image.getBytes());
             }
             // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
-            Set<RecipeIngredient> recipeIngredients = new HashSet<>();
-            for (int i = 0; i < ingredientName.length; i++) {
-                MeasuringUnit measuringUnit = measuringUnitRepository.findByMeasuringUnitId(ingredientUnit[i]);
-                if (ingredientName[i] != null && !ingredientName[i].trim().isEmpty()) {
-                    // first check if the ingredient and measuring unit combination is already in the database.
-                    List<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
-                    Ingredient ingredient = null;
-                    for (Ingredient ingredientOfList: ingredientOptional) {
-                        if (ingredientOfList.getMeasuringUnit() == measuringUnit) {
-                            ingredient = ingredientOfList;
-                        }
-                    }
-                    // when it's a new ingredient / measuring unit combination, save it in the database.
-                    if (ingredient == null) {
-                        ingredient = new Ingredient(ingredientName[i]);
-                        ingredient.setMeasuringUnit(measuringUnit);
-                        ingredientRepository.save(ingredient);
-                    }
-                    RecipeIngredient recipeIngredient = new RecipeIngredient();
-                    recipeIngredient.setIngredient(ingredient);
-                    recipeIngredient.setQuantity(ingredientQuantity[i]);
-                    recipeIngredients.add(recipeIngredient);
-                }
-            }
+            Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
+                    ingredientQuantity);
 
             //when updating a recipe, the recipe has an id
             if (recipe.getRecipeId() != null) {
@@ -150,6 +128,7 @@ public class RecipeController {
                 // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
                 // after saving it.
                 recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
+                recipeToCookbook.add(recipe);
                 cookbook.setRecipes(recipeToCookbook);
                 recipeRepository.save(recipe);
                 for (RecipeIngredient recipeIngredient : recipeIngredients) {
@@ -159,6 +138,36 @@ public class RecipeController {
             }
             return "redirect:/mykitchen";
         }
+    }
+
+    //this is a method to create a set of ingredients with the wright measuring units and quantities
+    private Set<RecipeIngredient> makeRecipeIngredientSet(String[] ingredientName, Integer[] ingredientUnit,
+                                                          Integer[] ingredientQuantity) {
+        Set<RecipeIngredient> recipeIngredients = new HashSet<>();
+        for (int i = 0; i < ingredientName.length; i++) {
+            MeasuringUnit measuringUnit = measuringUnitRepository.findByMeasuringUnitId(ingredientUnit[i]);
+            if (ingredientName[i] != null && !ingredientName[i].trim().isEmpty()) {
+                // first check if the ingredient and measuring unit combination is already in the database.
+                List<Ingredient> ingredientOptional = ingredientRepository.findByIngredientName(ingredientName[i]);
+                Ingredient ingredient = null;
+                for (Ingredient ingredientOfList: ingredientOptional) {
+                    if (ingredientOfList.getMeasuringUnit() == measuringUnit) {
+                        ingredient = ingredientOfList;
+                    }
+                }
+                // when it's a new ingredient / measuring unit combination, save it in the database.
+                if (ingredient == null) {
+                    ingredient = new Ingredient(ingredientName[i]);
+                    ingredient.setMeasuringUnit(measuringUnit);
+                    ingredientRepository.save(ingredient);
+                }
+                RecipeIngredient recipeIngredient = new RecipeIngredient();
+                recipeIngredient.setIngredient(ingredient);
+                recipeIngredient.setQuantity(ingredientQuantity[i]);
+                recipeIngredients.add(recipeIngredient);
+            }
+        }
+        return recipeIngredients;
     }
 
     @GetMapping({"/index", "/"})
