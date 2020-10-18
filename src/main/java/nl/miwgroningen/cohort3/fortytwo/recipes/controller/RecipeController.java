@@ -195,6 +195,11 @@ public class RecipeController {
         List<Recipe> searchResults = recipeRepository.getSuggestions(searchTerm);
         List<Recipe> searchResultsByIngredient = recipeRepository.getSuggestionsByIngredient(searchTerm);
         List<String> imagesList = new ArrayList<>();
+        // Easter egg
+        if (searchTerm.equals("42")) {
+            return "/draw";
+        }
+        List<String> imagesList = new ArrayList<>();
         for (Recipe recipe: searchResultsByIngredient) {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);

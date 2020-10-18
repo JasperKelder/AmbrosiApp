@@ -30,7 +30,7 @@
 }
 
 .open-book:before {
-    background-color: #8B4513;
+    background-color: #f93f23;
     border-radius: 0.25em;
     bottom: -1em;
     content: '';
@@ -137,4 +137,9 @@
 .open-book header > *:last-child,
 .open-book footer > *:last-child {
     text-align: right;
+}
+
+.open-book {
+    min-width: 700px;
+    min-height: 450px;
 }
