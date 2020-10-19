@@ -9,38 +9,18 @@
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
 <button type="button" class="collapsible">Filter recipes</button>
-<div class="content" th:each="category : ${allCategories}">
+<div class="content">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
         <span th:with="url=${#httpServletRequest.requestURI}">
             <a id="content-data" class="content-data"
+               th:style="${categoriesSelected.contains(category.categoryId)} ?
+               'background-color: darkorange; border-radius: 20%;'"
                th:text="${category.categoryName}"
                th:href="@{${url}+','+${category.categoryId}}"></a><br>
         </span>
     </span>
 </div>
-<p>Filtered by:</p>
-<span th:each="categorySelected: ${categoriesSelected}">
-        <a th:text="${allCategories.get(categorySelected - 1).categoryName}"></a><br>
-</span>
-
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-</script>
-
 <div class="spaceSmall"></div>
 <!--Shows a message when there are no recipes in the database-->
 <div th:if="${recipesByCategory.size() < 1}">
@@ -59,5 +39,8 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="/script/fadein.js"></script>
+<script type="text/javascript" src="/script/slidedown.js"></script>
 </body>
 </html>
