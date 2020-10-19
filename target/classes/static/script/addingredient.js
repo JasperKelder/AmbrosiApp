@@ -160,7 +160,8 @@ $(document).ready(function () {
         var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" ' +
             'placeholder="Ingredient" name="ingredientName[]" />');
         var ingredientUnitField = $('<select id="measuringUnit' + intId + '" name="ingredientUnit[]" class="margin">')
-        var ingredientQuantityField = $('<input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]">')
+        var ingredientQuantityField = $('<input id="quantity" type="number" placeholder="Quantity" ' +
+            'name="ingredientQuantity[]" class="margin">')
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();

@@ -560,3 +560,7 @@ label {
 .fade-in {
     opacity: 0;
 }
+
+.margin {
+    margin-left: 5px;
+}
