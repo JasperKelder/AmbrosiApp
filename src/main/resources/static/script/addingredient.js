@@ -1,3 +1,4 @@
+//autocomplete function,source: https://www.w3schools.com/howto/howto_js_autocomplete.asp
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -95,29 +96,57 @@ function autocomplete(inp, arr) {
     });
 }
 
-// turn the allIngredientsJson from the recipeController into an array:
+// turn the allIngredientsJson from the recipeController into an array for the autocomplete.
 var ingredientsString = document.getElementById("myIngredients").value;
 var ingredientsArray = JSON.parse(ingredientsString);
 autocomplete(document.getElementById("myInput1"), ingredientsArray);
 
-var ingredientsRecipeString = document.getElementById("myIngredientsRecipe").value;
-if (ingredientsRecipeString !== "") {
-    var ingredientsArrayRecipe = JSON.parse(ingredientsRecipeString);
-    makeIngredientList(ingredientsArrayRecipe);
+// get the ingredients, measuring units and quantities from an existing recipe.
+var recipeString = document.getElementById("myRecipeToJson").value;
+if (recipeString !== "") {
+    var recipeToJson = JSON.parse(recipeString);
+    makeIngredientList(recipeToJson);
 }
 
-// fill textfields with ingredients of the existing recipe:
+// get a list of all the measuring units an add them to the dropdown box
+var allMeasuringUnits = document.getElementById("myIngredientMeasuringUnits").value;
+var allMeasuringUnitsArray = JSON.parse(allMeasuringUnits);
+
+var $select = $("#measuringUnit").empty();
+$.each(allMeasuringUnitsArray, function (index, item) {
+    $('<option />', {
+        value: item.measuringUnitId,
+        text: item.measuringUnitName,
+    }).appendTo($select)
+})
+
+// fill the dynamic ingredient fields with ingredients of the existing recipe.
 function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')
-        var ingredientField = $('<input type="text" value="' + array[i] + '" name="ingredientName[]"></input>');
-        var removeButton = $('<input type="button" class="remove" value=" - " />');
+        var ingredientField = $('<input id="myInput" type="text" value="' + array[i].ingredient.ingredientName + '" name="ingredientName[]">');
+        var ingredientUnitField = $('<select id="measuringUnitExistingRecipe' + i + '" name="ingredientUnit[]">')
+        var ingredientQuantityField = $('<input id="quantity" type="number" value="' + array[i].quantity + '" name="ingredientQuantity[]">')
+        var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
         ingredientWrapper.append(ingredientField);
+        ingredientWrapper.append(ingredientUnitField);
+        ingredientWrapper.append(ingredientQuantityField);
         ingredientWrapper.append(removeButton);
         $("#dynamicList").append(ingredientWrapper);
+        var allMeasuringUnits = document.getElementById("myIngredientMeasuringUnits").value;
+        var allMeasuringUnitsArray = JSON.parse(allMeasuringUnits);
+        var $select = $("#measuringUnitExistingRecipe" + i).empty();
+        $.each(allMeasuringUnitsArray, function (index, item) {
+            $('<option />', {
+                value: item.measuringUnitId,
+                text: item.measuringUnitName,
+            }).appendTo($select)
+        })
+        // set the dropdown menu to the wright value:
+        $select.val(array[i].ingredient.measuringUnit.measuringUnitId);
     }
 }
 
@@ -128,14 +157,27 @@ $(document).ready(function () {
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 2;
         var fieldWrapper = $('<div class="fieldwrapper" id="field' + intId + '"/>');
         fieldWrapper.data("idx", intId);
-        var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" name="ingredientName[]" />');
-        var removeButton = $('<input type="button" class="remove" value=" - " />');
+        var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" ' +
+            'placeholder="Ingredient" name="ingredientName[]" />');
+        var ingredientUnitField = $('<select id="measuringUnit' + intId + '" name="ingredientUnit[]">')
+        var ingredientQuantityField = $('<input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]">')
+        var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
         fieldWrapper.append(ingredientInput);
+        fieldWrapper.append(ingredientUnitField);
+        fieldWrapper.append(ingredientQuantityField);
         fieldWrapper.append(removeButton);
         $("#dynamicRows").append(fieldWrapper);
+        // add the autocomplete for ingredient name and dropdown box for measuring units:
         autocomplete(document.getElementById("myInput" + intId), ingredientsArray);
+        var $select = $("#measuringUnit" + intId).empty();
+        $.each(allMeasuringUnitsArray, function (index, item) {
+            $('<option />', {
+                value: item.measuringUnitId,
+                text: item.measuringUnitName,
+            }).appendTo($select)
+        })
     });
 });

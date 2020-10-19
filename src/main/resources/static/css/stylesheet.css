@@ -1,0 +1,554 @@
+* {
+    font-family: 'Finger Paint';
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+input[type=text], input[type=number], input[type=password], input[type=file], textarea, #firstName, #lastName, #email,
+th, td, select {
+    font-family: Arial;
+}
+
+body {
+    background-color: floralwhite;
+    margin: 0;
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+.imagetextcontainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* Start navigation CSS */
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f93f23;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+}
+
+nav li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: floralwhite;
+    font-size: 30px;
+    transition-duration: 1s;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+}
+
+.nav-left {
+    float:left
+}
+
+.nav-right {
+    float:right;
+}
+
+#nav-logo {
+    width: 120px;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-right: 50px;
+    transition-duration: 0.5s;
+    margin-top: 7px;
+}
+
+#nav-logo-text-container {
+    margin-top: 40px;
+}
+
+#nav-logo-text {
+    font-size: 40px;
+}
+
+.nav-mykitchen-container {
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+.nav-mykitchen {
+    width: 100px;
+}
+
+.nav-mykitchen-text {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    transition-duration: 0.5s;
+}
+
+#nav-logout {
+    width: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 35px;
+    transition-duration: 0.5s;
+}
+
+.nav-mykitchen-text:hover {
+    text-shadow: -2px 2px 0 #f9ab23,
+    2px 2px 0 #f9ab23,
+    2px -2px 0 #f9ab23,
+    -2px -2px 0 #f9ab23;
+}
+
+li a:hover {
+    text-shadow: -1px 1px 0 #f9ab23,
+    1px 1px 0 #f9ab23,
+    1px -1px 0 #f9ab23,
+    -1px -1px 0 #f9ab23;
+}
+
+#nav-search-container {
+    float: none;
+    margin: auto;
+    width: 300px;
+    padding-top: 45px;
+    position: relative;
+}
+
+#nav-search-bar {
+    height: 42px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    transition-duration: 0.5s;
+    box-shadow: 0 0 5px black;
+    background-color: floralwhite;
+    text-align: center;
+}
+
+#nav-search {
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 120%;
+    font-family: 'Finger Paint';
+    width: 220px;
+    background-color: floralwhite;
+    box-shadow: none;
+    outline: none;
+}
+
+#nav-search-icon {
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    position: absolute;
+    top: 76%;
+    right: -4%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: floralwhite;
+    transition-duration: 0.5s;
+}
+
+#nav-search-bar:hover, #nav-search-icon:hover {
+    box-shadow: 0 0 10px black;
+}
+
+/* Admin navigation extension */
+#nav-extra {
+    background-color: black;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+}
+
+.nav-admin-button {
+    font-size: 20px;
+    padding: 0px 5px;
+    float: left;
+}
+
+/* Changes the navigation bar when the user's screen is smaller than the specified width */
+@media screen and (max-width: 1280px) {
+    #nav-logo-text-container {
+        display: none;
+    }
+
+    #nav-search-container {
+        margin-top: 100px;
+        margin-bottom: 15px;
+        width: 90%;
+    }
+
+    #nav-search {
+        width: 85%;
+    }
+
+    #nav-search-icon {
+        right: 0%;
+    }
+}
+
+#nav-add {
+    float: left;
+    margin-left: 25%;
+}
+
+#nav-book {
+    float: right;
+    margin-right: 25%;
+}
+
+#nav-middle {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0px 5px;
+}
+
+#nav-empty {
+    padding: 15px;
+}
+
+/* End navigation CSS */
+/* */
+/* Start grid CSS */
+
+/* Responsive grid > each row should have a total width of 100%, adding up the col-nrs should therefore result in 12 */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.grid-image {
+    width: 300px;
+    border-radius: 10%;
+    box-shadow: 0 0 5px black;
+    transition-duration: 0.5s;
+}
+
+/* End grid CSS */
+/* */
+/* Start overview CSS */
+
+.index-foodname {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Resizes the overview image grid columns for smaller screens */
+@media only screen and (max-width: 1280px) {
+    .overview-responsive {
+        width: 33.33%;
+    }
+}
+@media only screen and (max-width: 950px) {
+    .overview-responsive {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 625px) {
+    .overview-responsive {
+        width: 100%;
+    }
+}
+
+/* End overview CSS */
+/* */
+
+/* Start general CSS */
+
+h2, label, th {
+    text-align: center;
+    font-size: 125%;
+    background-color: black;
+    color: floralwhite;
+    opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+}
+
+.message, .messagemedium, .messagesmall {
+    text-decoration: none;
+    text-align: center;
+    font-size: 400%;
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+}
+
+.messagemedium {
+    font-size: 300%;
+}
+
+.messagesmall {
+    font-size: 200%;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type=submit]:hover, .editbutton:hover, button[type=submit]:hover, .flashybutton:hover {
+    color: #f9ab23;
+    box-shadow: 0 0 20px #f9ab23;
+}
+
+input[type=submit], .editbutton, button[type=submit], .flashybutton {
+    text-align: center;
+    background-color: black;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    box-shadow: 0 0 5px black;
+    color: floralwhite;
+    border-style: none;
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email], textarea, #firstName, #lastName, #email {
+    width: 100%;
+    padding: 6px 10px;
+    display: inline-block;
+    box-shadow: 0 0 5px black;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+}
+
+input[type=text]:hover, input[type=number]:hover, input[type=password]:hover, textarea:hover, #firstName:hover,
+#lastName:hover, #email:hover, select:hover, input[type=file]:hover, .grid-image:hover, #view-image:hover {
+    box-shadow: 0 0 10px black;
+}
+
+textarea {
+    height: 80px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 35%;
+    text-align: center;
+    color: black;
+}
+
+td {
+    box-shadow: 0 0 5px black;
+    font-size: 125%;
+    background-color: #f93f23;
+    color: floralwhite;
+    opacity: 1;
+    text-shadow: -1px 1px 0 black,
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px -1px 0 black;
+    padding: 10px 20px 10px 20px
+}
+
+th {
+    box-shadow: 0 0 5px black;
+}
+
+.admin-table {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100px;
+}
+
+.container {
+    padding: 26px;
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
+}
+
+.warning-container {
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
+    border: solid black;
+    padding: 5px;
+}
+
+.spaceLarge {
+    padding: 30px;
+}
+
+.spaceMedium {
+    padding: 20px;
+}
+
+.spaceSmall {
+    padding: 10px;
+}
+
+
+#floatrightbutton {
+    float: right;
+}
+
+.column-left {
+    float: left;
+    width: 200px;
+    margin: 10px;
+}
+
+.column-right {
+    float: left;
+    width: 450px;
+    margin: 10px;
+}
+
+label {
+    padding: 2px;
+}
+
+.login-margin {
+    margin: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* MODAL */
+
+.modal {
+    /* This way it could be display flex or grid or whatever also. */
+    display: none;
+    /* Probably need media queries here */
+    width: 350px;
+    max-width: 100%;
+    height: 550px;
+    max-height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 60%;
+    /* Use this for centering if unknown width/height */
+    transform: translate(-50%, -50%);
+    /* If known, negative margins are probably better (less chance of blurry text). */
+    /* margin: -200px 0 0 -200px; */
+    background: white;
+    box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+.opened {
+    display: block;
+}
+
+.modal-guts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal .close-button {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    font-size: 1.3rem;
+}
+
+#mycookbook-modal {
+    width: 600px;
+    height: 500px;
+}
+
+#add-container {
+    width: 700px;
+    padding: 26px;
+    box-shadow: 0 0 5px black;
+    background-color: #f93f23;
+}
+
+.remove:hover, .add:hover {
+    box-shadow: 0 0 10px black;
+}
+
+input[id*="myInput"]:not(#myInput1) {
+    width: 370px;
+}
+
+/* End add recipe CSS */
+
+.collapsible {
+    border-radius: 4px;
+    width: 100%;
+    border: none;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: darkorange;
+}
+
+.active, .collapsible:hover {
+    background-color: darkorange;
+}
+
+.content {
+    display: none;
+    text-decoration: none;
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.content-data {
+    text-decoration: none;
+}
+
+p.filter-header {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+}

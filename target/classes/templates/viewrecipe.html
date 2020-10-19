@@ -3,10 +3,19 @@
 <head>
     <title>EatAndTreat - View Recipe</title>
     <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" href="/css/viewrecipe.css"/>
 </head>
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
+<nav>
+    <!--Displays extra nav options, except for admin users-->
+    <ul id="nav-extra" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
+        <li>
+            <a onClick="printPageArea('printpage')" id="nav-middle">Print</a>
+        </li>
+    </ul>
+</nav>
 <!--Main page-->
 <!--The printpage id indicates what can be printed-->
 <div class="row" id="printpage">
@@ -18,12 +27,12 @@
     </div>
     <div class="col-4 viewrecipe-responsive">
         <!--Displays the recipe written on paper-->
-        <div id="paper">
-            <div id="paper-pattern">
-                <div id="paper-content">
+        <div class="paper">
+            <div class="paper-pattern">
+                <div class="paper-content">
                     <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
                     <br>
-                    <div th:text="${recipe.user}" id="recipe-user"></div>
+                    <div th:text="${recipe.user}" class="center"></div>
                     <br>
                     <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
                     <br>
@@ -37,8 +46,6 @@
                     <br>
                     <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
                     <br>
-                    <div th:text="${'Preparation: ' + recipe.recipePreperation}"></div>
-                    <br>
                 </div>
             </div>
         </div>
@@ -47,25 +54,28 @@
         <!--Displays the ingredients written on a post it-->
         <div class="postit">
             <div class="recipe-title">Ingredients</div>
-            <tr th:each="recipe: ${recipe.ingredients}">
-                <td th:text="${recipe.getIngredientName()}"></td><br>
+            <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
+                <td th:text="${recipeIngredient.getQuantity()}"></td>
+                <td th:text="${recipeIngredient.getIngredient().getMeasuringUnit().getMeasuringUnitAbbreviation()}"></td>
+                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
+                <br>
             </tr>
+            <br>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="paper" id="preparation-paper">
+            <div class="paper-pattern">
+                <div class="paper-content">
+                    <div class="recipe-title">Preparation</div>
+                    <br>
+                    <div th:text="${recipe.recipePreperation}"></div>
+                    <br>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!--Footer for displaying the print button-->
-<footer id="print-footer">
-    <button onClick="printPageArea('printpage')" class="flashybutton" id="print-button">Print</button>
-</footer>
-<script>
-    function printPageArea(divIDToPrint) {
-        var printContent = document.getElementById(divIDToPrint);
-        var WinPrint = window.open('', '', 'width=900,height=650');
-        WinPrint.document.write(printContent.innerHTML);
-        WinPrint.document.close();
-        WinPrint.focus();
-        WinPrint.print();
-    }
-</script>
+<script type="text/javascript" src="/script/print.js"></script>
 </body>
 </html>

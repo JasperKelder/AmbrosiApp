@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>EatAndTreat - Category</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link rel="stylesheet" href="/css/background.css"/>
+</head>
+<body>
+<sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
+    <!--Navigation-->
+    <nav th:replace="fragments/navigation :: navigation"></nav>
+    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <!--Main page-->
+    <div class="flex-container">
+        <div class="spaceMedium"></div>
+        <div class="container center">
+            <!--Add category form-->
+            <form action="#" th:action="@{/category}" th:object="${category}" method="post">
+                <div hidden><input type="text" th:field="*{categoryId}"/></div>
+                <div><input type="text" th:field="*{categoryName}" required placeholder="Category"/></div>
+                <div class="spaceSmall"></div>
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+        <div class="spaceMedium"></div>
+        <table>
+            <!--Displays all categories-->
+            <tr th:each="category: ${allCategories}">
+                <td th:text="${category.categoryName}"></td>
+                <!-- Loads the category in the add category form so it can be updated-->
+                <td class="admin-table"><a
+                        th:href="@{/category/update/{categoryId}(categoryId=${category.categoryId})}"
+                        class="editbutton">Update</a></td>
+            </tr>
+        </table>
+    </div>
+</sec:authorize>
+</body>
+</html>
