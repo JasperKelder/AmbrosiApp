@@ -50,15 +50,15 @@ input[id*="myInput"] {
 }
 
 select[id*="measuringUnit"] {
-    width: 100px;
+    width: 75px;
 }
 
 select[id*="measuringUnitExistingRecipe"] {
-    width: 100px;
+    width: 75px;
 }
 
 input[id*="quantity"] {
-    width: 100px;
+    width: 75px;
 }
 
 .autocomplete {
