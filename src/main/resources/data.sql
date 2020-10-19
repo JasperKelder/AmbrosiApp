@@ -20,7 +20,7 @@ INSERT INTO recipes.category VALUES
 INSERT INTO recipes.user VALUES
 (1, '42@gmail.com', 'Make IT Work', 'Elmo', '$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm'),
 (2, 'admin', 'Admin', 'Admin', '$2a$10$Zp4Y6iXdx26oxeq8AxH.cOFEtuGZ2IVS9X6GVIoBwDfPxBuY/XKg6'),
-(3, 'a', 'Elmo', 'Himself', '$2a$10$aPj.8aZIFIlfHThl5mxTKug4egApzZfgVzmNLRpQTTsG6fi8A579O'),
+(3, 'a', 'Elmo', 'Elmo', '$2a$10$aPj.8aZIFIlfHThl5mxTKug4egApzZfgVzmNLRpQTTsG6fi8A579O'),
 /* password for our personal accounts is your first name */
 (4, 'jasmijn@jasmijn.nl', 'Jasmijn', 'van der Veen', '$2a$10$V3OOltwWvODq7.JWjS0Y4OOF0y5Vwp7r/ri5FJaXbDc6CE73On1WO'),
 (5, 'jasper@jasper.nl', 'Jasper', 'Kelder', '$2a$10$caT/JIhuqmpvxO2g7zPXcesD5fo5BcVVvbe5VZGxLwHen/u57ihHm'),
@@ -74,70 +74,78 @@ INSERT INTO recipes.cookbook VALUES
 (2, 'Jasper his favorite cookbook', 0, 5),
 (3, 'Reinout his favorite cookbook', 0, 6),
 (4, 'Nathalie her favorite cookbook', 0, 7),
-(5, 'Elmo likes snacks', 0, 3),
-(6, 'Recipes my girlfriend loves', 1, 6);
+(5, 'Jasper likes snacks', 0, 5),
+(6, 'Recipes my girlfriend loves', 1, 6),
+(7, 'Test', 0, 2),
+(8, 'Test', 0, 3);
 
-INSERT INTO `recipes`.`ingredient` (`ingredient_id`, `ingredient_name`) VALUES
-(1, 'egg'),
-(2, 'flower'),
-(3, 'butter'),
-(4, 'strawberries'),
-(5, 'milk'),
-(6, 'vanilla pod'),
-(7, 'salt'),
-(8, 'sugar'),
-(9, 'water'),
-(10, 'onion'),
-(11, 'garlic'),
-(12, 'chickpeas'),
-(13, 'ground cumin'),
-(14, 'parsley'),
-(15, 'wheat flour'),
-(16, 'Greek yoghurt'),
-(17, 'baking powder'),
-(18, 'Greek halloumi'),
-(19, 'pumpkin seeds'),
-(20, 'gnocchi'),
-(21, 'chicken thighs'),
-(22, 'lemon'),
-(23, 'peas'),
-(24, 'cooking cream'),
-(25, 'black olives'),
-(26, 'cherry tomatoes'),
-(27, 'basil'),
-(28, 'dandelion lettuce'),
-(29, 'burrata'),
-(30, 'orzo'),
-(31, 'bacon'),
-(32, 'red pepper'),
-(33, 'goat cheese'),
-(34, 'red pesto'),
-(35, 'chocolate cookies'),
-(36, 'light brown caster sugar'),
-(37, 'milk chocolate'),
-(38, 'peper'),
-(39, 'zucchini'),
-(40, 'spring onions'),
-(41, 'crème fraîche'),
-(42, 'grana padano'),
-(43, 'puff pastry'),
-(44, 'chorizo'),
-(45, 'passata (sifted tomatoes)'),
-(46, 'codfish'),
-(47, 'ciabatta bread'),
-(48, 'butter cookies'),
-(49, 'unsalted butter'),
-(50, 'condensed milk'),
-(51, 'sea salt'),
-(52, 'fudge'),
-(53, 'bananas'),
-(54, 'honey'),
-(55, 'coconut oil'),
-(56, 'dark chocolate'),
-(57, 'raspberries');
+INSERT INTO recipes.measuring_unit  (`measuring_unit_id`, `measuring_unit_name`, `measuring_unit_abbreviation`)  VALUES
+(1, '', ''),
+(2, 'gram', 'gr'),
+(3, 'milliliter', 'ml'),
+(4, 'pieces', 'pcs'),
+(5, 'liter', 'l');
 
+INSERT INTO `recipes`.`ingredient` VALUES
+(1, 'egg', 1, 1),
+(2, 'flower', 1, 2),
+(3, 'butter', 1, 2),
+(4, 'strawberries', 1, 2),
+(5, 'milk', 1, 3),
+(6, 'vanilla pod', 1, 1),
+(7, 'salt', 1, 2),
+(8, 'sugar', 1, 2),
+(9, 'water', 1, 3),
+(10, 'onion', 1, 4),
+(11, 'garlic', 1, 4),
+(12, 'chickpeas', 1, 2),
+(13, 'ground cumin', 1, 2),
+(14, 'parsley', 1, 2),
+(15, 'wheat flour', 1, 2),
+(16, 'Greek yoghurt', 1, 3),
+(17, 'baking powder', 1, 2),
+(18, 'Greek halloumi', 1, 2),
+(19, 'pumpkin seeds', 1, 2),
+(20, 'gnocchi', 1, 2),
+(21, 'chicken thighs', 1, 2),
+(22, 'lemon', 1, 1),
+(23, 'peas', 1, 2),
+(24, 'cooking cream', 1, 3),
+(25, 'black olives', 1, 2),
+(26, 'cherry tomatoes', 1, 2),
+(27, 'basil', 1, 2),
+(28, 'dandelion lettuce', 1, 2),
+(29, 'burrata', 1, 2),
+(30, 'orzo', 1, 2),
+(31, 'bacon', 1, 2),
+(32, 'red pepper', 1, 4),
+(33, 'goat cheese', 1, 2),
+(34, 'red pesto', 1, 2),
+(35, 'chocolate cookies', 1, 4),
+(36, 'light brown caster sugar', 1, 2),
+(37, 'milk chocolate', 1, 2),
+(38, 'pepper', 1, 2),
+(39, 'zucchini', 1, 4),
+(40, 'spring onions', 1, 4),
+(41, 'crème fraîche', 1, 3),
+(42, 'grana padano', 1, 2),
+(43, 'puff pastry', 1, 2),
+(44, 'chorizo', 1, 2),
+(45, 'passata (sifted tomatoes)', 1, 2),
+(46, 'codfish', 1, 2),
+(47, 'ciabatta bread', 1, 4),
+(48, 'butter cookies', 1, 4),
+(49, 'unsalted butter', 1, 2),
+(50, 'condensed milk', 1, 3),
+(51, 'sea salt', 1, 2),
+(52, 'fudge', 1, 2),
+(53, 'bananas', 1, 4),
+(54, 'honey', 1, 3),
+(55, 'coconut oil', 1, 3),
+(56, 'dark chocolate', 1, 2),
+(57, 'raspberries', 1, 2);
 
-INSERT INTO recipes.recipe_ingredients VALUES
+INSERT INTO recipes.recipe_ingredient (`recipe_id`, `ingredient_id`) VALUES
 (10, 1),
 (10, 2),
 (10, 17),
@@ -204,3 +212,68 @@ INSERT INTO recipes.recipe_ingredients VALUES
 (1, 51),
 (1, 52);
 
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '1') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '2' WHERE (`ingredient_id` = '1') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '3' WHERE (`ingredient_id` = '2') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '4' WHERE (`ingredient_id` = '2') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '5' WHERE (`ingredient_id` = '2') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '6' WHERE (`ingredient_id` = '3') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '7' WHERE (`ingredient_id` = '5') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '8' WHERE (`ingredient_id` = '5') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '9' WHERE (`ingredient_id` = '5') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '7') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '111' WHERE (`ingredient_id` = '8') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '10') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '10') and (`recipe_id` = '9');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '11') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '11') and (`recipe_id` = '9');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '12') and (`recipe_id` = '9');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '13') and (`recipe_id` = '9');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '14') and (`recipe_id` = '9');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '15') and (`recipe_id` = '9');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '16') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '17') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '17') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '18') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '19') and (`recipe_id` = '8');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '20') and (`recipe_id` = '7');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '21') and (`recipe_id` = '7');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '22') and (`recipe_id` = '7');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '11' WHERE (`ingredient_id` = '23') and (`recipe_id` = '7');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '112' WHERE (`ingredient_id` = '24') and (`recipe_id` = '7');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '245' WHERE (`ingredient_id` = '25') and (`recipe_id` = '6');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '125' WHERE (`ingredient_id` = '26') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '326' WHERE (`ingredient_id` = '26') and (`recipe_id` = '6');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '13' WHERE (`ingredient_id` = '27') and (`recipe_id` = '6');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '15' WHERE (`ingredient_id` = '28') and (`recipe_id` = '6');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '145' WHERE (`ingredient_id` = '29') and (`recipe_id` = '6');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '21315' WHERE (`ingredient_id` = '30') and (`recipe_id` = '5');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '13' WHERE (`ingredient_id` = '32') and (`recipe_id` = '5');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '3' WHERE (`ingredient_id` = '33') and (`recipe_id` = '5');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '32' WHERE (`ingredient_id` = '31') and (`recipe_id` = '5');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '23' WHERE (`ingredient_id` = '34') and (`recipe_id` = '5');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '23' WHERE (`ingredient_id` = '35') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '235432' WHERE (`ingredient_id` = '36') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '36') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '3' WHERE (`ingredient_id` = '37') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '2' WHERE (`ingredient_id` = '37') and (`recipe_id` = '4');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '214' WHERE (`ingredient_id` = '38') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '41' WHERE (`ingredient_id` = '39') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '4' WHERE (`ingredient_id` = '40') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '1' WHERE (`ingredient_id` = '41') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '4' WHERE (`ingredient_id` = '42') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '13' WHERE (`ingredient_id` = '43') and (`recipe_id` = '3');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '4346' WHERE (`ingredient_id` = '44') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '67' WHERE (`ingredient_id` = '45') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '76' WHERE (`ingredient_id` = '46') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '7' WHERE (`ingredient_id` = '47') and (`recipe_id` = '2');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '768' WHERE (`ingredient_id` = '48') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '7' WHERE (`ingredient_id` = '49') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '8' WHERE (`ingredient_id` = '50') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '52' WHERE (`ingredient_id` = '51') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '2' WHERE (`ingredient_id` = '52') and (`recipe_id` = '1');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '5' WHERE (`ingredient_id` = '53') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '54' WHERE (`ingredient_id` = '54') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '242' WHERE (`ingredient_id` = '55') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '4556' WHERE (`ingredient_id` = '56') and (`recipe_id` = '10');
+UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '56' WHERE (`ingredient_id` = '57') and (`recipe_id` = '10');

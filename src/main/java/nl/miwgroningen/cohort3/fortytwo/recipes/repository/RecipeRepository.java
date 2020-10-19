@@ -21,7 +21,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Transactional
     @Query(value = "SELECT r.recipe_id, r.cooktime, r.image, r.preperation_time, r.recipe_preperation, " +
             "r.recipe_title, r.servings, r.category_id, r.cuisine_id, r.user_id " +
-            "FROM recipe AS r JOIN recipe_ingredients AS ri ON ri.recipe_id = r.recipe_id \n" +
+            "FROM recipe AS r JOIN recipe_ingredient AS ri ON ri.recipe_id = r.recipe_id \n" +
             "JOIN ingredient AS i ON ri.ingredient_id = i.ingredient_id " +
             "WHERE LOWER(i.ingredient_name) LIKE LOWER(CONCAT('%',:term,'%'));", nativeQuery = true)
     List<Recipe> getSuggestionsByIngredient(@Param("term") String term);

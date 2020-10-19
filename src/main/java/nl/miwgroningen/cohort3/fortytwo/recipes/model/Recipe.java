@@ -1,15 +1,10 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
-import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -18,6 +13,7 @@ import java.util.List;
 @Entity
 public class Recipe {
 
+    @Expose
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recipeId;
@@ -35,14 +31,10 @@ public class Recipe {
     @Column
     private Integer servings;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "recipe_ingredients",
-            joinColumns = @JoinColumn(
-                    name = "recipe_id", referencedColumnName = "recipeId"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "ingredient_id", referencedColumnName = "ingredientId"))
-    private List<Ingredient> ingredients;
+    @Expose
+    @OneToMany(mappedBy="recipe", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private Set<RecipeIngredient> recipeIngredients;
+
 
     @Column
     // Cooktime will be set in minutes
@@ -70,7 +62,6 @@ public class Recipe {
     public Recipe(byte[] image, Category categoryName) {
         this.image = image;
     }
-
     public Recipe() { }
 
     //getters and setters
@@ -104,11 +95,11 @@ public class Recipe {
     public void setServings(Integer servings) {
         this.servings = servings;
     }
-    public List<Ingredient> getIngredients() {
-        return ingredients;
+    public Set<RecipeIngredient> getRecipeIngredients() {
+        return recipeIngredients;
     }
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) {
+        this.recipeIngredients = recipeIngredients;
     }
     public Integer getCooktime() {
         return cooktime;
