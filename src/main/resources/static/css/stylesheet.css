@@ -1,6 +1,6 @@
 * {
-    font-family: 'Finger Paint';
     box-sizing: border-box;
+    font-family: 'Roboto Mono';
 }
 
 html {
@@ -213,6 +213,7 @@ li a:hover, #nav-eat:hover {
     -2px -2px 0 black;
     font-size: 230%;
     transition-duration: 1s;
+    font-family: 'Pacifico';
 }
 
 /* End navigation CSS */
