@@ -18,7 +18,7 @@ input[type=file] {
 }
 
 #add-container {
-    width: 700px;
+    width: 770px;
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
@@ -26,7 +26,7 @@ input[type=file] {
 
 @media screen and (max-width: 800px) {
     #add-container {
-        width: 470px;
+        width: 400px;
     }
 }
 
@@ -58,10 +58,21 @@ input[type=file] {
     box-shadow: 0 0 10px black;
 }
 
-input[id*="myInput"]:not(#myInput1) {
-    width: 370px;
+input[id*="myInput"] {
+    width: 220px;
 }
 
+select[id*="measuringUnit"] {
+    width: 100px;
+}
+
+select[id*="measuringUnitExistingRecipe"] {
+    width: 100px;
+}
+
+input[id*="quantity"] {
+    width: 100px;
+}
 
 .autocomplete {
     position: relative;
