@@ -511,6 +511,14 @@ label {
     background-color: #f93f23;
 }
 
+.remove:hover, .add:hover {
+    box-shadow: 0 0 10px black;
+}
+
+input[id*="myInput"]:not(#myInput1) {
+    width: 370px;
+}
+
 /* End add recipe CSS */
 
 .collapsible {
