@@ -3,40 +3,45 @@
 <head>
     <title>EatAndTreat - Cookbook</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/background.css"/>
     <link rel="stylesheet" href="/css/viewcookbook.css"/>
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <button type="button" class="collapsible">My Cookbook</button>
     <!--Main page-->
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
-        <div id="wrapper">
-            <div id="container">
-                <section class="open-book">
-                    <!--Shows a message when there are no recipes in the database-->
-                    <div th:if="${myRecipes.size() < 1}">
-                        <div class="flex-container">
-                            <div class="messagesmall">This book is hungry</div>
+    <div class="fade-in">
+        <div class="spaceMedium"></div>
+        <div class="flex-container">
+            <div id="wrapper">
+                <div id="container">
+                    <section class="open-book">
+                        <!--Shows a message when there are no recipes in the database-->
+                        <div th:if="${myRecipes.size() < 1}">
+                            <div class="flex-container">
+                                <div class="messagesmall">This book is hungry</div>
+                                <div class="messagesmall">Please feed it</div>
+                                <div class="spaceLarge"></div>
+                                <a class="flashybutton" th:href="@{/add}">Add Recipe</a>
+                            </div>
                         </div>
-                    </div>
-                    <form th:action="@{/viewcookbook}" th:object="${myRecipes}" method="get">
-                        <!--Displays my recipes-->
-                        <table>
-                            <tr th:each="recipe: ${myRecipes}">
-                                <a class="messagesmall"
-                                   th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
-                                   th:text="${recipe.getRecipeTitle()}"></a><br>
-                            </tr>
-                        </table>
-                    </form>
-                </section>
+                        <form th:action="@{/viewcookbook}" th:object="${myRecipes}" method="get">
+                            <!--Displays my recipes-->
+                            <table>
+                                <tr th:each="recipe: ${myRecipes}">
+                                    <a class="messagesmall"
+                                       th:href="@{/viewrecipe/{recipeId}(recipeId=${recipe.recipeId})}"
+                                       th:text="${recipe.getRecipeTitle()}"></a><br>
+                                </tr>
+                            </table>
+                        </form>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
 </sec:authorize>
+<script type="text/javascript" src="/script/fadein.js"></script>
 </body>
 </html>

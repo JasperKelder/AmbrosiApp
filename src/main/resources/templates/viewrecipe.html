@@ -8,74 +8,70 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<nav>
-    <!--Displays extra nav options, except for admin users-->
-    <ul id="nav-extra" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
-        <li>
-            <a onClick="printPageArea('printpage')" id="nav-middle">Print</a>
-        </li>
-    </ul>
-</nav>
+<button type="button" class="collapsible" onClick="printPageArea('printpage')">Print</button>
 <!--Main page-->
-<!--The printpage id indicates what can be printed-->
-<div class="row" id="printpage">
-    <!--Displays the recipe's image-->
-    <div class="col-4 viewrecipe-responsive" id="view-image-container">
-        <a th:href="@{/index}">
-            <img id="view-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
-        </a>
-    </div>
-    <div class="col-4 viewrecipe-responsive">
-        <!--Displays the recipe written on paper-->
-        <div class="paper">
-            <div class="paper-pattern">
-                <div class="paper-content">
-                    <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
-                    <br>
-                    <div th:text="${recipe.user}" class="center"></div>
-                    <br>
-                    <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
-                    <br>
-                    <div th:text="${'Cook-time: ' + recipe.cooktime + ' minutes'}"></div>
-                    <br>
-                    <div th:text="${'Servings: ' + recipe.servings}"></div>
-                    <br>
-                    <!--We have to call categoryName and cuisineName twice because the first time we will make a call-->
-                    <!--to the model and the second call is the actual name from the model-->
-                    <div th:text="${'Category: ' + recipe.categoryName.categoryName}"></div>
-                    <br>
-                    <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
-                    <br>
+<div class="fade-in">
+    <!--The printpage id indicates what can be printed-->
+    <div class="row" id="printpage">
+        <!--Displays the recipe's image-->
+        <div class="col-4 viewrecipe-responsive" id="view-image-container">
+            <a th:href="@{/index}">
+                <img id="view-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
+            </a>
+        </div>
+        <div class="col-4 viewrecipe-responsive">
+            <!--Displays the recipe written on paper-->
+            <div class="paper">
+                <div class="paper-pattern">
+                    <div class="paper-content">
+                        <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
+                        <br>
+                        <div th:text="${recipe.user}" class="center"></div>
+                        <br>
+                        <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
+                        <br>
+                        <div th:text="${'Cook-time: ' + recipe.cooktime + ' minutes'}"></div>
+                        <br>
+                        <div th:text="${'Servings: ' + recipe.servings}"></div>
+                        <br>
+                        <!--We have to call categoryName and cuisineName twice because the first time we will make a call-->
+                        <!--to the model and the second call is the actual name from the model-->
+                        <div th:text="${'Category: ' + recipe.categoryName.categoryName}"></div>
+                        <br>
+                        <div th:text="${'Cuisine: ' + recipe.cuisineName.cuisineName}"></div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-4 viewrecipe-responsive" id="postit-container">
-        <!--Displays the ingredients written on a post it-->
-        <div class="postit">
-            <div class="recipe-title">Ingredients</div>
-            <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
-                <td th:text="${recipeIngredient.getQuantity()}"></td>
-                <td th:text="${recipeIngredient.getIngredient().getMeasuringUnit().getMeasuringUnitAbbreviation()}"></td>
-                <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
+        <div class="col-4 viewrecipe-responsive" id="postit-container">
+            <!--Displays the ingredients written on a post it-->
+            <div class="postit">
+                <div class="recipe-title">Ingredients</div>
+                <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
+                    <td th:text="${recipeIngredient.getQuantity()}"></td>
+                    <td th:text="${recipeIngredient.getIngredient().getMeasuringUnit().getMeasuringUnitAbbreviation()}"></td>
+                    <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
+                    <br>
+                </tr>
                 <br>
-            </tr>
-            <br>
+            </div>
         </div>
-    </div>
-    <div class="col-12">
-        <div class="paper" id="preparation-paper">
-            <div class="paper-pattern">
-                <div class="paper-content">
-                    <div class="recipe-title">Preparation</div>
-                    <br>
-                    <div th:text="${recipe.recipePreperation}"></div>
-                    <br>
+        <div class="col-12">
+            <div class="paper" id="preparation-paper">
+                <div class="paper-pattern">
+                    <div class="paper-content">
+                        <div class="recipe-title">Preparation</div>
+                        <br>
+                        <div th:text="${recipe.recipePreperation}"></div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/print.js"></script>
 </body>
 </html>
