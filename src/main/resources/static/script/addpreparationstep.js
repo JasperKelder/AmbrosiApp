@@ -2,11 +2,10 @@
 $(document).ready(function () {
     $("#addstep").click(function () {
         var lastField = $("#dynamicPrepRows div:last");
-        var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 2;
+        var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $('<div class="fieldwrapperPrep"/>');
         fieldWrapper.data("idx", intId);
-        var preparationStep = $('<textarea id="myPreparationSteps' + intId +
-            'placeholder="Preparation" name="preparationlist[]" />');
+        var preparationStep = $('<textarea id="myPreparationSteps' + intId + '" placeholder="Preparation" name="preparationlist[]" />');
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
@@ -23,12 +22,20 @@ $(document).ready(function () {
 var prepStepString = document.getElementById("prepstepsToJson").value;
 if (prepStepString !== "") {
     var prepstepsToJson = JSON.parse(prepStepString);
-    makePrepStepList(prepStepString);
+    makePrepStepList(prepstepsToJson);
 }
 
 function makePrepStepList(array) {
     for (var i = 0; i < array.length; i++) {
         var prepStepWrapper = $('<div class="fieldwrapperPrep"/>');
+        var preparationStep = $('<textarea name="preparationlist[]">'+ array[i].preparationStep +'</textarea>');
+        var removeButton = $('<input type="button" class="remove" value=" X " />');
+        removeButton.click(function () {
+            $(this).parent().remove();
+        });
+        prepStepWrapper.append(preparationStep);
+        prepStepWrapper.append(removeButton);
+        $("#dynamicPrepRows").append(prepStepWrapper);
 
     }
 }

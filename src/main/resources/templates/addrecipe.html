@@ -31,7 +31,7 @@
                                required placeholder="Title"/>
                     </div>
                     <div class="column-left">
-                        <label for="preparation">Preparation</label>
+                        <label>Preparation</label>
                     </div>
                     <!--Recipe preparation-->
                     <input id="prepstepsToJson" type="hidden" th:value="${prepstepsToJson}">
@@ -39,7 +39,7 @@
                         <div id="dynamicPrepList"></div>
                         <div id="dynamicPrepRows">
                             <div class="fieldwrapperPrep">
-                        <textarea id="preparation" name="preparationlist[]"
+                        <textarea name="preparationlist[]"
                                   required placeholder="Preparation"></textarea>
                             </div>
                         </div>
