@@ -19,7 +19,6 @@ function validateInput() {
 var inputfield = document.getElementById("nav-search");
 // Execute a function when the user releases a key on the keyboard
 inputfield.addEventListener("keyup", function(event) {
-    // Number 13 is the "Enter" key on the keyboard
     if (event.key === "Enter") {
         // Cancel the default action, if needed
         event.preventDefault();

@@ -4,6 +4,7 @@
     <title>EatAndTreat - Add</title>
     <div th:replace="fragments/head :: head"></div>
     <link rel="stylesheet" href="/css/addrecipe.css"/>
+    <link rel="stylesheet" href="/css/background.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
@@ -66,7 +67,8 @@
                                        name="ingredientName[]">
                                 <!-- this dropdown box for the measuring units is populated in addingredient.js-->
                                 <select id="measuringUnit" name="ingredientUnit[]"></select>
-                                <input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]">
+                                <input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]"
+                                required>
                                 <!--list of all ingredients in database for the autocomplete:-->
                                 <input id="myIngredients" type="hidden" class="ingredientList"
                                        th:value="${allIngredientsJson}">

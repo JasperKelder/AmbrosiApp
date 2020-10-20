@@ -1,10 +1,12 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Cookbook;
+import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.User;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CookbookRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.RecipeRepository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.UserRepository;
+import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +34,8 @@ public class CookbookController {
     @Autowired
     RecipeRepository recipeRepository;
 
+    FileUploadService fileUploadService = new FileUploadService();
+
     @PostMapping("/newcookbook")
     protected String saveCookbook(@ModelAttribute("cookbook") Cookbook cookbook, Principal principal) {
         cookbook.setUser(userRepository.findByEmailAddress(principal.getName()));
@@ -40,21 +44,20 @@ public class CookbookController {
         return "redirect:/mykitchen";
     }
 
-    @GetMapping("/addcookbook")
-    protected String showCookbook(Model model, Principal principal) {
-        //method for creating new cookbook
-        model.addAttribute("cookbook", new Cookbook());
-        return "addcookbook";
-    }
-
     // Method to get the recipes from the cookbookId by user
     @GetMapping("/viewcookbook/{id}")
     protected String showRecipesForMyFirstCookbook(@PathVariable("id") final Integer cookbookId, Model model) {
         Cookbook currentCookbook = cookbookRepository.getOne(cookbookId);
         model.addAttribute("myRecipes", currentCookbook.getRecipes());
 
+        List<String> imagesList = new ArrayList<>();
+        List<Recipe> recipes = currentCookbook.getRecipes();
+        for (Recipe recipe : recipes) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+        model.addAttribute("allImages", imagesList);
+
         return "viewcookbook";
     }
-
 }
 

@@ -13,6 +13,11 @@ var passwordModal = document.querySelector("#password-modal");
 var passwordButton = document.querySelector("#password-button");
 var passwordCloseButton = document.querySelector("#password-close-button");
 
+// Cookbook selectors
+var cookbookModal = document.querySelector("#cookbook-modal");
+var cookbookButton = document.querySelector("#cookbook-button");
+var cookbookCloseButton = document.querySelector("#cookbook-close-button");
+
 // Name modal open/close
 nameButton.addEventListener("click", function() {
     nameModal.classList.toggle("opened");
@@ -21,6 +26,9 @@ nameButton.addEventListener("click", function() {
     }
     if (passwordModal.classList.contains("opened")) {
         passwordModal.classList.toggle("opened");
+    }
+    if (cookbookModal.classList.contains("opened")) {
+        cookbookModal.classList.toggle("opened");
     }
 });
 nameCloseButton.addEventListener("click", function() {
@@ -36,6 +44,9 @@ emailButton.addEventListener("click", function() {
     if (passwordModal.classList.contains("opened")) {
         passwordModal.classList.toggle("opened");
     }
+    if (cookbookModal.classList.contains("opened")) {
+        cookbookModal.classList.toggle("opened");
+    }
 });
 emailCloseButton.addEventListener("click", function() {
     emailModal.classList.toggle("opened");
@@ -50,7 +61,27 @@ passwordButton.addEventListener("click", function() {
     if (emailModal.classList.contains("opened")) {
         emailModal.classList.toggle("opened");
     }
+    if (cookbookModal.classList.contains("opened")) {
+        cookbookModal.classList.toggle("opened");
+    }
 });
 passwordCloseButton.addEventListener("click", function() {
     passwordModal.classList.toggle("opened");
+});
+
+// Cookbook modal open/close
+cookbookButton.addEventListener("click", function() {
+    cookbookModal.classList.toggle("opened");
+    if (nameModal.classList.contains("opened")) {
+        nameModal.classList.toggle("opened");
+    }
+    if (emailModal.classList.contains("opened")) {
+        emailModal.classList.toggle("opened");
+    }
+    if (passwordModal.classList.contains("opened")) {
+        passwordModal.classList.toggle("opened");
+    }
+});
+cookbookCloseButton.addEventListener("click", function() {
+    cookbookModal.classList.toggle("opened");
 });

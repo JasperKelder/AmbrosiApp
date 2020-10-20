@@ -6,28 +6,25 @@
 <!--Navigation-->
 <nav th:fragment="navigation">
     <ul>
-        <!--MyKitchen logo referring to login for users that aren't logged in-->
-        <li class="nav-left" th:unless="${#authorization.expression('hasRole(''USER'')')}">
-            <a class="mykitchen" th:href="@{/login}">MyKitchen</a>
-        </li>
-        <!--MyKitchen logo referring to MyKitchen for users that are logged in-->
-        <li class="nav-left" th:if="${#authorization.expression('hasRole(''USER'')')}">
-            <a class="mykitchen" th:href="@{/mykitchen}">MyKitchen</a>
-        </li>
-        <!--Logout button-->
-        <li class="nav-right">
-            <a class="logout" th:href="@{/logout}">Logout</a>
+        <li class="nav-left">
+            <a th:href="@{/index}">
+                <img id="nav-logo" src="/images/broccoli.png" alt="EatAndTreat Logo">
+            </a>
         </li>
         <!--EatAndTreat text-->
-        <li>
+        <li class="nav-left">
             <a th:href="@{/index}">
                 <div id="nav-eat">Eat And Treat</div>
             </a>
         </li>
-    </ul>
-    <!--Searchbar-->
-    <ul>
-        <li id="nav-search-container">
+        <!--Logout button-->
+        <li class="nav-right">
+            <a th:href="@{/logout}">
+                <img id="nav-logout" src="/images/logout.jpg" alt="Logout">
+            </a>
+        </li>
+        <!--Searchbar-->
+        <li id="nav-search-container" class="nav-right">
             <div id="nav-search-bar">
                 <input id="nav-search" type="text"/>
                 <a href="" onclick="validateInput()" id="searchlink">
@@ -35,22 +32,36 @@
                 </a>
             </div>
         </li>
+        <!--MyKitchen logo referring to login for users that aren't logged in-->
+        <li class="nav-right imagetextcontainer" th:unless="${#authorization.expression('hasRole(''USER'')')}">
+            <a class="nav-mykitchen-container" th:href="@{/login}">
+                <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
+                <div class="nav-mykitchen-text">MyKitchen</div>
+            </a>
+        </li>
+        <!--MyKitchen logo referring to MyKitchen for users that are logged in-->
+        <li class="nav-right imagetextcontainer" th:if="${#authorization.expression('hasRole(''USER'')')}">
+            <a class="nav-mykitchen-container" th:href="@{/mykitchen}">
+                <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
+                <div class="nav-mykitchen-text">MyKitchen</div>
+            </a>
+        </li>
     </ul>
-        <!--Extended navigation for admin users-->
-        <ul id="nav-extra">
-            <li sec:authorize="hasAuthority('ROLE_ADMIN')">
-                <a class="nav-admin-button" th:href="@{/recipes}">Recipe</a>
-            </li>
-            <li sec:authorize="hasAuthority('ROLE_ADMIN')">
-                <a class="nav-admin-button" th:href="@{/cuisine}">Cuisine</a>
-            </li>
-            <li sec:authorize="hasAuthority('ROLE_ADMIN')">
-                <a class="nav-admin-button" th:href="@{/category}">Category</a>
-            </li>
-            <li sec:authorize="hasAuthority('ROLE_ADMIN')">
-                <a class="nav-admin-button" th:href="@{/ingredients}">Ingredients</a>
-            </li>
-        </ul>
+    <!--Extended navigation for admin users-->
+    <ul id="nav-extra">
+        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a class="nav-admin-button" th:href="@{/recipes}">Recipe</a>
+        </li>
+        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a class="nav-admin-button" th:href="@{/cuisine}">Cuisine</a>
+        </li>
+        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a class="nav-admin-button" th:href="@{/category}">Category</a>
+        </li>
+        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+            <a class="nav-admin-button" th:href="@{/ingredients}">Ingredients</a>
+        </li>
+    </ul>
     <script type="text/javascript" src="/script/search.js"></script>
 </nav>
 </body>
