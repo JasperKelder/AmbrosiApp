@@ -8,7 +8,7 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <button type="button" class="collapsible">My Cookbook</button>
+    <button type="button" class="collapsible"><div th:text="${cookbookName}"></div></button>
     <!--Main page-->
     <div class="fade-in">
         <div class="spaceMedium"></div>

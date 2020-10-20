@@ -49,6 +49,7 @@ public class CookbookController {
     protected String showRecipesForMyFirstCookbook(@PathVariable("id") final Integer cookbookId, Model model) {
         Cookbook currentCookbook = cookbookRepository.getOne(cookbookId);
         model.addAttribute("myRecipes", currentCookbook.getRecipes());
+        model.addAttribute("cookbookName", currentCookbook.getCookbookName());
 
         List<String> imagesList = new ArrayList<>();
         List<Recipe> recipes = currentCookbook.getRecipes();
