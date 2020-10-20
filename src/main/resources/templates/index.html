@@ -9,7 +9,7 @@
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Sliding down from navbar-->
 <!--Main page-->
-<button type="button" class="collapsible">Filter recipes</button>
+<button type="button" class="collapsible clickable">Filter recipes</button>
 <div class="content" th:each="category : ${allCategories}">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
