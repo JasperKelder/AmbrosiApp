@@ -17,6 +17,16 @@ public class Cuisine {
     @Column(unique = true)
     private String cuisineName;
 
+    //constructor
+
+
+    public Cuisine() {
+    }
+
+    public Cuisine(String cuisineName) {
+        this.cuisineName = cuisineName;
+    }
+
     // getters and setters
     public Integer getCuisineId() {
         return cuisineId;

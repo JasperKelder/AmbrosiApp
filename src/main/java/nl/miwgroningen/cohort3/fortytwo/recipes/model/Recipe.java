@@ -64,6 +64,18 @@ public class Recipe {
     }
     public Recipe() { }
 
+    public Recipe(String recipeTitle, String recipePreperation, Integer preperationTime, Integer servings, Integer cooktime, Cuisine cuisineName, Category categoryName, User user, byte[] image) {
+        this.recipeTitle = recipeTitle;
+        this.recipePreperation = recipePreperation;
+        this.preperationTime = preperationTime;
+        this.servings = servings;
+        this.cooktime = cooktime;
+        this.cuisineName = cuisineName;
+        this.categoryName = categoryName;
+        this.user = user;
+        this.image = image;
+    }
+
     //getters and setters
     public Integer getRecipeId() {
         return recipeId;

@@ -36,6 +36,18 @@ public class Cookbook {
                     name = "recipe_Id", referencedColumnName = "recipeId"))
     private List<Recipe> recipes;
 
+    //Constructors
+
+
+    public Cookbook(boolean isPrivate, String cookbookName, User user) {
+        this.isPrivate = isPrivate;
+        this.cookbookName = cookbookName;
+        this.user = user;
+    }
+
+    public Cookbook() {
+    }
+
     //Getters and Setters
     public Integer getCookbookId() { return cookbookId; }
     public void setCookbookId(Integer cookbookId) { this.cookbookId = cookbookId; }
