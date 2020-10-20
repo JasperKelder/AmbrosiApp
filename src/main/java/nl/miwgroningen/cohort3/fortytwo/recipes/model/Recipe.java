@@ -21,9 +21,6 @@ public class Recipe {
     @Column
     private String recipeTitle;
 
-    @Column(columnDefinition = "TEXT")
-    private String recipePreperation;
-
     @Column
     // preptime will be set in minutes
     private Integer preperationTime;
@@ -76,12 +73,6 @@ public class Recipe {
     }
     public void setRecipeTitle(String recipeTitle) {
         this.recipeTitle = recipeTitle;
-    }
-    public String getRecipePreperation() {
-        return recipePreperation;
-    }
-    public void setRecipePreperation(String recipePreperation) {
-        this.recipePreperation = recipePreperation;
     }
     public Integer getPreperationTime() {
         return preperationTime;
