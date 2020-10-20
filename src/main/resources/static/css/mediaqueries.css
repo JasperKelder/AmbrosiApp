@@ -20,11 +20,14 @@
         width: 60%;
         margin-left: 20%;
     }
+    .mykitchen-button {
+        margin-top: 10px;
+    }
     #nav-eat {
         display: none;
     }
-    .mykitchen-button {
-        margin-top: 10px;
+    #nav-eat-small {
+        display: block;
     }
 }
 @media only screen and (max-width: 1100px) {
@@ -38,6 +41,11 @@
     .content {
         width: 70%;
         margin-left: 15%;
+    }
+}
+@media only screen and (max-width: 1040px) {
+    #nav-eat-small {
+        display: none;
     }
 }
 @media only screen and (max-width: 1000px) {
@@ -62,21 +70,17 @@
     #add-container {
         width: 470px;
     }
-    #nav-search-container {
-        width: 300px;
-    }
 }
-@media only screen and (max-width: 750px) {
+@media screen and (max-width: 825px) {
     #nav-search-container {
-        width: 200px;
+        width: 90%;
+        margin: 140px auto 10px auto;
+        float: none;
     }
 }
 @media only screen and (max-width: 650px) {
     .cookbooks-responsive {
         width: 100%;
-    }
-    #nav-search-container {
-        width: 150px;
     }
 }
 @media only screen and (max-width: 625px) {

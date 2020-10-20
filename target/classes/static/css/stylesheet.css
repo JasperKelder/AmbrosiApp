@@ -77,6 +77,7 @@ nav li a {
     padding: 0;
     margin-top: 3px;
     margin-bottom: 20px;
+    margin-right: 9px;
 }
 
 .nav-mykitchen {
@@ -98,7 +99,8 @@ nav li a {
 
 #nav-logout {
     width: 60px;
-    margin-right: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
     margin-top: 35px;
     transition-duration: 0.5s;
 }
@@ -111,7 +113,7 @@ nav li a {
 /*}*/
 
 #nav-search-container {
-    margin: 40px 40px auto 40px;
+    margin: 40px 40px 0px 0px;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 400px;
@@ -199,6 +201,10 @@ nav li a {
     font-size: 230%;
     transition-duration: 1s;
     font-family: 'Pacifico';
+}
+
+#nav-eat-small {
+    display: none;
 }
 
 /* End navigation CSS */

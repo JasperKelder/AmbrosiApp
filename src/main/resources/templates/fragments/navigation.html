@@ -14,7 +14,8 @@
         <!--EatAndTreat text-->
         <li class="nav-left">
             <a th:href="@{/index}">
-                <div id="nav-eat">Eat And Treat</div>
+                <span id="nav-eat">Eat And Treat</span>
+                <span id="nav-eat-small">E A T</span>
             </a>
         </li>
         <!--Logout button-->
@@ -22,15 +23,6 @@
             <a th:href="@{/logout}">
                 <img id="nav-logout" src="/images/logout.jpg" alt="Logout">
             </a>
-        </li>
-        <!--Searchbar-->
-        <li id="nav-search-container" class="nav-right">
-            <div id="nav-search-bar">
-                <input id="nav-search" type="text"/>
-                <a href="" onclick="validateInput()" id="searchlink">
-                    <img id="nav-search-icon" src="/images/search.png">
-                </a>
-            </div>
         </li>
         <!--MyKitchen logo referring to login for users that aren't logged in-->
         <li class="nav-right imagetextcontainer" th:unless="${#authorization.expression('hasRole(''USER'')')}">
@@ -45,6 +37,15 @@
                 <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
                 <div class="nav-mykitchen-text">MyKitchen</div>
             </a>
+        </li>
+        <!--Searchbar-->
+        <li id="nav-search-container" class="nav-right">
+            <div id="nav-search-bar">
+                <input id="nav-search" type="text"/>
+                <a href="" onclick="validateInput()" id="searchlink">
+                    <img id="nav-search-icon" src="/images/search.png">
+                </a>
+            </div>
         </li>
     </ul>
     <!--Extended navigation for admin users-->
