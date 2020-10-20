@@ -8,11 +8,14 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
-<button type="button" class="collapsible">Filter recipes</button>
+<button type="button" class="collapsible" id="collapsible">Filter recipes</button>
 <div class="content">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
+<!--Get the current url-->
         <span th:with="url=${#httpServletRequest.requestURI}">
+            <!--Check which categories are selected and add style to them-->
+            <!--Attach clicked category to URL in href-->
             <a id="content-data" class="content-data"
                th:style="${categoriesSelected.contains(category.categoryId)} ?
                'background-color: darkorange; border-radius: 20%;'"
