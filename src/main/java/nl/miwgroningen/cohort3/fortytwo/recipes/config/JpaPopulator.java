@@ -1,10 +1,10 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.config;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import nl.miwgroningen.cohort3.fortytwo.recipes.RecipesApplication;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Category;
-import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /*
@@ -34,8 +34,11 @@ public class JpaPopulator {
 
         // The factory variable will only take a resource list, we have to initialize it with the amount of dataSources.
         ObjectMapper objectMapper = new ObjectMapper();
+        Category category = new Category();
+        category.setCategoryName("Asian");
+        objectMapper.writeValue(new File("category.json"), category);
         Resource[] dataSources = new Resource[1];
-        dataSources[0] = objectMapper.readValue(new File(returnJsonStringFromModel()), Category.class);
+        dataSources[0] = new ClassPathResource("category.json");
 
         factory.setResources(dataSources);
 
@@ -43,20 +46,23 @@ public class JpaPopulator {
 
         return factory;
     }
+    private FileWriter getJsonStringInFile(Category category) throws IOException {
+        FileWriter file;
+        // Before converting to GSON check value of id
+        Gson gson = null;
+        if (category.getCategoryId() == 0) {
+            gson = new GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
+                    .create();
+        } else {
+            gson = new Gson();
+        }
+        file = new FileWriter("employees.json");
 
-    public String returnJsonStringFromModel() throws JsonProcessingException {
-        Category category = new Category();
-        category.setCategoryId(1);
-        category.setCategoryName("Asian");
+            file.write(gson.toJson(category));
+            file.flush();
 
-        // Create objectmapper object
-        ObjectMapper mapper = new ObjectMapper();
-
-        // Convert object model to JSON string
-
-        String jsonString = mapper.writeValueAsString(category);
-
-        return jsonString;
+            return file;
     }
 
 }

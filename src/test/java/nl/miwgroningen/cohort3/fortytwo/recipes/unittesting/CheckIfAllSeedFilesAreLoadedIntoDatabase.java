@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.List;
 
 @SpringBootTest
@@ -24,7 +25,7 @@ public class CheckIfAllSeedFilesAreLoadedIntoDatabase {
 
     @Test
     @DisplayName("Should get amount of seeds entered in the category JSON file")
-    public void ShouldGetRightAmountOfCategoryDataFromDatabase() throws JsonProcessingException {
+    public void ShouldGetRightAmountOfCategoryDataFromDatabase() throws IOException {
 
         jpaPopulator.getRespositoryPopulator();
 
