@@ -36,9 +36,9 @@ public class JpaPopulator {
         ObjectMapper objectMapper = new ObjectMapper();
         Category category = new Category();
         category.setCategoryName("Asian");
-        objectMapper.writeValue(new File("category.json"), category);
+        objectMapper.writeValue(new File("src/main/resources/seedfiles/category.json"), category);
         Resource[] dataSources = new Resource[1];
-        dataSources[0] = new ClassPathResource("category.json");
+        dataSources[0] = new ClassPathResource("src/main/resources/seedfiles/category.json");
 
         factory.setResources(dataSources);
 
