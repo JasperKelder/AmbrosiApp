@@ -26,6 +26,7 @@ public class Recipe {
     // preptime will be set in minutes
     private Integer preperationTime;
 
+    @Expose
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "recipe_preparationStep",

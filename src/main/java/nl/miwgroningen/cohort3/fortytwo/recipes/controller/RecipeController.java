@@ -88,6 +88,7 @@ public class RecipeController {
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 @RequestParam("ingredientUnit[]") Integer[] ingredientUnit,
                                 @RequestParam("ingredientQuantity[]") Integer[] ingredientQuantity,
+                                @RequestParam("preparationlist[]") String[] preparationSteps,
                                 Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "addrecipe";
@@ -103,6 +104,13 @@ public class RecipeController {
             // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
             Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
                     ingredientQuantity);
+
+            // create list with preparationsteps
+            List<PreparationStep> preparationStepslist = new ArrayList<>();
+            for (String step : preparationSteps) {
+                PreparationStep preparationStep = new PreparationStep(step);
+                preparationStepslist.add(preparationStep);
+            }
 
             //when updating a recipe, the recipe has an id
             if (recipe.getRecipeId() != null) {
@@ -133,6 +141,7 @@ public class RecipeController {
                 recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
                 recipeToCookbook.add(recipe);
                 cookbook.setRecipes(recipeToCookbook);
+                recipe.setPreparationStepList(preparationStepslist);
                 recipeRepository.save(recipe);
                 for (RecipeIngredient recipeIngredient : recipeIngredients) {
                     recipeIngredient.setRecipe(recipe);
@@ -142,6 +151,7 @@ public class RecipeController {
             return "redirect:/mykitchen";
         }
     }
+
 
     //this is a method to create a set of ingredients with the wright measuring units and quantities
     private Set<RecipeIngredient> makeRecipeIngredientSet(String[] ingredientName, Integer[] ingredientUnit,
@@ -172,6 +182,7 @@ public class RecipeController {
         }
         return recipeIngredients;
     }
+
 
     @GetMapping({"/index", "/"})
     protected String showRecipes(Model model) {
@@ -216,6 +227,8 @@ public class RecipeController {
         String measuringUnitsToJson = gsonBuilder1.toJson(measuringUnitRepository.findAll());
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
 
+
+
         // generate a list of all the ingredient names and convert to Json (for the autocomplete).
         List<Ingredient> allIngredients = ingredientRepository.findAll();
         ArrayList<String> allIngredientNames = new ArrayList<>();
@@ -231,6 +244,10 @@ public class RecipeController {
             Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
             String recipeToJson = gsonBuilder.toJson(recipe.get().getRecipeIngredients());
             model.addAttribute("recipeToJson", recipeToJson);
+
+            Gson prepStepsBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            String prepstepsToJson = prepStepsBuilder.toJson(recipe.get().getPreparationStepList());
+            model.addAttribute("prepstepsToJson", prepstepsToJson);
 
             // If current image is present then convert it to base64 string so it can be displayed as a place holder.
             String currentImage = fileUploadService.convertToBase64(recipe.get());
