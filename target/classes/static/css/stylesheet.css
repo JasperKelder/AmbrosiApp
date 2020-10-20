@@ -547,6 +547,32 @@ label {
     opacity: 0;
 }
 
+.collapsible-filter {
+    border-radius: 4px;
+    width: 100%;
+    border: none;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: darkorange;
+}
+
+.filter-header {
+    font-weight: bold;
+}
+.content-filter {
+    display: none;
+    text-decoration: none;
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.content-data {
+    text-decoration: none;
+    color:black;
+}
+
 .margin {
     margin-left: 9px;
     margin-top: 9px;
