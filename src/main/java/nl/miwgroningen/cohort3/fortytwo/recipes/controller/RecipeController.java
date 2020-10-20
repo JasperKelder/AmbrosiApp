@@ -52,6 +52,7 @@ public class RecipeController {
     @Autowired
     MeasuringUnitRepository measuringUnitRepository;
 
+
     @GetMapping("/add")
     protected String createRecipe(Model model, Principal principal) throws JsonProcessingException {
         model.addAttribute("recipe", new Recipe());
@@ -112,7 +113,7 @@ public class RecipeController {
                 Optional<Recipe> currentRecipe = recipeRepository.findById(recipe.getRecipeId());
                 if (currentRecipe.isPresent()) {
                     currentRecipe.get().setRecipeTitle(recipe.getRecipeTitle());
-                    currentRecipe.get().setRecipePreperation(recipe.getRecipePreperation());
+//                    currentRecipe.get().setRecipePreperation(recipe.getRecipePreperation());
                     currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
                     currentRecipe.get().setServings(recipe.getServings());
                     for (RecipeIngredient ri : recipeIngredients) {

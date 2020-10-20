@@ -62,9 +62,10 @@
                 <div class="paper-pattern">
                     <div class="paper-content">
                         <div class="recipe-title">Preparation</div>
-                        <br>
-                        <div th:text="${recipe.recipePreperation}"></div>
-                        <br>
+                        <tr th:each="preparationStep: ${recipe.preparationStepList}">
+                            <td th:text="${preparationStep.preparationStep}"></td>
+                            <br>
+                        </tr>
                     </div>
                 </div>
             </div>

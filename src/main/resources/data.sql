@@ -46,27 +46,18 @@ INSERT INTO recipes.user_roles VALUES
 
 /* recipe_id, cooktime, image ingredients, prep_time, recipe_prep, recipe_title, servings, category_id, cuisine_id, user_id */
 /* Has to be after insertion of the values it references (category, cuisine, user)*/
+
 INSERT INTO recipes.recipe VALUES
-(1, 60, null, 30, 'Grind the cookies in the food processor. Meanwhile, melt 100 grams of butter and stir into the cookie crumbs. Line a tin (we use a 24cm tin) with parchment paper, grease the sides of the tin with some butter and then divide the biscuit mixture over the bottom. Make sure you also make the border about 2 inches high. Press down well with a spoon and put in it in the fridge. Now melt the rest of the butter in a pot. Then add the condensed milk and caster sugar and keep stirring. It takes about 10 minutes for the caramel to have the right consistency. After 5 minutes, add 2 teaspoons of sea salt and keep stirring. Remove the tin from the refrigerator and divide the caramel over it. Put the tin back in the refrigerator and let it cool for an hour. Meanwhile, melt the chocolate together with 100 milliliters of milk au-bain marie (in a bowl over a pan of boiling water). Pour the chocolate over the caramel layer once it has cooled down properly. Put the cake in the fridge for another 30 minutes, so that the chocolate hardens. Melt 100 grams of fudge with the rest of the milk in a pot until caramel. In the meantime, cut the rest of the fudge into small cubes. Finish the cake with the fudge cubes, 2 teaspoons of sea salt and a drizzle of the caramel on top!',
- 'Salted caramel pie', 10, 5, 3, 4),
-(2, 25, null, 5, 'Preheat the oven to 180 degrees. Chop the onion and garlic fine, the cherry tomatoes in half and the chorizo into cubes. Heat a dash of oil in a frying pan and fry the onion and garlic in it, until the onion looks translucent. Add the cherry tomatoes and season with salt and pepper. Fry for 5 minutes, until the tomatoes become soft. Add the passata and half of the fresh basil and let it simmer for about 10 minutes on low heat. Spoon the sauce into an oven dish and spread the cod over it. Finish with the chorizo pieces and the rest of the fresh basil. Bake the casserole in the oven for about 10-12 minutes. Serve with the ciabatta.',
-'Cod with chorizo from the oven', 2, 3, 5, 6),
-(3, 40, null, 10, 'Preheat the oven to 180 degrees. Lightly grease a 22 cm tin (20 or 24 is also possible) with some oil. Let the slices of dough thaw and once that''s done, line the mold with it. Meanwhile cut the zucchini into small cubes and the spring onions into rings. Heat some oil in a frying pan and add the zucchini and onion, fry over medium heat. Cut the woody bottoms off the green asparagus and cut them in half. Put the top halves of the asparagus aside for a while, cut the bottom halves into three pieces per half. Add the asparagus pieces to the zucchini and spring onion and fry for another minute or two. Place the eggs in a bowl with the crème fraîche and a good pinch of salt and pepper and stir well. Remove the vegetables from the frying pan (if necessary, pat dry with some kitchen paper if there is still a lot of oil on it) and stir through the mixture as well. Now take the piece of cheese and grate some cheese into the mixture, five tablespoons. Give it a stir. Prick a few holes in the bottom of your lined pan with a fork and pour the mixture into it. Take the remaining halves of the asparagus and divide over the cake. Finish with some more grated cheese, about five tablespoons. Place the cake in the oven and bake for 35-40 minutes until golden brown and done.',
-    'Simple asparagus quiche', 1, 2, 3, 5),
-(4, 60, null, 20, 'Mix the butter and sugar until creamy. This can be done in a small saucepan, in which the butter can be melted over low heat so that it mixes easily. Add the milk and mix until well incorporated. Then add the flour and a pinch of salt and mix into a crumbly dough. Crumble the chocolate chip cookies into chocolate chips and mix well. Now turn 16 small balls from the dough and place them on a plate. Let the balls rest in the refrigerator for 1 hour. Only when the dough balls have rested in the refrigerator long enough, do you melt the chocolate. Put this au bain-marie (in a bowl over a pan of boiling water). Remove the balls from the refrigerator and use a skewer to pass them through the melted chocolate. When you have done this, place the truffles on a parchment-lined plate. Return the truffles to the refrigerator until the chocolate has set.',
-    'Cookie dough truffels', 16, 4, 3, 4),
-(5, 15, null, 5, 'Prepare the orzo according to the directions on the package. Heat a frying pan and fry the bacon in a dry frying pan for 5 minutes until crispy. Remove the seeds from the pepper and cut into cubes. Fry the bell pepper for the last 2 minutes with the bacon. Stir the bacon, bell pepper, pesto and 75 grams of goat cheese through the orzo and divide between 2 plates. Finish with the rest of the goat cheese.',
-    'Orzo with bacon and goat cheese', 2, 3, 1, 7),
-(6, 10, null, 0, 'Slice the olives and quarter the cherry tomatoes. Place half of the basil in a bowl with 3 tablespoons of olive oil and a pinch of pepper and salt and mix well with a hand blender. Mix the lamb''s lettuce with the olives, cherry tomatoes, basil oil and the rest of the basil leaves and finish with the burrata on top.',
-    'Salad with burrata and olives', 2, 2, 1, 6),
-(7, 15, null, 5, 'Heat a dash of oil in a frying pan and fry the gnocchi for 20 minutes. Cut the chicken thigh into pieces, grate the zest of half a lemon and squeeze out the juice. Heat a dash of oil in another frying pan and fry the chicken for 10 minutes. Season with salt and pepper. Add the peas to the chicken for the last 3 minutes. Then add the lemon juice and cream and bring to the boil. Let this boil for another 3 minutes until the cream has thickened slightly. Divide the gnocchi and the sauce over two plates and finish with some lemon zest on top!',
-    'Creamy gnocchi with peas', 2, 3, 1, 5),
-(8, 15, null, 15, 'Preheat the oven to 200 degrees. Cover a baking tray with parchment paper. Beat the Greek yogurt with the eggs and milk and add a good pinch of salt and pepper. Mix the flour with the baking powder and add this little by little. Grate 100 grams of the halloumi. Cut the remaining 50 grams of the halloumi into small pieces (we will use this later for the topping). Add the halloumi grater to the mixture and stir well. Using a large spoon or ice cream scoop, place 8 scoops on the baking tray lined with parchment paper. Sprinkle the halloumi pieces and pumpkin seeds on top of the bulbs. Bake the buns in the oven for 15 minutes. Let it cool down and enjoy.',
-    'Greek savory yogurt dumplings', 4, 1, 7, 7),
-(9, 20, null, 5, 'Peel and finely chop the onion and garlic. Heat a dash of oil in a frying pan. Fry the onion with the garlic. Add the cumin and a good pinch of salt and pepper. Drain the water from the chickpea pot and rinse in a colander. Place the chickpeas in a food processor with the onion mixture, parsley and wheat flour and mix until coarsely. Then make 12 balls with your hands. Heat a good splash of oil in the pan and fry the falafel in 10 minutes until golden brown.',
-   'Home made falafel', 12, 4, 6, 4),
-(10, 45, null, 10, 'Preheat the oven to 200 degrees. Peel the bananas. Place bananas, spelled flour, eggs, honey and baking powder together in the bowl or a food processor. Melt the coconut oil and put this in the bowl as well. Mix everything until you have a smooth batter. Coarsely chop the dark chocolate. Mix three quarters of the chocolate with 175 grams of raspberries through the batter. Cover a cake tin with baking paper and pour the batter into the tin. Finish the banana bread with the remaining raspberries and chocolate on top. Bake in the oven for 45 minutes. Let the cake cool and serve.',
- 'Banana bread with chocolate and raspberries', 10, 1, 3, 7);
+(1, 60, null, 30, 'Salted caramel pie', 10, 5, 3, 4),
+(2, 25, null, 5, 'Cod with chorizo from the oven', 2, 3, 5, 6),
+(3, 40, null, 10, 'Simple asparagus quiche', 1, 2, 3, 5),
+(4, 60, null, 20, 'Cookie dough truffels', 16, 4, 3, 4),
+(5, 15, null, 5, 'Orzo with bacon and goat cheese', 2, 3, 1, 7),
+(6, 10, null, 0, 'Salad with burrata and olives', 2, 2, 1, 6),
+(7, 15, null, 5, 'Creamy gnocchi with peas', 2, 3, 1, 5),
+(8, 15, null, 15, 'Greek savory yogurt dumplings', 4, 1, 7, 7),
+(9, 20, null, 5, 'Home made falafel', 12, 4, 6, 4),
+(10, 45, null, 10, 'Banana bread with chocolate and raspberries', 10, 1, 3, 7);
 
 /* cookbook_id, cookbook_name, is_private user_id */
 INSERT INTO recipes.cookbook VALUES
@@ -277,3 +268,11 @@ UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '54' WHERE (`ingredient_id
 UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '242' WHERE (`ingredient_id` = '55') and (`recipe_id` = '10');
 UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '4556' WHERE (`ingredient_id` = '56') and (`recipe_id` = '10');
 UPDATE `recipes`.`recipe_ingredient` SET `quantity` = '56' WHERE (`ingredient_id` = '57') and (`recipe_id` = '10');
+
+
+INSERT INTO `recipes`.`preparation_step` (`preparation_step_id`, `preparation_step`) VALUES (1, 'halloooo');
+INSERT INTO `recipes`.`preparation_step` (`preparation_step_id`, `preparation_step`) VALUES (2, 'boee');
+
+INSERT INTO recipe_preparation_step VALUES
+(1, 1),
+(1, 2);
