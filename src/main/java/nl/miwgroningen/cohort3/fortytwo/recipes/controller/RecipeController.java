@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
+import nl.miwgroningen.cohort3.fortytwo.recipes.service.RemoveDuplicatesFromList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class RecipeController {
 
     FileUploadService fileUploadService = new FileUploadService();
+    RemoveDuplicatesFromList removeDuplicatesFromList = new RemoveDuplicatesFromList();
 
     @Autowired
     RecipeRepository recipeRepository;
@@ -179,6 +181,7 @@ public class RecipeController {
         }
         model.addAttribute("allRecipes", recipeRepository.findAll());
         model.addAttribute("allImages", imagesList);
+        model.addAttribute("allCategories", categoryRepository.findAll());
         return "index";
     }
 
@@ -266,8 +269,30 @@ public class RecipeController {
         for (Recipe recipe: searchResults) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
-            model.addAttribute("searchResults", searchResults);
+        model.addAttribute("searchResults", searchResults);
         model.addAttribute("allImages", imagesList);
         return "searchresults";
+    }
+
+    @GetMapping("/index/filterresults/{categoryId}")
+    protected String showFilterResults(@PathVariable("categoryId") ArrayList<Integer> categoryIds, Model model) {
+        // Create a new ArrayList with unique categoryIds
+        ArrayList<Integer> newListWithoutDuplicates = removeDuplicatesFromList.removeDuplicates(categoryIds);
+        // Create list for images
+        List<String> imagesList = new ArrayList<>();
+        List<Recipe> recipesFilteredByCategory = new ArrayList<>();
+        // Add all recipes from the database to the recipesfilteredbycategory list
+        for (int categoryId : newListWithoutDuplicates) {
+            recipesFilteredByCategory.addAll(recipeRepository.categoryFilter(categoryId));
+        }
+        // Add images to the Recipes
+        for (Recipe recipe : recipesFilteredByCategory) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+        model.addAttribute("recipesByCategory", recipesFilteredByCategory);
+        model.addAttribute("allCategories", categoryRepository.findAll());
+        model.addAttribute("allImages", imagesList);
+        model.addAttribute("categoriesSelected", newListWithoutDuplicates);
+        return "filterresults";
     }
 }
