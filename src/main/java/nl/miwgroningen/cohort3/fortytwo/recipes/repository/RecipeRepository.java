@@ -2,6 +2,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.repository;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
             "JOIN ingredient AS i ON ri.ingredient_id = i.ingredient_id " +
             "WHERE LOWER(i.ingredient_name) LIKE LOWER(CONCAT('%',:term,'%'));", nativeQuery = true)
     List<Recipe> getSuggestionsByIngredient(@Param("term") String term);
+
+    @Transactional
+    @Query(value = "SELECT * FROM recipes.recipe WHERE category_id = ?;", nativeQuery = true)
+    List<Recipe> categoryFilter(@Param("categoryId") int categoryId);
 }
 
 
