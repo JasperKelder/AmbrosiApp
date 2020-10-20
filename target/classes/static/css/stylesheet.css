@@ -60,8 +60,8 @@ nav li a {
 #nav-logo {
     width: 120px;
     cursor: pointer;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
     transition-duration: 0.5s;
     margin-top: 7px;
 }
@@ -72,9 +72,6 @@ nav li a {
     position: relative;
 }
 
-#nav-logo-text {
-    /*font-size: 40px;*/
-}
 
 .nav-mykitchen-container {
     padding: 0;
@@ -96,28 +93,28 @@ nav li a {
     2px -2px 0 black,
     -2px -2px 0 black;
     transition-duration: 0.5s;
+    font-size: 75%;
 }
 
 #nav-logout {
     width: 60px;
-    margin-right: 150px;
-    margin-left: 80px;
-    margin-top: 25px;
+    margin-right: 25px;
+    margin-top: 35px;
+    transition-duration: 0.5s;
 }
 
-li a:hover, #nav-eat:hover {
-    text-shadow: -0.5px 0.5px 0 #f9ab23,
-    0.5px 0.5px 0 #f9ab23,
-    0.5px -0.5px 0 #f9ab23,
-    -0.5px -0.5px 0 #f9ab23;
-}
+/*li a:hover, #nav-eat:hover {*/
+/*    text-shadow: -0.2px 0.2px 0 #f9ab23,*/
+/*    0.2px 0.2px 0 #f9ab23,*/
+/*    0.2px -0.2px 0 #f9ab23,*/
+/*    -0.2px -0.2px 0 #f9ab23;*/
+/*}*/
 
 #nav-search-container {
-    float: none;
-    margin: auto auto 15px auto;
+    margin: 40px 40px auto 40px;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 55%;
+    width: 400px;
     position: relative;
     transition-duration: 1s;
 }
@@ -137,7 +134,6 @@ li a:hover, #nav-eat:hover {
     color: black;
     text-align: center;
     font-size: 120%;
-    font-family: 'Finger Paint';
     width: 90%;
     background-color: white;
     box-shadow: none;
@@ -194,18 +190,7 @@ li a:hover, #nav-eat:hover {
     padding: 15px;
 }
 
-.mykitchen, .logout {
-    margin-top: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 35px;
-}
-
-.logout {
-    margin-left: 150px;
-}
-
-#nav-eat {
+#nav-eat, #nav-eat-small {
     color: #f9ab23;
     text-shadow: -2px 2px 0 black,
     2px 2px 0 black,
