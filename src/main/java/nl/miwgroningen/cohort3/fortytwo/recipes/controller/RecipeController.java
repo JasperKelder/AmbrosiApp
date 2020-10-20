@@ -108,8 +108,10 @@ public class RecipeController {
             // create list with preparationsteps
             List<PreparationStep> preparationStepslist = new ArrayList<>();
             for (String step : preparationSteps) {
-                PreparationStep preparationStep = new PreparationStep(step);
-                preparationStepslist.add(preparationStep);
+                if (step != null && !step.trim().isEmpty()) {
+                    PreparationStep preparationStep = new PreparationStep(step);
+                    preparationStepslist.add(preparationStep);
+                }
             }
 
             //when updating a recipe, the recipe has an id
@@ -121,7 +123,7 @@ public class RecipeController {
                 Optional<Recipe> currentRecipe = recipeRepository.findById(recipe.getRecipeId());
                 if (currentRecipe.isPresent()) {
                     currentRecipe.get().setRecipeTitle(recipe.getRecipeTitle());
-//                    currentRecipe.get().setRecipePreperation(recipe.getRecipePreperation());
+                    currentRecipe.get().setPreparationStepList(preparationStepslist);
                     currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
                     currentRecipe.get().setServings(recipe.getServings());
                     for (RecipeIngredient ri : recipeIngredients) {
@@ -245,6 +247,7 @@ public class RecipeController {
             String recipeToJson = gsonBuilder.toJson(recipe.get().getRecipeIngredients());
             model.addAttribute("recipeToJson", recipeToJson);
 
+            // convert all the preparationsteps to Json.
             Gson prepStepsBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
             String prepstepsToJson = prepStepsBuilder.toJson(recipe.get().getPreparationStepList());
             model.addAttribute("prepstepsToJson", prepstepsToJson);
