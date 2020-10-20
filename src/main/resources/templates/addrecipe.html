@@ -32,13 +32,20 @@
                                required placeholder="Title"/>
                     </div>
                     <div class="column-left">
-                        <label for="preparation">Preparation</label>
+                        <label>Preparation</label>
                     </div>
+                    <!--Recipe preparation-->
+                    <input id="prepstepsToJson" type="hidden" th:value="${prepstepsToJson}">
                     <div class="column-right">
-                        <!--Recipe preparation-->
-                        <textarea id="preparation" name="preparation" th:field="*{recipePreperation}"
-                                  required placeholder="Preparation"></textarea>
+                        <div id="dynamicPrepList"></div>
+                        <div id="dynamicPrepRows">
+                            <div class="fieldwrapperPrep"><textarea name="preparationlist[]"
+                                  placeholder="Preparation"></textarea>
+                            </div>
+                        </div>
                     </div>
+                    <input type="button" value="Add preparation step" class="add" id="addstep">
+
                     <div class="column-left">
                         <label for="preparationtime">Prep-time</label>
                     </div>
@@ -155,5 +162,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="/script/addingredient.js"></script>
 <script type="text/javascript" src="/script/fileuploadcheck.js"></script>
+<script type="text/javascript" src="/script/addpreparationstep.js"></script>
 </body>
 </html>

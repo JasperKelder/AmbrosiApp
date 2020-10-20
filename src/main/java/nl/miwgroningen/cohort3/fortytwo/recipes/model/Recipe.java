@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,6 +25,16 @@ public class Recipe {
     @Column
     // preptime will be set in minutes
     private Integer preperationTime;
+
+    @Expose
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "recipe_preparationStep",
+            joinColumns = @JoinColumn(
+                    name = "recipe_id", referencedColumnName = "recipeId"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "preparationstep_id" , referencedColumnName = "preparationStepId" ))
+    private List<PreparationStep> preparationStepList;
 
     @Column
     private Integer servings;
@@ -80,6 +91,8 @@ public class Recipe {
     public void setPreperationTime(Integer preperationTime) {
         this.preperationTime = preperationTime;
     }
+    public List<PreparationStep> getPreparationStepList() { return preparationStepList; }
+    public void setPreparationStepList(List<PreparationStep> preparationStepList) { this.preparationStepList = preparationStepList; }
     public Integer getServings() {
         return servings;
     }
@@ -89,9 +102,7 @@ public class Recipe {
     public Set<RecipeIngredient> getRecipeIngredients() {
         return recipeIngredients;
     }
-    public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) {
-        this.recipeIngredients = recipeIngredients;
-    }
+    public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) { this.recipeIngredients = recipeIngredients; }
     public Integer getCooktime() {
         return cooktime;
     }
