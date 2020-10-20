@@ -429,7 +429,7 @@ th {
 
 .column-right {
     float: left;
-    width: 450px;
+    width: 400px;
     margin: 10px;
 }
 
@@ -585,4 +585,8 @@ label {
 .content-data {
     text-decoration: none;
     color:black;
+}
+
+.margin {
+    margin-left: 5px;
 }

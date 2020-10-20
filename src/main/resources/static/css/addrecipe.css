@@ -46,19 +46,19 @@ input[type=file] {
 }
 
 input[id*="myInput"] {
-    width: 220px;
+    width: 100px;
 }
 
 select[id*="measuringUnit"] {
-    width: 100px;
+    width: 90px;
 }
 
 select[id*="measuringUnitExistingRecipe"] {
-    width: 100px;
+    width: 90px;
 }
 
 input[id*="quantity"] {
-    width: 100px;
+    width: 90px;
 }
 
 .autocomplete {
