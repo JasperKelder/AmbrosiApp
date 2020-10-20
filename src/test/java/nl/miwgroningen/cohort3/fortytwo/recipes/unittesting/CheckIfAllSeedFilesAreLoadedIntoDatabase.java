@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.unittesting;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import nl.miwgroningen.cohort3.fortytwo.recipes.config.JpaPopulator;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Category;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.CategoryRepository;
@@ -23,7 +24,7 @@ public class CheckIfAllSeedFilesAreLoadedIntoDatabase {
 
     @Test
     @DisplayName("Should get amount of seeds entered in the category JSON file")
-    public void ShouldGetRightAmountOfCategoryDataFromDatabase() {
+    public void ShouldGetRightAmountOfCategoryDataFromDatabase() throws JsonProcessingException {
 
         jpaPopulator.getRespositoryPopulator();
 
