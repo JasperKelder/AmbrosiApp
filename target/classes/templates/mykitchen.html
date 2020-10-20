@@ -20,10 +20,12 @@
     <!--Main page-->
     <div class="fade-in">
         <div class="col-6">
-            <a class="flashybutton nav-left mykitchen-button" th:href="@{/add}">Add Recipe</a>
+            <a th:href="@{/add}">
+            <button class="flashybutton nav-left mykitchen-button">Add Recipe</button>
+            </a>
         </div>
         <div class="col-6">
-            <a class="flashybutton nav-right mykitchen-button" th:href="@{/addcookbook}">Add Cookbook</a>
+            <button id="cookbook-button" class="flashybutton nav-right mykitchen-button">Add Cookbook</button>
         </div>
         <!--Displays all cookbooks-->
         <form th:action="@{/mycookbooks}" th:object="${allMyCookbooks}" method="get">
@@ -84,6 +86,19 @@
                     <button type="submit">Update</button>
                 </p>
                 <div class="spaceTiny"></div>
+            </form>
+        </div>
+        <!--Add Cookbook modal, hidden by default-->
+        <div class="modal center" id="cookbook-modal">
+            <!--Button to hide the modal-->
+            <button class="close-button flashybutton" id="cookbook-close-button">X</button>
+            <div class="messagesmall">New Cookbook</div>
+            <form th:action="@{/newcookbook}" th:object="${cookbook}" method="post">
+                <div hidden><input type="text" th:field="*{cookbookId}"/></div>
+                <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}" required
+                       placeholder="Cookbook Title" class="center"/>
+                <div class="spaceSmall"></div>
+                <input type="submit" value="Submit">
             </form>
         </div>
     </div>

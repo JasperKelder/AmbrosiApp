@@ -43,8 +43,8 @@
         <li class="nav-right imagetextcontainer" th:if="${#authorization.expression('hasRole(''USER'')')}">
             <a class="nav-mykitchen-container" th:href="@{/mykitchen}">
                 <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
+                <div class="nav-mykitchen-text">MyKitchen</div>
             </a>
-            <div class="nav-mykitchen-text">MyKitchen</div>
         </li>
     </ul>
     <!--Extended navigation for admin users-->
