@@ -8,11 +8,11 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
-<button type="button" class="collapsible" id="collapsible">Filter recipes</button>
-<div class="content">
+<button type="button" class="collapsible clickable">Filter Recipes</button>
+<div class="content-shown">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
-<!--Get the current url-->
+        <!--Get the current url-->
         <span th:with="url=${#httpServletRequest.requestURI}">
             <!--Check which categories are selected and add style to them-->
             <!--Attach clicked category to URL in href-->
@@ -24,26 +24,28 @@
         </span>
     </span>
 </div>
-<div class="spaceSmall"></div>
-<!--Shows a message when there are no recipes in the database-->
-<div th:if="${recipesByCategory.size() < 1}">
-    <div class="spaceMedium"></div>
-    <div class="message">This page is hungry</div>
-    <div class="message">Please feed it some recipes first with your selected Category</div>
-</div>
-<div th:if="${recipesByCategory.size() >= 1}">
-    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-    <div th:each="i : ${#numbers.sequence(0, recipesByCategory.size() - 1)}">
-        <!--This will add all the info into the grid items-->
-        <div class="col-3 imagetextcontainer" th:value="${recipesByCategory.get(i).recipeId}">
-            <a th:href="@{/viewrecipe/{recipeId}(recipeId=${recipesByCategory.get(i).recipeId})}">
-                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
-            <div class="index-foodname" th:text="${recipesByCategory.get(i).recipeTitle}"></div>
+<div class="fade-in">
+    <div class="spaceSmall"></div>
+    <!--Shows a message when there are no recipes in the database-->
+    <div th:if="${recipesByCategory.size() < 1}">
+        <div class="spaceMedium"></div>
+        <div class="message">This page is hungry</div>
+        <div class="message">Please feed it some recipes first with your selected Category</div>
+    </div>
+    <div th:if="${recipesByCategory.size() >= 1}">
+        <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, recipesByCategory.size() - 1)}">
+            <!--This will add all the info into the grid items-->
+            <div class="col-3 imagetextcontainer" th:value="${recipesByCategory.get(i).recipeId}">
+                <a th:href="@{/viewrecipe/{recipeId}(recipeId=${recipesByCategory.get(i).recipeId})}">
+                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
+                <div class="index-foodname" th:text="${recipesByCategory.get(i).recipeTitle}"></div>
+            </div>
         </div>
     </div>
 </div>
-
 <script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/slidedown.js"></script>
+<script type="text/javascript" src="/script/collapsebutton.js"></script>
 </body>
 </html>

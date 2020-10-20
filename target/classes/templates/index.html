@@ -8,8 +8,7 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Sliding down from navbar-->
-<!--Main page-->
-<button type="button" class="collapsible clickable">Filter recipes</button>
+<button type="button" class="collapsible clickable">Filter Recipes</button>
 <div class="content" th:each="category : ${allCategories}">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
@@ -17,7 +16,6 @@
            th:href="@{/index/filterresults/{category}(category=${category.categoryId})}"></a><br>
     </span>
 </div>
-
 <!--Main page-->
 <div class="fade-in">
     <div class="spaceSmall"></div>
@@ -42,6 +40,5 @@
 <script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/slidedown.js"></script>
 <script type="text/javascript" src="/script/collapsebutton.js"></script>
-
 </body>
 </html>
