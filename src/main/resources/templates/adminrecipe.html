@@ -9,11 +9,10 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <button type="button" class="collapsible">Admin Recipe</button>
     <!--Main page-->
     <div class="fade-in">
         <div class="flex-container">
-            <div class="spaceMedium"></div>
             <div class="container">
                 <!--Takes the user to the add recipe form-->
                 <form th:action="@{/add}">

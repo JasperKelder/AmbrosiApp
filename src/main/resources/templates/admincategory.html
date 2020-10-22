@@ -9,16 +9,15 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <button type="button" class="collapsible">Admin Category</button>
     <!--Main page-->
     <div class="fade-in">
         <div class="flex-container">
-            <div class="spaceMedium"></div>
             <div class="container center">
                 <!--Add category form-->
                 <form action="#" th:action="@{/category}" th:object="${category}" method="post">
                     <div hidden><input type="text" th:field="*{categoryId}"/></div>
-                    <div><input type="text" th:field="*{categoryName}" required placeholder="Category"/></div>
+                    <div><input type="text" th:field="*{categoryName}" required placeholder="New Category"/></div>
                     <div class="spaceSmall"></div>
                     <input type="submit" value="Submit"/>
                 </form>

@@ -158,14 +158,14 @@ nav li a {
 
 /* Admin navigation extension */
 #nav-extra {
-    background-color: black;
+    /*background-color: black;*/
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
     transition-duration: 0.5s;
 }
 
 .nav-admin-button {
     font-size: 20px;
-    padding: 0px 5px;
+    padding: 0px 0px 10px 15px;
     float: left;
 }
 
