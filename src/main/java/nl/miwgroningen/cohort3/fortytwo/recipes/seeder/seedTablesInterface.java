@@ -10,9 +10,7 @@ public interface seedTablesInterface {
 
     void seedUser();
 
-    void seedRole();
-
-    void seedCookbook();
+    void seedRecipeAndCookbookAndPreparationSteps() throws IOException;
 
     void seedMeasuringUnit();
 
@@ -20,7 +18,4 @@ public interface seedTablesInterface {
 
     void seedRecipeIngredient();
 
-    void seedPreperationStep();
-
-    void seedRecipe() throws IOException;
 }

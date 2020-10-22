@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
@@ -27,7 +28,9 @@ public class Cookbook {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
     @JoinTable(
             name = "mycookbooks",
             joinColumns = @JoinColumn(
@@ -43,6 +46,13 @@ public class Cookbook {
         this.isPrivate = isPrivate;
         this.cookbookName = cookbookName;
         this.user = user;
+    }
+
+    public Cookbook(boolean isPrivate, String cookbookName, User user, List<Recipe> recipes) {
+        this.isPrivate = isPrivate;
+        this.cookbookName = cookbookName;
+        this.user = user;
+        this.recipes = recipes;
     }
 
     public Cookbook() {

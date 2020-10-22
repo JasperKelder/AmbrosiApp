@@ -1,9 +1,14 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.seeder;
 
+import nl.miwgroningen.cohort3.fortytwo.recipes.dto.UserRegistrationDto;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
+import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserService;
+import nl.miwgroningen.cohort3.fortytwo.recipes.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -45,15 +50,18 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
     @Autowired
     RecipeIngredientRepository recipeIngredientRepository;
 
+    @Autowired
+    PreparationStepRepository preparationStepRepository;
+
     @Override
     public void run(String... args) throws Exception {
         seedCategory();
         seedCuisine();
         seedUser();
-        seedRole();
-        seedRecipe();
-        seedCookbook();
+        seedRecipeAndCookbookAndPreparationSteps();
         seedMeasuringUnit();
+        seedIngredient();
+        seedRecipeIngredient();
     }
 
     public void seedCategory() {
@@ -77,28 +85,30 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
 
     @Override
     public void seedUser() {
-        if (userRepository.count() == 0) {
-            User user1 = new User("Elmo", "Make IT Work", "42@gmail.com",
-                    "$2a$10$VRCtIl4CVgV5n9CspNQhkOMpz8KrfND5fiGUwlXTKsWSO99zRboqm");
-            userRepository.save(user1);
-        }
-    }
+        if (userRepository.count() == 0 && roleRepository.count() == 0) {
 
-    @Override
-    public void seedRole() {
-        if (roleRepository.count() == 0) {
-            Role roleUser = new Role("ROLE_USER");
+            User user1 = new User("Elmo", "MakeITWORK", "Gmail", "password");
             Role roleAdmin = new Role("ROLE_ADMIN");
-            roleRepository.save(roleUser);
-            roleRepository.save(roleAdmin);
+
+            user1.setRoles(Arrays.asList(roleAdmin));
+
+            userRepository.save(user1);
+
         }
     }
 
     @Override
-    public void seedRecipe() throws IOException {
+    public void seedRecipeAndCookbookAndPreparationSteps() throws IOException {
+
+        // First declare the images you want to use in the recipes
         byte[] eierbalImage = imageFromFileToByteArray("src/main/resources/static/images/newrecipes/SaltedCaramelTaart.jpg");
-        if (recipeRepository.count() == 0) {
-            Recipe recipe1 = new Recipe(
+
+        // Add the preperationSteps per recipe and save them to a list
+        PreparationStep preparationStep1 = new PreparationStep("Kook een ei");
+        ArrayList<PreparationStep> preparationStepsRecipe1 = new ArrayList<>(Arrays.asList(preparationStep1));
+
+        // Initialize the recipes
+        Recipe recipe1 = new Recipe(
                     "Eierbal",
                     20,
                     5,
@@ -108,14 +118,17 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
                     userRepository.getOne(1),
                     eierbalImage
             );
-            recipeRepository.save(recipe1);
-        }
-    }
 
-    @Override
-    public void seedCookbook() {
-        if (cookbookRepository.count() == 0) {
-            Cookbook cookbook1 = new Cookbook(false, "Jasmijn her favorite cookbook", userRepository.getOne(1));
+        // Add the preperationSteps to the recipe and add them to the cookbook of choice
+        recipe1.setPreparationStepList(preparationStepsRecipe1);
+        ArrayList<Recipe> recipesInCookbook1 = new ArrayList<>(Arrays.asList(recipe1));
+
+        if (preparationStepRepository.count() == 0 && cookbookRepository.count() == 0 &&
+                recipeRepository.count() == 0) {
+            Cookbook cookbook1 = new Cookbook(false, "Jasmijn her favorite cookbook",
+                    userRepository.getOne(1));
+
+            cookbook1.setRecipes(recipesInCookbook1);
             cookbookRepository.save(cookbook1);
         }
     }
@@ -151,12 +164,11 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
     public void seedRecipeIngredient() {
         if (recipeIngredientRepository.count() == 0) {
             RecipeIngredient recipeIngredient1 = new RecipeIngredient(recipeRepository.getOne(1), ingredientRepository.getOne(1), 2);
+
             ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredient1));
             recipeIngredientRepository.saveAll(recipeIngredients);
         }
     }
-
-
 
     public byte[] imageFromFileToByteArray(String imageFilePath) throws IOException {
         FileInputStream imageInFile = new FileInputStream(new File(imageFilePath));

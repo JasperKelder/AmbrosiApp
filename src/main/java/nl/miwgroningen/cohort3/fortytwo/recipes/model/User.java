@@ -1,5 +1,8 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,7 +29,9 @@ public class User {
 
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
@@ -45,7 +50,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String emailAddress, String password, List < Role > roles) {
+    public User(String firstName, String lastName, String emailAddress, String password, List <Role> roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;

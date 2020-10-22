@@ -27,7 +27,9 @@ public class Recipe {
     private Integer preperationTime;
 
     @Expose
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
     @JoinTable(
             name = "recipe_preparationStep",
             joinColumns = @JoinColumn(

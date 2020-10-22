@@ -27,6 +27,11 @@ public class Role {
         this.name = name;
     }
 
+    public Role(String name, List<User> users) {
+        this.name = name;
+        this.users = users;
+    }
+
     //Getters and Setters
     public Integer getRoleId() {
         return roleId;
