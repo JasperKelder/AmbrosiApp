@@ -15,18 +15,13 @@
         <div class="flex-container">
             <div class="container">
                 <!--Takes the user to the add recipe form-->
-                <form th:action="@{/add}">
-                    <p><input type="submit" value="Submit"/></p>
-                </form>
+                <a class="flashybutton" th:href="@{/add}">Add Recipe</a>
             </div>
             <div class="spaceMedium"></div>
             <table>
                 <!--Displays all recipes-->
                 <tr th:each="recipe: ${allRecipes}">
                     <td th:text="${recipe.recipeTitle}"></td>
-                    <!--Deletes the recipe-->
-                    <td class="admin-table"><a th:href="@{/recipes/delete/{recipeId}(recipeId=${recipe.recipeId})}"
-                                               class="editbutton">Delete</a></td>
                     <!--Takes the user to the update recipe form-->
                     <td class="admin-table"><a th:href="@{/add/update/{recipeId}(recipeId=${recipe.recipeId})}"
                                                class="editbutton">Update</a></td>
