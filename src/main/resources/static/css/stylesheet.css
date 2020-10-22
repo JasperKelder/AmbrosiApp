@@ -414,14 +414,14 @@ th {
 
 .column-left {
     float: left;
-    width: 200px;
+    width: 175px;
     margin: 10px;
     transition-duration: 1s;
 }
 
 .column-right {
     float: left;
-    width: 400px;
+    width: 425px;
     margin: 10px;
 }
 

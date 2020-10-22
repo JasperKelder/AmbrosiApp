@@ -70,6 +70,9 @@
     #add-container {
         width: 470px;
     }
+    .column-right {
+        width: 92%;
+    }
 }
 @media screen and (max-width: 825px) {
     #nav-search-container {
@@ -89,9 +92,6 @@
     }
     #add-container {
         width: 350px;
-    }
-    .column-right {
-        width: 92%;
     }
 }
 @media only screen and (max-width: 560px) {

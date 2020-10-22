@@ -60,7 +60,7 @@ input[type=file] {
 }
 
 input[id*="myInput"] {
-    width: 160px;
+    width: 44%;
 }
 
 select[id*="measuringUnit"] {
