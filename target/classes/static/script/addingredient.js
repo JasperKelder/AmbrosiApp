@@ -161,7 +161,7 @@ $(document).ready(function () {
             'placeholder="Ingredient" name="ingredientName[]" />');
         var ingredientUnitField = $('<select id="measuringUnit' + intId + '" name="ingredientUnit[]" class="margin">')
         var ingredientQuantityField = $('<input type="number" placeholder="Quantity" ' +
-            'name="ingredientQuantity[]" class="margin quantity" required>')
+            'name="ingredientQuantity[]" class="margin quantity">')
         var removeButton = $('<input type="button" class="remove margin" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
