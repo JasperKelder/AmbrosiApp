@@ -187,7 +187,7 @@ $(document).ready(function () {
 });
 
 // Changes the display to none for the empty ingredient fields while updating
-if (window.location.href.indexOf("update")) {
+if (window.location.href.indexOf("update") > -1) {
     function hideFields() {
         document.getElementById("myInput1").style.display = "none";
         document.getElementById("measuringUnit").style.display = "none";

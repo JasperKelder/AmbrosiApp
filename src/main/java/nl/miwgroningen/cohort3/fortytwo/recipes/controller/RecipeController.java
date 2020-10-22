@@ -207,6 +207,18 @@ public class RecipeController {
         return "adminrecipe";
     }
 
+    @GetMapping("/userrecipes/{userId}")
+    protected String showRecipesUser(@PathVariable("userId") final Integer userId, Model model) {
+        List<Recipe> recipes = recipeRepository.userRecipes(userId);
+        List<String> imagesList = new ArrayList<>();
+        for (Recipe recipe : recipes) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+        model.addAttribute("allUserImages", imagesList);
+        model.addAttribute("allUserRecipes", recipeRepository.userRecipes(userId));
+        return "userrecipes";
+    }
+
     @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
     protected String deleteRecipe(@PathVariable("recipeId") final Integer recipeId) {
         Optional<Recipe> recipe = recipeRepository.findById(recipeId);

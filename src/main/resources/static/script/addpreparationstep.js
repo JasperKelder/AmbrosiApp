@@ -43,7 +43,7 @@ function makePrepStepList(array) {
 }
 
 // Changes the display to none for the empty preparation field while updating
-if (window.location.href.indexOf("update")) {
+if (window.location.href.indexOf("update") > -1) {
     function hideFields() {
         document.getElementById("myPreparationSteps").style.display = "none";
     }
