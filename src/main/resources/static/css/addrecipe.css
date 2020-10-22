@@ -76,9 +76,8 @@ input[class*="quantity"] {
 }
 
 textarea[id*="myPreparationSteps"] {
-    width: 355px;
+    width: 90%;
     margin-bottom: 9px;
-
 }
 
 .autocomplete {
