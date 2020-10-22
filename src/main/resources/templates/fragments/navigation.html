@@ -49,17 +49,17 @@
         </li>
     </ul>
     <!--Extended navigation for admin users-->
-    <ul id="nav-extra">
-        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+    <ul id="nav-extra" sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <li>
             <a class="nav-admin-button" th:href="@{/recipes}">Recipe</a>
         </li>
-        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <li>
             <a class="nav-admin-button" th:href="@{/cuisine}">Cuisine</a>
         </li>
-        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <li>
             <a class="nav-admin-button" th:href="@{/category}">Category</a>
         </li>
-        <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <li>
             <a class="nav-admin-button" th:href="@{/ingredients}">Ingredients</a>
         </li>
     </ul>

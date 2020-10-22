@@ -158,14 +158,14 @@ nav li a {
 
 /* Admin navigation extension */
 #nav-extra {
-    background-color: black;
+    /*background-color: black;*/
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
     transition-duration: 0.5s;
 }
 
 .nav-admin-button {
     font-size: 20px;
-    padding: 0px 5px;
+    padding: 0px 0px 10px 15px;
     float: left;
 }
 
@@ -414,14 +414,14 @@ th {
 
 .column-left {
     float: left;
-    width: 200px;
+    width: 175px;
     margin: 10px;
     transition-duration: 1s;
 }
 
 .column-right {
     float: left;
-    width: 400px;
+    width: 425px;
     margin: 10px;
 }
 
@@ -539,7 +539,9 @@ label {
 
 .content-shown {
     background-color: #cfd8dc;
+    max-height: 160px;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
     border-radius: 0px 0px 50px 50px;
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
     width: 40%;

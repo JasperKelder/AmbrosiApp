@@ -8,7 +8,7 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
-<button type="button" class="collapsible">Filter Recipes</button>
+<button type="button" class="collapsible clickable">Filter Recipes</button>
 <div class="content-shown">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
@@ -46,6 +46,5 @@
 </div>
 <script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/slidedown.js"></script>
-<script type="text/javascript" src="/script/collapsebutton.js"></script>
 </body>
 </html>

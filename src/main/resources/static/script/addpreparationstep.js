@@ -6,7 +6,7 @@ $(document).ready(function () {
         var fieldWrapper = $('<div class="fieldwrapperPrep"/>');
         fieldWrapper.data("idx", intId);
         var preparationStep = $('<textarea id="myPreparationSteps' + intId + '" placeholder="Preparation" name="preparationlist[]" />');
-        var removeButton = $('<input type="button" class="remove" value=" X " />');
+        var removeButton = $('<input type="button" class="remove-prep" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
@@ -29,7 +29,7 @@ function makePrepStepList(array) {
     for (var i = 0; i < array.length; i++) {
         var prepStepWrapper = $('<div class="fieldwrapperPrep"/>');
         var preparationStep = $('<textarea name="preparationlist[]">'+ array[i].preparationStep +'</textarea>');
-        var removeButton = $('<input type="button" class="remove" value=" X " />');
+        var removeButton = $('<input type="button" class="remove-prep" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });

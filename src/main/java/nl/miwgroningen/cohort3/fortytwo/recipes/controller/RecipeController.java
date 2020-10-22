@@ -178,7 +178,9 @@ public class RecipeController {
                 }
                 RecipeIngredient recipeIngredient = new RecipeIngredient();
                 recipeIngredient.setIngredient(ingredient);
-                recipeIngredient.setQuantity(ingredientQuantity[i]);
+                if (ingredientQuantity.length > 0) {
+                    recipeIngredient.setQuantity(ingredientQuantity[i]);
+                }
                 recipeIngredients.add(recipeIngredient);
             }
         }

@@ -9,16 +9,15 @@
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <button type="button" class="collapsible">Admin Cuisine</button>
     <!--Main page-->
     <div class="fade-in">
         <div class="flex-container">
-            <div class="spaceMedium"></div>
             <div class="container center">
                 <!--Add cuisine form-->
                 <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
                     <div hidden><input type="text" th:field="*{cuisineId}"/></div>
-                    <div><input type="text" th:field="*{cuisineName}" required placeholder="Cuisine"/></div>
+                    <div><input type="text" th:field="*{cuisineName}" required placeholder="New Cuisine"/></div>
                     <div class="spaceSmall"></div>
                     <input type="submit" value="Submit"/>
                 </form>
