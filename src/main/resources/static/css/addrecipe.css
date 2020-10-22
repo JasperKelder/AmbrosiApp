@@ -39,6 +39,7 @@ input[type=file] {
     box-shadow: 0 0 5px black;
     height: 25px;
     border-style: none;
+    margin-top: 20px;
 }
 
 .remove:hover, .add:hover {
@@ -46,7 +47,7 @@ input[type=file] {
 }
 
 input[id*="myInput"] {
-    width: 170px;
+    width: 160px;
 }
 
 select[id*="measuringUnit"] {
@@ -57,7 +58,7 @@ select[id*="measuringUnitExistingRecipe"] {
     width: 90px;
 }
 
-input[id*="quantity"] {
+input[class*="quantity"] {
     width: 90px;
 }
 

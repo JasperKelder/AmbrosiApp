@@ -74,7 +74,7 @@
                                        name="ingredientName[]">
                                 <!-- this dropdown box for the measuring units is populated in addingredient.js-->
                                 <select id="measuringUnit" name="ingredientUnit[]"></select>
-                                <input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]"
+                                <input class="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]"
                                 required>
                                 <!--list of all ingredients in database for the autocomplete:-->
                                 <input id="myIngredients" type="hidden" class="ingredientList"
@@ -85,7 +85,6 @@
                                 <!--list of all measuring units for the dropdown box-->
                                 <input id="myIngredientMeasuringUnits" type="hidden" class="ingredientUnitsList"
                                        th:value="${allMeasuringUnits}">
-
                             </div>
                         </div>
                         <input type="button" value="Add ingredient" class="add" id="add">

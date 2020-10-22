@@ -161,8 +161,8 @@ $(document).ready(function () {
             'placeholder="Ingredient" name="ingredientName[]" />');
         var ingredientUnitField = $('<select id="measuringUnit' + intId + '" name="ingredientUnit[]" class="margin">')
         var ingredientQuantityField = $('<input type="number" placeholder="Quantity" ' +
-            'name="ingredientQuantity[]" class="margin" required>')
-        var removeButton = $('<input type="button" class="remove" value=" X " />');
+            'name="ingredientQuantity[]" class="margin quantity" required>')
+        var removeButton = $('<input type="button" class="remove margin" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
@@ -181,4 +181,15 @@ $(document).ready(function () {
             }).appendTo($select)
         })
     });
+});
+
+var inputfield = document.getElementsByClassName("quantity");
+// Execute a function when the user releases a key on the keyboard
+inputfield.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("add").click();
+    }
 });
