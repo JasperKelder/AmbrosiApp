@@ -539,7 +539,9 @@ label {
 
 .content-shown {
     background-color: #cfd8dc;
+    max-height: 160px;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
     border-radius: 0px 0px 50px 50px;
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
     width: 40%;
