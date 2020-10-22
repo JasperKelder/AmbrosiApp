@@ -229,8 +229,6 @@ public class RecipeController {
         String measuringUnitsToJson = gsonBuilder1.toJson(measuringUnitRepository.findAll());
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
 
-
-
         // generate a list of all the ingredient names and convert to Json (for the autocomplete).
         List<Ingredient> allIngredients = ingredientRepository.findAll();
         ArrayList<String> allIngredientNames = new ArrayList<>();

@@ -39,6 +39,12 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
     @Autowired
     MeasuringUnitRepository measuringUnitRepository;
 
+    @Autowired
+    IngredientRepository ingredientRepository;
+
+    @Autowired
+    RecipeIngredientRepository recipeIngredientRepository;
+
     @Override
     public void run(String... args) throws Exception {
         seedCategory();
@@ -94,7 +100,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         if (recipeRepository.count() == 0) {
             Recipe recipe1 = new Recipe(
                     "Eierbal",
-                    "Men neme een eierbal en stopt hem in de frituur",
                     20,
                     5,
                     8,
@@ -130,6 +135,28 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             measuringUnitRepository.saveAll(measuringUnits);
         }
     }
+
+    @Override
+    public void seedIngredient() {
+        if (ingredientRepository.count() == 0) {
+            Ingredient egg = new Ingredient("egg",measuringUnitRepository.getOne(4), true);
+            Ingredient flower = new Ingredient("flower",measuringUnitRepository.getOne(2), true);
+
+            ArrayList<Ingredient> ingredients = new ArrayList<>(Arrays.asList(egg, flower));
+            ingredientRepository.saveAll(ingredients);
+        }
+    }
+
+    @Override
+    public void seedRecipeIngredient() {
+        if (recipeIngredientRepository.count() == 0) {
+            RecipeIngredient recipeIngredient1 = new RecipeIngredient(recipeRepository.getOne(1), ingredientRepository.getOne(1), 2);
+            ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredient1));
+            recipeIngredientRepository.saveAll(recipeIngredients);
+        }
+    }
+
+
 
     public byte[] imageFromFileToByteArray(String imageFilePath) throws IOException {
         FileInputStream imageInFile = new FileInputStream(new File(imageFilePath));

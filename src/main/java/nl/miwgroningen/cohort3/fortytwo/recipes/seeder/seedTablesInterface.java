@@ -16,5 +16,11 @@ public interface seedTablesInterface {
 
     void seedMeasuringUnit();
 
+    void seedIngredient();
+
+    void seedRecipeIngredient();
+
+    void seedPreperationStep();
+
     void seedRecipe() throws IOException;
 }

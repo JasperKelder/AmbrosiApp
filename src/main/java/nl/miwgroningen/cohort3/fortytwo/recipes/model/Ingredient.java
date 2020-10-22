@@ -44,6 +44,12 @@ public class Ingredient implements Comparable<Ingredient> {
     public Ingredient() {
     }
 
+    public Ingredient(String ingredientName, MeasuringUnit measuringUnit, boolean validated) {
+        this.ingredientName = ingredientName;
+        this.measuringUnit = measuringUnit;
+        this.validated = validated;
+    }
+
     public Ingredient(String ingredientName) {
         this.ingredientName = ingredientName;
     }

@@ -28,6 +28,12 @@ public class RecipeIngredient {
     public RecipeIngredient() {
     }
 
+    public RecipeIngredient(Recipe recipe, Ingredient ingredient, Integer quantity) {
+        this.recipe = recipe;
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+    }
+
     public RecipeIngredientsKey getRecipeIngredientsKey() {
         return recipeIngredientsKey;
     }
