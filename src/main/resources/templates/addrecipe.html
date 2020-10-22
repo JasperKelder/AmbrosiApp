@@ -34,18 +34,17 @@
                     <div class="column-left">
                         <label>Preparation</label>
                     </div>
-                    <!--Recipe preparation-->
-                    <input id="prepstepsToJson" type="hidden" th:value="${prepstepsToJson}">
                     <div class="column-right">
-                        <div id="dynamicPrepList"></div>
+                        <!--Recipe preparation-->
+                        <input id="prepstepsToJson" type="hidden" th:value="${prepstepsToJson}">
                         <div id="dynamicPrepRows">
-                            <div class="fieldwrapperPrep"><textarea name="preparationlist[]"
-                                  placeholder="Preparation"></textarea>
+                            <div class="fieldwrapperPrep">
+                                <textarea id="myPreparationSteps" name="preparationlist[]"
+                                          placeholder="Preparation"></textarea>
                             </div>
                         </div>
+                        <input type="button" value="Add preparation step" class="add-prep" id="addstep">
                     </div>
-                    <input type="button" value="Add preparation step" class="add" id="addstep">
-
                     <div class="column-left">
                         <label for="preparationtime">Prep-time</label>
                     </div>
@@ -87,7 +86,7 @@
                                        th:value="${allMeasuringUnits}">
                             </div>
                         </div>
-                        <input type="button" value="Add ingredient" class="add" id="add">
+                        <input type="button" value="Add ingredient" class="add-ingredient" id="add">
                     </div>
                     <div class="column-left">
                         <label for="cooktime">Cook-time</label>

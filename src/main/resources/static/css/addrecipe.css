@@ -17,7 +17,7 @@ input[type=file] {
     transition-duration: 0.5s;
 }
 
-.remove {
+.remove, .remove-prep {
     font-family: Arial;
     height: 30px;
     width: 30px;
@@ -27,10 +27,19 @@ input[type=file] {
     cursor: pointer;
     box-shadow: 0 0 5px black;
     border-style: none;
-    /*font-size: 130%;*/
 }
 
-.add {
+.remove-prep {
+    position: absolute;
+    top: 25px;
+    margin-left: 10px;
+}
+
+.fieldwrapperPrep {
+    position: relative;
+}
+
+.add-ingredient, .add-prep {
     font-family: Arial;
     transition-duration: 0.5s;
     background-color: black;
@@ -42,7 +51,11 @@ input[type=file] {
     margin-top: 20px;
 }
 
-.remove:hover, .add:hover {
+.add-prep {
+    margin-top: 9px;
+}
+
+.remove:hover, .add-ingredient:hover {
     box-shadow: 0 0 10px black;
 }
 
@@ -60,6 +73,12 @@ select[id*="measuringUnitExistingRecipe"] {
 
 input[class*="quantity"] {
     width: 90px;
+}
+
+textarea[id*="myPreparationSteps"] {
+    width: 355px;
+    margin-bottom: 9px;
+
 }
 
 .autocomplete {
