@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,7 +90,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
 
     @Override
     public void seedRecipe() throws IOException {
-        byte[] eierbalImage = recipeToByteArray("src/main/resources/static/images/newrecipes/SaltedCaramelTaart.jpg");
+        byte[] eierbalImage = imageFromFileToByteArray("src/main/resources/static/images/newrecipes/SaltedCaramelTaart.jpg");
         if (recipeRepository.count() == 0) {
             Recipe recipe1 = new Recipe(
                     "Eierbal",
@@ -132,7 +131,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         }
     }
 
-    private byte[] recipeToByteArray(String imageFilePath) throws IOException {
+    public byte[] imageFromFileToByteArray(String imageFilePath) throws IOException {
         FileInputStream imageInFile = new FileInputStream(new File(imageFilePath));
 
         return imageInFile.readAllBytes();

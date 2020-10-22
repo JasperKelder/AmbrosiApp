@@ -19,6 +19,12 @@ public class Category {
     private String categoryName;
 
     //constructors
+
+    public Category(Integer categoryId, String categoryName) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+    }
+
     public Category(String categoryName) {
         this.categoryName = categoryName;
     }
