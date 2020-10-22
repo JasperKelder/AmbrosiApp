@@ -124,10 +124,13 @@ $.each(allMeasuringUnitsArray, function (index, item) {
 function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')
-        var ingredientField = $('<input type="text" value="' + array[i].ingredient.ingredientName + '" name="ingredientName[]">');
-        var ingredientUnitField = $('<select id="measuringUnitExistingRecipe' + i + '" name="ingredientUnit[]">')
-        var ingredientQuantityField = $('<input type="number" value="' + array[i].quantity + '" name="ingredientQuantity[]">')
-        var removeButton = $('<input type="button" class="remove" value=" X " />');
+        var ingredientField = $('<input id="myInputUpdate" type="text" value="' + array[i].ingredient.ingredientName +
+            '" name="ingredientName[]">');
+        var ingredientUnitField = $('<select id="measuringUnitExistingRecipe' + i +
+            '" name="ingredientUnit[]" class="margin">')
+        var ingredientQuantityField = $('<input type="number" value="' + array[i].quantity +
+            '" name="ingredientQuantity[]" class="margin quantity">')
+        var removeButton = $('<input type="button" class="remove margin" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
         });
@@ -182,3 +185,13 @@ $(document).ready(function () {
         })
     });
 });
+
+// Changes the display to none for the empty ingredient fields while updating
+if (window.location.href.indexOf("update")) {
+    function hideFields() {
+        document.getElementById("myInput1").style.display = "none";
+        document.getElementById("measuringUnit").style.display = "none";
+        document.getElementById("quantity").style.display = "none";
+    }
+    window.onload = hideFields();
+}
