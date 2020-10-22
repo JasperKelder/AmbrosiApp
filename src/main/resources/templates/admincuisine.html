@@ -11,28 +11,31 @@
     <nav th:replace="fragments/navigation :: navigation"></nav>
     <nav th:replace="fragments/navextra :: navextra"></nav>
     <!--Main page-->
-    <div class="flex-container">
-        <div class="spaceMedium"></div>
-        <div class="container center">
-            <!--Add cuisine form-->
-            <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
-                <div hidden><input type="text" th:field="*{cuisineId}"/></div>
-                <div><input type="text" th:field="*{cuisineName}" required placeholder="Cuisine"/></div>
-                <div class="spaceSmall"></div>
-                <input type="submit" value="Submit"/>
-            </form>
+    <div class="fade-in">
+        <div class="flex-container">
+            <div class="spaceMedium"></div>
+            <div class="container center">
+                <!--Add cuisine form-->
+                <form action="#" th:action="@{/cuisine}" th:object="${cuisine}" method="post">
+                    <div hidden><input type="text" th:field="*{cuisineId}"/></div>
+                    <div><input type="text" th:field="*{cuisineName}" required placeholder="Cuisine"/></div>
+                    <div class="spaceSmall"></div>
+                    <input type="submit" value="Submit"/>
+                </form>
+            </div>
+            <div class="spaceMedium"></div>
+            <table>
+                <!--Displays all cuisines-->
+                <tr th:each="cuisine: ${allCuisines}">
+                    <td th:text="${cuisine.cuisineName}"></td>
+                    <!--Loads the cuisine in the add cuisine form so it can be updated-->
+                    <td class="admin-table"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
+                                               class="editbutton">Update</a></td>
+                </tr>
+            </table>
         </div>
-        <div class="spaceMedium"></div>
-        <table>
-            <!--Displays all cuisines-->
-            <tr th:each="cuisine: ${allCuisines}">
-                <td th:text="${cuisine.cuisineName}"></td>
-                <!--Loads the cuisine in the add cuisine form so it can be updated-->
-                <td class="admin-table"><a th:href="@{/cuisine/update/{cuisineId}(cuisineId=${cuisine.cuisineId})}"
-                                           class="editbutton">Update</a></td>
-            </tr>
-        </table>
     </div>
 </sec:authorize>
+<script type="text/javascript" src="/script/fadein.js"></script>
 </body>
 </html>

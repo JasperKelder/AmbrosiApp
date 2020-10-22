@@ -124,9 +124,9 @@ $.each(allMeasuringUnitsArray, function (index, item) {
 function makeIngredientList(array) {
     for (var i = 0; i < array.length; i++) {
         var ingredientWrapper = $('<div class="ingredientwrapper"/>')
-        var ingredientField = $('<input id="myInput" type="text" value="' + array[i].ingredient.ingredientName + '" name="ingredientName[]">');
+        var ingredientField = $('<input type="text" value="' + array[i].ingredient.ingredientName + '" name="ingredientName[]">');
         var ingredientUnitField = $('<select id="measuringUnitExistingRecipe' + i + '" name="ingredientUnit[]">')
-        var ingredientQuantityField = $('<input id="quantity" type="number" value="' + array[i].quantity + '" name="ingredientQuantity[]">')
+        var ingredientQuantityField = $('<input type="number" value="' + array[i].quantity + '" name="ingredientQuantity[]">')
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
@@ -159,8 +159,9 @@ $(document).ready(function () {
         fieldWrapper.data("idx", intId);
         var ingredientInput = $('<input id="myInput' + intId + '" type="text" class="ingredientInput" ' +
             'placeholder="Ingredient" name="ingredientName[]" />');
-        var ingredientUnitField = $('<select id="measuringUnit' + intId + '" name="ingredientUnit[]">')
-        var ingredientQuantityField = $('<input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]">')
+        var ingredientUnitField = $('<select id="measuringUnit' + intId + '" name="ingredientUnit[]" class="margin">')
+        var ingredientQuantityField = $('<input type="number" placeholder="Quantity" ' +
+            'name="ingredientQuantity[]" class="margin" required>')
         var removeButton = $('<input type="button" class="remove" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();

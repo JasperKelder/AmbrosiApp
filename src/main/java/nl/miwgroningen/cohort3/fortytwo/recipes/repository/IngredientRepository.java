@@ -3,6 +3,7 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.repository;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Ingredient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
+import java.util.Optional;
 
 
 /**

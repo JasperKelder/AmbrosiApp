@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<!--Book-->
+<div th:fragment="book">
+    <!--Displays a css styled book-->
+    <figure class='book'>
+        <!--Front-->
+        <ul class='hardcover_front'>
+            <li>
+                <div class="spaceSmall"></div>
+                <div class="cookbook-title">Cookbook</div>
+                <svg th:replace="fragments/avocado :: avocado"></svg>
+                <div class="cookbook-title" th:text="${cookbook.getCookbookName()}" id="cookbook-name"></div>
+            </li>
+            <li></li>
+        </ul>
+        <!--Pages-->
+        <ul class='page'>
+            <li></li>
+            <li>
+                <a class="btn"
+                   th:href="@{/viewcookbook/{cookbookId}(cookbookId=${cookbook.cookbookId})}">
+                    Show Recipes</a>
+            </li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <!--Back-->
+        <ul class='hardcover_back'>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul class='book_spine'>
+            <li></li>
+            <li></li>
+        </ul>
+    </figure>
+</div>
+</div>
+</div>
+</body>
+</html>

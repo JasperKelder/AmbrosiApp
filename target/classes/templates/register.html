@@ -8,63 +8,60 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<nav>
-    <ul id="nav-extra">
-        <!--Needed to display the black bar-->
-        <li id="nav-empty"></li>
-    </ul>
-</nav>
+<button type="button" class="collapsible">Register</button>
 <!--Main page-->
-<div class="flex-container">
-    <div class="spaceLarge"></div>
-    <div id="add-container">
-        <!--Registration form-->
-        <form th:action="@{/registration}" th:object="${user}" method="post">
-            <div class="column-left">
-                <label for="firstName">First Name</label>
-            </div>
-            <div class="column-right">
-                <!--First name-->
-                <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
-                       required placeholder="First Name"/>
-            </div>
-            <div class="column-left">
-                <label for="lastName">Last Name</label>
-            </div>
-            <div class="column-right">
-                <!--Last name-->
-                <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
-                       placeholder="Last Name"/>
-            </div>
-            <div class="column-left">
-                <label for="emailAddress">Email Address</label>
-            </div>
-            <div class="column-right">
-                <!--Email address-->
-                <input type="text" id="emailAddress" name="emailAddress" th:field="*{emailAddress}" required
-                       placeholder="Email Address"/>
-            </div>
-            <div class="column-left">
-                <label for="password">Password</label>
-            </div>
-            <div class="column-right">
-                <!--Password-->
-                <input type="password" id="password" name="password" th:field="*{password}" required
-                       placeholder="Password"/>
-            </div>
-            <div class="row"></div>
-            <div class="center">
-                <div class="spaceSmall"></div>
-                <button class="flashybutton" type="submit">Register</button>
-                <div class="spaceSmall"></div>
-                <!--Navigation for login-->
-                <a class="flashybutton" th:href="@{/login}">Go to login</a>
-            </div>
-        </form>
+<div class="fade-in">
+    <div class="flex-container">
+        <div id="add-container">
+            <!--Registration form-->
+            <form th:action="@{/registration}" th:object="${user}" method="post">
+                <div class="column-left">
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="column-right">
+                    <!--First name-->
+                    <input type="text" id="firstName" name="firstName" th:field="*{firstName}"
+                           required placeholder="First Name"/>
+                </div>
+                <div class="column-left">
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="column-right">
+                    <!--Last name-->
+                    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required
+                           placeholder="Last Name"/>
+                </div>
+                <div class="column-left">
+                    <label for="emailAddress">Email Address</label>
+                </div>
+                <div class="column-right">
+                    <!--Email address-->
+                    <input type="text" id="emailAddress" name="emailAddress" th:field="*{emailAddress}" required
+                           placeholder="Email Address"/>
+                </div>
+                <div class="column-left">
+                    <label for="password">Password</label>
+                </div>
+                <div class="column-right">
+                    <!--Password-->
+                    <input type="password" id="password" name="password" th:field="*{password}" required
+                           placeholder="Password"/>
+                </div>
+                <div class="row"></div>
+                <div class="center">
+                    <div class="spaceSmall"></div>
+                    <button class="flashybutton" type="submit">Register</button>
+                    <div class="spaceSmall"></div>
+                    <!--Navigation for login-->
+                    <a class="flashybutton" th:href="@{/login}">Go to login</a>
+                </div>
+            </form>
+        </div>
+        <div class="spaceSmall"></div>
+        <!--Displays a message after a successful registration-->
+        <div class="messagesmall warning-container" th:if="${param.success}">You've successfully registered</div>
     </div>
-    <div class="spaceSmall"></div>
-    <!--Displays a message after a successful registration-->
-    <div class="messagesmall warning-container" th:if="${param.success}">You've successfully registered</div>
 </div>
+<script type="text/javascript" src="/script/fadein.js"></script>
 </body>
 </html>

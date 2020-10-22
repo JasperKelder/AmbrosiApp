@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<!--Navigation-->
+<nav th:fragment="search">
+    <!--Searchbar-->
+    <ul>
+        <!--Logout button-->
+        <li class="nav-right">
+            <a th:href="@{/logout}">
+                <img id="nav-logout" src="/images/logout.jpg" alt="Logout image">
+            </a>
+        </li>
+<!--        <li id="nav-search-container">-->
+            <div id="nav-search-bar">
+                <input id="nav-search" type="text"/>
+                <a href="" onclick="validateInput()" id="searchlink">
+                    <img id="nav-search-icon" src="/images/search.png">
+                </a>
+            </div>
+        </li>
+    </ul>
+    <script type="text/javascript" src="/script/search.js"></script>
+</nav>
+</body>
+</html>

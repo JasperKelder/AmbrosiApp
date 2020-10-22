@@ -3,154 +3,164 @@
 <head>
     <title>EatAndTreat - Add</title>
     <div th:replace="fragments/head :: head"></div>
-    <link rel="stylesheet" href="/css/background.css"/>
     <link rel="stylesheet" href="/css/addrecipe.css"/>
+    <link rel="stylesheet" href="/css/background.css"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 <sec:authorize access="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')">
     <!--Navigation-->
     <nav th:replace="fragments/navigation :: navigation"></nav>
-    <nav th:replace="fragments/navextra :: navextra"></nav>
+    <button type="button" class="collapsible">Add Recipe</button>
     <!--Main page-->
-    <div class="spaceMedium"></div>
-    <div class="flex-container">
-        <div id="add-container">
-            <!--Add recipe form-->
-            <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data"
-                  autocomplete="off">
-                <!--Hidden recipe ID-->
-                <div hidden>
-                    <input type="text" th:field="*{recipeId}"/>
-                </div>
-                <div class="column-left">
-                    <label for="title">Title</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe title-->
-                    <input type="text" id="title" name="title" th:field="*{recipeTitle}"
-                           required placeholder="Title"/>
-                </div>
-                <div class="column-left">
-                    <label for="preparation">Preparation</label>
-                </div>
-                <div class="column-right">
+    <div class="fade-in">
+        <div class="flex-container">
+            <div id="add-container">
+                <!--Add recipe form-->
+                <form th:action="@{/add}" th:object="${recipe}" method="post" enctype="multipart/form-data"
+                      autocomplete="off">
+                    <!--Hidden recipe ID-->
+                    <div hidden>
+                        <input type="text" th:field="*{recipeId}"/>
+                    </div>
+                    <div class="column-left">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe title-->
+                        <input type="text" id="title" name="title" th:field="*{recipeTitle}"
+                               required placeholder="Title"/>
+                    </div>
+                    <div class="column-left">
+                        <label>Preparation</label>
+                    </div>
                     <!--Recipe preparation-->
-                    <textarea id="preparation" name="preparation" th:field="*{recipePreperation}"
-                              required placeholder="Preparation"></textarea>
-                </div>
-                <div class="column-left">
-                    <label for="preparationtime">Prep-time</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe prep-time-->
-                    <input type="number" id="preparationtime" name="preparationtime" th:field="*{preperationTime}"
-                           required placeholder="Prep-time"/>
-                </div>
-                <div class="column-left">
-                    <label for="servings">Servings</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe servings-->
-                    <input type="number" id="servings" name="servings" th:field="*{servings}"
-                           required placeholder="Servings"/>
-                </div>
-                <div class="column-left">
-                    <label>Ingredients</label>
-                </div>
-                <div class="column-right">
-                    <div id="dynamicList"></div>
-                    <div id="dynamicRows">
-                        <div class="fieldwrapper" id="field1">
-                            <!--Recipe ingredients-->
-                            <input id="myInput1" type="text" class="ingredientInput" placeholder="Ingredient"
-                                   name="ingredientName[]">
-                            <!-- this dropdown box for the measuring units is populated in addingredient.js-->
-                            <select id="measuringUnit" name="ingredientUnit[]"></select>
-                            <input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]">
-                            <!--list of all ingredients in database for the autocomplete:-->
-                            <input id="myIngredients" type="hidden" class="ingredientList"
-                                   th:value="${allIngredientsJson}">
-                            <!--list of all ingredients with recipe (for update recipe):-->
-                            <input id="myRecipeToJson" type="hidden" class="ingredientUnitListRecipe"
-                                   th:value="${recipeToJson}">
-                            <!--list of all measuring units for the dropdown box-->
-                            <input id="myIngredientMeasuringUnits" type="hidden" class="ingredientUnitsList"
-                                   th:value="${allMeasuringUnits}">
-
+                    <input id="prepstepsToJson" type="hidden" th:value="${prepstepsToJson}">
+                    <div class="column-right">
+                        <div id="dynamicPrepList"></div>
+                        <div id="dynamicPrepRows">
+                            <div class="fieldwrapperPrep"><textarea name="preparationlist[]"
+                                  placeholder="Preparation"></textarea>
+                            </div>
                         </div>
                     </div>
-                    <input type="button" value="Add ingredient" class="add" id="add">
-                </div>
-                <div class="column-left">
-                    <label for="cooktime">Cook-time</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe cook-time-->
-                    <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}"
-                           required placeholder="Cook-time"/>
-                </div>
-                <div class="column-left">
-                    <label for="cuisine">Cuisine</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe cuisine-->
-                    <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
-                        <!--Dropdown box displaying all cuisines-->
-                        <option th:each="cuisine : ${allCuisines}"
-                                th:value="${cuisine.cuisineId}"
-                                th:text="${cuisine.cuisineName}">
-                        </option>
-                    </select>
-                </div>
-                <div class="column-left">
-                    <label for="category">Category</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe category-->
-                    <select id="category" name="category" th:field="*{categoryName}" required>
-                        <!--Dropdown box displaying all categories-->
-                        <option th:each="category : ${allCategories}"
-                                th:value="${category.categoryId}"
-                                th:text="${category.categoryName}">
-                        </option>
-                    </select>
-                </div>
-                <div class="column-left">
-                    <label for="cookbook">Cookbook</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe cookbook-->
-                    <select id="cookbook" name="cookbook" th:object="${cookbook}" required>
-                        <!--Dropdown box displaying all cookbooks-->
-                        <option th:each="cookbook : ${allUserCookbooks}"
-                                th:value="${cookbook.cookbookId}"
-                                th:text="${cookbook.cookbookName}">
-                        </option>
-                    </select>
-                </div>
-                <div class="column-left">
-                    <label for="file">Image</label>
-                </div>
-                <div class="column-right">
-                    <!--Recipe image-->
-                    <input type="file" name="file" id="file" onchange="FileValidation()"
-                           th:placeholder="|data:image/jpeg;base64,${currentImage}|">
-                </div>
-                <!--Displays the current image for updated recipes-->
-                <div th:unless="${currentImage} == null">
-                    <div class="row">Current image:</div>
-                    <img th:src="|data:image/jpeg;base64,${currentImage}|"/>
-                </div>
-                <input id="floatrightbutton" type="submit" value="Submit">
-            </form>
+                    <input type="button" value="Add preparation step" class="add" id="addstep">
+
+                    <div class="column-left">
+                        <label for="preparationtime">Prep-time</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe prep-time-->
+                        <input type="number" id="preparationtime" name="preparationtime" th:field="*{preperationTime}"
+                               required placeholder="Prep-time"/>
+                    </div>
+                    <div class="column-left">
+                        <label for="servings">Servings</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe servings-->
+                        <input type="number" id="servings" name="servings" th:field="*{servings}"
+                               required placeholder="Servings"/>
+                    </div>
+                    <div class="column-left">
+                        <label>Ingredients</label>
+                    </div>
+                    <div class="column-right">
+                        <div id="dynamicList"></div>
+                        <div id="dynamicRows">
+                            <div class="fieldwrapper" id="field1">
+                                <!--Recipe ingredients-->
+                                <input id="myInput1" type="text" class="ingredientInput" placeholder="Ingredient"
+                                       name="ingredientName[]">
+                                <!-- this dropdown box for the measuring units is populated in addingredient.js-->
+                                <select id="measuringUnit" name="ingredientUnit[]"></select>
+                                <input id="quantity" type="number" placeholder="Quantity" name="ingredientQuantity[]"
+                                required>
+                                <!--list of all ingredients in database for the autocomplete:-->
+                                <input id="myIngredients" type="hidden" class="ingredientList"
+                                       th:value="${allIngredientsJson}">
+                                <!--list of all ingredients with recipe (for update recipe):-->
+                                <input id="myRecipeToJson" type="hidden" class="ingredientUnitListRecipe"
+                                       th:value="${recipeToJson}">
+                                <!--list of all measuring units for the dropdown box-->
+                                <input id="myIngredientMeasuringUnits" type="hidden" class="ingredientUnitsList"
+                                       th:value="${allMeasuringUnits}">
+
+                            </div>
+                        </div>
+                        <input type="button" value="Add ingredient" class="add" id="add">
+                    </div>
+                    <div class="column-left">
+                        <label for="cooktime">Cook-time</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe cook-time-->
+                        <input type="number" id="cooktime" name="cooktime" th:field="*{cooktime}"
+                               required placeholder="Cook-time"/>
+                    </div>
+                    <div class="column-left">
+                        <label for="cuisine">Cuisine</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe cuisine-->
+                        <select id="cuisine" name="cuisine" th:field="*{cuisineName}" required>
+                            <!--Dropdown box displaying all cuisines-->
+                            <option th:each="cuisine : ${allCuisines}"
+                                    th:value="${cuisine.cuisineId}"
+                                    th:text="${cuisine.cuisineName}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="column-left">
+                        <label for="category">Category</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe category-->
+                        <select id="category" name="category" th:field="*{categoryName}" required>
+                            <!--Dropdown box displaying all categories-->
+                            <option th:each="category : ${allCategories}"
+                                    th:value="${category.categoryId}"
+                                    th:text="${category.categoryName}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="column-left">
+                        <label for="cookbook">Cookbook</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe cookbook-->
+                        <select id="cookbook" name="cookbook" th:object="${cookbook}" required>
+                            <!--Dropdown box displaying all cookbooks-->
+                            <option th:each="cookbook : ${allUserCookbooks}"
+                                    th:value="${cookbook.cookbookId}"
+                                    th:text="${cookbook.cookbookName}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="column-left">
+                        <label for="file">Image</label>
+                    </div>
+                    <div class="column-right">
+                        <!--Recipe image-->
+                        <input type="file" name="file" id="file" onchange="FileValidation()"
+                               th:placeholder="|data:image/jpeg;base64,${currentImage}|">
+                    </div>
+                    <!--Displays the current image for updated recipes-->
+                    <div th:unless="${currentImage} == null">
+                        <div class="row">Current image:</div>
+                        <img th:src="|data:image/jpeg;base64,${currentImage}|"/>
+                    </div>
+                    <input id="floatrightbutton" type="submit" value="Submit">
+                </form>
+            </div>
         </div>
     </div>
-    <div class="spaceMedium"></div>
 </sec:authorize>
+<script type="text/javascript" src="/script/fadein.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="/script/addingredient.js"></script>
 <script type="text/javascript" src="/script/fileuploadcheck.js"></script>
+<script type="text/javascript" src="/script/addpreparationstep.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 * {
-    font-family: 'Finger Paint';
     box-sizing: border-box;
+    font-family: 'Roboto Mono';
 }
 
 html {
@@ -13,7 +13,6 @@ th, td, select {
 }
 
 body {
-    background-color: floralwhite;
     margin: 0;
     position: relative;
     padding-bottom: 6rem;
@@ -61,24 +60,24 @@ nav li a {
 #nav-logo {
     width: 120px;
     cursor: pointer;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
     transition-duration: 0.5s;
     margin-top: 7px;
 }
 
 #nav-logo-text-container {
-    margin-top: 40px;
+    float: none;
+    margin: auto;
+    position: relative;
 }
 
-#nav-logo-text {
-    font-size: 40px;
-}
 
 .nav-mykitchen-container {
     padding: 0;
     margin-top: 3px;
     margin-bottom: 20px;
+    margin-right: 9px;
 }
 
 .nav-mykitchen {
@@ -95,35 +94,29 @@ nav li a {
     2px -2px 0 black,
     -2px -2px 0 black;
     transition-duration: 0.5s;
+    font-size: 75%;
 }
 
 #nav-logout {
     width: 60px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
     margin-top: 35px;
     transition-duration: 0.5s;
 }
 
-.nav-mykitchen-text:hover {
-    text-shadow: -2px 2px 0 #f9ab23,
-    2px 2px 0 #f9ab23,
-    2px -2px 0 #f9ab23,
-    -2px -2px 0 #f9ab23;
-}
-
-li a:hover {
-    text-shadow: -1px 1px 0 #f9ab23,
-    1px 1px 0 #f9ab23,
-    1px -1px 0 #f9ab23,
-    -1px -1px 0 #f9ab23;
-}
+/*li a:hover, #nav-eat:hover {*/
+/*    text-shadow: -0.2px 0.2px 0 #f9ab23,*/
+/*    0.2px 0.2px 0 #f9ab23,*/
+/*    0.2px -0.2px 0 #f9ab23,*/
+/*    -0.2px -0.2px 0 #f9ab23;*/
+/*}*/
 
 #nav-search-container {
-    float: none;
-    margin: auto;
-    width: 300px;
-    padding-top: 45px;
+    margin: 40px 40px 0px 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
     position: relative;
 }
 
@@ -133,7 +126,7 @@ li a:hover {
     border: 1px solid lightgray;
     transition-duration: 0.5s;
     box-shadow: 0 0 5px black;
-    background-color: floralwhite;
+    background-color: white;
     text-align: center;
 }
 
@@ -142,9 +135,8 @@ li a:hover {
     color: black;
     text-align: center;
     font-size: 120%;
-    font-family: 'Finger Paint';
-    width: 220px;
-    background-color: floralwhite;
+    width: 90%;
+    background-color: white;
     box-shadow: none;
     outline: none;
 }
@@ -154,15 +146,13 @@ li a:hover {
     width: 35px;
     cursor: pointer;
     position: absolute;
-    top: 76%;
-    right: -4%;
+    top: 50%;
+    right: 0%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-color: floralwhite;
-    transition-duration: 0.5s;
 }
 
-#nav-search-bar:hover, #nav-search-icon:hover {
+#nav-search-bar:hover {
     box-shadow: 0 0 10px black;
 }
 
@@ -170,33 +160,13 @@ li a:hover {
 #nav-extra {
     background-color: black;
     box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    transition-duration: 0.5s;
 }
 
 .nav-admin-button {
     font-size: 20px;
     padding: 0px 5px;
     float: left;
-}
-
-/* Changes the navigation bar when the user's screen is smaller than the specified width */
-@media screen and (max-width: 1280px) {
-    #nav-logo-text-container {
-        display: none;
-    }
-
-    #nav-search-container {
-        margin-top: 100px;
-        margin-bottom: 15px;
-        width: 90%;
-    }
-
-    #nav-search {
-        width: 85%;
-    }
-
-    #nav-search-icon {
-        right: 0%;
-    }
 }
 
 #nav-add {
@@ -217,6 +187,21 @@ li a:hover {
 
 #nav-empty {
     padding: 15px;
+}
+
+#nav-eat, #nav-eat-small {
+    color: #f9ab23;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    font-size: 230%;
+    transition-duration: 1s;
+    font-family: 'Pacifico';
+}
+
+#nav-eat-small {
+    display: none;
 }
 
 /* End navigation CSS */
@@ -249,6 +234,9 @@ li a:hover {
 
 .grid-image {
     width: 300px;
+    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
     border-radius: 10%;
     box-shadow: 0 0 5px black;
     transition-duration: 0.5s;
@@ -272,23 +260,6 @@ li a:hover {
     transform: translate(-50%, -50%);
 }
 
-/* Resizes the overview image grid columns for smaller screens */
-@media only screen and (max-width: 1280px) {
-    .overview-responsive {
-        width: 33.33%;
-    }
-}
-@media only screen and (max-width: 950px) {
-    .overview-responsive {
-        width: 50%;
-    }
-}
-@media only screen and (max-width: 625px) {
-    .overview-responsive {
-        width: 100%;
-    }
-}
-
 /* End overview CSS */
 /* */
 
@@ -306,7 +277,7 @@ h2, label, th {
     -1px -1px 0 black;
 }
 
-.message, .messagemedium, .messagesmall {
+.message, .messagemedium, .messagesmall, .cookbook-title {
     text-decoration: none;
     text-align: center;
     font-size: 400%;
@@ -323,6 +294,14 @@ h2, label, th {
 
 .messagesmall {
     font-size: 200%;
+}
+
+.cookbook-title {
+    font-size: 125%;
+    padding-bottom: 5px;
+}
+#cookbook-name {
+    color: floralwhite;
 }
 
 .center {
@@ -406,6 +385,7 @@ th {
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
+    transition-duration: 1s;
 }
 
 .warning-container {
@@ -436,16 +416,18 @@ th {
     float: left;
     width: 200px;
     margin: 10px;
+    transition-duration: 1s;
 }
 
 .column-right {
     float: left;
-    width: 450px;
+    width: 400px;
     margin: 10px;
 }
 
 label {
-    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .login-margin {
@@ -461,20 +443,20 @@ label {
 .modal {
     /* This way it could be display flex or grid or whatever also. */
     display: none;
-    /* Probably need media queries here */
     width: 350px;
     max-width: 100%;
-    height: 550px;
+    /*height: 200px;*/
     max-height: 100%;
     position: fixed;
+    padding: 20px;
     z-index: 100;
     left: 50%;
-    top: 60%;
+    top: 50%;
     /* Use this for centering if unknown width/height */
     transform: translate(-50%, -50%);
     /* If known, negative margins are probably better (less chance of blurry text). */
     /* margin: -200px 0 0 -200px; */
-    background: white;
+    background: #f93f23;
     box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
 }
 .opened {
@@ -509,11 +491,82 @@ label {
     padding: 26px;
     box-shadow: 0 0 5px black;
     background-color: #f93f23;
+    transition-duration: 1s;
 }
 
-/* End add recipe CSS */
-
+/* Style the button that is used to open and close the collapsible content */
 .collapsible {
+    background-color: black;
+    border: none;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    color: #e1e1e1;
+    font-size: 20px;
+    padding: 5px;
+    transition-duration: 1s;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    border-radius: 0px 0px 50px 50px;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    width: 50%;
+    margin-left: 25%;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+/*!* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) *!*/
+/*.active {*/
+/*    background-color: #f93f23;*/
+/*}*/
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    background-color: #cfd8dc;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-radius: 0px 0px 50px 50px;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    width: 40%;
+    margin-left: 30%;
+    text-align: center;
+}
+
+.content-shown {
+    background-color: #cfd8dc;
+    overflow: hidden;
+    border-radius: 0px 0px 50px 50px;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.2);
+    width: 40%;
+    margin-left: 30%;
+    text-align: center;
+}
+
+.mykitchen-button {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#name-button {
+    margin-right: 20px;
+}
+
+.blue-button {
+    background-color: #e1e1e1;
+    color: black;
+    border: black;
+}
+
+.fade-in {
+    opacity: 0;
+}
+
+.collapsible-filter {
     border-radius: 4px;
     width: 100%;
     border: none;
@@ -523,11 +576,10 @@ label {
     background-color: darkorange;
 }
 
-.active, .collapsible:hover {
-    background-color: darkorange;
+.filter-header {
+    font-weight: bold;
 }
-
-.content {
+.content-filter {
     display: none;
     text-decoration: none;
     padding: 0 18px;
@@ -537,10 +589,10 @@ label {
 
 .content-data {
     text-decoration: none;
+    color:black;
 }
 
-p.filter-header {
-    text-align: left;
-    font-weight: bold;
-    font-size: 1.1em;
+.margin {
+    margin-left: 9px;
+    margin-top: 9px;
 }

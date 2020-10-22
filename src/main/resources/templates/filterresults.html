@@ -8,59 +8,44 @@
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
 <!--Main page-->
-<button type="button" class="collapsible">Filter recipes</button>
-<div class="content" th:each="category : ${allCategories}">
+<button type="button" class="collapsible">Filter Recipes</button>
+<div class="content-shown">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
+        <!--Get the current url-->
         <span th:with="url=${#httpServletRequest.requestURI}">
+            <!--Check which categories are selected and add style to them-->
+            <!--Attach clicked category to URL in href-->
             <a id="content-data" class="content-data"
+               th:style="${categoriesSelected.contains(category.categoryId)} ?
+               'background-color: darkorange; border-radius: 20%;'"
                th:text="${category.categoryName}"
                th:href="@{${url}+','+${category.categoryId}}"></a><br>
-            <span th:each="categoryId : ${categoriesSelected}" th:if="${!categoriesSelected.contains(categoryId)}" >
-
-            </span>
         </span>
     </span>
 </div>
-<p>Filtered by:</p>
-<span th:each="categorySelected: ${categoriesSelected}">
-        <a th:text="${allCategories.get(categorySelected - 1).categoryName}"></a><br>
-</span>
-
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-</script>
-
-<div class="spaceSmall"></div>
-<!--Shows a message when there are no recipes in the database-->
-<div th:if="${recipesByCategory.size() < 1}">
-    <div class="spaceMedium"></div>
-    <div class="message">This page is hungry</div>
-    <div class="message">Please feed it some recipes first with your selected Category</div>
-</div>
-<div th:if="${recipesByCategory.size() >= 1}">
-    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-    <div th:each="i : ${#numbers.sequence(0, recipesByCategory.size() - 1)}">
-        <!--This will add all the info into the grid items-->
-        <div class="col-3 imagetextcontainer" th:value="${recipesByCategory.get(i).recipeId}">
-            <a th:href="@{/viewrecipe/{recipeId}(recipeId=${recipesByCategory.get(i).recipeId})}">
-                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
-            <div class="index-foodname" th:text="${recipesByCategory.get(i).recipeTitle}"></div>
+<div class="fade-in">
+    <div class="spaceSmall"></div>
+    <!--Shows a message when there are no recipes in the database-->
+    <div th:if="${recipesByCategory.size() < 1}">
+        <div class="spaceMedium"></div>
+        <div class="message">This page is hungry</div>
+        <div class="message">Please feed it some recipes first with your selected Category</div>
+    </div>
+    <div th:if="${recipesByCategory.size() >= 1}">
+        <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, recipesByCategory.size() - 1)}">
+            <!--This will add all the info into the grid items-->
+            <div class="col-3 imagetextcontainer" th:value="${recipesByCategory.get(i).recipeId}">
+                <a th:href="@{/viewrecipe/{recipeId}(recipeId=${recipesByCategory.get(i).recipeId})}">
+                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
+                <div class="index-foodname" th:text="${recipesByCategory.get(i).recipeTitle}"></div>
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/script/fadein.js"></script>
+<script type="text/javascript" src="/script/slidedown.js"></script>
+<script type="text/javascript" src="/script/collapsebutton.js"></script>
 </body>
 </html>

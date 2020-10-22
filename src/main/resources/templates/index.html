@@ -7,16 +7,8 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<nav>
-    <!--Displays extra nav options, except for admin users-->
-    <ul id="nav-extra" th:unless="${#authorization.expression('hasRole(''ADMIN'')')}">
-        <li>
-            <a id="nav-middle">Cravings</a>
-        </li>
-    </ul>
-</nav>
-<!--Main page-->
-<button type="button" class="collapsible">Filter recipes</button>
+<!--Sliding down from navbar-->
+<button type="button" class="collapsible clickable">Filter Recipes</button>
 <div class="content" th:each="category : ${allCategories}">
     <p class="filter-header">Category</p>
     <span th:each="category : ${allCategories}">
@@ -24,41 +16,29 @@
            th:href="@{/index/filterresults/{category}(category=${category.categoryId})}"></a><br>
     </span>
 </div>
-
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-</script>
-
-<div class="spaceSmall"></div>
-<!--Shows a message when there are no recipes in the database-->
-<div th:if="${allRecipes.size() < 1}">
-    <div class="spaceMedium"></div>
-    <div class="message">This page is hungry</div>
-    <div class="message">Please feed it some recipes first</div>
-</div>
-<div th:if="${allRecipes.size() >= 1}">
-    <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
-    <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
-        <!--This will add all the info into the grid items-->
-        <div class="col-3 overview-responsive imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
-            <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
-                <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
-            <div class="index-foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
+<!--Main page-->
+<div class="fade-in">
+    <div class="spaceSmall"></div>
+    <!--Shows a message when there are no recipes in the database-->
+    <div th:if="${allRecipes.size() < 1}">
+        <div class="spaceMedium"></div>
+        <div class="message">This page is hungry</div>
+        <div class="message">Please feed it some recipes first</div>
+    </div>
+    <div th:if="${allRecipes.size() >= 1}">
+        <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
+        <div th:each="i : ${#numbers.sequence(0, allRecipes.size() - 1)}">
+            <!--This will add all the info into the grid items-->
+            <div class="col-3 overview-responsive imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
+                <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
+                    <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
+                <div class="index-foodname" th:text="${allRecipes.get(i).recipeTitle}"></div>
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/script/fadein.js"></script>
+<script type="text/javascript" src="/script/slidedown.js"></script>
+<script type="text/javascript" src="/script/collapsebutton.js"></script>
 </body>
 </html>

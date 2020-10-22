@@ -1,0 +1,117 @@
+@media only screen and (max-width: 1550px) {
+    .collapsible {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .content {
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .overview-responsive {
+        width: 33.33%;
+    }
+    .collapsible {
+        width: 70%;
+        margin-left: 15%;
+    }
+    .content {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .mykitchen-button {
+        margin-top: 10px;
+    }
+    #nav-eat {
+        display: none;
+    }
+    #nav-eat-small {
+        display: block;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .logout {
+        margin-left: 70px;
+    }
+    .collapsible {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .content {
+        width: 70%;
+        margin-left: 15%;
+    }
+}
+@media only screen and (max-width: 1040px) {
+    #nav-eat-small {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .cookbooks-responsive {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 950px) {
+    .overview-responsive {
+        width: 50%;
+    }
+    .collapsible {
+        width: 90%;
+        margin-left: 5%;
+    }
+    .content {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+@media screen and (max-width: 850px) {
+    #add-container {
+        width: 470px;
+    }
+}
+@media screen and (max-width: 825px) {
+    #nav-search-container {
+        width: 90%;
+        margin: 140px auto 10px auto;
+        float: none;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .cookbooks-responsive {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 625px) {
+    .overview-responsive {
+        width: 100%;
+    }
+    #add-container {
+        width: 350px;
+    }
+    .column-right {
+        width: 92%;
+    }
+}
+@media only screen and (max-width: 560px) {
+    .overview-responsive {
+        width: 100%;
+    }
+    #nav-eat {
+        font-size: 175%;
+    }
+    #login-responsive {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #add-container {
+        width: 325px;
+    }
+}
+@media only screen and (max-width: 425px) {
+    #add-container {
+        width: 225px;
+    }
+}
