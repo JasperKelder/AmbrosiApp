@@ -5,7 +5,8 @@ $(document).ready(function () {
         var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
         var fieldWrapper = $('<div class="fieldwrapperPrep"/>');
         fieldWrapper.data("idx", intId);
-        var preparationStep = $('<textarea id="myPreparationSteps' + intId + '" placeholder="Preparation" name="preparationlist[]" />');
+        var preparationStep = $('<textarea id="myPreparationSteps' + intId + '" placeholder="Preparation" ' +
+            'name="preparationlist[]" />');
         var removeButton = $('<input type="button" class="remove-prep" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
@@ -28,7 +29,8 @@ if (prepStepString !== "") {
 function makePrepStepList(array) {
     for (var i = 0; i < array.length; i++) {
         var prepStepWrapper = $('<div class="fieldwrapperPrep"/>');
-        var preparationStep = $('<textarea name="preparationlist[]">'+ array[i].preparationStep +'</textarea>');
+        var preparationStep = $('<textarea id="myPreparationStepsUpdate" ' +
+            'name="preparationlist[]">'+ array[i].preparationStep +'</textarea>');
         var removeButton = $('<input type="button" class="remove-prep" value=" X " />');
         removeButton.click(function () {
             $(this).parent().remove();
@@ -40,3 +42,10 @@ function makePrepStepList(array) {
     }
 }
 
+// Changes the display to none for the empty preparation field while updating
+if (window.location.href.indexOf("update") > -1) {
+    function hideFields() {
+        document.getElementById("myPreparationSteps").style.display = "none";
+    }
+    window.onload = hideFields();
+}

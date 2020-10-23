@@ -26,7 +26,9 @@
                     <div class="paper-content">
                         <div th:text="${recipe.recipeTitle}" class="recipe-title"></div>
                         <br>
-                        <div th:text="${recipe.user}" class="center"></div>
+                        <a class="user-name" th:href="@{/userrecipes/{userId}(userId=${recipe.user.getUserId()})}">
+                            <div th:text="${recipe.user}"></div>
+                        </a>
                         <br>
                         <div th:text="${'Prep-time: ' + recipe.preperationTime + ' minutes'}"></div>
                         <br>

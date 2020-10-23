@@ -71,7 +71,7 @@ select[id*="measuringUnitExistingRecipe"] {
     width: 90px;
 }
 
-input[class*="quantity"] {
+input[class*="quantity"], #quantity {
     width: 90px;
 }
 

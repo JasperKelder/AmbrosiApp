@@ -30,6 +30,10 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Transactional
     @Query(value = "SELECT * FROM recipes.recipe WHERE category_id = ?;", nativeQuery = true)
     List<Recipe> categoryFilter(@Param("categoryId") int categoryId);
+
+    @Transactional
+    @Query(value = "SELECT * FROM recipes.recipe WHERE user_id = ?;", nativeQuery = true)
+    List<Recipe> userRecipes(@Param("userId") int userId);
 }
 
 
