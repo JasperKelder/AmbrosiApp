@@ -7,7 +7,7 @@
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<button type="button" class="collapsible">User Recipes</button>
+<button type="button" class="collapsible" th:text="${'All ' + user + ' Recipes'}"></button>
 <!--Main page-->
 <div class="fade-in">
     <div class="spaceSmall"></div>

@@ -216,6 +216,7 @@ public class RecipeController {
         }
         model.addAttribute("allUserImages", imagesList);
         model.addAttribute("allUserRecipes", recipeRepository.userRecipes(userId));
+        model.addAttribute("user", userRepository.findById(userId).get());
         return "userrecipes";
     }
 

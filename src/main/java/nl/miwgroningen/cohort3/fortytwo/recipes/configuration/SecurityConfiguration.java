@@ -31,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/registration**",
                 "/index/**",
                 "/viewrecipe/**",
+                "/userrecipes/**",
                 "/searchresults/**",
                 "/images/**",
                 "/css/**",
