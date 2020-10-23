@@ -133,7 +133,9 @@ public class RecipeController {
                     currentRecipe.get().setCooktime(recipe.getCooktime());
                     currentRecipe.get().setCuisineName(recipe.getCuisineName());
                     currentRecipe.get().setCategoryName(recipe.getCategoryName());
-                    currentRecipe.get().setImage(recipe.getImage());
+                    if (!image.isEmpty()) {
+                        currentRecipe.get().setImage(recipe.getImage());
+                    }
                     recipeRepository.save(currentRecipe.get());
                     return "redirect:/mykitchen";
                 }
