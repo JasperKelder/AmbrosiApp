@@ -1,5 +1,6 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class Cookbook {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "mycookbooks",
             joinColumns = @JoinColumn(
@@ -35,6 +36,33 @@ public class Cookbook {
             inverseJoinColumns = @JoinColumn(
                     name = "recipe_Id", referencedColumnName = "recipeId"))
     private List<Recipe> recipes;
+
+    //Constructors
+
+
+    public Cookbook(boolean isPrivate, String cookbookName, User user) {
+        this.isPrivate = isPrivate;
+        this.cookbookName = cookbookName;
+        this.user = user;
+    }
+
+    public Cookbook(Integer cookbookId, boolean isPrivate, String cookbookName, User user, List<Recipe> recipes) {
+        this.cookbookId = cookbookId;
+        this.isPrivate = isPrivate;
+        this.cookbookName = cookbookName;
+        this.user = user;
+        this.recipes = recipes;
+    }
+
+    public Cookbook(boolean isPrivate, String cookbookName, User user, List<Recipe> recipes) {
+        this.isPrivate = isPrivate;
+        this.cookbookName = cookbookName;
+        this.user = user;
+        this.recipes = recipes;
+    }
+
+    public Cookbook() {
+    }
 
     //Getters and Setters
     public Integer getCookbookId() { return cookbookId; }

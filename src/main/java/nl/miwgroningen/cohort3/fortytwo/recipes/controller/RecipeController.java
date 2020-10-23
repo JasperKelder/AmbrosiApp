@@ -133,7 +133,9 @@ public class RecipeController {
                     currentRecipe.get().setCooktime(recipe.getCooktime());
                     currentRecipe.get().setCuisineName(recipe.getCuisineName());
                     currentRecipe.get().setCategoryName(recipe.getCategoryName());
-                    currentRecipe.get().setImage(recipe.getImage());
+                    if (!image.isEmpty()) {
+                        currentRecipe.get().setImage(recipe.getImage());
+                    }
                     recipeRepository.save(currentRecipe.get());
                     return "redirect:/mykitchen";
                 }
@@ -243,8 +245,6 @@ public class RecipeController {
         Gson gsonBuilder1 = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String measuringUnitsToJson = gsonBuilder1.toJson(measuringUnitRepository.findAll());
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
-
-
 
         // generate a list of all the ingredient names and convert to Json (for the autocomplete).
         List<Ingredient> allIngredients = ingredientRepository.findAll();

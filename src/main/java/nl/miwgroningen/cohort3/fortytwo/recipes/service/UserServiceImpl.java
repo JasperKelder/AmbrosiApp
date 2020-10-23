@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+
     //Method to save new password. get current user using findbyemail method and save only new password
     @Override
     public User save(PasswordChangeDto passwordChangeDto, Principal principal) {

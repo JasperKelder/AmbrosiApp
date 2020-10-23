@@ -1,9 +1,9 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+
+import java.io.*;
+import java.util.Arrays;
 import java.util.Base64;
 
 /**

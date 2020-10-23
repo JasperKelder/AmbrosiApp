@@ -20,7 +20,11 @@ public class MeasuringUnit {
     @Column
     private String measuringUnitAbbreviation;
 
-    public MeasuringUnit() {
+    public MeasuringUnit() { }
+
+    public MeasuringUnit(String measuringUnitName, String measuringUnitAbbreviation) {
+        this.measuringUnitName = measuringUnitName;
+        this.measuringUnitAbbreviation = measuringUnitAbbreviation;
     }
 
     public MeasuringUnit(Integer measuringUnitId, String measuringUnitName, String measuringUnitAbbreviation) {

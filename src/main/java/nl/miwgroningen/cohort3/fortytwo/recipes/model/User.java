@@ -1,5 +1,8 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -38,7 +41,14 @@ public class User {
     //Constructors
     public User() { }
 
-    public User(String firstName, String lastName, String emailAddress, String password, List < Role > roles) {
+    public User(String firstName, String lastName, String emailAddress, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.password = password;
+    }
+
+    public User(String firstName, String lastName, String emailAddress, String password, List <Role> roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;

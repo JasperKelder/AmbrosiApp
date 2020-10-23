@@ -23,6 +23,15 @@ public class Role {
     //Constructors
     public Role() {}
 
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Role(String name, List<User> users) {
+        this.name = name;
+        this.users = users;
+    }
+
     //Getters and Setters
     public Integer getRoleId() {
         return roleId;
