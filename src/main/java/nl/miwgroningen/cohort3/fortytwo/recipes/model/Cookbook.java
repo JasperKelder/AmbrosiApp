@@ -28,7 +28,7 @@ public class Cookbook {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "mycookbooks",
             joinColumns = @JoinColumn(
@@ -44,6 +44,14 @@ public class Cookbook {
         this.isPrivate = isPrivate;
         this.cookbookName = cookbookName;
         this.user = user;
+    }
+
+    public Cookbook(Integer cookbookId, boolean isPrivate, String cookbookName, User user, List<Recipe> recipes) {
+        this.cookbookId = cookbookId;
+        this.isPrivate = isPrivate;
+        this.cookbookName = cookbookName;
+        this.user = user;
+        this.recipes = recipes;
     }
 
     public Cookbook(boolean isPrivate, String cookbookName, User user, List<Recipe> recipes) {
