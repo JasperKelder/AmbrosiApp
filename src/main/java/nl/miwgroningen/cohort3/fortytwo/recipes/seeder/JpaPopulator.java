@@ -114,7 +114,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         // First declare the images you want to use in the recipes
         byte[]caramelpieImage = imageFromFileToByteArray("src/main/resources/static/images/demo/1- Salted-caramel-taart.jpg");
         byte[]squashSaladImage = imageFromFileToByteArray("src/main/resources/static/images/demo/2- squash salad.jpg");
-        byte[]chaiPuddingImage = imageFromFileToByteArray("src/main/resources/static/images/demo/3- ChiaPudding.jpg");
+        byte[]chiaPuddingImage = imageFromFileToByteArray("src/main/resources/static/images/demo/3- ChiaPudding.jpg");
         byte[]codImage = imageFromFileToByteArray("src/main/resources/static/images/demo/4- kabeljauw-chorizo.jpg");
         byte[]cookieDoughImage = imageFromFileToByteArray("src/main/resources/static/images/demo/5- Cookie-dough-truffels.jpg");
         byte[]tunaImage = imageFromFileToByteArray("src/main/resources/static/images/demo/6- sesame tuna.jpg");
@@ -174,7 +174,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         // Initialize the recipes
         Recipe recipe1 = new Recipe("Salted caramel pie", 30, 10, 60, cuisineRepository.getOne(3), categoryRepository.getOne(5), userRepository.getOne(4), caramelpieImage);
         Recipe recipe2 = new Recipe("Squash saled", 10, 4, 50, cuisineRepository.getOne(3), categoryRepository.getOne(2), userRepository.getOne(2), squashSaladImage);
-        Recipe recipe3 = new Recipe("chai pudding", 10, 2, 0, cuisineRepository.getOne(3), categoryRepository.getOne(1), userRepository.getOne(3), chaiPuddingImage);
+        Recipe recipe3 = new Recipe("chia pudding", 10, 2, 0, cuisineRepository.getOne(3), categoryRepository.getOne(1), userRepository.getOne(3), chiaPuddingImage);
         Recipe recipe4 = new Recipe("cod with chorizo", 10, 2, 20, cuisineRepository.getOne(1), categoryRepository.getOne(3), userRepository.getOne(5), codImage);
         Recipe recipe5 = new Recipe("cookie dough truffels", 20, 16, 100, cuisineRepository.getOne(7), categoryRepository.getOne(4), userRepository.getOne(5), cookieDoughImage);
         Recipe recipe6 = new Recipe("Tuna saled", 0, 2, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(4), tunaImage);
@@ -296,7 +296,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             RecipeIngredient recipeIngredient22 = new RecipeIngredient(recipeRepository.getOne(4), ingredientRepository.getOne(21), 260);
             RecipeIngredient recipeIngredient23 = new RecipeIngredient(recipeRepository.getOne(4), ingredientRepository.getOne(22), 1);
 
-            //todo fix: ingredienten worden bij recept 2 wseer gegeven en ingredienten van recept 2 bij recept 5.
             RecipeIngredient recipeIngredient24 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(23), 100);
             RecipeIngredient recipeIngredient25 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(24), 225);
             RecipeIngredient recipeIngredient26 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(6), 30);
