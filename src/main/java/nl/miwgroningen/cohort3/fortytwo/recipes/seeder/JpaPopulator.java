@@ -90,7 +90,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
     public void seedUser() {
         if (userRepository.count() == 0 && roleRepository.count() == 0) {
             //Normally only admin user is added with seeder, for demo purpose also added 4 team members as users, password = password
-            User userAdmin = new User("Admin", "Admin", "admin@admin.nl", "password");
+            User userAdmin = new User("Admin", "Admin", "admin@admin.nl", "$2a$10$B4jSaArVmAgd926i04LPx.P64kSKRsXc0bPY5/wkDr.7AJjwdwL2C");
             User user1 = new User("Reinout", "Smit", "reinout@smit.nl", "$2a$10$gaQxAP/k53OqKru//IlVkO8Gsepm20v4NrUBXTASB2NbjmLnheQs6");
             User user2 = new User("Jasper", "Kelder", "jasper@kelder.nl", "$2a$10$gaQxAP/k53OqKru//IlVkO8Gsepm20v4NrUBXTASB2NbjmLnheQs6");
             User user3 = new User("Jasmijn", "van der Veen", "jasmijn@vanderveen.nl", "$2a$10$gaQxAP/k53OqKru//IlVkO8Gsepm20v4NrUBXTASB2NbjmLnheQs6");
