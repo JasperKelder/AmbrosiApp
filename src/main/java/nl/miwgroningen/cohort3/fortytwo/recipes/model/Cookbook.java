@@ -28,9 +28,7 @@ public class Cookbook {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "mycookbooks",
             joinColumns = @JoinColumn(

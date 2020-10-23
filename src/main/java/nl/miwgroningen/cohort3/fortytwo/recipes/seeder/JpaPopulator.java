@@ -50,13 +50,14 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
 
     @Override
     public void run(String... args) throws Exception {
+        seedMeasuringUnit();
         seedCategory();
         seedCuisine();
         seedUser();
-        seedRecipeAndCookbookAndPreparationSteps();
-        seedMeasuringUnit();
         seedIngredient();
+        seedRecipeAndCookbookAndPreparationSteps();
         seedRecipeIngredient();
+
     }
 
     public void seedCategory() {
@@ -163,7 +164,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         PreparationStep preparationStep39 = new PreparationStep("");
         PreparationStep preparationStep40 = new PreparationStep("");
 
-
+        // Add prep steps to a list so we can save it into a recipe
         ArrayList<PreparationStep> preparationStepsRecipe1 = new ArrayList<>(Arrays.asList(preparationStep1, preparationStep2, preparationStep3, preparationStep4, preparationStep5, preparationStep6, preparationStep7));
         ArrayList<PreparationStep> preparationStepsRecipe2 = new ArrayList<>(Arrays.asList(preparationStep8, preparationStep9, preparationStep10,preparationStep11, preparationStep12, preparationStep13));
         ArrayList<PreparationStep> preparationStepsRecipe3 = new ArrayList<>(Arrays.asList(preparationStep14, preparationStep15, preparationStep16));
@@ -179,6 +180,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         Recipe recipe5 = new Recipe("cookie dough truffels", 20, 16, 100, cuisineRepository.getOne(7), categoryRepository.getOne(4), userRepository.getOne(5), cookieDoughImage);
         Recipe recipe6 = new Recipe("Tuna saled", 0, 2, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(4), tunaImage);
 
+
         // Add the preperationSteps to the recipe and add them to the cookbook of choice
         recipe1.setPreparationStepList(preparationStepsRecipe1);
         recipe2.setPreparationStepList(preparationStepsRecipe2);
@@ -187,26 +189,13 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         recipe5.setPreparationStepList(preparationStepsRecipe5);
         recipe6.setPreparationStepList(preparationStepsRecipe6);
 
-        // add recipes to cookbook
-        ArrayList<Recipe> recipesInCookbook1 = new ArrayList<>(Arrays.asList(recipe1, recipe6));
-        ArrayList<Recipe> recipesInCookbook2 = new ArrayList<>(Arrays.asList(recipe2, recipe5));
-        ArrayList<Recipe> recipesInCookbook3 = new ArrayList<>(Arrays.asList(recipe3));
-        ArrayList<Recipe> recipesInCookbook4 = new ArrayList<>(Arrays.asList(recipe4));
-
-        if (preparationStepRepository.count() == 0 && cookbookRepository.count() == 0 &&
+        // Save recipes to repository
+        if (preparationStepRepository.count() == 0 &&
                 recipeRepository.count() == 0) {
-            Cookbook cookbook1 = new Cookbook(false, "Jasmijn's favorite's", userRepository.getOne(4));
-            Cookbook cookbook2 = new Cookbook(false, "Nathalie's favorite's", userRepository.getOne(5));
-            Cookbook cookbook3 = new Cookbook(false, "Jasper's favorite's", userRepository.getOne(3));
-            Cookbook cookbook4 = new Cookbook(false, "Reinout's favorite's", userRepository.getOne(2));
-
-            cookbook1.setRecipes(recipesInCookbook1);
-            cookbook2.setRecipes(recipesInCookbook2);
-            cookbook3.setRecipes(recipesInCookbook3);
-            cookbook4.setRecipes(recipesInCookbook4);
-            cookbookRepository.saveAll(Arrays.asList(cookbook1, cookbook2, cookbook3, cookbook4));
+            recipeRepository.saveAll(Arrays.asList(recipe1, recipe2, recipe3, recipe4, recipe5, recipe6));
         }
     }
+
 
     @Override
     public void seedMeasuringUnit() {
@@ -314,6 +303,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
                     recipeIngredient9, recipeIngredient10, recipeIngredient11, recipeIngredient12, recipeIngredient13, recipeIngredient14, recipeIngredient15, recipeIngredient16, recipeIngredient17, recipeIngredient18,
                     recipeIngredient19, recipeIngredient20, recipeIngredient21, recipeIngredient22, recipeIngredient23, recipeIngredient24, recipeIngredient25, recipeIngredient26, recipeIngredient27, recipeIngredient28,
                     recipeIngredient29, recipeIngredient30, recipeIngredient31, recipeIngredient32, recipeIngredient33, recipeIngredient34, recipeIngredient35));
+
             recipeIngredientRepository.saveAll(recipeIngredients);
         }
     }
