@@ -178,7 +178,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         Recipe recipe3 = new Recipe("chia pudding", 10, 2, 0, cuisineRepository.getOne(3), categoryRepository.getOne(1), userRepository.getOne(3), chiaPuddingImage);
         Recipe recipe4 = new Recipe("cod with chorizo", 10, 2, 20, cuisineRepository.getOne(1), categoryRepository.getOne(3), userRepository.getOne(5), codImage);
         Recipe recipe5 = new Recipe("cookie dough truffels", 20, 16, 100, cuisineRepository.getOne(7), categoryRepository.getOne(4), userRepository.getOne(5), cookieDoughImage);
-        Recipe recipe6 = new Recipe("Tuna saled", 0, 2, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(4), tunaImage);
+        Recipe recipe6 = new Recipe("Tuna salad", 0, 2, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(4), tunaImage);
 
 
         // Add the preperationSteps to the recipe and add them to the cookbook of choice
