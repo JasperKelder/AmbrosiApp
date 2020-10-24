@@ -28,36 +28,15 @@ public class RunCucumberTest {
     @BeforeClass
     public static void runApplication() {
         SpringApplication.run(RecipesApplication.class);
+
     }
 
 
     @BeforeClass
     public static void setUp() throws MalformedURLException{
 
-        chromeOptions = new ChromeOptions();
-        WebDriverManager.chromedriver().setup();
-
-        getEnvironment();
     }
 
-    private static void getEnvironment() throws MalformedURLException {
-        runWhere = System.getenv("RUNWHERE");
-
-        if (runWhere.equals("local")) {
-            // Standard local visual test call
-            driver = new ChromeDriver();
-        }
-        else if (runWhere.equals("pipeline")) {
-            // build server headless chrome CI/CD example
-            chromeOptions.addArguments("--headless", "--no-sandbox");
-            driver = new ChromeDriver(chromeOptions);
-        }
-        else if (runWhere.equals("container")) {
-            // selenium hub remote settings (container based CI/CD)
-            String Selenium = "http://selenium_hub:4444/wd/hub";
-            driver = new RemoteWebDriver(new URL(Selenium), chromeOptions);
-        };
-    }
 
     @AfterClass
     public static void tearDown() {
