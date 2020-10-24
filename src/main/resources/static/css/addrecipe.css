@@ -102,3 +102,11 @@ textarea[id*="myPreparationSteps"] {
     background-color: DodgerBlue !important;
     color: #ffffff;
 }
+
+#ingredientWarning {
+    font-family: Arial;
+    color: white;
+    background-color: transparent;
+    font-size: 100%;
+    text-shadow: none;
+}

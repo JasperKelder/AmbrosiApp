@@ -62,11 +62,7 @@ public class RecipeController {
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
         model.addAttribute("allMeasuringUnits", measuringUnitRepository.findAll());
-        List<Ingredient> allIngredients = ingredientRepository.findAll();
-        ArrayList<String> allIngredientNames = new ArrayList<>();
-        for (Ingredient ingredient : allIngredients) {
-            allIngredientNames.add(ingredient.getIngredientName());
-        }
+        List<String> allIngredientNames = ingredientRepository.getDistinctIngredientNames();
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
@@ -247,11 +243,7 @@ public class RecipeController {
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
 
         // generate a list of all the ingredient names and convert to Json (for the autocomplete).
-        List<Ingredient> allIngredients = ingredientRepository.findAll();
-        ArrayList<String> allIngredientNames = new ArrayList<>();
-        for (Ingredient ingredient : allIngredients) {
-            allIngredientNames.add(ingredient.getIngredientName());
-        }
+        List<String> allIngredientNames = ingredientRepository.getDistinctIngredientNames();
         Gson gson = new Gson();
         String allIngredientsJson = gson.toJson(allIngredientNames);
         model.addAttribute("allIngredientsJson", allIngredientsJson);
