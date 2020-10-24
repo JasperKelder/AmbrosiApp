@@ -33,7 +33,7 @@ before_install:
 script:
   - >
     mvn clean install &&
-#    mvn test -Pcomponent-tests surefire:test &&
-#    mvn test -Pintegration-tests surefire:test &&
+    mvn test -Pcomponent-tests surefire:test &&
+    mvn test -Pintegration-tests surefire:test &&
     mvn test -Pui-tests surefire:test &&
-#    mvn test -Punit-tests surefire:test
+    mvn test -Punit-tests surefire:test
