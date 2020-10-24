@@ -20,7 +20,7 @@ public class SeederTests {
     @DisplayName("Checks if recipeImageToByteArray method from the JpaPopulator gives a byte []")
     public void imageFromFileToByteArray() throws IOException {
 
-        String imageFromFilepath = "src/main/resources/static/images/demo/1- Salted-caramel-taart.jpg";
+        String imageFromFilepath = "src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg";
 
         byte[] imageTypeByteArray = jpaPopulator.imageFromFileToByteArray(imageFromFilepath);
 
