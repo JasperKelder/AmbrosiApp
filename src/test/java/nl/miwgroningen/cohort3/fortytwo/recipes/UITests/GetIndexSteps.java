@@ -24,7 +24,6 @@ public class GetIndexSteps {
     @Given("^Open the Chrome and launch the application$")
     public void open_the_chrome_and_launch_the_application() throws Throwable {
         System.setProperty("webdriver.chrome.driver","src/test/java/nl/miwgroningen/cohort3/fortytwo/recipes/UITests/features/chromedriver.exe");
-        System.setProperty("webdriver.chrome.whitelistedIps", "");
         chromeOptions = new ChromeOptions();
         WebDriverManager.chromedriver().setup();
         chromeOptions.addArguments("--headless", "--no-sandbox");
@@ -38,6 +37,7 @@ public class GetIndexSteps {
         String actualTitle = driver.getTitle();
         assertTrue(actualTitle.contains("EatAndTreat - Overview"));
         driver.close();
+        driver.quit();
     }
 
 }
