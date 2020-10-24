@@ -24,10 +24,10 @@ public class GetIndexSteps {
     @Given("^Open the Chrome and launch the application$")
     public void open_the_chrome_and_launch_the_application() throws Throwable {
         System.setProperty("webdriver.chrome.driver","src/test/java/nl/miwgroningen/cohort3/fortytwo/recipes/UITests/features/chromedriver.exe");
+        System.setProperty("webdriver.chrome.whitelistedIps", "");
         chromeOptions = new ChromeOptions();
         WebDriverManager.chromedriver().setup();
-        chromeOptions.setHeadless(true);
-        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--headless", "--no-sandbox");
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.get("http://localhost:8080/");
