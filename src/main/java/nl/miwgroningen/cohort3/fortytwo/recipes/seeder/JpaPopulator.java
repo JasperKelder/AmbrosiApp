@@ -1,6 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.seeder;
 
-
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +57,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         seedRecipeAndCookbookAndPreparationSteps();
         seedRecipeIngredient();
         seedCookbook();
-
     }
 
     public void seedCategory() {
@@ -83,8 +81,9 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             Cuisine cuisine5 = new Cuisine("Spanisch");
             Cuisine cuisine6 = new Cuisine("Greek");
             Cuisine cuisine7 = new Cuisine("American");
+            Cuisine cuisine8 = new Cuisine("Caribbean");
 
-            cuisineRepository.saveAll(Arrays.asList(cuisine1, cuisine2, cuisine3, cuisine4, cuisine5, cuisine6, cuisine7));
+            cuisineRepository.saveAll(Arrays.asList(cuisine1, cuisine2, cuisine3, cuisine4, cuisine5, cuisine6, cuisine7, cuisine8));
         }
     }
 
@@ -120,6 +119,9 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         byte[]codImage = imageFromFileToByteArray("src/main/resources/static/images/demo/4- kabeljauw-chorizo.jpg");
         byte[]cookieDoughImage = imageFromFileToByteArray("src/main/resources/static/images/demo/5- Cookie-dough-truffels.jpg");
         byte[]tunaImage = imageFromFileToByteArray("src/main/resources/static/images/demo/6- sesame tuna.jpg");
+        byte[]gnocciImage = imageFromFileToByteArray("src/main/resources/static/images/demo/7- Romige-gnocchi-met-doperwten.jpg");
+        byte[]yoghurtBallsImage = imageFromFileToByteArray("src/main/resources/static/images/demo/8- Griekse-hartige-yoghurtbollen.jpg");
+        byte[]pinappleCaqrpaccioImage = imageFromFileToByteArray("src/main/resources/static/images/demo/9- pineapple carpaccio.jpg");
 
         // Add the preperationSteps per recipe and save them to a list
         PreparationStep preparationStep1 = new PreparationStep("Grind the cookies in the food processor. Meanwhile, melt 100 grams of butter and stir into the cookie crumbs.");
@@ -143,7 +145,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         PreparationStep preparationStep19 = new PreparationStep("Heat a dash of oil in a frying pan and fry the onion and garlic in it, until the onion looks translucent. Add the cherry tomatoes and season with salt and pepper. Fry for 5 minutes, until the tomatoes become soft. Add the passata and half of the fresh basil and let it simmer for about 10 minutes on low heat.");
         PreparationStep preparationStep20 = new PreparationStep("Spoon the sauce into an oven dish and spread the cod over it. Finish with the chorizo pieces and the rest of the fresh basil. ");
         PreparationStep preparationStep21 = new PreparationStep("Bake the casserole in the oven for about 10-12 minutes. Serve with the ciabatta.");
-
         PreparationStep preparationStep22 = new PreparationStep("Mix the butter and sugar until creamy. This can be done in a small saucepan, in which the butter can be melted over low heat so that it mixes easily.");
         PreparationStep preparationStep23 = new PreparationStep("Add the milk and mix until well incorporated.");
         PreparationStep preparationStep24 = new PreparationStep("Then add the flour and a pinch of salt and mix into a crumbly dough.");
@@ -158,12 +159,32 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         PreparationStep preparationStep33 = new PreparationStep("Remove to a board to rest. Quickly wipe out the pan with a ball of kitchen paper, then return to the heat.");
         PreparationStep preparationStep34 = new PreparationStep("Trim the spring onions and slice at an angle the same length as the sugar snaps, tossing both into the hot pan with a few drips of red wine vinegar and a pinch of sea salt for 2 minutes to lightly catch and char.");
         PreparationStep preparationStep35 = new PreparationStep("Slice the sesame tuna and serve on top of the veg, drizzled with 1 teaspoon of extra virgin olive oil.");
+        PreparationStep preparationStep36 = new PreparationStep("Heat a dash of oil in a frying pan and fry the gnocchi for 20 minutes.");
+        PreparationStep preparationStep37 = new PreparationStep("Cut the chicken thigh into pieces, grate the zest of half a lemon and squeeze out the juice.");
+        PreparationStep preparationStep38 = new PreparationStep("Heat a dash of oil in another frying pan and fry the chicken for 10 minutes. Season with salt and pepper.");
+        PreparationStep preparationStep39 = new PreparationStep("Add the peas to the chicken for the last 3 minutes. Then add the lemon juice and cream and bring to the boil. Let this boil for another 3 minutes until the cream has thickened slightly.");
+        PreparationStep preparationStep40 = new PreparationStep("Divide the gnocchi and the sauce over two plates and finish with some lemon zest on top!");
+        PreparationStep preparationStep41 = new PreparationStep("Preheat the oven to 200 degrees. Cover a baking tray with parchment paper.");
+        PreparationStep preparationStep42 = new PreparationStep("Beat the Greek yogurt with the eggs and milk and add a good pinch of salt and pepper.");
+        PreparationStep preparationStep43 = new PreparationStep("Mix the flour with the baking powder and add this little by little.");
+        PreparationStep preparationStep44 = new PreparationStep("Grate 100 grams of the halloumi. Cut the remaining 50 grams of the halloumi into small pieces (we will use this later for the topping).");
+        PreparationStep preparationStep45 = new PreparationStep("Add the halloumi grater to the mixture and stir well.");
+        PreparationStep preparationStep46 = new PreparationStep("Using a large spoon or ice cream scoop, place 8 scoops on the baking tray lined with parchment paper. Sprinkle the halloumi pieces and pumpkin seeds on top of the bulbs.");
+        PreparationStep preparationStep47 = new PreparationStep("Bake the buns in the oven for 15 minutes. Let it cool down and enjoy.");
 
-        PreparationStep preparationStep36 = new PreparationStep("");
-        PreparationStep preparationStep37 = new PreparationStep("");
-        PreparationStep preparationStep38 = new PreparationStep("");
-        PreparationStep preparationStep39 = new PreparationStep("");
-        PreparationStep preparationStep40 = new PreparationStep("");
+        PreparationStep preparationStep48 = new PreparationStep("Pick the mint leaves into a pestle and mortar, reserving a small handful of leaves to one side.");
+        PreparationStep preparationStep49 = new PreparationStep("Pound the rest into a paste, then muddle in 1 to 2 tablespoons of extra virgin olive oil to make a mint oil.");
+        PreparationStep preparationStep50 = new PreparationStep("Top and tail the pineapple, then slice off the skin. Quarter lengthways, remove the core, then finely slice lengthways. Arrange on a large platter or divide between your plates.");
+        PreparationStep preparationStep51 = new PreparationStep("Take the time to halve the blueberries, then sprinkle over the top.");
+        PreparationStep preparationStep52 = new PreparationStep("Ripple some mint oil through the yoghurt (saving the rest for another recipe), then spoon over the fruit.");
+        PreparationStep preparationStep53 = new PreparationStep("Finely grate over the lime zest from a height and squeeze over the juice.");
+        PreparationStep preparationStep54 = new PreparationStep("Finely slice and sprinkle over the reserved mint leaves, then drizzle with a tiny bit of extra virgin olive oil (yes, you heard it – delicious).");
+
+        PreparationStep preparationStep55 = new PreparationStep("");
+        PreparationStep preparationStep56 = new PreparationStep("");
+        PreparationStep preparationStep57 = new PreparationStep("");
+        PreparationStep preparationStep58 = new PreparationStep("");
+        PreparationStep preparationStep59 = new PreparationStep("");
 
         // Add prep steps to a list so we can save it into a recipe
         ArrayList<PreparationStep> preparationStepsRecipe1 = new ArrayList<>(Arrays.asList(preparationStep1, preparationStep2, preparationStep3, preparationStep4, preparationStep5, preparationStep6, preparationStep7));
@@ -172,6 +193,9 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         ArrayList<PreparationStep> preparationStepsRecipe4 = new ArrayList<>(Arrays.asList(preparationStep17, preparationStep18, preparationStep19, preparationStep20, preparationStep21));
         ArrayList<PreparationStep> preparationStepsRecipe5 = new ArrayList<>(Arrays.asList(preparationStep22, preparationStep23, preparationStep24, preparationStep25, preparationStep26, preparationStep27, preparationStep28, preparationStep29));
         ArrayList<PreparationStep> preparationStepsRecipe6 = new ArrayList<>(Arrays.asList(preparationStep30, preparationStep31, preparationStep32, preparationStep33, preparationStep34, preparationStep35));
+        ArrayList<PreparationStep> preparationStepsRecipe7 = new ArrayList<>(Arrays.asList(preparationStep36, preparationStep37, preparationStep38, preparationStep39, preparationStep40));
+        ArrayList<PreparationStep> preparationStepsRecipe8 = new ArrayList<>(Arrays.asList(preparationStep41, preparationStep42, preparationStep43, preparationStep44, preparationStep45, preparationStep46, preparationStep47));
+        ArrayList<PreparationStep> preparationStepsRecipe9 = new ArrayList<>(Arrays.asList(preparationStep48, preparationStep49, preparationStep50, preparationStep51, preparationStep52, preparationStep53, preparationStep54));
 
         // Initialize the recipes
         Recipe recipe1 = new Recipe("Salted caramel pie", 30, 10, 60, cuisineRepository.getOne(3), categoryRepository.getOne(5), userRepository.getOne(4), caramelpieImage);
@@ -180,7 +204,9 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         Recipe recipe4 = new Recipe("cod with chorizo", 10, 2, 20, cuisineRepository.getOne(1), categoryRepository.getOne(3), userRepository.getOne(5), codImage);
         Recipe recipe5 = new Recipe("cookie dough truffels", 20, 16, 100, cuisineRepository.getOne(7), categoryRepository.getOne(4), userRepository.getOne(5), cookieDoughImage);
         Recipe recipe6 = new Recipe("Tuna salad", 0, 2, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(4), tunaImage);
-
+        Recipe recipe7 = new Recipe("Gnocchi with peas", 0, 2, 20, cuisineRepository.getOne(1), categoryRepository.getOne(3), userRepository.getOne(3), gnocciImage);
+        Recipe recipe8 = new Recipe("Greek yoghurt balls", 5, 4, 25, cuisineRepository.getOne(6), categoryRepository.getOne(1), userRepository.getOne(2), yoghurtBallsImage);
+        Recipe recipe9 = new Recipe("Pinapple carpaccio", 5, 4, 5, cuisineRepository.getOne(8), categoryRepository.getOne(2), userRepository.getOne(5), pinappleCaqrpaccioImage);
 
         // Add the preperationSteps to the recipe and add them to the cookbook of choice
         recipe1.setPreparationStepList(preparationStepsRecipe1);
@@ -189,11 +215,14 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         recipe4.setPreparationStepList(preparationStepsRecipe4);
         recipe5.setPreparationStepList(preparationStepsRecipe5);
         recipe6.setPreparationStepList(preparationStepsRecipe6);
+        recipe7.setPreparationStepList(preparationStepsRecipe7);
+        recipe8.setPreparationStepList(preparationStepsRecipe8);
+        recipe9.setPreparationStepList(preparationStepsRecipe9);
 
         // Save recipes to repository
         if (preparationStepRepository.count() == 0 &&
                 recipeRepository.count() == 0) {
-            recipeRepository.saveAll(Arrays.asList(recipe1, recipe2, recipe3, recipe4, recipe5, recipe6));
+            recipeRepository.saveAll(Arrays.asList(recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8,recipe9));
         }
     }
 
@@ -251,10 +280,28 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             Ingredient sesameSeeds  = new Ingredient("sesame seeds", measuringUnitRepository.getOne(7), true);
             Ingredient springOnion  = new Ingredient("spring onions", measuringUnitRepository.getOne(1), true);
             Ingredient sugersnapPeas = new Ingredient("sugersnap peas", measuringUnitRepository.getOne(2), true);
+            Ingredient gnocchi = new Ingredient("gnocchi", measuringUnitRepository.getOne(2), true);
+            Ingredient chicken = new Ingredient("chicken", measuringUnitRepository.getOne(2), true);
+            Ingredient lemon = new Ingredient("lemon", measuringUnitRepository.getOne(1), true);
+            Ingredient peas = new Ingredient("peas", measuringUnitRepository.getOne(2), true);
+            Ingredient cream = new Ingredient("cream", measuringUnitRepository.getOne(3), true);
+            Ingredient greekYoghurt = new Ingredient("Greek yoghurt", measuringUnitRepository.getOne(2), true);
+            Ingredient egg = new Ingredient("egg", measuringUnitRepository.getOne(1), true);
+            Ingredient bakingPowder = new Ingredient("baking powder", measuringUnitRepository.getOne(6), true);
+            Ingredient halloumi = new Ingredient("halloumi", measuringUnitRepository.getOne(2), true);
+            Ingredient pumpkinSeeds = new Ingredient("pumpkin seeds", measuringUnitRepository.getOne(2), true);
+            Ingredient freshMint = new Ingredient("fresh mint", measuringUnitRepository.getOne(2), true);
+            Ingredient pineapple = new Ingredient("pinapple", measuringUnitRepository.getOne(1), true);
+            Ingredient blueberries = new Ingredient("blueberries", measuringUnitRepository.getOne(2), true);
+            Ingredient lime = new Ingredient("lime", measuringUnitRepository.getOne(1), true);
+            Ingredient coconutYohurt = new Ingredient("coconut yoghurt", measuringUnitRepository.getOne(7), true);
+
 
             ArrayList<Ingredient> ingredients = new ArrayList<>(Arrays.asList(condensedMilk, casterSugar, milkChocolate, butterCookies, unsaltedButter, milk, seaSalt, fudge,
-                    butternutSquash, harissa, avocado, mixedSaled, mozzarella, banana, vanillaSuger, chiaSeeds, onion, garlic, chorizo, passata, cod, ciabatta, butter, flower, chocolateCookie,
-                    sugar, misoPaste, tuna, sesameSeeds, springOnion, sugersnapPeas));
+                    butternutSquash, harissa, avocado, mixedSaled, mozzarella, banana, vanillaSuger, chiaSeeds, onion, garlic, chorizo, passata, cod, ciabatta, butter, flower,
+                    chocolateCookie, sugar, misoPaste, tuna, sesameSeeds, springOnion, sugersnapPeas, gnocchi, chicken, lemon, peas, cream, greekYoghurt, egg, bakingPowder, halloumi,
+                    pumpkinSeeds, freshMint, pineapple, blueberries, lime, coconutYohurt));
+
             ingredientRepository.saveAll(ingredients);
         }
     }
@@ -285,7 +332,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             RecipeIngredient recipeIngredient21 = new RecipeIngredient(recipeRepository.getOne(4), ingredientRepository.getOne(20), 275);
             RecipeIngredient recipeIngredient22 = new RecipeIngredient(recipeRepository.getOne(4), ingredientRepository.getOne(21), 260);
             RecipeIngredient recipeIngredient23 = new RecipeIngredient(recipeRepository.getOne(4), ingredientRepository.getOne(22), 1);
-
             RecipeIngredient recipeIngredient24 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(23), 100);
             RecipeIngredient recipeIngredient25 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(24), 225);
             RecipeIngredient recipeIngredient26 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(6), 30);
@@ -293,17 +339,36 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             RecipeIngredient recipeIngredient28 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(26), 60);
             RecipeIngredient recipeIngredient29 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(2), 115);
             RecipeIngredient recipeIngredient30 = new RecipeIngredient(recipeRepository.getOne(5), ingredientRepository.getOne(3), 200);
-
             RecipeIngredient recipeIngredient31 = new RecipeIngredient(recipeRepository.getOne(6), ingredientRepository.getOne(27), 1);
             RecipeIngredient recipeIngredient32 = new RecipeIngredient(recipeRepository.getOne(6), ingredientRepository.getOne(28), 150);
             RecipeIngredient recipeIngredient33 = new RecipeIngredient(recipeRepository.getOne(6), ingredientRepository.getOne(29), 4);
             RecipeIngredient recipeIngredient34 = new RecipeIngredient(recipeRepository.getOne(6), ingredientRepository.getOne(30), 8);
             RecipeIngredient recipeIngredient35 = new RecipeIngredient(recipeRepository.getOne(6), ingredientRepository.getOne(31), 150);
+            RecipeIngredient recipeIngredient36 = new RecipeIngredient(recipeRepository.getOne(7), ingredientRepository.getOne(32), 300);
+            RecipeIngredient recipeIngredient37 = new RecipeIngredient(recipeRepository.getOne(7), ingredientRepository.getOne(33), 250);
+            RecipeIngredient recipeIngredient38 = new RecipeIngredient(recipeRepository.getOne(7), ingredientRepository.getOne(34), 1);
+            RecipeIngredient recipeIngredient39 = new RecipeIngredient(recipeRepository.getOne(7), ingredientRepository.getOne(35), 200);
+            RecipeIngredient recipeIngredient40 = new RecipeIngredient(recipeRepository.getOne(7), ingredientRepository.getOne(36), 125);
+            RecipeIngredient recipeIngredient41 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(37), 250);
+            RecipeIngredient recipeIngredient42 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(38), 2);
+            RecipeIngredient recipeIngredient43 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(6), 30);
+            RecipeIngredient recipeIngredient44 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(24), 250);
+            RecipeIngredient recipeIngredient45 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(39), 1);
+            RecipeIngredient recipeIngredient46 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(40), 150);
+            RecipeIngredient recipeIngredient47 = new RecipeIngredient(recipeRepository.getOne(8), ingredientRepository.getOne(41), 15);
+            RecipeIngredient recipeIngredient48 = new RecipeIngredient(recipeRepository.getOne(9), ingredientRepository.getOne(42), 30);
+            RecipeIngredient recipeIngredient49 = new RecipeIngredient(recipeRepository.getOne(9), ingredientRepository.getOne(43), 1);
+            RecipeIngredient recipeIngredient50 = new RecipeIngredient(recipeRepository.getOne(9), ingredientRepository.getOne(44), 100);
+            RecipeIngredient recipeIngredient51 = new RecipeIngredient(recipeRepository.getOne(9), ingredientRepository.getOne(45), 1);
+            RecipeIngredient recipeIngredient52 = new RecipeIngredient(recipeRepository.getOne(9), ingredientRepository.getOne(46), 4);
 
-            ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredient1, recipeIngredient2, recipeIngredient3, recipeIngredient4, recipeIngredient5, recipeIngredient6, recipeIngredient7, recipeIngredient8,
-                    recipeIngredient9, recipeIngredient10, recipeIngredient11, recipeIngredient12, recipeIngredient13, recipeIngredient14, recipeIngredient15, recipeIngredient16, recipeIngredient17, recipeIngredient18,
-                    recipeIngredient19, recipeIngredient20, recipeIngredient21, recipeIngredient22, recipeIngredient23, recipeIngredient24, recipeIngredient25, recipeIngredient26, recipeIngredient27, recipeIngredient28,
-                    recipeIngredient29, recipeIngredient30, recipeIngredient31, recipeIngredient32, recipeIngredient33, recipeIngredient34, recipeIngredient35));
+            ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredient1, recipeIngredient2, recipeIngredient3, recipeIngredient4, recipeIngredient5,
+                    recipeIngredient6, recipeIngredient7, recipeIngredient8, recipeIngredient9, recipeIngredient10, recipeIngredient11, recipeIngredient12, recipeIngredient13, recipeIngredient14,
+                    recipeIngredient15, recipeIngredient16, recipeIngredient17, recipeIngredient18, recipeIngredient19, recipeIngredient20, recipeIngredient21, recipeIngredient22,
+                    recipeIngredient23, recipeIngredient24, recipeIngredient25, recipeIngredient26, recipeIngredient27, recipeIngredient28, recipeIngredient29, recipeIngredient30,
+                    recipeIngredient31, recipeIngredient32, recipeIngredient33, recipeIngredient34, recipeIngredient35, recipeIngredient36, recipeIngredient37, recipeIngredient38,
+                    recipeIngredient39, recipeIngredient40, recipeIngredient41, recipeIngredient42, recipeIngredient43, recipeIngredient44, recipeIngredient45, recipeIngredient46,
+                    recipeIngredient47, recipeIngredient48, recipeIngredient49, recipeIngredient50, recipeIngredient51, recipeIngredient52));
 
             recipeIngredientRepository.saveAll(recipeIngredients);
         }
