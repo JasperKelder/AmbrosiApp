@@ -16,9 +16,6 @@ cache:
 services:
   - mysql
 
-env:
-  RUNWHERE=pipeline
-
 # addons for the GUI tests
 addons:
   chrome: stable
