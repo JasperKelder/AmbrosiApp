@@ -29,14 +29,14 @@ public class RunCucumberTest {
     public static void runApplication() {
         SpringApplication.run(RecipesApplication.class);
         System.setProperty("webdriver.chrome.driver","src/test/java/nl/miwgroningen/cohort3/fortytwo/recipes/UITests/features/chromedriver.exe");
-        chromeOptions = new ChromeOptions();
-        driver = new ChromeDriver(chromeOptions);
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://localhost:8080/");
     }
 
     @AfterClass
     public static void quitDriver() {
+        driver.close();
         driver.quit();
     }
 }

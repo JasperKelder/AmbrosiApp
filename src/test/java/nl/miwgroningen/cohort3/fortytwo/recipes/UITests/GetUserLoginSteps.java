@@ -41,7 +41,6 @@ public class GetUserLoginSteps {
     public void user_should_see_myrecipe_page() {
         String actualTitle = driver.getTitle();
         assertTrue(actualTitle.contains("EatAndTreat - MyKitchen"));
-        driver.close();
     }
 
 }
