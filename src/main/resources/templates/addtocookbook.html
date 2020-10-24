@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div class="spaceMedium"></div>
+<!--th:object="${cookbook}"-->
+
+<form action="#" th:action="@{/addtocookbook}" method="post">
+    <input id="recipeId" type="hidden" th:value="${recipeId}">
+    <select id="cookbook" th:field="*{cookbook.cookbookName}" >
+        <!--Dropdown box displaying all cuisines-->
+        <option th:each="cookbook : ${usersCookbooks}"
+                th:value="${cookbook.cookbookId}"
+                th:text="${cookbook.cookbookName}">
+        </option>
+    </select>
+    <div class="spaceSmall"></div>
+    <input type="submit" value="Submit"/>
+</form>
+<!--<table>-->
+<!--    &lt;!&ndash;Displays all cookbooks from current user&ndash;&gt;-->
+<!--    <tr th:each="cookbook: ${usersCookbooks}">-->
+<!--        <td th:text="${cookbook.cookbookName}"></td>-->
+<!--        &lt;!&ndash; Loads the category in the add category form so it can be updated&ndash;&gt;-->
+<!--        <td class="admin-table"><a-->
+<!--                th:href="@{/recipe/addtocookbook/{cookbookId}(cookbookId=${cookbook.cookbookId})}"-->
+<!--                class="editbutton">Update</a></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--</div>-->
+
+<!--<label>gelukt</label>-->
+
+
+
+</body>
+</html>

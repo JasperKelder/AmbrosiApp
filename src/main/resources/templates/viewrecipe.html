@@ -73,9 +73,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="cookbook-button" th:if="${#authorization.expression('hasRole(''USER'')')}">
+            <button id="addToCookbook" onclick="retrieveCookbooks()">Add to cookbook</button>
+        </div>
+        <div id="cookbooks">
+        <input id="recipeId" type="hidden" th:value="${recipe.recipeId}">
+        </div>
+
     </div>
 </div>
 <script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/print.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/script/addtocookbook.js"></script>
 </body>
 </html>

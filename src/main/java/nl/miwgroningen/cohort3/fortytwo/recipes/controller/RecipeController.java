@@ -8,6 +8,7 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.RemoveDuplicatesFromList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -322,5 +323,65 @@ public class RecipeController {
         model.addAttribute("allImages", imagesList);
         model.addAttribute("categoriesSelected", newListWithoutDuplicates);
         return "filterresults";
+    }
+
+    @RequestMapping(value = "/addtocookbook", method = RequestMethod.GET)
+    protected String showCookBooks(@RequestParam("recipeid") String recepeid, Model model, Principal principal) {
+        //method to get all cookbooks linked to current user
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+        List<Cookbook> cookbooks = cookbookRepository.findAll();
+        List<Cookbook> myCookbooks = new ArrayList<>();
+        for (Cookbook cookbook : cookbooks) {
+            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
+                myCookbooks.add(cookbook);
+            }
+        }
+        model.addAttribute("usersCookbooks", myCookbooks);
+        model.addAttribute("recipeId", Integer.parseInt(recepeid));
+        model.addAttribute("cookbook", new Cookbook());
+        return "addtocookbook";
+    }
+
+    @PostMapping("/addtocookbook")
+    protected String addToCookbook(@RequestParam("recipeId") final int recipeId,
+                                   @RequestParam("cookbook") final Integer cookbookId, BindingResult result) {
+        if (result.hasErrors()) {
+            return "addtocookbook";
+        }
+        System.out.println(recipeId);
+        Optional<Cookbook> cookbook = cookbookRepository.findById(cookbookId);
+        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+        if (cookbook.isPresent() & recipe.isPresent()) {
+            // Create a list of recipes
+            List<Recipe> recipeToCookbook = cookbook.get().getRecipes();
+            if (!recipeToCookbook.contains(recipe.get())) {
+                recipeToCookbook.add(recipe.get());
+                cookbook.get().setRecipes(recipeToCookbook);
+                cookbookRepository.save(cookbook.get());
+            }
+        }
+        return "addtocookbook";
+    }
+
+
+    @PostMapping("/addtocookbook/{cookbookId}")
+    protected String addToCookBook(@PathVariable("cookbookId") final Integer cookbookId,
+                                   @RequestParam("recipeId") String recipeId, BindingResult result) {
+        if (result.hasErrors()) {
+            return "addtocookbook";
+        }
+        System.out.println(recipeId);
+        Optional<Cookbook> cookbook = cookbookRepository.findById(cookbookId);
+        Optional<Recipe> recipe = recipeRepository.findById(Integer.parseInt(recipeId));
+        if (cookbook.isPresent() & recipe.isPresent()) {
+            // Create a list of recipes
+            List<Recipe> recipeToCookbook = cookbook.get().getRecipes();
+            if (!recipeToCookbook.contains(recipe.get())) {
+                recipeToCookbook.add(recipe.get());
+                cookbook.get().setRecipes(recipeToCookbook);
+                cookbookRepository.save(cookbook.get());
+            }
+        }
+        return "addtocookbook";
     }
 }
