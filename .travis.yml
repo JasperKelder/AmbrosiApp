@@ -11,18 +11,17 @@ cache:
   directories:
     - $HOME/.m2
 
+
 # Services could also be a H2 database or docker for example
 services:
   - mysql
 
+env:
+  RUNWHERE=pipeline
+
 # addons for the GUI tests
 addons:
-  apt:
-    packages:
-      - chromium-chromedriver
-
-before_script:
-  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+  chrome: stable
 
 # Before installing dependencies run the following sql script
 before_install:
