@@ -18,5 +18,7 @@ public interface seedTablesInterface {
 
     void seedRecipeIngredient();
 
+    void seedCookbook();
+
 
 }

@@ -57,6 +57,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         seedIngredient();
         seedRecipeAndCookbookAndPreparationSteps();
         seedRecipeIngredient();
+        seedCookbook();
 
     }
 
@@ -308,9 +309,17 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         }
     }
 
+    public void seedCookbook() {
+        Cookbook cookbook1 = new Cookbook(1, false, "recipes", userRepository.getOne(1),
+                Arrays.asList(recipeRepository.getOne(1), recipeRepository.getOne(2)));
+
+        cookbookRepository.save(cookbook1);
+    }
+
     public byte[] imageFromFileToByteArray(String imageFilePath) throws IOException {
         FileInputStream imageInFile = new FileInputStream(new File(imageFilePath));
 
         return imageInFile.readAllBytes();
     }
+
 }

@@ -133,7 +133,9 @@ public class RecipeController {
                     currentRecipe.get().setCooktime(recipe.getCooktime());
                     currentRecipe.get().setCuisineName(recipe.getCuisineName());
                     currentRecipe.get().setCategoryName(recipe.getCategoryName());
-                    currentRecipe.get().setImage(recipe.getImage());
+                    if (!image.isEmpty()) {
+                        currentRecipe.get().setImage(recipe.getImage());
+                    }
                     recipeRepository.save(currentRecipe.get());
                     return "redirect:/mykitchen";
                 }
@@ -205,6 +207,19 @@ public class RecipeController {
     protected String showRecipesAdmin(Model model) {
         model.addAttribute("allRecipes", recipeRepository.findAll());
         return "adminrecipe";
+    }
+
+    @GetMapping("/userrecipes/{userId}")
+    protected String showRecipesUser(@PathVariable("userId") final Integer userId, Model model) {
+        List<Recipe> recipes = recipeRepository.userRecipes(userId);
+        List<String> imagesList = new ArrayList<>();
+        for (Recipe recipe : recipes) {
+            imagesList.add(fileUploadService.convertToBase64(recipe));
+        }
+        model.addAttribute("allUserImages", imagesList);
+        model.addAttribute("allUserRecipes", recipeRepository.userRecipes(userId));
+        model.addAttribute("user", userRepository.findById(userId).get());
+        return "userrecipes";
     }
 
     @GetMapping({"/index/delete/{recipeId}", "/recipes/delete/{recipeId}"})
