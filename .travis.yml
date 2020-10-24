@@ -15,6 +15,10 @@ cache:
 services:
   - mysql
 
+# addons for the GUI tests
+addons:
+  chrome: stable
+
 # Before installing dependencies run the following sql script
 before_install:
   - mysql -u root --password="" < sql/travis-init.sql
