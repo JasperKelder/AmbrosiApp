@@ -20,11 +20,6 @@ services:
 addons:
   chrome: stable
 
-# Change the chrome options to be able to run in the Travis pipeline
-capabilities:
-  chromeOptions:
-    args: ["--headless", "--no-sandbox"]
-
 # Before installing dependencies run the following sql script
 before_install:
   - mysql -u root --password="" < sql/travis-init.sql
