@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,24 +23,20 @@ import java.net.URL;
 public class RunCucumberTest {
 
     protected static WebDriver driver;
-    public static String runWhere;
-    private static ChromeOptions chromeOptions;
+    public static ChromeOptions chromeOptions;
 
     @BeforeClass
     public static void runApplication() {
         SpringApplication.run(RecipesApplication.class);
-
+        System.setProperty("webdriver.chrome.driver","src/test/java/nl/miwgroningen/cohort3/fortytwo/recipes/UITests/features/chromedriver.exe");
+        chromeOptions = new ChromeOptions();
+        driver = new ChromeDriver(chromeOptions);
+        driver.manage().window().maximize();
+        driver.get("http://localhost:8080/");
     }
-
-
-    @BeforeClass
-    public static void setUp() throws MalformedURLException{
-
-    }
-
 
     @AfterClass
-    public static void tearDown() {
+    public static void quitDriver() {
         driver.quit();
     }
 }

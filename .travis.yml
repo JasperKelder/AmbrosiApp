@@ -16,9 +16,14 @@ cache:
 services:
   - mysql
 
-# addons for the GUI tests
+# Add chromeDriver for Selenium GUI test
 addons:
   chrome: stable
+
+# Change the chrome options to be able to run in the Travis pipeline
+capabilities:
+  chromeOptions:
+    args: ["--headless", "--no-sandbox"]
 
 # Before installing dependencies run the following sql script
 before_install:
