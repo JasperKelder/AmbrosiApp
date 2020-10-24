@@ -195,3 +195,19 @@ if (window.location.href.indexOf("update") > -1) {
     }
     window.onload = hideFields();
 }
+
+// Check if there are no double ingredients
+$(document).on('submit', function (e) {
+    var arrayIngredients = $("input[name='ingredientName[]']")
+        .map(function() {
+            return $(this).val();
+        }).get();
+    if (hasDuplicates(arrayIngredients)) {
+        e.preventDefault();
+        document.getElementById("ingredientWarning").style.display = "inline";
+    }
+})
+
+function hasDuplicates(array) {
+    return (new Set(array)).size !== array.length;
+}
