@@ -17,7 +17,12 @@ services:
 
 # addons for the GUI tests
 addons:
-  chrome: stable
+  apt:
+    packages:
+      - chromium-chromedriver
+
+before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 
 # Before installing dependencies run the following sql script
 before_install:
@@ -28,7 +33,7 @@ before_install:
 script:
   - >
     mvn clean install &&
-    mvn test -Pcomponent-tests surefire:test &&
-    mvn test -Pintegration-tests surefire:test &&
+#    mvn test -Pcomponent-tests surefire:test &&
+#    mvn test -Pintegration-tests surefire:test &&
     mvn test -Pui-tests surefire:test &&
-    mvn test -Punit-tests surefire:test
+#    mvn test -Punit-tests surefire:test
