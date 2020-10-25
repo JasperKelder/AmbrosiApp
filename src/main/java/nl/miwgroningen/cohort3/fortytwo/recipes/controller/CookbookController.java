@@ -50,7 +50,7 @@ public class CookbookController {
         Cookbook currentCookbook = cookbookRepository.getOne(cookbookId);
         model.addAttribute("myRecipes", currentCookbook.getRecipes());
         model.addAttribute("cookbookName", currentCookbook.getCookbookName());
-
+        model.addAttribute("cookbook", currentCookbook);
         List<String> imagesList = new ArrayList<>();
         List<Recipe> recipes = currentCookbook.getRecipes();
         for (Recipe recipe : recipes) {
@@ -122,6 +122,23 @@ public class CookbookController {
             cookbookRepository.save(cookbook);
         }
         return "redirect:/viewcookbook/" + cookbook.getCookbookId();
+    }
+
+
+    @GetMapping("/deletefromcookbook{cookbookId}/{recipeId}")
+    protected String deleteFromCookbook(@PathVariable("cookbookId") Integer cookbookId,
+                                        @PathVariable("recipeId") Integer recipeId,
+                                        Principal principal) {
+        Cookbook cookbook = cookbookRepository.getOne(cookbookId);
+        Recipe recipe = recipeRepository.getOne(recipeId);
+        // wo don't want people deleting recipes from other users cookbooks, so we first check if the logged in user
+        // correspondents with the cookbooks' user
+        if (cookbook.getUser().getEmailAddress().equals(principal.getName())) {
+            cookbook.getRecipes().remove(recipe);
+            cookbookRepository.save(cookbook);
+            return "redirect:/viewcookbook/" + cookbook.getCookbookId();
+        }
+        return "redirect:/index";
     }
 }
 

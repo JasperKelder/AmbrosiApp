@@ -31,6 +31,10 @@
                         <img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image">
                     </a>
                     <div class="index-foodname" th:text="${myRecipes.get(i).recipeTitle}"></div>
+                    <a th:href="@{/deletefromcookbook{cookbookId}/{recipeId}(cookbookId=${cookbook.getCookbookId()},
+                    recipeId=${myRecipes.get(i).recipeId})}">
+                        <div>Delete</div>
+                    </a>
                 </div>
             </div>
         </div>
