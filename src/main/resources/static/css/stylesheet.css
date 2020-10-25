@@ -604,7 +604,7 @@ label {
     margin-top: 9px;
 }
 
-#X {
+#remove-from-cookbook, #update-recipe {
     text-decoration: none;
     color: white;
     font-size: 25px;
@@ -616,4 +616,8 @@ label {
     top: 15%;
     left: 80%;
     transform: translate(-50%, -50%);
+}
+
+#update-recipe {
+    left: 70%;
 }
