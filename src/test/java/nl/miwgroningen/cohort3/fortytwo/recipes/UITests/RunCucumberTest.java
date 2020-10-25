@@ -30,8 +30,8 @@ public class RunCucumberTest {
         SpringApplication.run(RecipesApplication.class);
         System.setProperty("webdriver.chrome.driver","src/test/java/nl/miwgroningen/cohort3/fortytwo/recipes/UITests/features/chromedriver.exe");
         chromeOptions = new ChromeOptions();
-//        WebDriverManager.chromedriver().setup();
-//        chromeOptions.addArguments("--headless", "--no-sandbox");
+        WebDriverManager.chromedriver().setup();
+        chromeOptions.addArguments("--headless", "--no-sandbox");
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.get("http://localhost:8080/");

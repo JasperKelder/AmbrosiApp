@@ -1,8 +1,9 @@
-package nl.miwgroningen.cohort3.fortytwo.recipes.UITests;
+package nl.miwgroningen.cohort3.fortytwo.recipes.UITests.Steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import nl.miwgroningen.cohort3.fortytwo.recipes.UITests.RunCucumberTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,7 @@ public class GetUserLoginSteps {
 
     @When("^User clicks on login$")
     public void user_clicks_login_button(){
-            driver.findElement(By.className("nav-mykitchen-container")).click();
+        driver.findElement(By.className("nav-mykitchen-container")).click();
     }
 
     @And("^User fill in its credentials to the form$")
@@ -40,7 +41,8 @@ public class GetUserLoginSteps {
     @Then("^User will see the myrecipe page$")
     public void user_should_see_myrecipe_page() {
         String actualTitle = driver.getTitle();
-        assertTrue(actualTitle.contains("EatAndTreat - MyKitchen"));
+        assertTrue(actualTitle.contains("Eat And Treat - MyKitchen"));
+        driver.findElement(By.id("nav-logout")).click();
     }
 
 }

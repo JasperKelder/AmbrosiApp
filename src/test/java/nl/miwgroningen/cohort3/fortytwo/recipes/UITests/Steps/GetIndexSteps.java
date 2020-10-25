@@ -1,6 +1,7 @@
-package nl.miwgroningen.cohort3.fortytwo.recipes.UITests;
+package nl.miwgroningen.cohort3.fortytwo.recipes.UITests.Steps;
 
 import io.cucumber.java.en.Then;
+import nl.miwgroningen.cohort3.fortytwo.recipes.UITests.RunCucumberTest;
 import org.openqa.selenium.WebDriver;
 import static org.junit.Assert.assertTrue;
 

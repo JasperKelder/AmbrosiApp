@@ -1,0 +1,14 @@
+This file contains information about testing with cucumber and selenium.
+
+The features package contains the feature files where scenarios will be created.
+The Steps package implement those features
+The features package also contains a chromedrive.exe which will be called when testing the UI
+
+The steps found in the feature file must be equal to the annotations above the methods in the Steps package.
+
+In which order the tests will compile are dependent on the order of the features package, so i gave them a number
+to order them
+
+The RunCucumberTest class will setup the driver and the test environment.
+
+For any questions ask Team 42!
