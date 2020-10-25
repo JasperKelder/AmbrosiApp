@@ -32,9 +32,7 @@
                     </a>
                     <div class="index-foodname" th:text="${myRecipes.get(i).recipeTitle}"></div>
                     <a th:href="@{/deletefromcookbook{cookbookId}/{recipeId}(cookbookId=${cookbook.getCookbookId()},
-                    recipeId=${myRecipes.get(i).recipeId})}">
-                        <div>Delete</div>
-                    </a>
+                    recipeId=${myRecipes.get(i).recipeId})}" id="X">X</a>
                 </div>
             </div>
         </div>

@@ -130,3 +130,8 @@
 .cookbook-button {
     margin-top: 25px;
 }
+
+#cookbook {
+    width: 200px;
+    height: 25px;
+}

@@ -603,3 +603,17 @@ label {
     margin-left: 9px;
     margin-top: 9px;
 }
+
+#X {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    text-shadow: -2px 2px 0 black,
+    2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black;
+    position: absolute;
+    top: 15%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
