@@ -11,7 +11,7 @@ public class GetIndexSteps {
     @Then("^User will see the page title$")
     public void verify_welcome_page() {
         String actualTitle = driver.getTitle();
-        assertTrue(actualTitle.contains("EatAndTreat - Overview"));
+        assertTrue(actualTitle.contains("Eat And Treat - Overview"));
     }
 
 }

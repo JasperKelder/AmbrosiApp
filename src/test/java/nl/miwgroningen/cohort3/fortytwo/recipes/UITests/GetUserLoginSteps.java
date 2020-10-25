@@ -16,7 +16,7 @@ public class GetUserLoginSteps {
     @And("^Index screen will be displayed$")
     public void verify_welcome_page() {
         String actualTitle = driver.getTitle();
-        assertTrue(actualTitle.contains("EatAndTreat - Overview"));
+        assertTrue(actualTitle.contains("Eat And Treat - Overview"));
     }
 
     @When("^User clicks on login$")
