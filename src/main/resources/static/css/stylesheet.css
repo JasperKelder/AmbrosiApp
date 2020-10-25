@@ -72,6 +72,9 @@ nav li a {
     position: relative;
 }
 
+.margin-right {
+    margin-right: 100px;
+}
 
 .nav-mykitchen-container {
     padding: 0;
@@ -139,6 +142,7 @@ nav li a {
     background-color: white;
     box-shadow: none;
     outline: none;
+    margin-top: 3px;
 }
 
 #nav-search-icon {
@@ -457,7 +461,7 @@ label {
     /* If known, negative margins are probably better (less chance of blurry text). */
     /* margin: -200px 0 0 -200px; */
     background: #f93f23;
-    box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 20px black;
 }
 .opened {
     display: block;
