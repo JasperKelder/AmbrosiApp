@@ -99,5 +99,28 @@ public class CookbookController {
         }
         return "redirect:/viewcookbook/" + cookbook.getCookbookId();
     }
+
+
+    @RequestMapping(value = "/addtonewcookbook", method = RequestMethod.POST)
+    protected String addToNewCookbook(@RequestParam("idRecipe") String recipeId,
+                                   @ModelAttribute("cookbook") Cookbook cookbook,
+                                   Principal principal,
+                                   BindingResult result) {
+        if (result.hasErrors()) {
+            return "addtocookbook";
+        }
+        cookbook.setUser(userRepository.findByEmailAddress(principal.getName()));
+        cookbookRepository.save(cookbook);
+        Optional<Recipe> recipe = recipeRepository.findById(Integer.valueOf(recipeId));
+        if (recipe.isPresent()) {
+            // Create a list of recipes
+            List<Recipe> recipeToCookbook = new ArrayList<>();
+            recipeToCookbook.add(recipe.get());
+            cookbook.setRecipes(recipeToCookbook);
+            cookbookRepository.save(cookbook);
+        }
+        return "redirect:/viewcookbook/" + cookbook.getCookbookId();
+    }
+
 }
 

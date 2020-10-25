@@ -6,7 +6,7 @@
 
 <div class="spaceMedium"></div>
 <!--th:object="${cookbook}"-->
-
+<div th:if="${usersCookbooks.size() > 0}">
 <form action="#" th:action="@{/addtocookbook}" method="post">
     <input id="recipeId" type="hidden" name="recipeId" th:value="${recipeId}">
     <select id="cookbook" name="cookbook" th:object="${cookbook}" >
@@ -19,21 +19,18 @@
     <div class="spaceSmall"></div>
     <input type="submit" value="Submit"/>
 </form>
-<!--<table>-->
-<!--    &lt;!&ndash;Displays all cookbooks from current user&ndash;&gt;-->
-<!--    <tr th:each="cookbook: ${usersCookbooks}">-->
-<!--        <td th:text="${cookbook.cookbookName}"></td>-->
-<!--        &lt;!&ndash; Loads the category in the add category form so it can be updated&ndash;&gt;-->
-<!--        <td class="admin-table"><a-->
-<!--                th:href="@{/recipe/addtocookbook/{cookbookId}(cookbookId=${cookbook.cookbookId})}"-->
-<!--                class="editbutton">Update</a></td>-->
-<!--    </tr>-->
-<!--</table>-->
-<!--</div>-->
+</div>
 
-<!--<label>gelukt</label>-->
-
-
+<div th:if="${usersCookbooks.size() == 0}">
+    <form th:action="@{/addtonewcookbook}" th:object="${cookbook}" method="post">
+        <input id="idRecipe" type="hidden" name="idRecipe" th:value="${recipeId}">
+        <div hidden><input type="text" th:field="*{cookbookId}"/></div>
+        <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}" required
+               placeholder="Cookbook Title" class="center"/>
+        <div class="spaceSmall"></div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 </body>
 </html>
