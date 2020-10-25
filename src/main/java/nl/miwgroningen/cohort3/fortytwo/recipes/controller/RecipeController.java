@@ -81,64 +81,56 @@ public class RecipeController {
                                 Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "addrecipe";
-        } else {
-            // If there is no image uploaded, save default image.
-            if (image.isEmpty()) {
-                recipe.setImage(null);
-            } else {
-                recipe.setImage(image.getBytes());
-            }
-            // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
-            Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
-                    ingredientQuantity);
+        }
+        // If there is no image uploaded, save default image.
+        byte[] imageInBytes = image.isEmpty()? null : image.getBytes();
+        recipe.setImage(imageInBytes);
 
-            // create list with preparationsteps
-            List<PreparationStep> preparationStepslist = new ArrayList<>();
-            for (String step : preparationSteps) {
-                if (step != null && !step.trim().isEmpty()) {
-                    PreparationStep preparationStep = new PreparationStep(step);
-                    preparationStepslist.add(preparationStep);
-                }
-            }
+        // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
+        Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
+                ingredientQuantity);
 
-            //when updating a recipe, the recipe has an id
-            if (recipe.getRecipeId() != null) {
-                // because of the recipeIngredients it is not possible to save the recipe directly in the database (it
-                // becomes a detached entity). Getting the recipe from the database, altering it and than saving it does
-                // work.
-                recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
-                Optional<Recipe> currentRecipe = recipeRepository.findById(recipe.getRecipeId());
-                if (currentRecipe.isPresent()) {
-                    currentRecipe.get().setRecipeTitle(recipe.getRecipeTitle());
-                    currentRecipe.get().setPreparationStepList(preparationStepslist);
-                    currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
-                    currentRecipe.get().setServings(recipe.getServings());
-                    for (RecipeIngredient ri : recipeIngredients) {
-                        ri.setRecipe(currentRecipe.get());
-                    }
-                    currentRecipe.get().setRecipeIngredients(recipeIngredients);
-                    currentRecipe.get().setCooktime(recipe.getCooktime());
-                    currentRecipe.get().setCuisineName(recipe.getCuisineName());
-                    currentRecipe.get().setCategoryName(recipe.getCategoryName());
-                    if (!image.isEmpty()) {
-                        currentRecipe.get().setImage(recipe.getImage());
-                    }
-                    recipeRepository.save(currentRecipe.get());
-                    return "redirect:/mykitchen";
-                }
-            } else {
-                // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
-                // after saving it.
-                recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
-                recipe.setPreparationStepList(preparationStepslist);
-                recipeRepository.save(recipe);
-                for (RecipeIngredient recipeIngredient : recipeIngredients) {
-                    recipeIngredient.setRecipe(recipe);
-                    recipeIngredientRepository.save(recipeIngredient);
-                }
+        // create list with preparationsteps
+        List<PreparationStep> preparationStepslist = new ArrayList<>();
+        for (String step : preparationSteps) {
+            if (step != null && !step.trim().isEmpty()) {
+                preparationStepslist.add(new PreparationStep(step));
             }
+        }
+        //when updating a recipe, the recipe has an id
+        if (recipe.getRecipeId() != null) {
+            // because of the recipeIngredients it is not possible to save the recipe directly in the database (it
+            // becomes a detached entity). Getting the recipe from the database, altering it and than saving it does
+            // work.
+            recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
+            Recipe currentRecipe = recipeRepository.getOne(recipe.getRecipeId());
+            currentRecipe.setRecipeTitle(recipe.getRecipeTitle());
+            currentRecipe.setPreparationStepList(preparationStepslist);
+            currentRecipe.setPreperationTime(recipe.getPreperationTime());
+            currentRecipe.setServings(recipe.getServings());
+            for (RecipeIngredient ri : recipeIngredients) {
+                ri.setRecipe(currentRecipe);
+            }
+            currentRecipe.setRecipeIngredients(recipeIngredients);
+            currentRecipe.setCooktime(recipe.getCooktime());
+            currentRecipe.setCuisineName(recipe.getCuisineName());
+            currentRecipe.setCategoryName(recipe.getCategoryName());
+            if (!image.isEmpty()) {
+                currentRecipe.setImage(recipe.getImage());
+            }
+            recipeRepository.save(currentRecipe);
             return "redirect:/mykitchen";
         }
+        // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
+        // after saving it.
+        recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
+        recipe.setPreparationStepList(preparationStepslist);
+        recipeRepository.save(recipe);
+        for (RecipeIngredient recipeIngredient : recipeIngredients) {
+            recipeIngredient.setRecipe(recipe);
+            recipeIngredientRepository.save(recipeIngredient);
+        }
+        return "redirect:/mykitchen";
     }
 
 
