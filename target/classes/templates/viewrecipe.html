@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-
+        <!-- possibility to add the recipe to a cookbook, only for logged in users-->
         <div class="cookbook-button" th:if="${#authorization.expression('hasRole(''USER'')')}">
             <button id="addToCookbook" onclick="retrieveCookbooks()">Add to cookbook</button>
         </div>
