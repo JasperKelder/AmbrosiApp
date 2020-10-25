@@ -64,13 +64,13 @@
             <div class="postit">
                 <div class="recipe-title">Ingredients</div>
                 <br>
-                <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
+                <th:block th:each="recipeIngredient: ${recipe.recipeIngredients}">
+                    <tr>
                     <td th:text="${recipeIngredient.getQuantity()}"></td>
                     <td th:text="${recipeIngredient.getIngredient().getMeasuringUnit().getMeasuringUnitAbbreviation()}"></td>
-                    <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
-                </tr>
-                <br>
-                <br>
+                    <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td><br>
+                    </tr>
+                </th:block>
             </div>
         </div>
         <div class="col-12">
