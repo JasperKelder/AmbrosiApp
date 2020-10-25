@@ -19,13 +19,22 @@
             </a>
         </li>
         <!--Logout button-->
-        <li class="nav-right">
+        <li class="nav-right" th:if="${#authorization.expression('hasRole(''USER'') OR hasRole(''ADMIN'')')}">
             <a th:href="@{/logout}">
                 <img id="nav-logout" src="/images/logout.png" alt="Logout">
             </a>
         </li>
-        <!--MyKitchen logo-->
-        <li class="nav-right imagetextcontainer">
+        <!--MyKitchen logo referring to login for users that aren't logged in-->
+        <li class="nav-right imagetextcontainer margin-right"
+            th:unless="${#authorization.expression('hasRole(''USER'') OR hasRole(''ADMIN'')')}">
+            <a class="nav-mykitchen-container" th:href="@{/mykitchen}">
+                <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
+                <div class="nav-mykitchen-text">MyKitchen</div>
+            </a>
+        </li>
+        <!--MyKitchen logo referring to MyKitchen for users that are logged in-->
+        <li class="nav-right imagetextcontainer"
+            th:if="${#authorization.expression('hasRole(''USER'') OR hasRole(''ADMIN'')')}">
             <a class="nav-mykitchen-container" th:href="@{/mykitchen}">
                 <img class="nav-mykitchen" src="/images/mykitchen.png" alt="MyKitchen logo">
                 <div class="nav-mykitchen-text">MyKitchen</div>
@@ -51,9 +60,6 @@
         </li>
         <li>
             <a class="nav-admin-button" th:href="@{/category}">Category</a>
-        </li>
-        <li>
-            <a class="nav-admin-button" th:href="@{/ingredients}">Ingredients</a>
         </li>
     </ul>
     <script type="text/javascript" src="/script/search.js"></script>
