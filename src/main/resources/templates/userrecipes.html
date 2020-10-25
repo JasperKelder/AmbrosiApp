@@ -19,6 +19,8 @@
                 <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allUserRecipes.get(i).recipeId})}">
                     <br><img th:src="|data:image/jpeg;base64,${allUserImages.get(i)}|" alt="Food" class="grid-image"></a>
                 <div class="index-foodname" th:text="${allUserRecipes.get(i).recipeTitle}"></div>
+                <a th:href="@{/add/update/{recipeId}(recipeId=${allUserRecipes.get(i).recipeId})}"
+                   id="update-recipe">Update</a>
             </div>
         </div>
     </div>

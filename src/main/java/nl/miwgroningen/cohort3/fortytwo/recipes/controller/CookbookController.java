@@ -124,7 +124,7 @@ public class CookbookController {
         return "redirect:/viewcookbook/" + cookbook.getCookbookId();
     }
 
-
+    // method to delete recipes from a cookbook
     @GetMapping("/deletefromcookbook{cookbookId}/{recipeId}")
     protected String deleteFromCookbook(@PathVariable("cookbookId") Integer cookbookId,
                                         @PathVariable("recipeId") Integer recipeId,
