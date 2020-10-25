@@ -8,8 +8,8 @@
 <!--th:object="${cookbook}"-->
 
 <form action="#" th:action="@{/addtocookbook}" method="post">
-    <input id="recipeId" type="hidden" th:value="${recipeId}">
-    <select id="cookbook" th:field="*{cookbook.cookbookName}" >
+    <input id="recipeId" type="hidden" name="recipeId" th:value="${recipeId}">
+    <select id="cookbook" name="cookbook" th:object="${cookbook}" >
         <!--Dropdown box displaying all cuisines-->
         <option th:each="cookbook : ${usersCookbooks}"
                 th:value="${cookbook.cookbookId}"

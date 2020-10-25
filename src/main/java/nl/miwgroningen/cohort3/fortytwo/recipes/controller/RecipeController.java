@@ -55,7 +55,7 @@ public class RecipeController {
 
 
     @GetMapping("/add")
-    protected String createRecipe(Model model, Principal principal) throws JsonProcessingException {
+    protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("cookbook", new Cookbook());
@@ -326,7 +326,9 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/addtocookbook", method = RequestMethod.GET)
-    protected String showCookBooks(@RequestParam("recipeid") String recepeid, Model model, Principal principal) {
+    protected String showCookBooks(@RequestParam("recipeid") String recipeid,
+                                   Model model,
+                                   Principal principal) {
         //method to get all cookbooks linked to current user
         User currentUser = userRepository.findByEmailAddress(principal.getName());
         List<Cookbook> cookbooks = cookbookRepository.findAll();
@@ -336,50 +338,50 @@ public class RecipeController {
                 myCookbooks.add(cookbook);
             }
         }
-        model.addAttribute("usersCookbooks", myCookbooks);
-        model.addAttribute("recipeId", Integer.parseInt(recepeid));
         model.addAttribute("cookbook", new Cookbook());
+        model.addAttribute("usersCookbooks", myCookbooks);
+        model.addAttribute("recipeId", Integer.valueOf(recipeid));
         return "addtocookbook";
     }
 
-    @PostMapping("/addtocookbook")
-    protected String addToCookbook(@RequestParam("recipeId") final int recipeId,
-                                   @RequestParam("cookbook") final Integer cookbookId, BindingResult result) {
+    @RequestMapping(value = "/addtocookbook", method = RequestMethod.POST)
+    protected String addToCookbook(@RequestParam("recipeId") String recipeId,
+                                   @ModelAttribute("cookbook") Cookbook cookbook,
+                                   BindingResult result) {
         if (result.hasErrors()) {
             return "addtocookbook";
         }
         System.out.println(recipeId);
-        Optional<Cookbook> cookbook = cookbookRepository.findById(cookbookId);
-        Optional<Recipe> recipe = recipeRepository.findById(recipeId);
-        if (cookbook.isPresent() & recipe.isPresent()) {
+        Optional<Recipe> recipe = recipeRepository.findById(Integer.valueOf(recipeId));
+        if (recipe.isPresent()) {
             // Create a list of recipes
-            List<Recipe> recipeToCookbook = cookbook.get().getRecipes();
+            List<Recipe> recipeToCookbook = cookbook.getRecipes();
             if (!recipeToCookbook.contains(recipe.get())) {
                 recipeToCookbook.add(recipe.get());
-                cookbook.get().setRecipes(recipeToCookbook);
-                cookbookRepository.save(cookbook.get());
+                cookbook.setRecipes(recipeToCookbook);
+                cookbookRepository.save(cookbook);
             }
         }
-        return "addtocookbook";
+        return "redirect:/index";
     }
 
 
     @PostMapping("/addtocookbook/{cookbookId}")
-    protected String addToCookBook(@PathVariable("cookbookId") final Integer cookbookId,
-                                   @RequestParam("recipeId") String recipeId, BindingResult result) {
+    protected String addToCookBook(@RequestParam("recipeId") String recipeId,
+                                   @ModelAttribute("cookbook") Cookbook cookbook,
+                                   BindingResult result) {
         if (result.hasErrors()) {
             return "addtocookbook";
         }
         System.out.println(recipeId);
-        Optional<Cookbook> cookbook = cookbookRepository.findById(cookbookId);
         Optional<Recipe> recipe = recipeRepository.findById(Integer.parseInt(recipeId));
-        if (cookbook.isPresent() & recipe.isPresent()) {
+        if (recipe.isPresent()) {
             // Create a list of recipes
-            List<Recipe> recipeToCookbook = cookbook.get().getRecipes();
+            List<Recipe> recipeToCookbook = cookbook.getRecipes();
             if (!recipeToCookbook.contains(recipe.get())) {
                 recipeToCookbook.add(recipe.get());
-                cookbook.get().setRecipes(recipeToCookbook);
-                cookbookRepository.save(cookbook.get());
+                cookbook.setRecipes(recipeToCookbook);
+                cookbookRepository.save(cookbook);
             }
         }
         return "addtocookbook";
