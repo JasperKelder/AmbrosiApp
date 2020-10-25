@@ -1,4 +1,4 @@
-// Name selects
+// Name selectors
 var nameModal = document.querySelector("#name-modal");
 var nameButton = document.querySelector("#name-button");
 var nameCloseButton = document.querySelector("#name-close-button");
