@@ -86,6 +86,8 @@ public class RecipeController {
         byte[] imageInBytes = image.isEmpty()? null : image.getBytes();
         recipe.setImage(imageInBytes);
 
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+
         // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
         Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
                 ingredientQuantity);
@@ -99,11 +101,16 @@ public class RecipeController {
         }
         //when updating a recipe, the recipe has an id
         if (recipe.getRecipeId() != null) {
+            // Only the recipe owner and the admin user can update a recipe
+            Recipe currentRecipe = recipeRepository.getOne(recipe.getRecipeId());
+            if (currentUser != currentRecipe.getUser() && !currentUser.hasAdminRole()) {
+                return "redirect:/index";
+            }
             // because of the recipeIngredients it is not possible to save the recipe directly in the database (it
             // becomes a detached entity). Getting the recipe from the database, altering it and than saving it does
             // work.
             recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
-            Recipe currentRecipe = recipeRepository.getOne(recipe.getRecipeId());
+            currentRecipe = recipeRepository.getOne(recipe.getRecipeId());
             currentRecipe.setRecipeTitle(recipe.getRecipeTitle());
             currentRecipe.setPreparationStepList(preparationStepslist);
             currentRecipe.setPreperationTime(recipe.getPreperationTime());
@@ -123,7 +130,7 @@ public class RecipeController {
         }
         // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
         // after saving it.
-        recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
+        recipe.setUser(currentUser);
         recipe.setPreparationStepList(preparationStepslist);
         recipeRepository.save(recipe);
         for (RecipeIngredient recipeIngredient : recipeIngredients) {
@@ -165,7 +172,6 @@ public class RecipeController {
         }
         return recipeIngredients;
     }
-
 
     @GetMapping({"/index", "/"})
     protected String showRecipes(Model model) {

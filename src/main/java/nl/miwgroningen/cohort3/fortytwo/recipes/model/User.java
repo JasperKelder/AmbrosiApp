@@ -61,6 +61,15 @@ public class User {
         this.password = password;
     }
 
+    public boolean hasAdminRole() {
+        boolean isAdmin = false;;
+        for (Role role : roles) {
+            if (role.getName().equals("ROLE_ADMIN")) {
+                isAdmin = true;
+            }
+        }
+        return isAdmin;
+    }
 
     //Used in viewrecipe.html to display the user who added the recipe
     @Override
