@@ -10,13 +10,13 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Jasper Kelder, Nathalie Antoine, Reinout Smit, Jasmijn van der Veen
@@ -59,6 +59,45 @@ public class CookbookController {
         model.addAttribute("allImages", imagesList);
 
         return "viewcookbook";
+    }
+
+    @RequestMapping(value = "/addtocookbook", method = RequestMethod.GET)
+    protected String showCookBooks(@RequestParam("recipeid") String recipeId,
+                                   Model model,
+                                   Principal principal) {
+        //method to get all cookbooks linked to current user
+        User currentUser = userRepository.findByEmailAddress(principal.getName());
+        List<Cookbook> cookbooks = cookbookRepository.findAll();
+        List<Cookbook> myCookbooks = new ArrayList<>();
+        for (Cookbook cookbook : cookbooks) {
+            if (currentUser.getUserId() == cookbook.getUser().getUserId()) {
+                myCookbooks.add(cookbook);
+            }
+        }
+        model.addAttribute("cookbook", new Cookbook());
+        model.addAttribute("usersCookbooks", myCookbooks);
+        model.addAttribute("recipeId", recipeId);
+        return "addtocookbook";
+    }
+
+    @RequestMapping(value = "/addtocookbook", method = RequestMethod.POST)
+    protected String addToCookbook(@RequestParam("recipeId") String recipeId,
+                                   @ModelAttribute("cookbook") Cookbook cookbook,
+                                   BindingResult result) {
+        if (result.hasErrors()) {
+            return "addtocookbook";
+        }
+        Optional<Recipe> recipe = recipeRepository.findById(Integer.valueOf(recipeId));
+        if (recipe.isPresent()) {
+            // Create a list of recipes
+            List<Recipe> recipeToCookbook = cookbook.getRecipes();
+            if (!recipeToCookbook.contains(recipe.get())) {
+                recipeToCookbook.add(recipe.get());
+                cookbook.setRecipes(recipeToCookbook);
+                cookbookRepository.save(cookbook);
+            }
+        }
+        return "redirect:/viewcookbook/" + cookbook.getCookbookId();
     }
 }
 
