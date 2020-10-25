@@ -224,8 +224,8 @@ public class RecipeController {
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
         model.addAttribute("allMeasuringUnits", measuringUnitRepository.findAll());
 
-        Gson gsonBuilder1 = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        String measuringUnitsToJson = gsonBuilder1.toJson(measuringUnitRepository.findAll());
+        Gson gsonMeasureUnits = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        String measuringUnitsToJson = gsonMeasureUnits.toJson(measuringUnitRepository.findAll());
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
 
         // generate a list of all the ingredient names and convert to Json (for the autocomplete).
