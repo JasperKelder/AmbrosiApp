@@ -291,7 +291,6 @@ public class RecipeController {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);
             }
-            imagesList.add(fileUploadService.convertToBase64(recipe));
         }
         for (Recipe recipe: searchResults) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
