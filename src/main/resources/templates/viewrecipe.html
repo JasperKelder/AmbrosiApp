@@ -24,14 +24,14 @@
             <input id="recipeId" type="hidden" th:value="${recipe.recipeId}">
         </div>
     </div>
+    <!--Displays the recipe's image-->
+    <div class="col-4 viewrecipe-responsive" id="view-image-container">
+        <a th:href="@{/index}">
+            <img id="view-image" class="grid-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
+        </a>
+    </div>
     <!--The printpage id indicates what can be printed-->
-    <div class="row" id="printpage">
-        <!--Displays the recipe's image-->
-        <div class="col-4 viewrecipe-responsive" id="view-image-container">
-            <a th:href="@{/index}">
-                <img id="view-image" class="grid-image" th:src="|data:image/jpeg;base64,${image}|" alt="Food">
-            </a>
-        </div>
+    <div id="printpage">
         <div class="col-4 viewrecipe-responsive">
             <!--Displays the recipe written on paper-->
             <div class="paper">
