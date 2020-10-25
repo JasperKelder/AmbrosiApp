@@ -26,22 +26,22 @@ public class FileUploadService {
                 // 1. Breakfast 2.Lunch 3.Dinner 4. Snacks 5. Cheating
                 switch(recipe.getCategoryName().getCategoryId()) {
                     case 1:
-                        image = new File("src/main/resources/static/images/demo/3.jpeg");
+                        image = new File("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
                         break;
                     case 2:
-                        image = new File("src/main/resources/static/images/demo/8.jpeg");
+                        image = new File("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
                         break;
                     case 3:
-                        image = new File("src/main/resources/static/images/demo/7.jpeg");
+                        image = new File("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
                         break;
                     case 4:
-                        image = new File("src/main/resources/static/images/demo/1.jpeg");
+                        image = new File("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
                         break;
                     case 5:
-                        image = new File("src/main/resources/static/images/demo/6.jpeg");
+                        image = new File("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
                         break;
                     default:
-                        image = new File("src/main/resources/static/images/demo/8.jpeg");
+                        image = new File("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
                 }
                 FileInputStream imageInFile = new FileInputStream(image);
                 byte[] imageInBytes = imageInFile.readAllBytes();

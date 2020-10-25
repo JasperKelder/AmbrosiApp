@@ -11,9 +11,14 @@ cache:
   directories:
     - $HOME/.m2
 
+
 # Services could also be a H2 database or docker for example
 services:
   - mysql
+
+# Add chromeDriver for Selenium GUI test
+addons:
+  chrome: stable
 
 # Before installing dependencies run the following sql script
 before_install:
@@ -25,4 +30,6 @@ script:
   - >
     mvn clean install &&
     mvn test -Pcomponent-tests surefire:test &&
-    mvn test -Pintegration-tests surefire:test
+    mvn test -Pintegration-tests surefire:test &&
+    mvn test -Pui-tests surefire:test &&
+    mvn test -Punit-tests surefire:test

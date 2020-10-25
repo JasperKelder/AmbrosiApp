@@ -1,4 +1,4 @@
-package nl.miwgroningen.cohort3.fortytwo.recipes.recipesapplicationtest;
+package recipesapplicationtest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
