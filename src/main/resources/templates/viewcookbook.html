@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EatAndTreat - Cookbook</title>
+    <title>Eat And Treat - Cookbook</title>
     <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
@@ -31,6 +31,8 @@
                         <img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image">
                     </a>
                     <div class="index-foodname" th:text="${myRecipes.get(i).recipeTitle}"></div>
+                    <a th:href="@{/deletefromcookbook{cookbookId}/{recipeId}(cookbookId=${cookbook.getCookbookId()},
+                    recipeId=${myRecipes.get(i).recipeId})}" id="X">X</a>
                 </div>
             </div>
         </div>

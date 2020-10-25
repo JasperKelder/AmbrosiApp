@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EatAndTreat - User Recipes</title>
+    <title>Eat And Treat - User Recipes</title>
     <div th:replace="fragments/head :: head"></div>
 </head>
 <body>
 <!--Navigation-->
 <nav th:replace="fragments/navigation :: navigation"></nav>
-<button type="button" class="collapsible" th:text="${'All ' + user + ' Recipes'}"></button>
+<button type="button" class="collapsible" th:text="${user}"></button>
 <!--Main page-->
 <div class="fade-in">
     <div class="spaceSmall"></div>

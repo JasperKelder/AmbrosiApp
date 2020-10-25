@@ -126,3 +126,12 @@
 #preparation-paper {
     width: 75%;
 }
+
+.cookbook-button {
+    margin-top: 25px;
+}
+
+#cookbook {
+    width: 200px;
+    height: 25px;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>EatAndTreat - View Recipe</title>
+    <title>Eat And Treat - View Recipe</title>
     <div th:replace="fragments/head :: head"></div>
     <link rel="stylesheet" href="/css/viewrecipe.css"/>
 </head>
@@ -11,6 +11,19 @@
 <button type="button" class="collapsible clickable" onClick="printPageArea('printpage')">Print</button>
 <!--Main page-->
 <div class="fade-in">
+    <div class="flex-container">
+        <!-- possibility to add the recipe to a cookbook, only for logged in users-->
+        <button id="addToCookbook" class="cookbook-button flashybutton" onclick="retrieveCookbooks()"
+                th:if="${#authorization.expression('hasRole(''USER'') OR hasRole(''ADMIN'')')}">Add to Cookbook</button>
+    </div>
+    <!--Add to cookbook modal, hidden by default-->
+    <div class="modal center" id="viewrecipe-modal">
+        <!--Button to hide the modal-->
+        <button class="close-button flashybutton" id="viewrecipe-close-button">X</button>
+        <div id="cookbooks">
+            <input id="recipeId" type="hidden" th:value="${recipe.recipeId}">
+        </div>
+    </div>
     <!--The printpage id indicates what can be printed-->
     <div class="row" id="printpage">
         <!--Displays the recipe's image-->
@@ -50,12 +63,13 @@
             <!--Displays the ingredients written on a post it-->
             <div class="postit">
                 <div class="recipe-title">Ingredients</div>
+                <br>
                 <tr th:each="recipeIngredient: ${recipe.recipeIngredients}">
                     <td th:text="${recipeIngredient.getQuantity()}"></td>
                     <td th:text="${recipeIngredient.getIngredient().getMeasuringUnit().getMeasuringUnitAbbreviation()}"></td>
                     <td th:text="${recipeIngredient.getIngredient().getIngredientName()}"></td>
-                    <br>
                 </tr>
+                <br>
                 <br>
             </div>
         </div>
@@ -64,6 +78,7 @@
                 <div class="paper-pattern">
                     <div class="paper-content">
                         <div class="recipe-title">Preparation</div>
+                        <br>
                         <tr th:each="preparationStep: ${recipe.preparationStepList}">
                             <td th:text="${preparationStep.preparationStep}"></td>
                             <br>
@@ -77,5 +92,8 @@
 </div>
 <script type="text/javascript" src="/script/fadein.js"></script>
 <script type="text/javascript" src="/script/print.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/script/addtocookbook.js"></script>
+<script type="text/javascript" src="/script/modalview.js"></script>
 </body>
 </html>

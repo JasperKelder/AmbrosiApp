@@ -112,7 +112,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
 
     @Override
     public void seedRecipeAndCookbookAndPreparationSteps() throws IOException {
-
         // First declare the images you want to use in the recipes
         byte[]caramelpieImage = imageFromFileToByteArray("src/main/resources/static/images/demo/1- Salted-caramel-pie.jpg");
         byte[]squashSaladImage = imageFromFileToByteArray("src/main/resources/static/images/demo/2- squash salad.jpg");
@@ -135,6 +134,10 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         byte[]hempSmootieImage = imageFromFileToByteArray("src/main/resources/static/images/demo/19- HempSmoothie.jpg");
         byte[]falafelImage = imageFromFileToByteArray("src/main/resources/static/images/demo/20- falafel.jpg");
         byte[]beefCurryImage = imageFromFileToByteArray("src/main/resources/static/images/demo/21-beefcurry.jpg");
+        byte[]burrataSaladImage = imageFromFileToByteArray("src/main/resources/static/images/demo/22- salade-burrata-black-olives.jpg");
+        byte[]carbonaraImage = imageFromFileToByteArray("src/main/resources/static/images/demo/23- sausage carbonara.jpg");
+        byte[]datesImage = imageFromFileToByteArray("src/main/resources/static/images/demo/24-dates.jpg");
+        byte[]pineapplericeImage = imageFromFileToByteArray("src/main/resources/static/images/demo/25-pineapple-rice.jpg");
 
         // Add the preperationSteps per recipe and save them to a list
         PreparationStep preparationStep1 = new PreparationStep("Grind the cookies in the food processor. Meanwhile, melt 100 grams of butter and stir into the cookie crumbs.");
@@ -252,7 +255,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         PreparationStep preparationStep113 = new PreparationStep("Add the cumin and a good pinch of salt and pepper.");
         PreparationStep preparationStep114 = new PreparationStep("Drain the water from the chickpea pot and rinse in a colander. Place the chickpeas in a food processor with the onion mixture, parsley and wheat flour and mix until coarsely.");
         PreparationStep preparationStep115 = new PreparationStep("Then make 12 balls with your hands. Heat a good splash of oil in the pan again and fry the falafel in 10 minutes until golden brown.");
-
         PreparationStep preparationStep116 = new PreparationStep("Place the minced beef in a large shallow casserole pan with 1 tablespoon of olive oil, then break it up and fry on a high heat, stirring regularly.");
         PreparationStep preparationStep117 = new PreparationStep("Click off and discard any tatty outer leaves from the cauliflower, putting the nice leaves into a food processor.");
         PreparationStep preparationStep118 = new PreparationStep("Halve the cauliflower, breaking up one half into the processor. Cut little bite-sized florets off the other half into the mince pan, chucking all the stalks into the processor as you go.");
@@ -261,11 +263,26 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         PreparationStep preparationStep121 = new PreparationStep("Reserving the baby leaves, pick the remaining mint leaves into the pan, toss well, then pour in the coconut milk and half a tin’s worth of water.");
         PreparationStep preparationStep122 = new PreparationStep("Bring to the boil, simmer for 5 minutes, then taste, season to perfection, and scatter over the reserved mint leaves.");
         PreparationStep preparationStep123 = new PreparationStep("Give the cauli rice a good mix up, and serve on the side.");
+        PreparationStep preparationStep124 = new PreparationStep("Slice the olives and quarter the cherry tomatoes. ");
+        PreparationStep preparationStep125 = new PreparationStep("Place half of the basil in a bowl with 3 tablespoons of olive oil and a pinch of salt and pepper and mix well with a hand blender.");
+        PreparationStep preparationStep126 = new PreparationStep("Mix the lettuce with the olives, cherry tomatoes, basil oil and the rest of the basil leaves and finish with the burrata on top.");
+        PreparationStep preparationStep127 = new PreparationStep("Cook the pasta in a pan of boiling salted water according to the packet instructions, then drain, reserving a mugful of cooking water.");
+        PreparationStep preparationStep128 = new PreparationStep("Meanwhile, squeeze the sausagemeat out of the skins, then, with wet hands, quickly shape into 18 even-sized balls.");
+        PreparationStep preparationStep129 = new PreparationStep("Roll and coat them in black pepper, then cook in a non- stick frying pan on a medium heat with ½ a tablespoon of olive oil until golden and cooked through, tossing regularly, then turn the heat off.");
+        PreparationStep preparationStep130 = new PreparationStep("Finely chop the parsley, stalks and all, beat it with the egg and a splash of pasta cooking water, then finely grate and mix in most of the Parmesan.");
+        PreparationStep preparationStep131 = new PreparationStep("Toss the drained pasta into the sausage pan, pour in the egg mixture, and toss for 1 minute off the heat (the egg will gently cook in the residual heat).");
+        PreparationStep preparationStep132 = new PreparationStep("Loosen with a good splash of reserved cooking water, season to perfection with sea salt and pepper, and finely grate over the remaining Parmesan.");
+        PreparationStep preparationStep133 = new PreparationStep("Cut and remove the stone from the dates and fill the centre of each date with nutbutter.");
+        PreparationStep preparationStep134 = new PreparationStep("Melt chocolate au bain-marie and spoon the chocolate over the nut butter centres.");
+        PreparationStep preparationStep135 = new PreparationStep("Sprinkle some sea salt on top, place them into the freezer to let the chocolate harden for at least 30 minutes & voilà!");
+        PreparationStep preparationStep136 = new PreparationStep("Cook the rice according to the directions on the package and cut the pineapple into cubes.");
+        PreparationStep preparationStep137 = new PreparationStep("Heat a dash of oil in a pan and fry the wok vegetables for about 5 minutes. Then add the curry powder for the last 2 minutes.");
+        PreparationStep preparationStep138 = new PreparationStep("Add the rice and pineapple and fry on high heat for 3 minutes.");
+        PreparationStep preparationStep139 = new PreparationStep("Finally add the soy sauce with a pinch of salt and pepper and heat it for 1 minute.");
 
-        PreparationStep preparationStep124 = new PreparationStep("");
-        PreparationStep preparationStep125 = new PreparationStep("");
-        PreparationStep preparationStep126 = new PreparationStep("");
-        PreparationStep preparationStep127 = new PreparationStep("");
+        PreparationStep preparationStep140 = new PreparationStep("");
+        PreparationStep preparationStep141 = new PreparationStep("");
+        PreparationStep preparationStep142 = new PreparationStep("");
 
         // Add prep steps to a list so we can save it into a recipe
         ArrayList<PreparationStep> preparationStepsRecipe1 = new ArrayList<>(Arrays.asList(preparationStep1, preparationStep2, preparationStep3, preparationStep4, preparationStep5, preparationStep6, preparationStep7));
@@ -289,6 +306,10 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         ArrayList<PreparationStep> preparationStepsRecipe19 = new ArrayList<>(Arrays.asList(preparationStep110, preparationStep111));
         ArrayList<PreparationStep> preparationStepsRecipe20 = new ArrayList<>(Arrays.asList(preparationStep112, preparationStep113, preparationStep114, preparationStep115));
         ArrayList<PreparationStep> preparationStepsRecipe21 = new ArrayList<>(Arrays.asList(preparationStep116, preparationStep117, preparationStep117, preparationStep118, preparationStep119, preparationStep120, preparationStep121, preparationStep122, preparationStep123));
+        ArrayList<PreparationStep> preparationStepsRecipe22 = new ArrayList<>(Arrays.asList(preparationStep124, preparationStep125, preparationStep126));
+        ArrayList<PreparationStep> preparationStepsRecipe23 = new ArrayList<>(Arrays.asList(preparationStep127, preparationStep128, preparationStep129, preparationStep130, preparationStep131, preparationStep132));
+        ArrayList<PreparationStep> preparationStepsRecipe24 = new ArrayList<>(Arrays.asList(preparationStep133, preparationStep134, preparationStep135));
+        ArrayList<PreparationStep> preparationStepsRecipe25 = new ArrayList<>(Arrays.asList(preparationStep136, preparationStep137, preparationStep138, preparationStep139));
 
         // Initialize the recipes
         Recipe recipe1 = new Recipe("Salted caramel pie", 30, 10, 60, cuisineRepository.getOne(3), categoryRepository.getOne(5), userRepository.getOne(4), caramelpieImage);
@@ -310,8 +331,12 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         Recipe recipe17 = new Recipe("Asperge quiche", 10, 2, 50, cuisineRepository.getOne(3), categoryRepository.getOne(3), userRepository.getOne(5), aspergeQuicheImage);
         Recipe recipe18 = new Recipe("Parsnip soup", 10, 4, 15, cuisineRepository.getOne(3), categoryRepository.getOne(3), userRepository.getOne(4), parsnipSoupImage);
         Recipe recipe19 = new Recipe("Hemp smootie", 5, 2, 0, cuisineRepository.getOne(3), categoryRepository.getOne(1), userRepository.getOne(3), hempSmootieImage);
-        Recipe recipe20 = new Recipe("falafel", 10, 12, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(2), falafelImage);
-        Recipe recipe21 = new Recipe("beef curry", 5, 4, 20, cuisineRepository.getOne(9), categoryRepository.getOne(3), userRepository.getOne(5), beefCurryImage);
+        Recipe recipe20 = new Recipe("Falafel", 10, 12, 10, cuisineRepository.getOne(4), categoryRepository.getOne(2), userRepository.getOne(2), falafelImage);
+        Recipe recipe21 = new Recipe("Beef curry", 5, 4, 20, cuisineRepository.getOne(9), categoryRepository.getOne(3), userRepository.getOne(5), beefCurryImage);
+        Recipe recipe22 = new Recipe("Burrata saled", 10, 2, 0, cuisineRepository.getOne(1), categoryRepository.getOne(2), userRepository.getOne(4), burrataSaladImage);
+        Recipe recipe23 = new Recipe("Carbonara", 5, 2, 10, cuisineRepository.getOne(1), categoryRepository.getOne(3), userRepository.getOne(3), carbonaraImage);
+        Recipe recipe24 = new Recipe("Stuffed dates", 5, 10, 30, cuisineRepository.getOne(4), categoryRepository.getOne(4), userRepository.getOne(2), datesImage);
+        Recipe recipe25 = new Recipe("Pineapple rice", 5, 2, 15, cuisineRepository.getOne(8), categoryRepository.getOne(3), userRepository.getOne(5), pineapplericeImage);
 
         // Add the preperationSteps to the recipe
         recipe1.setPreparationStepList(preparationStepsRecipe1);
@@ -335,12 +360,16 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         recipe19.setPreparationStepList(preparationStepsRecipe19);
         recipe20.setPreparationStepList(preparationStepsRecipe20);
         recipe21.setPreparationStepList(preparationStepsRecipe21);
+        recipe22.setPreparationStepList(preparationStepsRecipe22);
+        recipe23.setPreparationStepList(preparationStepsRecipe23);
+        recipe24.setPreparationStepList(preparationStepsRecipe24);
+        recipe25.setPreparationStepList(preparationStepsRecipe25);
 
         // Save recipes to repository
         if (preparationStepRepository.count() == 0 &&
                 recipeRepository.count() == 0) {
             recipeRepository.saveAll(Arrays.asList(recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe8,recipe9, recipe10, recipe11, recipe12,
-                    recipe13, recipe14, recipe15, recipe16, recipe17, recipe18, recipe19, recipe20, recipe21));
+                    recipe13, recipe14, recipe15, recipe16, recipe17, recipe18, recipe19, recipe20, recipe21, recipe22, recipe23, recipe24, recipe25));
         }
     }
 
@@ -374,7 +403,7 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             Ingredient butterCookies = new Ingredient("butter cookies",measuringUnitRepository.getOne(2), true);
             Ingredient unsaltedButter = new Ingredient("unsalted butter",measuringUnitRepository.getOne(2), true);
             Ingredient milk = new Ingredient("milk",measuringUnitRepository.getOne(3), true);
-            Ingredient seaSalt = new Ingredient("sea salt",measuringUnitRepository.getOne(6), true);
+            Ingredient seaSalt = new Ingredient("sea salt",measuringUnitRepository.getOne(9), true);
             Ingredient fudge = new Ingredient("fudge",measuringUnitRepository.getOne(2), true);
             Ingredient butternutSquash = new Ingredient("butternut squash", measuringUnitRepository.getOne(8), true);
             Ingredient harissa = new Ingredient("harissa", measuringUnitRepository.getOne(7), true);
@@ -455,6 +484,22 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             Ingredient mincedBeef = new Ingredient("minced beef", measuringUnitRepository.getOne(2), true);
             Ingredient cauliflower = new Ingredient("cauliflower", measuringUnitRepository.getOne(2), true);
             Ingredient rendangPowder = new Ingredient("rendang powder", measuringUnitRepository.getOne(7), true);
+            Ingredient blackOlives = new Ingredient("black olives", measuringUnitRepository.getOne(2), true);
+            Ingredient cherryTomatoes = new Ingredient("cherry tomatoes", measuringUnitRepository.getOne(2), true);
+            Ingredient basil = new Ingredient("basil", measuringUnitRepository.getOne(2), true);
+            Ingredient saladLeaves = new Ingredient("salad leaves", measuringUnitRepository.getOne(2), true);
+            Ingredient burrata = new Ingredient("burrata", measuringUnitRepository.getOne(1), true);
+            Ingredient tagliatelle = new Ingredient("tagliatelle", measuringUnitRepository.getOne(2), true);
+            Ingredient sausages = new Ingredient("sausages", measuringUnitRepository.getOne(1), true);
+            Ingredient parmesan = new Ingredient("parmesan", measuringUnitRepository.getOne(2), true);
+            Ingredient dates = new Ingredient("medjoul dates", measuringUnitRepository.getOne(1), true);
+            Ingredient nutbutter = new Ingredient("nutbutter", measuringUnitRepository.getOne(7), true);
+            Ingredient chocolate = new Ingredient("chocolate", measuringUnitRepository.getOne(2), true);
+            Ingredient rice = new Ingredient("rice", measuringUnitRepository.getOne(2), true);
+            Ingredient wokVegetables = new Ingredient("wok vegetables", measuringUnitRepository.getOne(2), true);
+            Ingredient curryPowder = new Ingredient("curry powder", measuringUnitRepository.getOne(6), true);
+            Ingredient soySauce = new Ingredient("soy sauce", measuringUnitRepository.getOne(7), true);
+
 
 
             ArrayList<Ingredient> ingredients = new ArrayList<>(Arrays.asList(condensedMilk, casterSugar, milkChocolate, butterCookies, unsaltedButter, milk, seaSalt, fudge,
@@ -463,7 +508,8 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
                     pumpkinSeeds, freshMint, pineapple, blueberries, lime, coconutYohurt, honey, coconutoil, darkChocolate, raspberries, lemonade, orzo, bacon ,redPepper, goatCheese,
                     redPesto, vanillaPod, blueberries, cornstarch, curryPaste, tomatoes, coconutMilk, fetaCheese, oatFlakes, cottageCheese, asperge, zucchini, cremeFraiche,
                     granaPadano, puffPastry, salt, pepper, parsnip, carrot, stockCube, ginger, cilantro, hempMilk, pear, juice, cinnamon, maca, cumin, chickpeas, parsley, mincedBeef,
-                    cauliflower, rendangPowder));
+                    cauliflower, rendangPowder, blackOlives, cherryTomatoes, basil, saladLeaves, burrata, tagliatelle, sausages, parmesan, dates, nutbutter, chocolate, rice,
+                    wokVegetables, curryPowder, soySauce));
 
             ingredientRepository.saveAll(ingredients);
         }
@@ -595,13 +641,31 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             RecipeIngredient recipeIngredient121 = new RecipeIngredient(recipeRepository.getOne(20), ingredientRepository.getOne(83), 400);
             RecipeIngredient recipeIngredient122 = new RecipeIngredient(recipeRepository.getOne(20), ingredientRepository.getOne(84), 15);
             RecipeIngredient recipeIngredient123 = new RecipeIngredient(recipeRepository.getOne(20), ingredientRepository.getOne(24), 5);
-
             RecipeIngredient recipeIngredient124 = new RecipeIngredient(recipeRepository.getOne(21), ingredientRepository.getOne(85), 500);
             RecipeIngredient recipeIngredient125 = new RecipeIngredient(recipeRepository.getOne(21), ingredientRepository.getOne(86), 800);
             RecipeIngredient recipeIngredient126 = new RecipeIngredient(recipeRepository.getOne(21), ingredientRepository.getOne(87), 1);
             RecipeIngredient recipeIngredient127 = new RecipeIngredient(recipeRepository.getOne(21), ingredientRepository.getOne(42), 30);
             RecipeIngredient recipeIngredient128 = new RecipeIngredient(recipeRepository.getOne(21), ingredientRepository.getOne(61), 150);
+            RecipeIngredient recipeIngredient129 = new RecipeIngredient(recipeRepository.getOne(22), ingredientRepository.getOne(88), 100);
+            RecipeIngredient recipeIngredient130 = new RecipeIngredient(recipeRepository.getOne(22), ingredientRepository.getOne(89), 250);
+            RecipeIngredient recipeIngredient131 = new RecipeIngredient(recipeRepository.getOne(22), ingredientRepository.getOne(90), 15);
+            RecipeIngredient recipeIngredient132 = new RecipeIngredient(recipeRepository.getOne(22), ingredientRepository.getOne(91), 150);
+            RecipeIngredient recipeIngredient133 = new RecipeIngredient(recipeRepository.getOne(22), ingredientRepository.getOne(92), 1);
+            RecipeIngredient recipeIngredient134 = new RecipeIngredient(recipeRepository.getOne(23), ingredientRepository.getOne(93), 150);
+            RecipeIngredient recipeIngredient135 = new RecipeIngredient(recipeRepository.getOne(23), ingredientRepository.getOne(94), 3);
+            RecipeIngredient recipeIngredient136 = new RecipeIngredient(recipeRepository.getOne(23), ingredientRepository.getOne(84), 15);
+            RecipeIngredient recipeIngredient137 = new RecipeIngredient(recipeRepository.getOne(23), ingredientRepository.getOne(38), 1);
+            RecipeIngredient recipeIngredient138 = new RecipeIngredient(recipeRepository.getOne(23), ingredientRepository.getOne(95), 30);
+            RecipeIngredient recipeIngredient139 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(96), 10);
+            RecipeIngredient recipeIngredient140 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(97), 15);
+            RecipeIngredient recipeIngredient141 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(98), 15);
+            RecipeIngredient recipeIngredient142 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(7), 1);
 
+            RecipeIngredient recipeIngredient143 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(99), 150);
+            RecipeIngredient recipeIngredient144 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(43), 250);
+            RecipeIngredient recipeIngredient145 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(100), 300);
+            RecipeIngredient recipeIngredient146 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(101), 2);
+            RecipeIngredient recipeIngredient147 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(102), 4);
 
             ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<>(Arrays.asList(recipeIngredient1, recipeIngredient2, recipeIngredient3, recipeIngredient4, recipeIngredient5,
                     recipeIngredient6, recipeIngredient7, recipeIngredient8, recipeIngredient9, recipeIngredient10, recipeIngredient11, recipeIngredient12, recipeIngredient13, recipeIngredient14,
@@ -619,7 +683,9 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
                     recipeIngredient103, recipeIngredient104, recipeIngredient105, recipeIngredient106, recipeIngredient107, recipeIngredient108, recipeIngredient109, recipeIngredient110,
                     recipeIngredient111, recipeIngredient112, recipeIngredient113, recipeIngredient114, recipeIngredient115, recipeIngredient116, recipeIngredient117, recipeIngredient118,
                     recipeIngredient119, recipeIngredient120, recipeIngredient121, recipeIngredient122, recipeIngredient123 ,recipeIngredient124, recipeIngredient125, recipeIngredient126,
-                    recipeIngredient127, recipeIngredient128));
+                    recipeIngredient127, recipeIngredient128, recipeIngredient129, recipeIngredient130, recipeIngredient130, recipeIngredient131, recipeIngredient132, recipeIngredient133,
+                    recipeIngredient134, recipeIngredient135, recipeIngredient136, recipeIngredient137, recipeIngredient138, recipeIngredient139, recipeIngredient140, recipeIngredient141,
+                    recipeIngredient142, recipeIngredient143, recipeIngredient144, recipeIngredient145, recipeIngredient146, recipeIngredient147));
 
             recipeIngredientRepository.saveAll(recipeIngredients);
         }

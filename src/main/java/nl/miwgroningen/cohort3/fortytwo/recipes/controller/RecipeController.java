@@ -1,6 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
@@ -54,10 +53,9 @@ public class RecipeController {
 
 
     @GetMapping("/add")
-    protected String createRecipe(Model model, Principal principal) throws JsonProcessingException {
+    protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("ingredient", new Ingredient());
-        model.addAttribute("cookbook", new Cookbook());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
@@ -70,16 +68,11 @@ public class RecipeController {
         Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String measuringUnitsToJson = gsonBuilder.toJson(measuringUnitRepository.findAll());
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
-
-        // gets current users cookbooks
-        User currentUser = userRepository.findByEmailAddress(principal.getName());
-        List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
-        model.addAttribute("allUserCookbooks", userCookbooks);
         return "addrecipe";
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe,
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 @RequestParam("ingredientUnit[]") Integer[] ingredientUnit,
@@ -88,68 +81,56 @@ public class RecipeController {
                                 Principal principal, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "addrecipe";
-        } else {
-            // Create a list of recipes
-            List<Recipe> recipeToCookbook = cookbook.getRecipes();
-            // If there is no image uploaded, save default image.
-            if (image.isEmpty()) {
-                recipe.setImage(null);
-            } else {
-                recipe.setImage(image.getBytes());
-            }
-            // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
-            Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
-                    ingredientQuantity);
+        }
+        // If there is no image uploaded, save default image.
+        byte[] imageInBytes = image.isEmpty()? null : image.getBytes();
+        recipe.setImage(imageInBytes);
 
-            // create list with preparationsteps
-            List<PreparationStep> preparationStepslist = new ArrayList<>();
-            for (String step : preparationSteps) {
-                if (step != null && !step.trim().isEmpty()) {
-                    PreparationStep preparationStep = new PreparationStep(step);
-                    preparationStepslist.add(preparationStep);
-                }
-            }
+        // a set of recipeIngredients must be filled with the wright ingredients, measuring units and quantities.
+        Set<RecipeIngredient> recipeIngredients = makeRecipeIngredientSet(ingredientName, ingredientUnit,
+                ingredientQuantity);
 
-            //when updating a recipe, the recipe has an id
-            if (recipe.getRecipeId() != null) {
-                // because of the recipeIngredients it is not possible to save the recipe directly in the database (it
-                // becomes a detached entity). Getting the recipe from the database, altering it and than saving it does
-                // work.
-                recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
-                Optional<Recipe> currentRecipe = recipeRepository.findById(recipe.getRecipeId());
-                if (currentRecipe.isPresent()) {
-                    currentRecipe.get().setRecipeTitle(recipe.getRecipeTitle());
-                    currentRecipe.get().setPreparationStepList(preparationStepslist);
-                    currentRecipe.get().setPreperationTime(recipe.getPreperationTime());
-                    currentRecipe.get().setServings(recipe.getServings());
-                    for (RecipeIngredient ri : recipeIngredients) {
-                        ri.setRecipe(currentRecipe.get());
-                    }
-                    currentRecipe.get().setRecipeIngredients(recipeIngredients);
-                    currentRecipe.get().setCooktime(recipe.getCooktime());
-                    currentRecipe.get().setCuisineName(recipe.getCuisineName());
-                    currentRecipe.get().setCategoryName(recipe.getCategoryName());
-                    if (!image.isEmpty()) {
-                        currentRecipe.get().setImage(recipe.getImage());
-                    }
-                    recipeRepository.save(currentRecipe.get());
-                    return "redirect:/mykitchen";
-                }
-            } else {
-                // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
-                // after saving it.
-                recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
-                recipeToCookbook.add(recipe);
-                cookbook.setRecipes(recipeToCookbook);
-                recipe.setPreparationStepList(preparationStepslist);
-                recipeRepository.save(recipe);
-                for (RecipeIngredient recipeIngredient : recipeIngredients) {
-                    recipeIngredient.setRecipe(recipe);
-                    recipeIngredientRepository.save(recipeIngredient);
-                }
+        // create list with preparationsteps
+        List<PreparationStep> preparationStepslist = new ArrayList<>();
+        for (String step : preparationSteps) {
+            if (step != null && !step.trim().isEmpty()) {
+                preparationStepslist.add(new PreparationStep(step));
             }
+        }
+        //when updating a recipe, the recipe has an id
+        if (recipe.getRecipeId() != null) {
+            // because of the recipeIngredients it is not possible to save the recipe directly in the database (it
+            // becomes a detached entity). Getting the recipe from the database, altering it and than saving it does
+            // work.
+            recipeIngredientRepository.deleteRecipeIngredientsByRecipeId(recipe.getRecipeId());
+            Recipe currentRecipe = recipeRepository.getOne(recipe.getRecipeId());
+            currentRecipe.setRecipeTitle(recipe.getRecipeTitle());
+            currentRecipe.setPreparationStepList(preparationStepslist);
+            currentRecipe.setPreperationTime(recipe.getPreperationTime());
+            currentRecipe.setServings(recipe.getServings());
+            for (RecipeIngredient ri : recipeIngredients) {
+                ri.setRecipe(currentRecipe);
+            }
+            currentRecipe.setRecipeIngredients(recipeIngredients);
+            currentRecipe.setCooktime(recipe.getCooktime());
+            currentRecipe.setCuisineName(recipe.getCuisineName());
+            currentRecipe.setCategoryName(recipe.getCategoryName());
+            if (!image.isEmpty()) {
+                currentRecipe.setImage(recipe.getImage());
+            }
+            recipeRepository.save(currentRecipe);
             return "redirect:/mykitchen";
         }
+        // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
+        // after saving it.
+        recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
+        recipe.setPreparationStepList(preparationStepslist);
+        recipeRepository.save(recipe);
+        for (RecipeIngredient recipeIngredient : recipeIngredients) {
+            recipeIngredient.setRecipe(recipe);
+            recipeIngredientRepository.save(recipeIngredient);
+        }
+        return "redirect:/mykitchen";
     }
 
 
@@ -234,7 +215,6 @@ public class RecipeController {
         User user = userRepository.findByEmailAddress(principal.getName());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
-        model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
         model.addAttribute("allMeasuringUnits", measuringUnitRepository.findAll());
 
@@ -292,7 +272,6 @@ public class RecipeController {
             if (!searchResults.contains(recipe)) {
                 searchResults.add(recipe);
             }
-            imagesList.add(fileUploadService.convertToBase64(recipe));
         }
         for (Recipe recipe: searchResults) {
             imagesList.add(fileUploadService.convertToBase64(recipe));

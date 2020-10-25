@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<!-- when the user has more than one cookbook, she/he sees a dropdown menu with the cookbooks -->
+<div class="spaceMedium"></div>
+<div th:if="${usersCookbooks.size() > 0}">
+<form action="#" th:action="@{/addtocookbook}" method="post">
+    <input id="recipeId" type="hidden" name="recipeId" th:value="${recipeId}">
+    <select id="cookbook" name="cookbook" th:object="${cookbook}" >
+        <!--Dropdown box displaying all cuisines-->
+        <option th:each="cookbook : ${usersCookbooks}"
+                th:value="${cookbook.cookbookId}"
+                th:text="${cookbook.cookbookName}">
+        </option>
+    </select>
+    <div class="spaceSmall"></div>
+    <input type="submit" value="Submit"/>
+</form>
+</div>
+
+<!-- when the user has no cookbooks, she/he can create a cookbook in which the recipe will be saved -->
+<div th:if="${usersCookbooks.size() == 0}">
+    <form th:action="@{/addtonewcookbook}" th:object="${cookbook}" method="post">
+        <input id="idRecipe" type="hidden" name="idRecipe" th:value="${recipeId}">
+        <div hidden><input type="text" th:field="*{cookbookId}"/></div>
+        <input type="text" id="cookbookName" name="cookbookName" th:field="*{cookbookName}" required
+               placeholder="Cookbook Title" class="center"/>
+        <div class="spaceSmall"></div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

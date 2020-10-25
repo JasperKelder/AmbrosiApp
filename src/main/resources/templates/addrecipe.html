@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>EatAndTreat - Add</title>
+    <title>Eat And Treat - Add Recipe</title>
     <div th:replace="fragments/head :: head"></div>
     <link rel="stylesheet" href="/css/addrecipe.css"/>
     <link rel="stylesheet" href="/css/background.css"/>
@@ -121,19 +121,6 @@
                             <option th:each="category : ${allCategories}"
                                     th:value="${category.categoryId}"
                                     th:text="${category.categoryName}">
-                            </option>
-                        </select>
-                    </div>
-                    <div class="column-left">
-                        <label for="cookbook">Cookbook</label>
-                    </div>
-                    <div class="column-right">
-                        <!--Recipe cookbook-->
-                        <select id="cookbook" name="cookbook" th:object="${cookbook}" required>
-                            <!--Dropdown box displaying all cookbooks-->
-                            <option th:each="cookbook : ${allUserCookbooks}"
-                                    th:value="${cookbook.cookbookId}"
-                                    th:text="${cookbook.cookbookName}">
                             </option>
                         </select>
                     </div>
