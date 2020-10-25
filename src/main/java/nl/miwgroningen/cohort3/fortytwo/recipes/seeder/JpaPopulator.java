@@ -14,6 +14,7 @@ import java.util.Arrays;
 /*
 * This class will take JSON objects and convert it to datasources which can be interpreted by the SQL database.
 * */
+
 @Component
 public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
 
@@ -280,10 +281,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
         PreparationStep preparationStep138 = new PreparationStep("Add the rice and pineapple and fry on high heat for 3 minutes.");
         PreparationStep preparationStep139 = new PreparationStep("Finally add the soy sauce with a pinch of salt and pepper and heat it for 1 minute.");
 
-        PreparationStep preparationStep140 = new PreparationStep("");
-        PreparationStep preparationStep141 = new PreparationStep("");
-        PreparationStep preparationStep142 = new PreparationStep("");
-
         // Add prep steps to a list so we can save it into a recipe
         ArrayList<PreparationStep> preparationStepsRecipe1 = new ArrayList<>(Arrays.asList(preparationStep1, preparationStep2, preparationStep3, preparationStep4, preparationStep5, preparationStep6, preparationStep7));
         ArrayList<PreparationStep> preparationStepsRecipe2 = new ArrayList<>(Arrays.asList(preparationStep8, preparationStep9, preparationStep10,preparationStep11, preparationStep12, preparationStep13));
@@ -500,8 +497,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             Ingredient curryPowder = new Ingredient("curry powder", measuringUnitRepository.getOne(6), true);
             Ingredient soySauce = new Ingredient("soy sauce", measuringUnitRepository.getOne(7), true);
 
-
-
             ArrayList<Ingredient> ingredients = new ArrayList<>(Arrays.asList(condensedMilk, casterSugar, milkChocolate, butterCookies, unsaltedButter, milk, seaSalt, fudge,
                     butternutSquash, harissa, avocado, mixedSaled, mozzarella, banana, vanillaSuger, chiaSeeds, onion, garlic, chorizo, passata, cod, ciabatta, butter, flower,
                     chocolateCookie, sugar, misoPaste, tuna, sesameSeeds, springOnion, sugersnapPeas, gnocchi, chicken, lemon, peas, cream, greekYoghurt, egg, bakingPowder, halloumi,
@@ -660,7 +655,6 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
             RecipeIngredient recipeIngredient140 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(97), 15);
             RecipeIngredient recipeIngredient141 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(98), 15);
             RecipeIngredient recipeIngredient142 = new RecipeIngredient(recipeRepository.getOne(24), ingredientRepository.getOne(7), 1);
-
             RecipeIngredient recipeIngredient143 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(99), 150);
             RecipeIngredient recipeIngredient144 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(43), 250);
             RecipeIngredient recipeIngredient145 = new RecipeIngredient(recipeRepository.getOne(25), ingredientRepository.getOne(100), 300);
