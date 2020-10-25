@@ -56,7 +56,6 @@ public class RecipeController {
     protected String createRecipe(Model model, Principal principal) {
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("ingredient", new Ingredient());
-        model.addAttribute("cookbook", new Cookbook());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
@@ -69,16 +68,11 @@ public class RecipeController {
         Gson gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String measuringUnitsToJson = gsonBuilder.toJson(measuringUnitRepository.findAll());
         model.addAttribute("allMeasuringUnits", measuringUnitsToJson);
-
-        // gets current users cookbooks
-        User currentUser = userRepository.findByEmailAddress(principal.getName());
-        List<Cookbook> userCookbooks = cookbookRepository.getCookbookByUserId(currentUser.getUserId());
-        model.addAttribute("allUserCookbooks", userCookbooks);
         return "addrecipe";
     }
 
     @PostMapping({"/add"})
-    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe, @ModelAttribute("cookbook") Cookbook cookbook,
+    protected String saveRecipe(@ModelAttribute("recipe") Recipe recipe,
                                 @RequestParam("file") MultipartFile image,
                                 @RequestParam("ingredientName[]") String[] ingredientName,
                                 @RequestParam("ingredientUnit[]") Integer[] ingredientUnit,
@@ -88,8 +82,6 @@ public class RecipeController {
         if (result.hasErrors()) {
             return "addrecipe";
         } else {
-            // Create a list of recipes
-            List<Recipe> recipeToCookbook = cookbook.getRecipes();
             // If there is no image uploaded, save default image.
             if (image.isEmpty()) {
                 recipe.setImage(null);
@@ -138,8 +130,6 @@ public class RecipeController {
                 // this is for the new recipes, it has to be after the updating recipe, because the recipe gets an id
                 // after saving it.
                 recipe.setUser(userRepository.findByEmailAddress(principal.getName()));
-                recipeToCookbook.add(recipe);
-                cookbook.setRecipes(recipeToCookbook);
                 recipe.setPreparationStepList(preparationStepslist);
                 recipeRepository.save(recipe);
                 for (RecipeIngredient recipeIngredient : recipeIngredients) {
@@ -233,7 +223,6 @@ public class RecipeController {
         User user = userRepository.findByEmailAddress(principal.getName());
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("allCuisines", cuisineRepository.findAll());
-        model.addAttribute("allUserCookbooks", cookbookRepository.getCookbookByUserId(user.getUserId()));
         // for some strange reason, you need to add this to the model here (even though it gets overwritten later):
         model.addAttribute("allMeasuringUnits", measuringUnitRepository.findAll());
 

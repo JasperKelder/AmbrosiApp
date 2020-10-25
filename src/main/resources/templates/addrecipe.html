@@ -125,19 +125,6 @@
                         </select>
                     </div>
                     <div class="column-left">
-                        <label for="cookbook">Cookbook</label>
-                    </div>
-                    <div class="column-right">
-                        <!--Recipe cookbook-->
-                        <select id="cookbook" name="cookbook" th:object="${cookbook}" required>
-                            <!--Dropdown box displaying all cookbooks-->
-                            <option th:each="cookbook : ${allUserCookbooks}"
-                                    th:value="${cookbook.cookbookId}"
-                                    th:text="${cookbook.cookbookName}">
-                            </option>
-                        </select>
-                    </div>
-                    <div class="column-left">
                         <label for="file">Image</label>
                     </div>
                     <div class="column-right">
