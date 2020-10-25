@@ -12,6 +12,7 @@ public class RecipeIngredientsKey implements Serializable {
     @Column(name = "ingredient_id")
     private Integer ingredientId;
 
+    // constructors:
     public RecipeIngredientsKey() {
     }
 
@@ -20,10 +21,12 @@ public class RecipeIngredientsKey implements Serializable {
         this.ingredientId = ingredientId;
     }
 
+    @Override
     public int hashCode() {
         return (int)this.recipeId.hashCode();
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (obj == this) {
             return true;
@@ -36,18 +39,16 @@ public class RecipeIngredientsKey implements Serializable {
                 && recipeIngredientsKey.ingredientId.equals(this.ingredientId);
     }
 
+    // getters and setters:
     public Integer getRecipeId() {
         return recipeId;
     }
-
     public void setRecipeId(Integer recipeId) {
         this.recipeId = recipeId;
     }
-
     public Integer getIngredientId() {
         return ingredientId;
     }
-
     public void setIngredientId(Integer ingredientId) {
         this.ingredientId = ingredientId;
     }
