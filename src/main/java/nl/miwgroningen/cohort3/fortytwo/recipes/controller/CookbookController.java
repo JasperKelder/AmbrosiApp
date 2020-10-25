@@ -61,6 +61,7 @@ public class CookbookController {
         return "viewcookbook";
     }
 
+    // method to show the cookbooks of a user in the viewrecipe
     @RequestMapping(value = "/addtocookbook", method = RequestMethod.GET)
     protected String showCookBooks(@RequestParam("recipeid") String recipeId,
                                    Model model,
@@ -80,12 +81,13 @@ public class CookbookController {
         return "addtocookbook";
     }
 
+    // method to add a recipe to an existing cookbook
     @RequestMapping(value = "/addtocookbook", method = RequestMethod.POST)
     protected String addToCookbook(@RequestParam("recipeId") String recipeId,
                                    @ModelAttribute("cookbook") Cookbook cookbook,
                                    BindingResult result) {
         if (result.hasErrors()) {
-            return "addtocookbook";
+            return "redirect:/index";
         }
         Optional<Recipe> recipe = recipeRepository.findById(Integer.valueOf(recipeId));
         if (recipe.isPresent()) {
@@ -100,14 +102,14 @@ public class CookbookController {
         return "redirect:/viewcookbook/" + cookbook.getCookbookId();
     }
 
-
+    // method to create a cookbook and add a recipe to it
     @RequestMapping(value = "/addtonewcookbook", method = RequestMethod.POST)
     protected String addToNewCookbook(@RequestParam("idRecipe") String recipeId,
                                    @ModelAttribute("cookbook") Cookbook cookbook,
                                    Principal principal,
                                    BindingResult result) {
         if (result.hasErrors()) {
-            return "addtocookbook";
+            return "redirect:/index";
         }
         cookbook.setUser(userRepository.findByEmailAddress(principal.getName()));
         cookbookRepository.save(cookbook);
@@ -121,6 +123,5 @@ public class CookbookController {
         }
         return "redirect:/viewcookbook/" + cookbook.getCookbookId();
     }
-
 }
 

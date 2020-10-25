@@ -4,8 +4,8 @@
 </head>
 <body>
 
+<!-- when the user has more than one cookbook, she/he sees a dropdown menu with the cookbooks -->
 <div class="spaceMedium"></div>
-<!--th:object="${cookbook}"-->
 <div th:if="${usersCookbooks.size() > 0}">
 <form action="#" th:action="@{/addtocookbook}" method="post">
     <input id="recipeId" type="hidden" name="recipeId" th:value="${recipeId}">
@@ -21,6 +21,7 @@
 </form>
 </div>
 
+<!-- when the user has no cookbooks, she/he can create a cookbook in which the recipe will be saved -->
 <div th:if="${usersCookbooks.size() == 0}">
     <form th:action="@{/addtonewcookbook}" th:object="${cookbook}" method="post">
         <input id="idRecipe" type="hidden" name="idRecipe" th:value="${recipeId}">

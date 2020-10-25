@@ -1,6 +1,5 @@
 package nl.miwgroningen.cohort3.fortytwo.recipes.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.*;
@@ -8,7 +7,6 @@ import nl.miwgroningen.cohort3.fortytwo.recipes.repository.*;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.FileUploadService;
 import nl.miwgroningen.cohort3.fortytwo.recipes.service.RemoveDuplicatesFromList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -324,6 +322,4 @@ public class RecipeController {
         model.addAttribute("categoriesSelected", newListWithoutDuplicates);
         return "filterresults";
     }
-
-
 }
