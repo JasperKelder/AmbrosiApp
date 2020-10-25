@@ -36,7 +36,7 @@
         <!--Creates a list of numbers from 0 to the length of the list - 1 (or else out of bounds error)-->
         <div th:each="i : ${#numbers.sequence(0, recipesByCategory.size() - 1)}">
             <!--This will add all the info into the grid items-->
-            <div class="col-3 imagetextcontainer" th:value="${recipesByCategory.get(i).recipeId}">
+            <div class="col-3 overview-responsive imagetextcontainer" th:value="${recipesByCategory.get(i).recipeId}">
                 <a th:href="@{/viewrecipe/{recipeId}(recipeId=${recipesByCategory.get(i).recipeId})}">
                     <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
                 <div class="index-foodname" th:text="${recipesByCategory.get(i).recipeTitle}"></div>
