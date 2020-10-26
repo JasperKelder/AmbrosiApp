@@ -13,7 +13,8 @@
                 <div class="spaceSmall"></div>
                 <div class="cookbook-title">Cookbook</div>
                 <svg th:replace="fragments/avocado :: avocado"></svg>
-                <div class="cookbook-title" th:text="${cookbook.getCookbookName()}" id="cookbook-name"></div>
+                <div class="cookbook-title" th:text="${#strings.abbreviate(cookbook.getCookbookName(), 45)}"
+                     id="cookbook-name"></div>
             </li>
             <li></li>
         </ul>

@@ -14,7 +14,7 @@
     <div class="flex-container">
         <!-- possibility to add the recipe to a cookbook, only for logged in users-->
         <button id="addToCookbook" class="cookbook-button flashybutton" onclick="retrieveCookbooks()"
-                th:if="${#authorization.expression('hasRole(''USER'') OR hasRole(''ADMIN'')')}">Add to Cookbook</button>
+                th:if="${#authorization.expression('hasRole(''USER'') OR hasRole(''ADMIN'')')}">Add To Cookbook</button>
     </div>
     <!--Add to cookbook modal, hidden by default-->
     <div class="modal center" id="viewrecipe-modal">
