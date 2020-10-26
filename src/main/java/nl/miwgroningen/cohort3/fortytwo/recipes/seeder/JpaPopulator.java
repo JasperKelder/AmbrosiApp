@@ -686,10 +686,14 @@ public class JpaPopulator implements CommandLineRunner, seedTablesInterface {
     }
 
     public void seedCookbook() {
-        Cookbook cookbook1 = new Cookbook(1, false, "recipes", userRepository.getOne(1),
-                Arrays.asList(recipeRepository.getOne(1), recipeRepository.getOne(2)));
+        Cookbook cookbook1 = new Cookbook(1, false, "Favourites", userRepository.getOne(3),
+                Arrays.asList(recipeRepository.getOne(4), recipeRepository.getOne(2)));
+        Cookbook cookbook2 = new Cookbook(2, false, "Dinnerdates", userRepository.getOne(3),
+                Arrays.asList(recipeRepository.getOne(7), recipeRepository.getOne(15)));
+        Cookbook cookbook3 = new Cookbook(3, false, "Cheatdays", userRepository.getOne(3),
+                Arrays.asList(recipeRepository.getOne(1), recipeRepository.getOne(16)));
 
-        cookbookRepository.save(cookbook1);
+        cookbookRepository.saveAll(Arrays.asList(cookbook1, cookbook2, cookbook3));
     }
 
     public byte[] imageFromFileToByteArray(String imageFilePath) throws IOException {
