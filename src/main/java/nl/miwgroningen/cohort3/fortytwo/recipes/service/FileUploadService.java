@@ -2,8 +2,9 @@ package nl.miwgroningen.cohort3.fortytwo.recipes.service;
 
 import nl.miwgroningen.cohort3.fortytwo.recipes.model.Recipe;
 
-import java.io.*;
-import java.util.Arrays;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Base64;
 
 /**
@@ -43,11 +44,14 @@ public class FileUploadService {
                     default:
                         image = new File("src/main/resources/static/images/default-category/breakfast-category.jpg");
                 }
+                // Set the default image file to type FileInputStream
                 FileInputStream imageInFile = new FileInputStream(image);
+
+                // Get the bytes from the file so we can convert it to Base64 String so that html can read the image
                 byte[] imageInBytes = imageInFile.readAllBytes();
                 imageInBase64 += Base64.getEncoder().encodeToString(imageInBytes);
             }
-            // if the user uploaded an image then convert it to Base64
+            // else if the user uploaded an image then convert it to Base64
             else {
                 imageInBase64 += Base64.getEncoder().encodeToString(recipe.getImage());
             }
