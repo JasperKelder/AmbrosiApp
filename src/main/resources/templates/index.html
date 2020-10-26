@@ -32,7 +32,7 @@
             <div class="col-3 overview-responsive imagetextcontainer" th:value="${allRecipes.get(i).recipeId}">
                 <a th:href="@{/viewrecipe/{recipeId}(recipeId=${allRecipes.get(i).recipeId})}">
                     <br><img th:src="|data:image/jpeg;base64,${allImages.get(i)}|" alt="Food" class="grid-image"></a>
-                <div class="index-foodname" th:text="${#strings.abbreviate(allRecipes.get(i).recipeTitle, 20)}"></div>
+                <div class="index-foodname" th:text="${#strings.abbreviate(allRecipes.get(i).recipeTitle, 45)}"></div>
             </div>
         </div>
     </div>
