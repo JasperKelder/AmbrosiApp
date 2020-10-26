@@ -112,3 +112,17 @@
         width: 225px;
     }
 }
+@media only screen and (max-width: 385px) {
+    #nav-logo {
+        width: 90px;
+    }
+    .nav-mykitchen {
+        width: 75px;
+    }
+    .nav-mykitchen-text {
+        font-size: 50%;
+    }
+    #nav-logout {
+        width: 50px;
+    }
+}
