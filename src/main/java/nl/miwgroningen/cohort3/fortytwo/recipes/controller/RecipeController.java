@@ -193,15 +193,22 @@ public class RecipeController {
     }
 
     @GetMapping("/userrecipes/{userId}")
-    protected String showRecipesUser(@PathVariable("userId") final Integer userId, Model model) {
+    protected String showRecipesUser(@PathVariable("userId") final Integer userId, Model model, Principal principal) {
         List<Recipe> recipes = recipeRepository.userRecipes(userId);
+        User user = userRepository.getOne(userId);
+        // Check if the user is the current logged in user (if so, she/he can see the update button)
+        boolean userIsPrincipal = false;
+        if (principal != null) {
+            userIsPrincipal = principal.getName().equals(user.getEmailAddress()) ? true : false;
+        }
         List<String> imagesList = new ArrayList<>();
         for (Recipe recipe : recipes) {
             imagesList.add(fileUploadService.convertToBase64(recipe));
         }
         model.addAttribute("allUserImages", imagesList);
         model.addAttribute("allUserRecipes", recipeRepository.userRecipes(userId));
-        model.addAttribute("user", userRepository.findById(userId).get());
+        model.addAttribute("user", user);
+        model.addAttribute("userIsPrincipal", userIsPrincipal);
         return "userrecipes";
     }
 
