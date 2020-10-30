@@ -73,7 +73,7 @@ nav li a {
 }
 
 .margin-right {
-    margin-right: 100px;
+    margin-right: 93px;
 }
 
 .nav-mykitchen-container {
@@ -293,6 +293,7 @@ h2, label, th {
 }
 
 .messagemedium {
+    font-size: 300%;
     font-size: 300%;
 }
 
